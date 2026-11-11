@@ -216,7 +216,7 @@ async fn the_plan_plays_as_the_simulation_does() {
 #[case::the_suggested_model("/analysis/suggestion/model", "suggest")]
 #[case::the_suggestions_reasons("/analysis/suggestion/effortReason", "suggest")]
 #[case::the_placeholder_rows("/plan/components/rows", "resolve")]
-#[case::the_first_components_stack("/plan/components/rows/0/stack", "go")]
+#[case::the_first_components_stack("/plan/components/rows/0/stack", "rust")]
 #[case::the_last_components_share("/plan/components/rows/4/cpuMillis", "next")]
 #[case::the_first_components_image(
 	"/plan/components/rows/0/image",
@@ -224,7 +224,7 @@ async fn the_plan_plays_as_the_simulation_does() {
 )]
 #[case::the_ports_distinct("/plan/components/portsDistinct", "crossCheck")]
 #[case::the_bound("/plan/sizing/bound", "bounds")]
-#[case::the_proposed_totals("/plan/sizing/proposed", "go")]
+#[case::the_proposed_totals("/plan/sizing/proposed", "rust")]
 #[case::the_headroom("/plan/sizing/headroom", "size")]
 #[case::the_suggested_resource("/plan/sizing/resource", "size")]
 #[case::the_limits("/plan/sizing/limitsRequested", "limits")]

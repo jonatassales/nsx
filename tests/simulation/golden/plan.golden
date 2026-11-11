@@ -23,8 +23,8 @@ weighModel	output	console › weighing model · Haiku 5.5 retries the broker wir
 suggest	success	✓ suggests   claude-sonnet-5-5 · effort medium
 planning	comment	# plan · resolving the components, then sizing them inside the envelope
 resolve	output	console › resolving 5 components named in the spec · paths, images, ports
-inspectGo	output	console › tool call: inspect services/signup-api · go.mod · :8080
-go	success	✓ services/signup-api   Go · api        250m · 256 MiB
+inspectRust	output	console › tool call: inspect services/signup-api · Cargo.toml · :8080
+rust	success	✓ services/signup-api   Rust · api      250m · 256 MiB
 inspectNode	output	console › tool call: inspect services/notify-api · package.json · :8081
 node	success	✓ services/notify-api   Node.js · api   300m · 512 MiB
 inspectNats	output	console › tool call: inspect platform/nats · nats.conf · :4222

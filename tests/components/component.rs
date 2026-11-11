@@ -13,12 +13,12 @@ use crate::components::{laid::laid, resolved::resolved};
 use crate::simulation::project::project;
 
 #[rstest]
-#[case::go(
+#[case::rust(
 	"services/signup-api",
 	Some(8080),
-	"console › tool call: inspect services/signup-api · go.mod · :8080",
-	"✓ services/signup-api   Go · api        250m · 256 MiB",
-	("inspectGo", "go")
+	"console › tool call: inspect services/signup-api · Cargo.toml · :8080",
+	"✓ services/signup-api   Rust · api      250m · 256 MiB",
+	("inspectRust", "rust")
 )]
 #[case::node(
 	"services/notify-api",
@@ -87,7 +87,12 @@ fn each_component_of_the_fixture_prints_its_two_lines(
 	Some(9),
 	4222
 )]
-#[case::the_spec_last("go.mod", "module example.com/api\n", Some(8080), 8080)]
+#[case::the_spec_last(
+	"Cargo.toml",
+	"[package]\nname = \"api\"\n",
+	Some(8080),
+	8080
+)]
 #[case::a_manifest_port_from_the_environment(
 	"package.json",
 	r#"{"scripts": {"start": "serve -p $PORT"}}"#,
@@ -122,7 +127,7 @@ fn the_port_is_the_manifests_then_the_stacks_then_the_specs(
 #[case::the_spec_names_a_port_that_is_none(Some(0))]
 #[case::the_spec_names_a_port_above_the_range(Some(65536))]
 fn a_component_with_no_port_is_a_stop(#[case] stated: Option<i64>) {
-	let files = [("go.mod", "module example.com/api\n")];
+	let files = [("Cargo.toml", "[package]\nname = \"api\"\n")];
 	let (_project, root) = laid("services/api", &files);
 	let named = Named {
 		path: String::from("services/api"),
@@ -175,7 +180,7 @@ fn a_package_json_that_is_not_json_is_a_stop_that_names_the_file() {
 
 #[test]
 fn two_spellings_of_one_path_give_one_folder() {
-	let files = [("go.mod", "module example.com/api\n")];
+	let files = [("Cargo.toml", "[package]\nname = \"api\"\n")];
 	let (project, root) = laid("services/api", &files);
 	let inspected = |path: &str| {
 		let named = Named {
@@ -237,8 +242,8 @@ fn a_component_fills_the_placeholder_of_its_path() {
 			},
 			{
 				"path": "services/signup-api",
-				"manifest": "go.mod",
-				"stack": "Go",
+				"manifest": "Cargo.toml",
+				"stack": "Rust",
 				"role": "api",
 				"port": 8080,
 				"cpuMillis": 250,
@@ -259,5 +264,5 @@ fn a_component_with_no_placeholder_gets_a_row_of_its_own() {
 	let rows = cards.components().rows.clone().unwrap();
 
 	assert_eq!(rows.len(), 2);
-	assert_eq!(rows[1].stack.as_deref(), Some("Go"));
+	assert_eq!(rows[1].stack.as_deref(), Some("Rust"));
 }

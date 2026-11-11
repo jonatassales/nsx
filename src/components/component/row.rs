@@ -6,7 +6,7 @@
 //!
 //! ## Simulation
 //!
-//! - `go`: `✓ services/signup-api   Go · api        250m · 256 MiB`
+//! - `rust`: `✓ services/signup-api   Rust · api      250m · 256 MiB`
 //! - `node`: `✓ services/notify-api   Node.js · api   300m · 512 MiB`
 //! - `nats`: `✓ platform/nats         NATS · broker   200m · 256 MiB`
 //! - `redis`: `✓ platform/redis        Redis · cache   200m · 256 MiB`

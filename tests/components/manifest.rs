@@ -6,7 +6,7 @@ use nsx::components::{
 	error::Error,
 	manifest::Manifest,
 	role::{API, BROKER, CACHE, WEB},
-	stack::{GO, NATS, NEXT, NODE, REDIS},
+	stack::{NATS, NEXT, NODE, REDIS, RUST},
 };
 use nsx::contract::{
 	component::{ROLES, STACKS},
@@ -39,7 +39,7 @@ fn the_five_manifests_of_the_fixture_give_their_stack_and_role() {
 	assert_eq!(
 		decided,
 		[
-			("go.mod", (GO, API)),
+			("Cargo.toml", (RUST, API)),
 			("package.json", (NODE, API)),
 			("nats.conf", (NATS, BROKER)),
 			("redis.conf", (REDIS, CACHE)),
@@ -73,7 +73,7 @@ fn a_package_json_alone_never_decides_next() {
 fn every_stack_role_and_manifest_is_one_the_contract_spells() {
 	let manifests = [
 		Manifest::NextConfig,
-		Manifest::GoMod,
+		Manifest::CargoToml,
 		Manifest::PackageJson,
 		Manifest::NatsConf,
 		Manifest::RedisConf,
@@ -296,7 +296,11 @@ fn a_path_outside_the_project_is_a_stop(#[case] path: &str) {
 	None
 )]
 #[case::a_package_without_scripts(Manifest::PackageJson, "{}", None)]
-#[case::a_go_module(Manifest::GoMod, "module example.com/api\n", None)]
+#[case::a_cargo_manifest(
+	Manifest::CargoToml,
+	"[package]\nname = \"api\"\n",
+	None
+)]
 #[case::a_next_config(Manifest::NextConfig, "const port = 3001\n", None)]
 fn a_manifest_declares_its_port_or_none(
 	#[case] manifest: Manifest,

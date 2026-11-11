@@ -6,7 +6,7 @@
 //!
 //! ## Simulation
 //!
-//! - `inspectGo`: `console › tool call: inspect services/signup-api · go.mod · :8080`
+//! - `inspectRust`: `console › tool call: inspect services/signup-api · Cargo.toml · :8080`
 //! - `inspectNode`: `console › tool call: inspect services/notify-api · package.json · :8081`
 //! - `inspectNats`: `console › tool call: inspect platform/nats · nats.conf · :4222`
 //! - `inspectRedis`: `console › tool call: inspect platform/redis · redis.conf · :6379`

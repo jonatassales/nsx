@@ -2,7 +2,7 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "https://langdrift.md/schemas/configuration/runtime.schema.json",
 	"title": "Runtime fence",
-	"description": "The langdrift fence of runtime.md, version 3: the runtime's id and revision, the bound in millicores and MiB, the suggested model and effort, and per component its path, stack, role, port, image, share and replicas. Shares summing within the bound, distinct ports and images and unique paths are rules JSON Schema cannot express; the Go Validate enforces them.",
+	"description": "The langdrift fence of runtime.md, version 3: the runtime's id and revision, the bound in millicores and MiB, the suggested model and effort, and per component its path, stack, role, port, image, share and replicas. Shares summing within the bound, distinct ports and images and unique paths are rules JSON Schema cannot express; nsx enforces them.",
 	"type": "object",
 	"additionalProperties": false,
 	"required": [
@@ -67,7 +67,7 @@
 						"minLength": 1
 					},
 					"stack": {
-						"enum": ["Go", "Node.js", "NATS", "Redis", "Next.js"]
+						"enum": ["Rust", "Node.js", "NATS", "Redis", "Next.js"]
 					},
 					"role": {
 						"enum": ["api", "broker", "cache", "web"]

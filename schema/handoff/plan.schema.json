@@ -2,7 +2,7 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "https://langdrift.md/schemas/handoff/plan.schema.json",
 	"title": "Plan card data",
-	"description": "The plan's card data (plan.json): one section per card, each absent until it is revealed. A section whose fields have not joined yet allows no field; the element spec that fills it changes this schema with its Go type.",
+	"description": "The plan's card data (plan.json): one section per card, each absent until it is revealed. A section whose fields have not joined yet allows no field; the element spec that fills it changes this schema with its type.",
 	"type": "object",
 	"additionalProperties": false,
 	"properties": {
@@ -296,14 +296,14 @@
 									"manifest": {
 										"enum": [
 											"next.config.ts",
-											"go.mod",
+											"Cargo.toml",
 											"package.json",
 											"nats.conf",
 											"redis.conf"
 										]
 									},
 									"stack": {
-										"enum": ["Go", "Node.js", "NATS", "Redis", "Next.js"]
+										"enum": ["Rust", "Node.js", "NATS", "Redis", "Next.js"]
 									},
 									"role": {
 										"enum": ["api", "broker", "cache", "web"]

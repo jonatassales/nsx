@@ -21,7 +21,7 @@ fn the_simulations_fence_reads_as_version_3() {
 		fence.components[0],
 		Component {
 			path: String::from("services/signup-api"),
-			stack: String::from("Go"),
+			stack: String::from("Rust"),
 			role: String::from("api"),
 			port: 8080,
 			image: String::from("book-a-demo-runtime/signup-api:r1"),
@@ -225,7 +225,7 @@ fn a_problem_reads_as_core_words_it() {
 		rules,
 		[
 			"must be one of low, medium, high",
-			"must be one of Go, Node.js, NATS, Redis, Next.js",
+			"must be one of Rust, Node.js, NATS, Redis, Next.js",
 		]
 	);
 }

@@ -13,8 +13,9 @@
 //! - here: the `planning` comment
 //! - components: take the paths the spec names (`resolve`)
 //! - components: inspect each one in the spec's order, an inspect line and a
-//!   row each (`inspectGo` and `go`, `inspectNode` and `node`, `inspectNats`
-//!   and `nats`, `inspectRedis` and `redis`, `inspectNext` and `next`)
+//!   row each (`inspectRust` and `rust`, `inspectNode` and `node`,
+//!   `inspectNats` and `nats`, `inspectRedis` and `redis`, `inspectNext`
+//!   and `next`)
 //! - runtime: take the draft's revision, which each image carries
 //! - components: resolve each component's image, then cross-check the ports,
 //!   the images and the paths (`crossCheck`)

@@ -1,17 +1,18 @@
-//! A Go component as the plan resolved it, at a path, a port and an image
+//! A Rust component as the plan resolved it, at a path, a port and an image
 
 use std::path::PathBuf;
 
 use nsx::components::{
-	component::Component, image::Image, manifest::Manifest, role::API, stack::GO,
+	component::Component, image::Image, manifest::Manifest, role::API,
+	stack::RUST,
 };
 
 pub fn resolved(path: &str, port: i64, image: Option<&str>) -> Component {
 	Component {
 		path: String::from(path),
 		folder: PathBuf::from("/project").join(path),
-		manifest: Manifest::GoMod,
-		stack: GO,
+		manifest: Manifest::CargoToml,
+		stack: RUST,
 		role: API,
 		port,
 		image: image.map(|reference| Image(String::from(reference))),

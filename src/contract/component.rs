@@ -11,7 +11,7 @@
 //!
 //! ## Rules
 //!
-//! - A stack is `Go`, `Node.js`, `NATS`, `Redis` or `Next.js`. A role is
+//! - A stack is `Rust`, `Node.js`, `NATS`, `Redis` or `Next.js`. A role is
 //!   `api`, `broker`, `cache` or `web`.
 //! - A port is a whole number from 1 to 65535.
 //! - The share is whole millicores and MiB, and `replicas` is 1.
@@ -22,7 +22,7 @@
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
-pub const STACKS: [&str; 5] = ["Go", "Node.js", "NATS", "Redis", "Next.js"];
+pub const STACKS: [&str; 5] = ["Rust", "Node.js", "NATS", "Redis", "Next.js"];
 
 pub const ROLES: [&str; 4] = ["api", "broker", "cache", "web"];
 

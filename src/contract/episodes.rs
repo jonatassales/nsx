@@ -37,7 +37,7 @@ use crate::contract::episode::Episode;
 		"rows show them. A kept episode shares the stack and scale; a ",
 		"dropped one runs another runtime, has no broker or is docs only. ",
 		"That the reason matches the verdict and that no id repeats are ",
-		"rules the Go check enforces.",
+		"rules nsx enforces.",
 	),
 	extend("$id" = "https://langdrift.md/schemas/judgment/episodes.answer.schema.json"),
 )]

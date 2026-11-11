@@ -22,7 +22,7 @@ use crate::contract::component::{ROLES, STACKS};
 
 pub const MANIFESTS: [&str; 5] = [
 	"next.config.ts",
-	"go.mod",
+	"Cargo.toml",
 	"package.json",
 	"nats.conf",
 	"redis.conf",

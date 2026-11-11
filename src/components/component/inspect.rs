@@ -31,7 +31,7 @@
 //! ## Open
 //!
 //! - Where the port comes from when the manifest cannot declare one, as with
-//!   `go.mod`. The chain above is provisional: every component's port may
+//!   `Cargo.toml`. The chain above is provisional: every component's port may
 //!   come from the spec instead.
 //!
 //! Spec 0079.
@@ -43,7 +43,7 @@ use crate::components::{
 	error::Error,
 	manifest::Manifest,
 	role::{API, BROKER, CACHE, WEB},
-	stack::{GO, NATS, NEXT, NODE, REDIS},
+	stack::{NATS, NEXT, NODE, REDIS, RUST},
 };
 use crate::contract::component::PORTS;
 use crate::files::{
@@ -62,7 +62,7 @@ impl Component {
 		let declared = manifest.port(&file, &written)?;
 		let (stack, role) = manifest.classify();
 		let (cpu_millis, memory_mib) = match (stack, role) {
-			(GO, API) => (250, 256),
+			(RUST, API) => (250, 256),
 			(NODE, API) => (300, 512),
 			(NATS, BROKER) => (200, 256),
 			(REDIS, CACHE) => (200, 256),

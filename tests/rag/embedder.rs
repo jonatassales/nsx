@@ -25,8 +25,11 @@ fn a_text_embeds_into_one_unit_vector_of_the_embedders_dimensions() {
 #[case::case_does_not_count("Sign-Up API", "sign-up api")]
 #[case::punctuation_parts_words("sign-up, api!", "sign-up api")]
 #[case::a_trailing_dash_is_dropped("sign-up- api", "sign-up api")]
-#[case::two_joiners_part_words("go..mod", "go mod")]
-#[case::a_dot_keeps_a_name_whole("read go.mod now", "read  go.mod   now")]
+#[case::two_joiners_part_words("cargo..toml", "cargo toml")]
+#[case::a_dot_keeps_a_name_whole(
+	"read cargo.toml now",
+	"read  cargo.toml   now"
+)]
 fn texts_with_the_same_words_embed_alike(
 	#[case] left: &str,
 	#[case] right: &str,

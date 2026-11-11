@@ -10,8 +10,9 @@
 //!
 //! ## Rules
 //!
-//! - The precedence is `next.config.ts`, then `go.mod`, then `package.json`,
-//!   then `nats.conf`, then `redis.conf`. The first file present decides.
+//! - The precedence is `next.config.ts`, then `Cargo.toml`, then
+//!   `package.json`, then `nats.conf`, then `redis.conf`. The first file
+//!   present decides.
 //! - `next.config.ts` wins over a `package.json` beside it.
 //! - A folder that is missing, or holds none of the five, stops the plan
 //!   before the component's inspect line, under the stop rule.

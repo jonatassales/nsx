@@ -17,7 +17,7 @@ pub enum Error {
 	)]
 	Missing { path: String },
 	#[error(
-		"nsx found no manifest in {path}: a component holds next.config.ts, go.mod, package.json, nats.conf or redis.conf."
+		"nsx found no manifest in {path}: a component holds next.config.ts, Cargo.toml, package.json, nats.conf or redis.conf."
 	)]
 	Unrecognised { path: String },
 	#[error("nsx could not read {}: {cause}.", path.display())]

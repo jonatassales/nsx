@@ -46,8 +46,8 @@ use crate::session::{
 	"reads      harness/guardrails/0001-finops.gr.md · FIN-02 · FIN-04"
 )]
 #[case::component_with_a_path_of_nineteen_columns(
-	component("services/signup-api", "Go · api", "250m · 256 MiB"),
-	"✓ services/signup-api   Go · api        250m · 256 MiB"
+	component("services/signup-api", "Rust · api", "250m · 256 MiB"),
+	"✓ services/signup-api   Rust · api      250m · 256 MiB"
 )]
 #[case::component_with_a_short_path(
 	component("apps/signup", "Next.js · web", "500m · 1024 MiB"),

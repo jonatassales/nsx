@@ -4,7 +4,7 @@
 //! plan prints it on the component's row and records it in the draft, and the
 //! episode a run leaves keeps it (spec 0052).
 //!
-//! Definition only: the `Stack` type and its five values: `Go`, `Node.js`,
+//! Definition only: the `Stack` type and its five values: `Rust`, `Node.js`,
 //! `NATS`, `Redis` and `Next.js`. Each carries its name, the ids of its
 //! inspect line and of its row, and the port the stack usually serves on, if
 //! it has one.
@@ -13,8 +13,8 @@
 //!
 //! - The set is closed. There is no Python, no Docker and no unknown stack.
 //! - Each value is spelled as the simulation shows it.
-//! - NATS usually serves on 4222, Redis on 6379 and Next.js on 3000. Go and
-//!   Node.js have no usual port.
+//! - NATS usually serves on 4222, Redis on 6379 and Next.js on 3000. Rust
+//!   and Node.js have no usual port.
 //!
 //! Spec 0079.
 
@@ -26,10 +26,10 @@ pub struct Stack {
 	pub port: Option<i64>,
 }
 
-pub const GO: Stack = Stack {
-	name: "Go",
-	inspect: "inspectGo",
-	row: "go",
+pub const RUST: Stack = Stack {
+	name: "Rust",
+	inspect: "inspectRust",
+	row: "rust",
 	port: None,
 };
 

@@ -46,7 +46,7 @@ use crate::contract::{
 		"The plan's card data (plan.json): one section per card, each absent ",
 		"until it is revealed. A section whose fields have not joined yet ",
 		"allows no field; the element spec that fills it changes this schema ",
-		"with its Go type.",
+		"with its type.",
 	),
 	extend("$id" = "https://langdrift.md/schemas/handoff/plan.schema.json"),
 )]

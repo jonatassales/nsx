@@ -1,9 +1,9 @@
 //! The manifest of a component
 //!
 //! The manifest is the file in a component's folder that says what the
-//! component is. Five are known: `next.config.ts`, `go.mod`, `package.json`,
-//! `nats.conf` and `redis.conf`. The one the plan finds decides the stack and
-//! the role, and the inspect line names it.
+//! component is. Five are known: `next.config.ts`, `Cargo.toml`,
+//! `package.json`, `nats.conf` and `redis.conf`. The one the plan finds
+//! decides the stack and the role, and the inspect line names it.
 //!
 //! Definition only: the `Manifest` type: which of the five files decided the
 //! component. The five sit beside the type in the order the plan looks for
@@ -27,7 +27,7 @@ pub mod scripted;
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Manifest {
 	NextConfig,
-	GoMod,
+	CargoToml,
 	PackageJson,
 	NatsConf,
 	RedisConf,
@@ -35,7 +35,7 @@ pub enum Manifest {
 
 pub const MANIFESTS: [Manifest; 5] = [
 	Manifest::NextConfig,
-	Manifest::GoMod,
+	Manifest::CargoToml,
 	Manifest::PackageJson,
 	Manifest::NatsConf,
 	Manifest::RedisConf,

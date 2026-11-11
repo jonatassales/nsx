@@ -30,7 +30,7 @@ use serde::{Deserialize, Serialize};
 		"0011-SPEC revised · 3 acceptance criteria\". spec is the spec's ",
 		"project-relative path; the line prints the first two dash-separated ",
 		"parts of its file name. A clean path that never climbs is a rule ",
-		"JSON Schema cannot fully express; the Go check enforces it.",
+		"JSON Schema cannot fully express; nsx enforces it.",
 	),
 	extend("$id" = "https://langdrift.md/schemas/stages/spec.report.schema.json"),
 )]

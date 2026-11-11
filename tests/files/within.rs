@@ -11,7 +11,7 @@ use crate::files::project::project;
 #[rstest]
 #[case::a_file(".agents/0031-TICKET.ticket.md")]
 #[case::a_file_named_from_here("./.agents/0031-TICKET.ticket.md")]
-#[case::a_file_that_does_not_exist_yet("services/new-api/go.mod")]
+#[case::a_file_that_does_not_exist_yet("services/new-api/Cargo.toml")]
 fn a_path_inside_the_project_is_accepted(#[case] named: &str) {
 	let (_folder, root) = project();
 

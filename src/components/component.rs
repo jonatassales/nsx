@@ -16,7 +16,7 @@
 //! - The path is the component's identity: components are unique by path
 //!   (what survives of ADR 0004). Two paths are the same component when they
 //!   name the same folder, however each is spelled.
-//! - The share comes from a fixed table by stack and role: Go api 250m and
+//! - The share comes from a fixed table by stack and role: Rust api 250m and
 //!   256 MiB, Node.js api 300m and 512 MiB, NATS broker 200m and 256 MiB,
 //!   Redis cache 200m and 256 MiB, Next.js web 500m and 1024 MiB.
 //! - The share is whole millicores and whole MiB. The port is an integer.

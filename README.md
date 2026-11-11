@@ -265,7 +265,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | Files | Holds | Lines |
 | --- | --- | --- |
 | `component.rs`, `component/inspect.rs`, `component/card.rs` | one component: path, manifest, stack, role, port, image and share, and its row on the Plan card | |
-| `component/line.rs`, `component/row.rs` | its two lines | `inspectGo`, `inspectNode`, `inspectNats`, `inspectRedis`, `inspectNext`; `go`, `node`, `nats`, `redis`, `next` |
+| `component/line.rs`, `component/row.rs` | its two lines | `inspectRust`, `inspectNode`, `inspectNats`, `inspectRedis`, `inspectNext`; `rust`, `node`, `nats`, `redis`, `next` |
 | `manifest.rs`, `manifest/find.rs`, `manifest/file.rs`, `manifest/classify.rs`, `manifest/port.rs`, `manifest/code.rs`, `manifest/keyed.rs`, `manifest/scripted.rs` | the file that says what a component is: found, named, classified, and read for the port it declares, in a configuration file's key (its comments, quotes and blocks read first) or a `package.json` start script | |
 | `stack.rs`, `role.rs` | the stacks, each with its line ids and its usual port, and the roles | |
 | `error.rs` | what resolving the components can refuse | |

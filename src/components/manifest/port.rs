@@ -7,7 +7,7 @@
 //!
 //! - `nats.conf` and `redis.conf` declare it with a top-level key
 //!   (`keyed.rs`), `package.json` in its `start` script (`scripted.rs`).
-//! - `go.mod` cannot declare a port, and no rule says how `next.config.ts`
+//! - `Cargo.toml` declares no port, and no rule says how `next.config.ts`
 //!   would: neither declares one.
 //! - A value taken from the environment (`port: $NATS_PORT`, `--port $PORT`)
 //!   is not the manifest's: the manifest declares no port, and the next
@@ -32,7 +32,7 @@ use crate::contract::component::PORTS;
 impl Manifest {
 	pub fn port(&self, file: &Path, written: &str) -> Result<Option<i64>, Error> {
 		let stated = match self {
-			Self::NextConfig | Self::GoMod => None,
+			Self::NextConfig | Self::CargoToml => None,
 			Self::NatsConf | Self::RedisConf => self.keyed(written),
 			Self::PackageJson => {
 				Self::scripted(written).map_err(|cause| Error::Manifest {

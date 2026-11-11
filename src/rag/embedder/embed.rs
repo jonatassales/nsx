@@ -6,7 +6,7 @@
 //!
 //! - It is deterministic, and it makes no paid call.
 //! - The words are the lowercase runs of letters and digits, kept whole
-//!   across a single dot or dash, as in `signup-api` and `go.mod`.
+//!   across a single dot or dash, as in `signup-api` and `Cargo.toml`.
 //! - Each word, and each pair of neighbouring words, is hashed with FNV-1a
 //!   into one of the dimensions, added or subtracted by the hash's last bit so
 //!   that collisions spread out. A count above zero is dampened to

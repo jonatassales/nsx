@@ -5,7 +5,7 @@ use nsx::contract::component::Component;
 pub fn component(path: &str) -> Component {
 	Component {
 		path: String::from(path),
-		stack: String::from("Go"),
+		stack: String::from("Rust"),
 		role: String::from("api"),
 		port: 8081,
 		image: String::from("book-a-demo-runtime/signup-api:r1"),

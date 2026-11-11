@@ -11,7 +11,7 @@ impl Manifest {
 	pub fn file(&self) -> &'static str {
 		match self {
 			Self::NextConfig => "next.config.ts",
-			Self::GoMod => "go.mod",
+			Self::CargoToml => "Cargo.toml",
 			Self::PackageJson => "package.json",
 			Self::NatsConf => "nats.conf",
 			Self::RedisConf => "redis.conf",

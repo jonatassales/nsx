@@ -145,8 +145,8 @@
 				"rows": [
 					{
 						"path": "services/signup-api",
-						"manifest": "go.mod",
-						"stack": "Go",
+						"manifest": "Cargo.toml",
+						"stack": "Rust",
 						"role": "api",
 						"port": 8080,
 						"image": "book-a-demo-runtime/signup-api:r1",

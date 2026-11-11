@@ -13,7 +13,7 @@ pub fn finished() -> Episode {
 		components: vec![
 			Part {
 				path: String::from("services/notes-api"),
-				stack: String::from("Go"),
+				stack: String::from("Rust"),
 				role: String::from("api"),
 			},
 			Part {

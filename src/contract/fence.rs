@@ -13,7 +13,7 @@
 //! ## Rules
 //!
 //! - Version 3 is the only version.
-//! - A stack is `Go`, `Node.js`, `NATS`, `Redis` or `Next.js`. A role is
+//! - A stack is `Rust`, `Node.js`, `NATS`, `Redis` or `Next.js`. A role is
 //!   `api`, `broker`, `cache` or `web`. An effort is `low`, `medium` or `high`.
 //! - `model` and `effort` are the judge's suggestion, kept as a
 //!   recommendation. The choice a run applies lives in `intent.json`.
@@ -61,8 +61,8 @@ pub const EFFORTS: [&str; 3] = ["low", "medium", "high"];
 		"revision, the bound in millicores and MiB, the suggested model and ",
 		"effort, and per component its path, stack, role, port, image, share ",
 		"and replicas. Shares summing within the bound, distinct ports and ",
-		"images and unique paths are rules JSON Schema cannot express; the ",
-		"Go Validate enforces them.",
+		"images and unique paths are rules JSON Schema cannot express; ",
+		"nsx enforces them.",
 	),
 	extend("$id" = SCHEMA),
 )]
