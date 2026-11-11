@@ -1,0 +1,13 @@
+{
+	"id": "ep-0297",
+	"slug": "docs-search-index",
+	"ticket": "0018-TICKET-docs-search-index",
+	"intent": "Rebuild the documentation search index\nThe documentation gets a new search index. No runtime changes.",
+	"components": [],
+	"resource": {
+		"kind": "Deployment",
+		"count": 0,
+		"replicas": 1
+	},
+	"measured": null
+}

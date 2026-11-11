@@ -1,0 +1,537 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://langdrift.md/schemas/handoff/plan.schema.json",
+	"title": "Plan card data",
+	"description": "The plan's card data (plan.json): one section per card, each absent until it is revealed. A section whose fields have not joined yet allows no field; the element spec that fills it changes this schema with its Go type.",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"ticket": {
+			"description": "The Ticket card. Its header is written before the plan's first line: the ticket's bare id, number, slug, status and title. A number, status or title the ticket does not state is null. Its links are written when the plan's links line prints.",
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["id", "number", "slug", "status", "title"],
+			"properties": {
+				"id": {
+					"type": "string",
+					"minLength": 1
+				},
+				"number": {
+					"type": ["string", "null"],
+					"minLength": 1
+				},
+				"slug": {
+					"type": "string",
+					"minLength": 1
+				},
+				"status": {
+					"type": ["string", "null"],
+					"minLength": 1
+				},
+				"title": {
+					"type": ["string", "null"],
+					"minLength": 1
+				},
+				"links": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["kind", "file", "shortId", "path"],
+						"properties": {
+							"kind": {
+								"enum": ["prd", "designDoc", "spec", "guardrail"]
+							},
+							"file": {
+								"type": "string"
+							},
+							"shortId": {
+								"type": "string"
+							},
+							"path": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		},
+		"analysis": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"documents": {
+					"type": "object",
+					"additionalProperties": false,
+					"properties": {
+						"readCount": {
+							"type": "integer",
+							"minimum": 0
+						},
+						"documentsRead": {
+							"type": "integer",
+							"minimum": 0
+						},
+						"prd": {
+							"type": "object",
+							"additionalProperties": false,
+							"required": ["shortId", "file", "useCase"],
+							"properties": {
+								"shortId": {
+									"type": "string"
+								},
+								"file": {
+									"type": "string"
+								},
+								"useCase": {
+									"type": "string"
+								}
+							}
+						},
+						"designDoc": {
+							"type": "object",
+							"additionalProperties": false,
+							"required": ["shortId", "file", "envelope", "budgetPerRunCents"],
+							"properties": {
+								"shortId": {
+									"type": "string"
+								},
+								"file": {
+									"type": "string"
+								},
+								"envelope": {
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["cpuMillis", "memoryMiB"],
+									"properties": {
+										"cpuMillis": {
+											"type": "integer",
+											"minimum": 1
+										},
+										"memoryMiB": {
+											"type": "integer",
+											"minimum": 1
+										}
+									}
+								},
+								"budgetPerRunCents": {
+									"type": "integer",
+									"minimum": 0
+								}
+							}
+						},
+						"spec": {
+							"type": "object",
+							"additionalProperties": false,
+							"required": [
+								"shortId",
+								"file",
+								"components",
+								"acceptanceCriteria"
+							],
+							"properties": {
+								"shortId": {
+									"type": "string"
+								},
+								"file": {
+									"type": "string"
+								},
+								"components": {
+									"type": "integer",
+									"minimum": 0
+								},
+								"acceptanceCriteria": {
+									"type": "integer",
+									"minimum": 0
+								}
+							}
+						},
+						"guardrail": {
+							"type": "object",
+							"additionalProperties": false,
+							"required": [
+								"shortId",
+								"file",
+								"criteria",
+								"planCriteria",
+								"enforcement"
+							],
+							"properties": {
+								"shortId": {
+									"type": "string"
+								},
+								"file": {
+									"type": "string"
+								},
+								"criteria": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"additionalProperties": false,
+										"required": ["id"],
+										"properties": {
+											"id": {
+												"type": "string"
+											},
+											"statement": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"planCriteria": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"enforcement": {
+									"const": "review"
+								}
+							}
+						}
+					}
+				},
+				"episodes": {
+					"type": "object",
+					"additionalProperties": false,
+					"properties": {
+						"threshold": {
+							"type": "number"
+						},
+						"candidates": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"additionalProperties": false,
+								"required": ["id", "slug", "similarity"],
+								"properties": {
+									"id": {
+										"type": "string"
+									},
+									"slug": {
+										"type": "string"
+									},
+									"similarity": {
+										"type": "number"
+									},
+									"verdict": {
+										"enum": ["kept", "dropped"]
+									},
+									"reason": {
+										"enum": [
+											"shares the stack and scale",
+											"other runtime",
+											"no broker",
+											"docs only"
+										]
+									}
+								}
+							}
+						},
+						"kept": {
+							"type": "integer",
+							"minimum": 0
+						},
+						"dropped": {
+							"type": "integer",
+							"minimum": 0
+						},
+						"total": {
+							"type": "integer",
+							"minimum": 0
+						},
+						"cited": {
+							"type": "integer",
+							"minimum": 0
+						},
+						"citedMeasured": {
+							"type": "integer",
+							"minimum": 0
+						}
+					}
+				},
+				"suggestion": {
+					"type": "object",
+					"additionalProperties": false,
+					"properties": {
+						"model": {
+							"type": "string"
+						},
+						"effort": {
+							"enum": ["low", "medium", "high"]
+						},
+						"effortReason": {
+							"type": "string"
+						},
+						"modelReason": {
+							"type": "string"
+						},
+						"by": {
+							"const": "recommendation"
+						}
+					}
+				}
+			}
+		},
+		"plan": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"components": {
+					"type": "object",
+					"additionalProperties": false,
+					"properties": {
+						"rows": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"additionalProperties": false,
+								"required": ["path"],
+								"properties": {
+									"path": {
+										"type": "string",
+										"minLength": 1
+									},
+									"manifest": {
+										"enum": [
+											"next.config.ts",
+											"go.mod",
+											"package.json",
+											"nats.conf",
+											"redis.conf"
+										]
+									},
+									"stack": {
+										"enum": ["Go", "Node.js", "NATS", "Redis", "Next.js"]
+									},
+									"role": {
+										"enum": ["api", "broker", "cache", "web"]
+									},
+									"port": {
+										"type": "integer",
+										"minimum": 1,
+										"maximum": 65535
+									},
+									"image": {
+										"type": "string",
+										"minLength": 1
+									},
+									"cpuMillis": {
+										"type": "integer",
+										"minimum": 1
+									},
+									"memoryMiB": {
+										"type": "integer",
+										"minimum": 1
+									}
+								}
+							}
+						},
+						"portsDistinct": {
+							"type": "integer",
+							"minimum": 0
+						},
+						"imagesResolved": {
+							"type": "integer",
+							"minimum": 0
+						},
+						"collisions": {
+							"type": "integer",
+							"minimum": 0
+						}
+					}
+				},
+				"sizing": {
+					"type": "object",
+					"additionalProperties": false,
+					"properties": {
+						"bound": {
+							"type": "object",
+							"additionalProperties": false,
+							"required": ["cpuMillis", "memoryMiB", "source"],
+							"properties": {
+								"cpuMillis": {
+									"type": "integer",
+									"minimum": 1
+								},
+								"memoryMiB": {
+									"type": "integer",
+									"minimum": 1
+								},
+								"source": {
+									"type": "string",
+									"minLength": 1
+								}
+							}
+						},
+						"proposed": {
+							"type": "object",
+							"additionalProperties": false,
+							"required": ["cpuMillis", "memoryMiB"],
+							"properties": {
+								"cpuMillis": {
+									"type": "integer",
+									"minimum": 0
+								},
+								"memoryMiB": {
+									"type": "integer",
+									"minimum": 0
+								}
+							}
+						},
+						"headroom": {
+							"type": "object",
+							"additionalProperties": false,
+							"required": ["cpuMillis", "memoryMiB"],
+							"properties": {
+								"cpuMillis": {
+									"type": "integer",
+									"minimum": 0
+								},
+								"memoryMiB": {
+									"type": "integer",
+									"minimum": 0
+								}
+							}
+						},
+						"resource": {
+							"type": "object",
+							"additionalProperties": false,
+							"required": ["kind", "count", "replicas"],
+							"properties": {
+								"kind": {
+									"const": "Deployment"
+								},
+								"count": {
+									"type": "integer",
+									"minimum": 1
+								},
+								"replicas": {
+									"const": 1
+								}
+							}
+						},
+						"limitsRequested": {
+							"type": "array",
+							"items": {
+								"enum": ["gpu", "disk"]
+							}
+						},
+						"validation": {
+							"type": "object",
+							"additionalProperties": false,
+							"required": ["schema", "errors"],
+							"properties": {
+								"schema": {
+									"type": "string",
+									"minLength": 1
+								},
+								"errors": {
+									"type": "integer",
+									"minimum": 0
+								}
+							}
+						}
+					}
+				},
+				"price": {
+					"type": "object",
+					"additionalProperties": false,
+					"required": ["source"],
+					"properties": {
+						"source": {
+							"type": ["string", "null"],
+							"minLength": 1
+						}
+					}
+				},
+				"authorization": {
+					"enum": ["pending"]
+				},
+				"evidence": {
+					"type": "object",
+					"additionalProperties": false,
+					"properties": {
+						"file": {
+							"type": ["string", "null"]
+						},
+						"state": {
+							"type": ["string", "null"]
+						},
+						"revision": {
+							"type": ["integer", "null"],
+							"minimum": 1
+						},
+						"proposedTo": {
+							"type": ["string", "null"]
+						}
+					}
+				}
+			}
+		},
+		"workflow": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["budgetCents", "budgetSource", "marginPercent", "spend"],
+			"properties": {
+				"budgetCents": {
+					"type": "integer",
+					"minimum": 0
+				},
+				"budgetSource": {
+					"type": "string",
+					"minLength": 1
+				},
+				"marginPercent": {
+					"type": "integer",
+					"minimum": 0
+				},
+				"spend": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"model",
+							"effort",
+							"inputThousands",
+							"outputThousands",
+							"estimateCents",
+							"reservedCents",
+							"overBudget"
+						],
+						"properties": {
+							"model": {
+								"type": "string",
+								"minLength": 1
+							},
+							"effort": {
+								"enum": ["low", "medium", "high"]
+							},
+							"inputThousands": {
+								"type": "integer",
+								"minimum": 0
+							},
+							"outputThousands": {
+								"type": "integer",
+								"minimum": 0
+							},
+							"estimateCents": {
+								"type": "integer",
+								"minimum": 0
+							},
+							"reservedCents": {
+								"type": "integer",
+								"minimum": 0
+							},
+							"overBudget": {
+								"type": "boolean"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

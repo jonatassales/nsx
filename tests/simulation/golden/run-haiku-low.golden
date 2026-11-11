@@ -1,0 +1,25 @@
+scope	comment	# run · 0031-TICKET-book-a-demo-runtime · the recorded intent, authorized by the team
+intent	output	console › intent     claude-haiku-5-5 · effort low · runtime.md revision 1
+estimate	output	console › estimate   $0.26 · 2M input · 120K output · list prices · FIN-02
+budget	output	console › budget     $25.00 per run · set by the team · FIN-03
+gateOpened	success	console › gate       reserved $0.32 of $25.00 · opened
+waiting-planning	output	console › waiting    planning · the owner confirms
+confirmed-planning	success	✓ confirmed  planning · by the owner
+grilling	output	console › grilling   3 open questions settled
+toSpec	output	console › to-spec    0011-SPEC revised · 3 acceptance criteria
+toTickets	output	console › to-tickets 3 tickets · blocking edges recorded
+hook	output	console › hook       effort recorded · implement unblocked
+implement	output	console › implement  tdd · 5 components · 14 files · boundary only · stops at the reserved part
+devTicketWaiting	output	console › waiting    dev-ticket · the person writes the reserved part
+devTicketClosed	success	✓ closed     dev-ticket · written without an agent · no paid call
+codeReview	output	console › code-review 2 findings · fixed
+runtimeReady	output	runtime    book-a-demo-runtime · revision 1 · 5 Deployments ready · 1450m · 2304 MiB
+completed	success	✓ completed  implementation · $0.27 observed of $0.32 reserved · usage record
+pushed	success	✓ pushed     feat/0031-book-a-demo-runtime · 3f9c2e1
+pullRequest	success	✓ pr #19     feat(demo): run book a demo as a microruntime
+checks	output	checks     build · check · test · guardrails · running
+checksPassed	success	✓ checks     4 of 4 passed
+safeSeatMet	success	✓ Safe Seat  met
+runtimeStopped	output	runtime    stopped · 5 Deployments removed · nothing left
+ready	success	✓ ready      #19 for review · $0.05 released to the envelope
+next	comment	# next: the owner reviews #19 and decides whether to merge

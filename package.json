@@ -1,0 +1,13 @@
+{
+	"name": "@langdrift/nsx",
+	"private": true,
+	"exports": {
+		"./configuration/*": "./schema/configuration/*",
+		"./handoff/*": "./schema/handoff/*",
+		"./judge/*": "./schema/judge/*",
+		"./judgment/*": "./schema/judgment/*",
+		"./report/*": "./schema/report/*",
+		"./stages/*": "./schema/stages/*",
+		"./samples/*": "./tests/contract/samples/*"
+	}
+}

@@ -1,0 +1,50 @@
+{
+	"stages": [
+		{
+			"id": "planning",
+			"skill": "grilling",
+			"person": "required"
+		},
+		{
+			"id": "spec",
+			"skill": "to-spec",
+			"person": "optional"
+		},
+		{
+			"id": "tickets",
+			"skill": "to-tickets",
+			"person": "optional"
+		},
+		{
+			"id": "implement",
+			"skill": "implement · tdd",
+			"person": "optional"
+		},
+		{
+			"id": "dev-ticket",
+			"skill": null,
+			"person": "writes"
+		},
+		{
+			"id": "review",
+			"skill": "code-review",
+			"person": "optional"
+		},
+		{
+			"id": "merge",
+			"skill": null,
+			"person": "owner"
+		}
+	],
+	"defaults": {
+		"model": "claude-sonnet-5-5",
+		"effort": "medium",
+		"human": {
+			"planning": true,
+			"spec": false,
+			"tickets": false,
+			"implement": false,
+			"review": true
+		}
+	}
+}

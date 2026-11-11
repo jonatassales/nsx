@@ -1,0 +1,19 @@
+{
+	"id": "ep-0240",
+	"slug": "batch-export-worker",
+	"ticket": "0014-TICKET-batch-export-worker",
+	"intent": "Run the nightly export as a batch worker\nThe export runs once a night as a single worker.",
+	"components": [
+		{
+			"path": "services/export-worker",
+			"stack": "Go",
+			"role": "api"
+		}
+	],
+	"resource": {
+		"kind": "Deployment",
+		"count": 1,
+		"replicas": 1
+	},
+	"measured": null
+}

@@ -1,0 +1,116 @@
+{
+	"run": "book-a-demo-runtime-0001",
+	"intent": {
+		"ticket": "0031-TICKET-book-a-demo-runtime",
+		"runtimeId": "book-a-demo-runtime",
+		"revision": 1,
+		"model": "claude-sonnet-5-5",
+		"effort": "medium",
+		"human": {
+			"planning": true,
+			"spec": false,
+			"tickets": false,
+			"implement": false,
+			"review": true
+		},
+		"status": "authorized"
+	},
+	"stages": [
+		{
+			"id": "planning",
+			"human": true,
+			"state": "done",
+			"confirmedBy": "owner",
+			"report": {
+				"openQuestionsSettled": 3
+			}
+		},
+		{
+			"id": "spec",
+			"human": false,
+			"state": "done",
+			"report": {
+				"spec": ".agents/0011-SPEC-book-a-demo-runtime.spec.md",
+				"revised": true,
+				"acceptanceCriteria": 3
+			}
+		},
+		{
+			"id": "tickets",
+			"human": false,
+			"state": "done",
+			"report": {
+				"tickets": 3,
+				"blockingEdgesRecorded": true
+			}
+		},
+		{
+			"id": "implement",
+			"human": false,
+			"state": "done",
+			"report": {
+				"method": "tdd",
+				"components": 5,
+				"files": 14,
+				"boundaryOnly": true,
+				"stoppedAtReservedPart": true
+			}
+		},
+		{
+			"id": "dev-ticket",
+			"human": false,
+			"state": "done",
+			"closedBy": "person",
+			"paidCalls": 0
+		},
+		{
+			"id": "review",
+			"human": true,
+			"state": "done",
+			"report": {
+				"findings": 2,
+				"fixed": true
+			}
+		},
+		{
+			"id": "merge",
+			"human": false,
+			"state": "pending"
+		}
+	],
+	"effort": {
+		"appliedModel": "claude-sonnet-5-5",
+		"appliedEffort": "medium",
+		"suggestedModel": "claude-sonnet-5-5",
+		"suggestedEffort": "medium",
+		"recordedAt": "2026-11-11T12:00:00Z"
+	},
+	"safeSeat": {
+		"safeSeat": "met",
+		"decidedAt": "2026-11-11T12:30:00Z"
+	},
+	"runtime": {
+		"revision": 1,
+		"deployments": 5,
+		"cpuMillis": 1450,
+		"memoryMiB": 2304,
+		"state": "stopped",
+		"removed": 5,
+		"left": 0
+	},
+	"delivery": {
+		"branch": "feat/0031-book-a-demo-runtime",
+		"commit": "3f9c2e1",
+		"pullRequest": {
+			"number": 19,
+			"title": "feat(demo): run book a demo as a microruntime",
+			"state": "ready for review",
+			"checks": {
+				"state": "passed",
+				"passed": 4,
+				"total": 4
+			}
+		}
+	},
+	"outcome": "completed"
+}

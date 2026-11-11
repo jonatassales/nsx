@@ -1,0 +1,42 @@
+scope	comment	# plan only · nothing is built, started or paid for in this step
+readTicket	output	console › tool call: read 0031-TICKET-book-a-demo-runtime
+links	output	console › ready-for-agent · links 0002-PRD · 0005-DD · 0011-SPEC · guardrail 0001-finops
+analysis	comment	# analysis · reading the linked documents, then the project's episodes
+readPrd	output	console › tool call: read 0002-PRD · use case: book-a-demo request
+readDesignDoc	output	console › tool call: read 0005-DD · envelope cpuMillis 2000 · memoryMiB 3072 · set by the team
+readSpec	output	console › tool call: read 0011-SPEC · 5 components named · 3 acceptance criteria
+reads	success	✓ read       4 documents · nothing outside the ticket's links
+guardrail	output	reads      harness/guardrails/0001-finops.gr.md · FIN-02 · FIN-04
+judgeGuardrail	output	console › judging · FIN-02 estimate before a paid call · FIN-03 a budget before a paid run · FIN-04 size cpu and memory to the load
+bounds	output	bounded    cpuMillis 2000 · memoryMiB 3072 · set by the team in the design doc
+budget	output	budget     $25.00 per run for model calls · set by the team in the design doc
+memory	output	console › RAG over project episodes · a model and effort for this ticket
+embed	output	console › embedding the ticket intent · 1 query vector
+vectorSearch	output	console › vector search · project episodes · top 6 by cosine similarity
+candidates	output	console › 6 candidates · similarity 0.81 to 0.42
+judgeRelevance	output	console › judging · 3 share the stack and scale · 3 differ: other runtime, no broker, docs only
+drop	output	console › dropped 3 below 0.55 · kept 3
+episodes	output	console › 3 episodes cited · none with measured resources
+reasonResources	output	console › reasoning · no cited episode measured cpu or memory · sizing follows the spec, not history
+weighEffort	output	console › weighing effort · low skips the broker wiring · high is not warranted by 5 components
+weighModel	output	console › weighing model · Haiku 5.5 retries the broker wiring · Opus 5.5 costs more per outcome
+suggest	success	✓ suggests   claude-sonnet-5-5 · effort medium
+planning	comment	# plan · resolving the components, then sizing them inside the envelope
+resolve	output	console › resolving 5 components named in the spec · paths, images, ports
+inspectGo	output	console › tool call: inspect services/signup-api · go.mod · :8080
+go	success	✓ services/signup-api   Go · api        250m · 256 MiB
+inspectNode	output	console › tool call: inspect services/notify-api · package.json · :8081
+node	success	✓ services/notify-api   Node.js · api   300m · 512 MiB
+inspectNats	output	console › tool call: inspect platform/nats · nats.conf · :4222
+nats	success	✓ platform/nats         NATS · broker   200m · 256 MiB
+inspectRedis	output	console › tool call: inspect platform/redis · redis.conf · :6379
+redis	success	✓ platform/redis        Redis · cache   200m · 256 MiB
+inspectNext	output	console › tool call: inspect apps/signup · next.config.ts · :3000
+next	success	✓ apps/signup           Next.js · web   500m · 1024 MiB
+crossCheck	output	console › cross-checking · 5 ports distinct · 5 images resolved · no collisions
+size	success	✓ size       1450m of 2000m · 2304 of 3072 MiB · 5 one-replica Deployments · proposed shares
+limits	warning	limits     gpu and disk are not runtime.md fields · none requested
+price	output	estimate   runtime has no price source · cpu and memory stay in millicores and MiB
+validate	output	console › tool call: validate runtime.md draft against the schema · 0 errors
+draft	success	✓ plan       runtime.md draft, revision 1 · proposed to the console
+handoff	comment	# next: once the team authorizes, nsx agent run applies the recorded intent

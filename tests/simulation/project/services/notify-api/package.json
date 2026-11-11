@@ -1,0 +1,7 @@
+{
+	"name": "notify-api",
+	"private": true,
+	"scripts": {
+		"start": "PORT=8081 node server.js"
+	}
+}

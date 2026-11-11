@@ -1,0 +1,322 @@
+{
+	"ticket": {
+		"id": "0031-TICKET-book-a-demo-runtime",
+		"number": "0031",
+		"slug": "book-a-demo-runtime",
+		"status": "ready-for-agent",
+		"title": "Run the book-a-demo request use case as a microruntime",
+		"links": [
+			{
+				"kind": "prd",
+				"file": "0002-PRD-book-a-demo.prd.md",
+				"shortId": "0002-PRD",
+				"path": ".agents/0002-PRD-book-a-demo.prd.md"
+			},
+			{
+				"kind": "designDoc",
+				"file": "0005-DD-book-a-demo-runtime.dd.md",
+				"shortId": "0005-DD",
+				"path": ".agents/0005-DD-book-a-demo-runtime.dd.md"
+			},
+			{
+				"kind": "spec",
+				"file": "0011-SPEC-book-a-demo-runtime.spec.md",
+				"shortId": "0011-SPEC",
+				"path": ".agents/0011-SPEC-book-a-demo-runtime.spec.md"
+			},
+			{
+				"kind": "guardrail",
+				"file": "0001-finops.gr.md",
+				"shortId": "0001-finops",
+				"path": ".langdrift/harness/guardrails/0001-finops.gr.md"
+			}
+		]
+	},
+	"analysis": {
+		"documents": {
+			"readCount": 4,
+			"documentsRead": 4,
+			"prd": {
+				"shortId": "0002-PRD",
+				"file": "0002-PRD-book-a-demo.prd.md",
+				"useCase": "book-a-demo request"
+			},
+			"designDoc": {
+				"shortId": "0005-DD",
+				"file": "0005-DD-book-a-demo-runtime.dd.md",
+				"envelope": {
+					"cpuMillis": 2000,
+					"memoryMiB": 3072
+				},
+				"budgetPerRunCents": 2500
+			},
+			"spec": {
+				"shortId": "0011-SPEC",
+				"file": "0011-SPEC-book-a-demo-runtime.spec.md",
+				"components": 5,
+				"acceptanceCriteria": 3
+			},
+			"guardrail": {
+				"shortId": "0001-finops",
+				"file": "0001-finops.gr.md",
+				"criteria": [
+					{
+						"id": "FIN-02",
+						"statement": "estimate before a paid call"
+					},
+					{
+						"id": "FIN-03",
+						"statement": "a budget before a paid run"
+					},
+					{
+						"id": "FIN-04",
+						"statement": "size cpu and memory to the load"
+					}
+				],
+				"planCriteria": ["FIN-02", "FIN-04"],
+				"enforcement": "review"
+			}
+		},
+		"episodes": {
+			"threshold": 0.55,
+			"candidates": [
+				{
+					"id": "ep-0412",
+					"slug": "checkout-preview-sizing",
+					"similarity": 0.81,
+					"verdict": "kept",
+					"reason": "shares the stack and scale"
+				},
+				{
+					"id": "ep-0388",
+					"slug": "notify-api-rollout",
+					"similarity": 0.74,
+					"verdict": "kept",
+					"reason": "shares the stack and scale"
+				},
+				{
+					"id": "ep-0351",
+					"slug": "signup-redesign-preview",
+					"similarity": 0.66,
+					"verdict": "kept",
+					"reason": "shares the stack and scale"
+				},
+				{
+					"id": "ep-0297",
+					"slug": "docs-search-index",
+					"similarity": 0.52,
+					"verdict": "dropped",
+					"reason": "docs only"
+				},
+				{
+					"id": "ep-0240",
+					"slug": "batch-export-worker",
+					"similarity": 0.47,
+					"verdict": "dropped",
+					"reason": "other runtime"
+				},
+				{
+					"id": "ep-0188",
+					"slug": "storefront-cache-warmup",
+					"similarity": 0.42,
+					"verdict": "dropped",
+					"reason": "no broker"
+				}
+			],
+			"kept": 3,
+			"dropped": 3,
+			"total": 6,
+			"cited": 3,
+			"citedMeasured": 0
+		},
+		"suggestion": {
+			"model": "claude-sonnet-5-5",
+			"effort": "medium",
+			"effortReason": "low skips the broker wiring · high is not warranted by 5 components",
+			"modelReason": "Haiku 5.5 retries the broker wiring · Opus 5.5 costs more per outcome",
+			"by": "recommendation"
+		}
+	},
+	"plan": {
+		"components": {
+			"rows": [
+				{
+					"path": "services/signup-api",
+					"manifest": "go.mod",
+					"stack": "Go",
+					"role": "api",
+					"port": 8080,
+					"image": "book-a-demo-runtime/signup-api:r1",
+					"cpuMillis": 250,
+					"memoryMiB": 256
+				},
+				{
+					"path": "services/notify-api",
+					"manifest": "package.json",
+					"stack": "Node.js",
+					"role": "api",
+					"port": 8081,
+					"image": "book-a-demo-runtime/notify-api:r1",
+					"cpuMillis": 300,
+					"memoryMiB": 512
+				},
+				{
+					"path": "platform/nats",
+					"manifest": "nats.conf",
+					"stack": "NATS",
+					"role": "broker",
+					"port": 4222,
+					"image": "book-a-demo-runtime/nats:r1",
+					"cpuMillis": 200,
+					"memoryMiB": 256
+				},
+				{
+					"path": "platform/redis",
+					"manifest": "redis.conf",
+					"stack": "Redis",
+					"role": "cache",
+					"port": 6379,
+					"image": "book-a-demo-runtime/redis:r1",
+					"cpuMillis": 200,
+					"memoryMiB": 256
+				},
+				{
+					"path": "apps/signup",
+					"manifest": "next.config.ts",
+					"stack": "Next.js",
+					"role": "web",
+					"port": 3000,
+					"image": "book-a-demo-runtime/signup:r1",
+					"cpuMillis": 500,
+					"memoryMiB": 1024
+				}
+			],
+			"portsDistinct": 5,
+			"imagesResolved": 5,
+			"collisions": 0
+		},
+		"sizing": {
+			"bound": {
+				"cpuMillis": 2000,
+				"memoryMiB": 3072,
+				"source": ".agents/0005-DD-book-a-demo-runtime.dd.md"
+			},
+			"proposed": {
+				"cpuMillis": 1450,
+				"memoryMiB": 2304
+			},
+			"headroom": {
+				"cpuMillis": 550,
+				"memoryMiB": 768
+			},
+			"resource": {
+				"kind": "Deployment",
+				"count": 5,
+				"replicas": 1
+			},
+			"limitsRequested": [],
+			"validation": {
+				"schema": "https://langdrift.md/schemas/configuration/runtime.schema.json",
+				"errors": 0
+			}
+		},
+		"price": {
+			"source": null
+		},
+		"authorization": "pending",
+		"evidence": {
+			"file": "runtime.md",
+			"state": "draft",
+			"revision": 1,
+			"proposedTo": "console"
+		}
+	},
+	"workflow": {
+		"budgetCents": 2500,
+		"budgetSource": ".agents/0005-DD-book-a-demo-runtime.dd.md",
+		"marginPercent": 20,
+		"spend": [
+			{
+				"model": "claude-opus-5-5",
+				"effort": "low",
+				"inputThousands": 2000,
+				"outputThousands": 120,
+				"estimateCents": 1040,
+				"reservedCents": 1248,
+				"overBudget": false
+			},
+			{
+				"model": "claude-opus-5-5",
+				"effort": "medium",
+				"inputThousands": 3500,
+				"outputThousands": 250,
+				"estimateCents": 1900,
+				"reservedCents": 2280,
+				"overBudget": false
+			},
+			{
+				"model": "claude-opus-5-5",
+				"effort": "high",
+				"inputThousands": 6000,
+				"outputThousands": 500,
+				"estimateCents": 3400,
+				"reservedCents": 4080,
+				"overBudget": true
+			},
+			{
+				"model": "claude-sonnet-5-5",
+				"effort": "low",
+				"inputThousands": 2000,
+				"outputThousands": 120,
+				"estimateCents": 520,
+				"reservedCents": 624,
+				"overBudget": false
+			},
+			{
+				"model": "claude-sonnet-5-5",
+				"effort": "medium",
+				"inputThousands": 3500,
+				"outputThousands": 250,
+				"estimateCents": 950,
+				"reservedCents": 1140,
+				"overBudget": false
+			},
+			{
+				"model": "claude-sonnet-5-5",
+				"effort": "high",
+				"inputThousands": 6000,
+				"outputThousands": 500,
+				"estimateCents": 1700,
+				"reservedCents": 2040,
+				"overBudget": false
+			},
+			{
+				"model": "claude-haiku-5-5",
+				"effort": "low",
+				"inputThousands": 2000,
+				"outputThousands": 120,
+				"estimateCents": 26,
+				"reservedCents": 32,
+				"overBudget": false
+			},
+			{
+				"model": "claude-haiku-5-5",
+				"effort": "medium",
+				"inputThousands": 3500,
+				"outputThousands": 250,
+				"estimateCents": 48,
+				"reservedCents": 58,
+				"overBudget": false
+			},
+			{
+				"model": "claude-haiku-5-5",
+				"effort": "high",
+				"inputThousands": 6000,
+				"outputThousands": 500,
+				"estimateCents": 85,
+				"reservedCents": 102,
+				"overBudget": false
+			}
+		]
+	}
+}

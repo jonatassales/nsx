@@ -1,0 +1,6 @@
+scope	comment	# run · 0031-TICKET-book-a-demo-runtime · the recorded intent, authorized by the team
+intent	output	console › intent     claude-opus-5-5 · effort high · runtime.md revision 1
+estimate	output	console › estimate   $34.00 · 6M input · 500K output · list prices · FIN-02
+budget	output	console › budget     $25.00 per run · set by the team · FIN-03
+gatePaused	warning	console › gate       reservation $40.80 exceeds the $25.00 budget · paused
+paused	comment	# needs a decision: raise the budget or lower the effort · nothing was paid for

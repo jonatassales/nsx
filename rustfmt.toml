@@ -1,0 +1,6 @@
+# Formatting follows the repository's: tabs shown two wide, lines of 80, and
+# every struct literal with one field per line (Rust rules, item 3).
+hard_tabs = true
+tab_spaces = 2
+max_width = 80
+struct_lit_width = 0

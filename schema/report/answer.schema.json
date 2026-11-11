@@ -1,0 +1,71 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://langdrift.md/schemas/report/answer.schema.json",
+	"title": "Runtime report answer",
+	"description": "The result of the MCP tool langdrift.runtime.report: the runtime's console id, created on its first report, and the team's request nsx has not applied yet, when there is one.",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["runtimeId"],
+	"properties": {
+		"runtimeId": {
+			"type": "string",
+			"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+		},
+		"requested": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["state"],
+			"properties": {
+				"state": {
+					"enum": ["play", "pause"]
+				},
+				"intent": {
+					"type": "object",
+					"additionalProperties": false,
+					"required": ["revision", "model", "effort", "human"],
+					"properties": {
+						"revision": {
+							"type": "integer",
+							"minimum": 1
+						},
+						"model": {
+							"type": "string",
+							"minLength": 1
+						},
+						"effort": {
+							"enum": ["low", "medium", "high"]
+						},
+						"human": {
+							"type": "object",
+							"additionalProperties": false,
+							"required": [
+								"planning",
+								"spec",
+								"tickets",
+								"implement",
+								"review"
+							],
+							"properties": {
+								"planning": {
+									"const": true
+								},
+								"spec": {
+									"type": "boolean"
+								},
+								"tickets": {
+									"type": "boolean"
+								},
+								"implement": {
+									"type": "boolean"
+								},
+								"review": {
+									"type": "boolean"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"id": "ep-0351",
+	"slug": "signup-redesign-preview",
+	"ticket": "0021-TICKET-signup-redesign-preview",
+	"intent": "Preview the sign-up redesign as a microruntime\nThe redesigned sign-up page previews with its API, the notifier, the broker and the cache.",
+	"components": [
+		{
+			"path": "services/signup-api",
+			"stack": "Go",
+			"role": "api"
+		},
+		{
+			"path": "services/notify-api",
+			"stack": "Node.js",
+			"role": "api"
+		},
+		{
+			"path": "platform/nats",
+			"stack": "NATS",
+			"role": "broker"
+		},
+		{
+			"path": "platform/redis",
+			"stack": "Redis",
+			"role": "cache"
+		},
+		{
+			"path": "apps/signup",
+			"stack": "Next.js",
+			"role": "web"
+		}
+	],
+	"resource": {
+		"kind": "Deployment",
+		"count": 5,
+		"replicas": 1
+	},
+	"measured": null
+}

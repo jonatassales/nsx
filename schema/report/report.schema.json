@@ -1,0 +1,36 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://langdrift.md/schemas/report/report.schema.json",
+	"title": "Runtime report",
+	"description": "The arguments of the MCP tool langdrift.runtime.report: the runtime's console id, absent on its first report, the run's status as dft states it, and the hand-off records dft has written so far.",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["status"],
+	"properties": {
+		"runtimeId": {
+			"type": "string",
+			"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+		},
+		"status": {
+			"enum": [
+				"ready",
+				"analysis",
+				"plan",
+				"workflow",
+				"held",
+				"paused",
+				"done",
+				"error"
+			]
+		},
+		"plan": {
+			"$ref": "https://langdrift.md/schemas/handoff/plan.schema.json"
+		},
+		"intent": {
+			"$ref": "https://langdrift.md/schemas/handoff/intent.schema.json"
+		},
+		"run": {
+			"$ref": "https://langdrift.md/schemas/handoff/run.schema.json"
+		}
+	}
+}

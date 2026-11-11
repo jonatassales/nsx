@@ -1,0 +1,18 @@
+{
+	"runtimeId": "019a6f2e-7c41-7b3a-9d2e-5f8a1c3b4d6e",
+	"requested": {
+		"state": "play",
+		"intent": {
+			"revision": 1,
+			"model": "claude-sonnet-5-5",
+			"effort": "medium",
+			"human": {
+				"planning": true,
+				"spec": false,
+				"tickets": false,
+				"implement": false,
+				"review": true
+			}
+		}
+	}
+}

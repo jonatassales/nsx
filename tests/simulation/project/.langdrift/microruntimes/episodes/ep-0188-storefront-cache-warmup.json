@@ -1,0 +1,29 @@
+{
+	"id": "ep-0188",
+	"slug": "storefront-cache-warmup",
+	"ticket": "0009-TICKET-storefront-cache-warmup",
+	"intent": "Warm the storefront cache before a sale\nThe storefront API fills the cache ahead of traffic.",
+	"components": [
+		{
+			"path": "services/storefront-api",
+			"stack": "Node.js",
+			"role": "api"
+		},
+		{
+			"path": "platform/redis",
+			"stack": "Redis",
+			"role": "cache"
+		},
+		{
+			"path": "apps/storefront",
+			"stack": "Next.js",
+			"role": "web"
+		}
+	],
+	"resource": {
+		"kind": "Deployment",
+		"count": 3,
+		"replicas": 1
+	},
+	"measured": null
+}

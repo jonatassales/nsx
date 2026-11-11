@@ -1,0 +1,17 @@
+{
+	"unit": "thousands-of-tokens",
+	"byEffort": {
+		"low": {
+			"input": 2000,
+			"output": 120
+		},
+		"medium": {
+			"input": 3500,
+			"output": 250
+		},
+		"high": {
+			"input": 6000,
+			"output": 500
+		}
+	}
+}

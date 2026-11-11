@@ -1,0 +1,205 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://langdrift.md/schemas/handoff/run.schema.json",
+	"title": "Run record",
+	"description": "The run's record (run.json): the run's id and outcome, null until known, and one section per part of the run, absent until the run reaches it.",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["run", "outcome"],
+	"properties": {
+		"run": {
+			"type": ["string", "null"]
+		},
+		"intent": {
+			"$ref": "https://langdrift.md/schemas/handoff/intent.schema.json"
+		},
+		"stages": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["id", "human", "state"],
+				"properties": {
+					"id": {
+						"type": "string",
+						"minLength": 1
+					},
+					"human": {
+						"type": "boolean"
+					},
+					"state": {
+						"enum": ["pending", "waiting", "active", "done"]
+					},
+					"confirmedBy": {
+						"const": "owner"
+					},
+					"closedBy": {
+						"const": "person"
+					},
+					"paidCalls": {
+						"type": "integer",
+						"minimum": 0
+					},
+					"report": {
+						"anyOf": [
+							{
+								"$ref": "https://langdrift.md/schemas/stages/planning.report.schema.json"
+							},
+							{
+								"$ref": "https://langdrift.md/schemas/stages/spec.report.schema.json"
+							},
+							{
+								"$ref": "https://langdrift.md/schemas/stages/tickets.report.schema.json"
+							},
+							{
+								"$ref": "https://langdrift.md/schemas/stages/implement.report.schema.json"
+							},
+							{
+								"$ref": "https://langdrift.md/schemas/stages/review.report.schema.json"
+							}
+						]
+					}
+				}
+			}
+		},
+		"effort": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": [
+				"appliedModel",
+				"appliedEffort",
+				"suggestedModel",
+				"suggestedEffort",
+				"recordedAt"
+			],
+			"properties": {
+				"appliedModel": {
+					"type": "string",
+					"minLength": 1
+				},
+				"appliedEffort": {
+					"enum": ["low", "medium", "high"]
+				},
+				"suggestedModel": {
+					"type": ["string", "null"],
+					"minLength": 1
+				},
+				"suggestedEffort": {
+					"type": ["string", "null"],
+					"minLength": 1
+				},
+				"recordedAt": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		},
+		"safeSeat": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["safeSeat", "decidedAt"],
+			"properties": {
+				"safeSeat": {
+					"const": "met"
+				},
+				"decidedAt": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		},
+		"runtime": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": [
+				"revision",
+				"deployments",
+				"cpuMillis",
+				"memoryMiB",
+				"state"
+			],
+			"properties": {
+				"revision": {
+					"type": "integer",
+					"minimum": 1
+				},
+				"deployments": {
+					"type": "integer",
+					"minimum": 0
+				},
+				"cpuMillis": {
+					"type": "integer",
+					"minimum": 0
+				},
+				"memoryMiB": {
+					"type": "integer",
+					"minimum": 0
+				},
+				"state": {
+					"enum": ["ready", "stopped"]
+				},
+				"removed": {
+					"type": "integer",
+					"minimum": 0
+				},
+				"left": {
+					"type": "integer",
+					"minimum": 0
+				}
+			}
+		},
+		"delivery": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"branch": {
+					"type": "string",
+					"minLength": 1
+				},
+				"commit": {
+					"type": "string",
+					"pattern": "^[0-9a-f]{7}$"
+				},
+				"pullRequest": {
+					"type": "object",
+					"additionalProperties": false,
+					"required": ["number", "title", "state"],
+					"properties": {
+						"number": {
+							"type": "integer",
+							"minimum": 1
+						},
+						"title": {
+							"type": "string",
+							"minLength": 1
+						},
+						"state": {
+							"enum": ["draft", "ready for review", "ready to merge"]
+						},
+						"checks": {
+							"type": "object",
+							"additionalProperties": false,
+							"required": ["state"],
+							"properties": {
+								"state": {
+									"enum": ["running", "passed"]
+								},
+								"passed": {
+									"type": "integer",
+									"minimum": 0
+								},
+								"total": {
+									"type": "integer",
+									"minimum": 0
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"outcome": {
+			"enum": ["running", "paused", "stopped", "completed", null]
+		}
+	}
+}

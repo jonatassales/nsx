@@ -1,0 +1,39 @@
+{
+	"id": "ep-0412",
+	"slug": "checkout-preview-sizing",
+	"ticket": "0027-TICKET-checkout-preview-sizing",
+	"intent": "Size the checkout preview as a microruntime\nThe checkout preview runs as one bounded microruntime: an API, a notifier, the broker, the cache and the web app.",
+	"components": [
+		{
+			"path": "services/checkout-api",
+			"stack": "Go",
+			"role": "api"
+		},
+		{
+			"path": "services/notify-api",
+			"stack": "Node.js",
+			"role": "api"
+		},
+		{
+			"path": "platform/nats",
+			"stack": "NATS",
+			"role": "broker"
+		},
+		{
+			"path": "platform/redis",
+			"stack": "Redis",
+			"role": "cache"
+		},
+		{
+			"path": "apps/checkout",
+			"stack": "Next.js",
+			"role": "web"
+		}
+	],
+	"resource": {
+		"kind": "Deployment",
+		"count": 5,
+		"replicas": 1
+	},
+	"measured": null
+}

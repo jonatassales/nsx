@@ -1,0 +1,15 @@
+{
+	"ticket": "0031-TICKET-book-a-demo-runtime",
+	"runtimeId": "book-a-demo-runtime",
+	"revision": 1,
+	"model": "claude-sonnet-5-5",
+	"effort": "medium",
+	"human": {
+		"planning": true,
+		"spec": false,
+		"tickets": false,
+		"implement": false,
+		"review": true
+	},
+	"status": "authorized"
+}
