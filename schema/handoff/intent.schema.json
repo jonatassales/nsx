@@ -2,7 +2,7 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "https://langdrift.md/schemas/handoff/intent.schema.json",
 	"title": "Recorded intent",
-	"description": "The recorded intent (intent.json) that dft agent run applies, for \"console › intent     claude-sonnet-5-5 · effort medium · runtime.md revision 1\" and the HUMAN IN THE LOOP ticks. Planning always has a person in it.",
+	"description": "The recorded intent (intent.json) that nsx agent run applies, for \"console › intent     claude-sonnet-5-5 · effort medium · runtime.md revision 1\" and the HUMAN IN THE LOOP ticks. Planning always has a person in it.",
 	"type": "object",
 	"additionalProperties": false,
 	"required": [

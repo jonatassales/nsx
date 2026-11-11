@@ -18,7 +18,7 @@ The issue tracker and triage label vocabulary are defined in the `Spec-driven de
 
 Work from whatever is already in the conversation context. If the user passes a reference (a spec path, an issue number or URL) as an argument, fetch it and read its full body and comments.
 
-For a spec decided by ADR 0005 (Perfect Simulation Alignment), first play the simulation in production at https://langdrift.md/en/. Watch both phases: `dft agent plan` plays on load, and `dft agent run` plays after Play workflow. Change the Workflow choices (checkpoints, model, effort, a reservation over the budget) and expand every card. Compare what it shows with the spec, line by line and field by field. Where they differ, the simulation in production wins: report the difference and write the tickets to the simulation. Write tickets only for the spec whose turn it is in the specs' Execution order, when an agent starts that spec, never for later specs in advance.
+For a spec decided by ADR 0005 (Perfect Simulation Alignment), first play the simulation in production at https://langdrift.md/en/. Watch both phases: `nsx agent plan` plays on load, and `nsx agent run` plays after Play workflow. Change the Workflow choices (checkpoints, model, effort, a reservation over the budget) and expand every card. Compare what it shows with the spec, line by line and field by field. Where they differ, the simulation in production wins: report the difference and write the tickets to the simulation. Write tickets only for the spec whose turn it is in the specs' Execution order, when an agent starts that spec, never for later specs in advance.
 
 ### 2. Explore the codebase (optional)
 

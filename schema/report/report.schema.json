@@ -2,7 +2,7 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "https://langdrift.md/schemas/report/report.schema.json",
 	"title": "Runtime report",
-	"description": "The arguments of the MCP tool langdrift.runtime.report: the runtime's console id, absent on its first report, the run's status as dft states it, and the hand-off records dft has written so far.",
+	"description": "The arguments of the MCP tool langdrift.runtime.report: the runtime's console id, absent on its first report, the run's status as nsx states it, and the hand-off records nsx has written so far.",
 	"type": "object",
 	"additionalProperties": false,
 	"required": ["status"],

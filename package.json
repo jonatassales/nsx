@@ -1,6 +1,35 @@
 {
 	"name": "@langdrift/nsx",
 	"private": true,
+	"description": "LangDrift FinOps and Microruntimes CLI",
+	"license": "Apache-2.0",
+	"homepage": "https://langdrift.md",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jonatassales/lang-drift.git",
+		"directory": "nsx"
+	},
+	"bin": {
+		"nsx": "./bin/nsx.sh"
+	},
+	"files": [
+		"bin/nsx.sh",
+		"dist/nsx-darwin-arm64",
+		"dist/nsx-darwin-amd64",
+		"dist/nsx-linux-amd64",
+		"dist/nsx-linux-arm64",
+		"schema",
+		"tests/contract/samples",
+		"README.md"
+	],
+	"os": [
+		"darwin",
+		"linux"
+	],
+	"cpu": [
+		"x64",
+		"arm64"
+	],
 	"exports": {
 		"./configuration/*": "./schema/configuration/*",
 		"./handoff/*": "./schema/handoff/*",
@@ -9,5 +38,11 @@
 		"./report/*": "./schema/report/*",
 		"./stages/*": "./schema/stages/*",
 		"./samples/*": "./tests/contract/samples/*"
+	},
+	"scripts": {
+		"build": "cargo build --release --locked",
+		"check": "cargo fmt --check",
+		"test": "cargo test --locked",
+		"typecheck": "cargo clippy --all-targets --locked -- -D warnings"
 	}
 }

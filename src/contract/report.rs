@@ -40,7 +40,7 @@ pub const UUID_V7: &str =
 	description = concat!(
 		"The arguments of the MCP tool langdrift.runtime.report: the ",
 		"runtime's console id, absent on its first report, the run's status ",
-		"as dft states it, and the hand-off records dft has written so far.",
+		"as nsx states it, and the hand-off records nsx has written so far.",
 	),
 	extend("$id" = "https://langdrift.md/schemas/report/report.schema.json"),
 )]

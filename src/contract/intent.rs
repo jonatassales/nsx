@@ -36,7 +36,7 @@ pub const STATUSES: [&str; 2] = ["proposed", "authorized"];
 #[schemars(
 	title = "Recorded intent",
 	description = concat!(
-		"The recorded intent (intent.json) that dft agent run applies, for ",
+		"The recorded intent (intent.json) that nsx agent run applies, for ",
 		"\"console › intent     claude-sonnet-5-5 · effort medium · ",
 		"runtime.md revision 1\" and the HUMAN IN THE LOOP ticks. Planning ",
 		"always has a person in it.",

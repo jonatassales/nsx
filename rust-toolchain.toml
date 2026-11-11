@@ -1,0 +1,5 @@
+# The toolchain nsx builds with, here and in CI.
+[toolchain]
+channel = "1.99.1"
+components = ["clippy", "rustfmt"]
+profile = "minimal"
