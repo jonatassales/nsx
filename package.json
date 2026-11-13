@@ -1,6 +1,6 @@
 {
 	"name": "@langdrift/nsx",
-	"private": true,
+	"version": "0.1.0",
 	"description": "LangDrift FinOps and Microruntimes CLI",
 	"license": "Apache-2.0",
 	"homepage": "https://langdrift.md",
@@ -37,6 +37,9 @@
 		"./report/*": "./schema/report/*",
 		"./stages/*": "./schema/stages/*",
 		"./samples/*": "./tests/contract/samples/*"
+	},
+	"publishConfig": {
+		"access": "public"
 	},
 	"scripts": {
 		"build": "cargo build --release --locked",
