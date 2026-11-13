@@ -1,9 +1,9 @@
 #!/bin/sh
 set -eu
-. "$DRIFT_CLI_DIR/core/common.sh"
-[ "$#" -eq 3 ] || drift_die "Usage: drift widget check-run <name> <conclusion> <title> <summary.md" 2
-drift_need gh
-drift_need jq
+. "$VTEC_CLI_DIR/core/common.sh"
+[ "$#" -eq 3 ] || vtec_die "Usage: vtec widget check-run <name> <conclusion> <title> <summary.md" 2
+vtec_need gh
+vtec_need jq
 
 # A completed check run on the commit a pull request shows: its name, a
 # conclusion, a title and the Markdown summary read from stdin. The job that
@@ -13,34 +13,34 @@ name=$1
 conclusion=$2
 title=$3
 
-[ -n "$name" ] || drift_die "The check run needs a name." 2
-[ -n "$title" ] || drift_die "The check run needs a title." 2
+[ -n "$name" ] || vtec_die "The check run needs a name." 2
+[ -n "$title" ] || vtec_die "The check run needs a title." 2
 
 case "$conclusion" in
   success | failure | neutral | cancelled | skipped | timed_out | action_required) ;;
-  *) drift_die "The conclusion is success, failure, neutral, cancelled, skipped, timed_out or action_required." 2 ;;
+  *) vtec_die "The conclusion is success, failure, neutral, cancelled, skipped, timed_out or action_required." 2 ;;
 esac
 
 case "${GITHUB_REPOSITORY:-}" in
-  */*/* | /* | */ | *[!A-Za-z0-9._/-]*) drift_die "GITHUB_REPOSITORY must name the repository as owner/name." 2 ;;
+  */*/* | /* | */ | *[!A-Za-z0-9._/-]*) vtec_die "GITHUB_REPOSITORY must name the repository as owner/name." 2 ;;
   */*) ;;
-  *) drift_die "GITHUB_REPOSITORY must name the repository as owner/name." 2 ;;
+  *) vtec_die "GITHUB_REPOSITORY must name the repository as owner/name." 2 ;;
 esac
 
-[ -n "${WIDGET_SHA:-}" ] || drift_die "WIDGET_SHA must be the full SHA of the commit the check run belongs to." 2
+[ -n "${WIDGET_SHA:-}" ] || vtec_die "WIDGET_SHA must be the full SHA of the commit the check run belongs to." 2
 
 case "$WIDGET_SHA" in
-  *[!0-9a-f]*) drift_die "WIDGET_SHA is a full commit SHA." 2 ;;
+  *[!0-9a-f]*) vtec_die "WIDGET_SHA is a full commit SHA." 2 ;;
 esac
-[ "${#WIDGET_SHA}" -eq 40 ] || drift_die "WIDGET_SHA is a full commit SHA." 2
+[ "${#WIDGET_SHA}" -eq 40 ] || vtec_die "WIDGET_SHA is a full commit SHA." 2
 
 summary_file=$(mktemp)
-# drift's own EXIT trap prints the queued results, so this one chains to it.
-trap 'rm -f "$summary_file"; drift_flush_results' EXIT
+# vtec's own EXIT trap prints the queued results, so this one chains to it.
+trap 'rm -f "$summary_file"; vtec_flush_results' EXIT
 
-[ ! -t 0 ] || drift_die "Pipe the Markdown summary into stdin." 2
+[ ! -t 0 ] || vtec_die "Pipe the Markdown summary into stdin." 2
 cat >"$summary_file"
-[ -s "$summary_file" ] || drift_die "The summary on stdin is empty." 2
+[ -s "$summary_file" ] || vtec_die "The summary on stdin is empty." 2
 
 # GitHub rejects a summary over 65535 characters, so a longer one is cut at
 # 65400, which leaves room for the note that says so.
@@ -61,4 +61,4 @@ payload=$(jq -Rs \
   }' <"$summary_file")
 
 printf '%s' "$payload" | gh api --method POST "repos/$GITHUB_REPOSITORY/check-runs" --input - --jq .html_url ||
-  drift_die "GitHub refused the check run $name."
+  vtec_die "GitHub refused the check run $name."

@@ -6,5 +6,7 @@ released yet.
 
 ## Unreleased
 
+- The repository's tooling CLI is `vtec`, in `vtec/`, so it is not
+  confused with the LangDrift monorepo's `drift`.
 - nsx lives in its own repository, `jonatassales/nsx`, with its rules, its
   ADR, its tickets, its guardrails and its CI.

@@ -1,2 +1,0 @@
-#!/bin/sh
-exec drift/drift.sh git commit-msg "$1"

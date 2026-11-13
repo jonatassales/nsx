@@ -1,16 +1,16 @@
 #!/bin/sh
 set -eu
 
-: "${DRIFT_PROJECT_ROOT:?Run it through drift/drift.sh widget.}"
-: "${DRIFT_CLI_DIR:?Run it through drift/drift.sh widget.}"
-. "$DRIFT_CLI_DIR/core/common.sh"
+: "${VTEC_PROJECT_ROOT:?Run it through vtec/vtec.sh widget.}"
+: "${VTEC_CLI_DIR:?Run it through vtec/vtec.sh widget.}"
+. "$VTEC_CLI_DIR/core/common.sh"
 
-# How much of the tree applies each rule file in .claude/rules, as drift
+# How much of the tree applies each rule file in .claude/rules, as vtec
 # quality coverage measures it. Its detectors are patterns, so the shares are
 # estimates.
 
-coverage=$("$DRIFT_PROJECT_ROOT/drift/drift.sh" quality coverage) ||
-  drift_die "drift quality coverage could not measure the rules."
+coverage=$("$VTEC_PROJECT_ROOT/vtec/vtec.sh" quality coverage) ||
+  vtec_die "vtec quality coverage could not measure the rules."
 
 cat <<EOF_WIDGET
 ### Code Quality Gate

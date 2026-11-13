@@ -1,8 +1,8 @@
 #!/bin/sh
 set -eu
-. "$DRIFT_CLI_DIR/core/common.sh"
-[ "$#" -le 1 ] || drift_die "Usage: drift quality coverage [rule]" 2
-cd "$DRIFT_PROJECT_ROOT"
+. "$VTEC_CLI_DIR/core/common.sh"
+[ "$#" -le 1 ] || vtec_die "Usage: vtec quality coverage [rule]" 2
+cd "$VTEC_PROJECT_ROOT"
 
 # How much of the tree applies each rule file in .claude/rules, as a Markdown
 # table: of the files a rule's detectors look at, the share with no finding.
@@ -10,10 +10,10 @@ cd "$DRIFT_PROJECT_ROOT"
 # The detectors are patterns, so the percentage is an estimate.
 
 workdir=$(mktemp -d)
-# drift's own EXIT trap prints the queued results, so this one chains to it.
-trap 'rm -rf "$workdir"; drift_flush_results' EXIT
+# vtec's own EXIT trap prints the queued results, so this one chains to it.
+trap 'rm -rf "$workdir"; vtec_flush_results' EXIT
 
-sh "$DRIFT_CLI_DIR/quality/run-detectors.sh" "$workdir" "$@" || exit $?
+sh "$VTEC_CLI_DIR/quality/run-detectors.sh" "$workdir" "$@" || exit $?
 
 printf '## Rules applied\n\n'
 printf '| Rule | Applied |\n'

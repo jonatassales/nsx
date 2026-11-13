@@ -1,0 +1,2 @@
+#!/bin/sh
+exec vtec/vtec.sh git commit-msg "$1"

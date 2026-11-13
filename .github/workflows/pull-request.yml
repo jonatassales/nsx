@@ -32,7 +32,7 @@ jobs:
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: drift/drift.sh git lint-history "$BASE_SHA" "$HEAD_SHA"
+        run: vtec/vtec.sh git lint-history "$BASE_SHA" "$HEAD_SHA"
 
   harness-score:
     name: Harness - Score
@@ -46,7 +46,7 @@ jobs:
         with:
           rust: 'false'
       - name: Harness rules audit
-        run: drift/drift.sh quality coverage >>"$GITHUB_STEP_SUMMARY"
+        run: vtec/vtec.sh quality coverage >>"$GITHUB_STEP_SUMMARY"
 
   delivery-dashboard:
     name: Delivery - Dashboard
@@ -75,4 +75,4 @@ jobs:
           WIDGET_PULL_REQUEST: ${{ github.event.pull_request.number }}
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: drift/drift.sh widget dashboard --publish >>"$GITHUB_STEP_SUMMARY"
+        run: vtec/vtec.sh widget dashboard --publish >>"$GITHUB_STEP_SUMMARY"
