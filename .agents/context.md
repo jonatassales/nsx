@@ -7,6 +7,7 @@ Project knowledge for agents working in this repository. [`AGENTS.md`](/AGENTS.m
 A single Rust crate, `nsx`, at the root, built with Cargo.
 
 - `src/`: the crate, one folder per part of the session; [`docs/architecture.guide.md`](/docs/architecture.guide.md) maps every file.
+- `docs/`: the architecture guide and [`environment.guide.md`](/docs/environment.guide.md), the variables nsx reads, by key.
 - `tests/`: one test target, `tests/main.rs`, with a folder per area, the fakes, the fixture project and the six goldens.
 - `schema/`: the JSON Schemas of the records nsx writes and sends, published with the npm package; the LangDrift console validates reports against them.
 - `langdrift/`: the files `nsx init` lays down in a client's `.langdrift/`, embedded in the binary.
