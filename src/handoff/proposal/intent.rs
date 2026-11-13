@@ -7,8 +7,6 @@
 //!
 //! - Its status is `proposed`.
 //! - Planning is always a human stage, whatever the workflow's default says.
-//!
-//! Spec 0079.
 
 use crate::contract::{human::Human, intent::Intent};
 use crate::handoff::proposal::Proposal;

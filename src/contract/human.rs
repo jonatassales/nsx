@@ -11,8 +11,6 @@
 //! - Every flag is required, and no other field is allowed.
 //! - `planning` is always `true`: the simulation's Planning cannot be
 //!   unchecked. The intent's `validate` names a `false`.
-//!
-//! Spec 0077.
 
 pub mod ticked;
 

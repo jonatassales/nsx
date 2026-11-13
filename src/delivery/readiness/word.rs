@@ -2,8 +2,6 @@
 //!
 //! One function: it gives back the word `run.json` keeps for where the pull
 //! request stands: `draft`, `ready for review` or `ready to merge`.
-//!
-//! Spec 0081.
 
 use crate::contract::pull::{DRAFT, MERGE, REVIEW};
 use crate::delivery::readiness::Readiness;

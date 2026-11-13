@@ -12,11 +12,9 @@
 //!
 //! - Exactly one argument. No argument, or more than one, is a stop.
 //! - The argument is the bare id, never a file path. `request` resolves it to
-//!   the ticket's file (spec 0053).
+//!   the ticket's file.
 //! - The command takes no flag: the judge always judges, the envelope is the
 //!   design doc's and the components are the ones the spec names.
-//!
-//! Spec 0077.
 
 pub mod analyze;
 pub mod execute;

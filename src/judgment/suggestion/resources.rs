@@ -8,20 +8,18 @@
 //!
 //! - `reasonResources`: `console › reasoning · no cited episode measured cpu or memory · sizing follows the spec, not history`
 //! - Card: Analysis · MEASURED RESOURCES: this line adds
-//!   `sizing follows the spec, not history` beside `none cited` (the field is
-//!   spec 0052's)
+//!   `sizing follows the spec, not history` beside `none cited` (`rag/` fills
+//!   the field)
 //!
 //! ## Rules
 //!
 //! - It asks the judge nothing: the conclusion follows from the retrieval.
-//! - It comes after the `episodes` line (spec 0052).
+//! - It comes after the `episodes` line.
 //!
 //! ## Open
 //!
 //! - The wording when a cited episode measured resources: the simulation never
 //!   shows it, and neither that wording nor sizing from history is built.
-//!
-//! Spec 0078.
 
 use crate::judgment::suggestion::Suggestion;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

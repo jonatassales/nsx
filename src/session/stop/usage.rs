@@ -11,8 +11,6 @@
 //!   missing ticket.
 //! - The parser's own explanation runs over several lines; only its first
 //!   line, the cause, is kept.
-//!
-//! Spec 0077.
 
 use clap::error::ErrorKind;
 

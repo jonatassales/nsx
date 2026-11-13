@@ -1,7 +1,7 @@
 //! The fence reads as version 3 and names every rule it breaks
 //!
-//! Ported from Core's Go tests, in its package `configuration` (removed with
-//! ticket 0434): the same fence breaks the same rules, field by field.
+//! Each rule broken alone is one problem on its field, and validation never
+//! stops at the first problem.
 
 use nsx::contract::{component::Component, error::Error, fence::Fence};
 use rstest::rstest;
@@ -209,7 +209,7 @@ fn validation_never_stops_at_the_first_problem() {
 }
 
 #[test]
-fn a_problem_reads_as_core_words_it() {
+fn a_problem_reads_as_the_rule_it_breaks() {
 	let mut fence = Fence::parse(&markdown()).unwrap();
 
 	fence.components[2].stack = String::from("Kafka");

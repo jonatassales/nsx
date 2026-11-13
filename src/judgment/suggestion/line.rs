@@ -15,11 +15,8 @@
 //! ## Rules
 //!
 //! - The line prints the model's id. The model's name on the card comes from
-//!   the price list (spec 0056).
-//! - It comes after the `weighModel` line and before the `planning` comment
-//!   (spec 0048).
-//!
-//! Spec 0078.
+//!   the price list.
+//! - It comes after the `weighModel` line and before the `planning` comment.
 
 use crate::judgment::suggestion::Suggestion;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

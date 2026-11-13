@@ -19,8 +19,6 @@
 //! - The ledger is opened before the cluster is asked for anything, so a
 //!   stop from here on finds what to take down (`halt`).
 //! - Nothing in nsx merges: the merge stays the owner's.
-//!
-//! Spec 0077.
 
 use crate::command::{
 	applied::Applied, run::Run, session::Session, work::Work,

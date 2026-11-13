@@ -17,8 +17,6 @@
 //!   origin nsx would not send a secret to.
 //! - A file that does not read as a connection is refused without its
 //!   reason: the decoder's words would quote the file, and so the secret.
-//!
-//! Spec 0081.
 
 use crate::console::{connection::Connection, error::Error, origin::origin};
 use crate::contract::decode::decode;

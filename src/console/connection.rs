@@ -21,8 +21,6 @@
 //! - The runtime's id comes in the console's answer to the runtime's first
 //!   report. nsx keeps it in the project's private, git-ignored state
 //!   (`report.rs`) and sends it with every later report of that runtime.
-//!
-//! Spec 0081.
 
 pub mod load;
 pub mod record;

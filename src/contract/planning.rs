@@ -12,8 +12,6 @@
 //! - The field is required and never `null`: unknown is not zero.
 //! - The count is never negative.
 //! - No other field is allowed.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

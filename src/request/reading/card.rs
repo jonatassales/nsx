@@ -8,8 +8,6 @@
 //!
 //! - Card: Analysis · DOCUMENTS header, `4 documents read`, once the `reads`
 //!   line prints
-//!
-//! Spec 0078.
 
 use crate::contract::cards::Cards;
 use crate::request::reading::Reading;

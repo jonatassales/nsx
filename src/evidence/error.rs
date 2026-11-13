@@ -4,8 +4,6 @@
 //! that the stop rule can print it as it is.
 //!
 //! Definition only: the `Error` type.
-//!
-//! Spec 0080.
 
 use std::path::PathBuf;
 

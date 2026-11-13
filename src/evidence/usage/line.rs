@@ -9,14 +9,12 @@
 //!
 //! ## Rules
 //!
-//! - The two amounts are for the applied model and effort (spec 0056). This
-//!   file prices nothing.
+//! - The two amounts are for the applied model and effort. This file prices
+//!   nothing.
 //! - A run whose usage is unknown stops before this line: it never prints a
 //!   figure that was not measured.
 //! - It prints after the runtime's ready line and before the pushed line. It
 //!   does not print when the gate paused.
-//!
-//! Spec 0080.
 
 use crate::evidence::usage::Usage;
 use crate::money::cents::Cents;

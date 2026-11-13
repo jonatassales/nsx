@@ -12,8 +12,6 @@
 //!
 //! - The family has these two commands and no other. A human checkpoint is
 //!   answered inside `nsx agent run`, never by a command of its own.
-//!
-//! Spec 0077.
 
 pub mod execute;
 

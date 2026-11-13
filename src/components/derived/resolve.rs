@@ -7,8 +7,6 @@
 //!
 //! - Two components whose paths end in the same folder derive the same
 //!   image: the cross-check stops the plan for it.
-//!
-//! Spec 0079.
 
 use crate::components::{
 	component::Component, derived::Derived, error::Error, image::Image,

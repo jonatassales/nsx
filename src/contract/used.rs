@@ -2,8 +2,6 @@
 //!
 //! Definition only: the `Used` type: the input and output tokens of one
 //! judgment.
-//!
-//! Spec 0078.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

@@ -19,8 +19,6 @@
 //! - A model beyond the three nsx reads is refused, and so is a model listed
 //!   twice. The spend table prices each of the three once, so a fourth could
 //!   be suggested with no row, and a second price would be ignored.
-//!
-//! Spec 0079.
 
 use crate::contract::decode::decode;
 use crate::files::{

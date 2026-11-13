@@ -13,15 +13,14 @@
 //!
 //! ## Rules
 //!
-//! - The plan's order after `crossCheck`: `size`, then `limits`, then `price`
-//!   (spec 0056), then `validate`, then `draft` (spec 0050). The `price` and
-//!   `draft` lines are not printed from this folder.
-//! - Sizing each component belongs to spec 0066, the bound to spec 0054, the
-//!   suggestion to spec 0051, and the fence's fields and schema to spec 0049.
+//! - The plan's order after `crossCheck`: `size`, then `limits`, then
+//!   `price`, then `validate`, then `draft`. The `price` and `draft` lines are
+//!   not printed from this folder: `money/` and `handoff/` print them.
+//! - Sizing each component belongs to `components/`, the bound to `harness/`,
+//!   the suggestion to `judgment/`, and the fence's fields and schema to
+//!   `contract/`.
 //! - Handing the draft to the team, and saying it is proposed or pending
-//!   authorization, belong to spec 0050.
-//!
-//! Spec 0079.
+//!   authorization, belong to `handoff/`.
 
 pub mod draft;
 pub mod error;

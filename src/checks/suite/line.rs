@@ -9,7 +9,7 @@
 //! - `checks`: `checks     build · check · test · guardrails · running`
 //! - `checksPassed`: `✓ checks     4 of 4 passed`
 //! - Card: Workflow · PULL REQUEST's state, `checks running` then
-//!   `4 of 4 checks passed`. Spec 0063 owns the field and shows what this
+//!   `4 of 4 checks passed`. `delivery` owns the field and shows what this
 //!   element records.
 //!
 //! ## Rules
@@ -29,8 +29,6 @@
 //! - Checks that appear after the running line: the passed line counts all of
 //!   them, so the two lines could differ. Until the owner decides, the lines
 //!   follow the forge as it answers.
-//!
-//! Spec 0081.
 
 use crate::checks::suite::Suite;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

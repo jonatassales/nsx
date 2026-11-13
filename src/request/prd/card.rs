@@ -6,8 +6,6 @@
 //! ## Simulation
 //!
 //! - Card: Analysis · the PRD row of DOCUMENTS, set by the `readPrd` line
-//!
-//! Spec 0078.
 
 use crate::contract::{cards::Cards, product::Product};
 use crate::request::prd::Prd;

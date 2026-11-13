@@ -11,8 +11,6 @@
 //! - The facts are only what the plan has read: the guardrail's criteria,
 //!   the linked documents' facts, the candidates of the search and the
 //!   price list. No secret and no file's whole text is sent.
-//!
-//! Spec 0078.
 
 use crate::contract::{episode::REASONS, fence::EFFORTS};
 use crate::judgment::question::Question;

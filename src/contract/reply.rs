@@ -9,10 +9,8 @@
 //! ## Rules
 //!
 //! - `runtimeId` is required: a lowercase UUIDv7.
-//! - `requested` is absent when nothing is pending (spec 0076).
+//! - `requested` is absent when nothing is pending.
 //! - No other field is allowed.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

@@ -12,8 +12,6 @@
 //!
 //! - The schema is named by its `$id`.
 //! - This function writes no file: the one writer in `handoff/` does.
-//!
-//! Spec 0079.
 
 use crate::contract::{cards::Cards, fence::SCHEMA, validation::Validation};
 use crate::runtime::draft::Draft;

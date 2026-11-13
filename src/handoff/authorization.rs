@@ -21,8 +21,6 @@
 //!   authorization chooses, and the command takes no argument.
 //! - The applied intent is handed on: the choice to `money`, `flow` and
 //!   `driver`, the revision to `local`, and the intent to `evidence`.
-//!
-//! Spec 0079.
 
 pub mod check;
 pub mod choose;

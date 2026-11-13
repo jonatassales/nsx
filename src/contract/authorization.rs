@@ -9,8 +9,6 @@
 //!
 //! - nsx records that the team has not authorized yet. It never decides an
 //!   authorization: the team authorizes in the console.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

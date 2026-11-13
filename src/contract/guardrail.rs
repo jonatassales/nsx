@@ -11,8 +11,6 @@
 //!
 //! - `enforcement` has one value, `review`: nsx enforces no criterion.
 //! - All five are required. No other field is allowed.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

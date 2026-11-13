@@ -7,15 +7,13 @@
 //! dimensions, so that an index built by another embedder is noticed.
 //!
 //! Definition only: the `Embedder` type, with its id and its dimensions
-//! beside it. It is a plain type, not a trait: the tests run it for real
-//! (spec 0078). Its function is the file in `embedder/`.
+//! beside it. It is a plain type, not a trait: the tests run it for real.
+//! Its function is the file in `embedder/`.
 //!
 //! ## Rules
 //!
 //! - It makes no paid call: the plan step pays for nothing.
 //! - A change to how it embeds is a new id, so every index is rebuilt.
-//!
-//! Spec 0078.
 
 pub mod embed;
 

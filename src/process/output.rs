@@ -11,12 +11,12 @@
 //! ## Rules
 //!
 //! - It is never printed as it is. The coding agent's output stays in a
-//!   private log and never enters evidence (spec 0058).
+//!   private log and never enters evidence.
 //!
 //! ## Open
 //!
-//! - Spec 0058's call result also carries the elapsed time. Whether this type
-//!   measures it or `driver` does is not settled.
+//! - Whether a call's elapsed time is measured, by this type or by `driver`,
+//!   is not settled.
 //! - Whether what a program printed is kept whole or only up to a limit.
 //!
 //! Shared: used by `driver`, `local` and `delivery`.

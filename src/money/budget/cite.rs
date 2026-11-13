@@ -12,8 +12,6 @@
 //! - The line cites FIN-03, a budget before a paid run. Nothing has been
 //!   reserved or paid when it prints.
 //! - It is the plan's budget in other words: both lines come from one type.
-//!
-//! Spec 0080.
 
 use crate::money::budget::Budget;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

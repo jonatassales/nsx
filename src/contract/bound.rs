@@ -9,8 +9,6 @@
 //!
 //! - Every field is required, and no other field is allowed.
 //! - The bound is at least 1 millicore and 1 MiB.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

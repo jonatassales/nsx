@@ -14,7 +14,7 @@
 //!   cpu or memory. A missing measurement never reads as zero.
 //! - The count of cited episodes that measured resources is the input of the
 //!   judge's `reasonResources` line, whose last words are added beside
-//!   `none cited` (spec 0051).
+//!   `none cited`.
 //!
 //! ## Open
 //!
@@ -23,8 +23,6 @@
 //!   Until then such a plan stops here, with one sentence.
 //! - Fewer candidates, or none: until the owner adds the case to the
 //!   simulation, the line keeps its template with the real count.
-//!
-//! Spec 0078.
 
 use crate::rag::{error::Error, retrieval::Retrieval};
 use crate::session::{kind::Kind, line::Line, shape::Shape};

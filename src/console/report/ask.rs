@@ -15,14 +15,12 @@
 //! - It prints nothing, whatever the console answers.
 //! - It always calls, even once the console was found unavailable: the run
 //!   asks at its hold points, while it waits for the team and when it ends,
-//!   and each ask is its own chance (spec 0076). A console that answers is
-//!   available again for the records' sends.
+//!   and each ask is its own chance. A console that answers is available
+//!   again for the records' sends.
 //! - A console that no longer knows the kept id is asked once more with
 //!   none: it opens the runtime anew, and the new id is kept.
 //! - A call that fails gives back its failure, and the caller decides what
 //!   it means. Only keeping the id can fail as a file.
-//!
-//! Spec 0081.
 
 use crate::console::{client::Client, error::Error, report::Report};
 use crate::contract::{

@@ -24,8 +24,6 @@
 //! - A ticket or a link that cannot be read as the simulation needs stops the
 //!   plan before the line that would print next: no further line, no draft, one
 //!   sentence on stderr, exit 1 (the stop rule).
-//!
-//! Spec 0078.
 
 pub mod design;
 pub mod documents;

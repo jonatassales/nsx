@@ -19,8 +19,6 @@
 //!   become `null`. So does a total too large to count.
 //! - A stop keeps every paid call already in the record: no spend goes
 //!   unrecorded.
-//!
-//! Spec 0080.
 
 use std::path::Path;
 

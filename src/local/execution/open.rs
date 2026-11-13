@@ -12,8 +12,6 @@
 //!
 //! - The space is named after the run and this project (`space`), and it is
 //!   written down here, before the cluster is asked for it.
-//!
-//! Spec 0081.
 
 use crate::files::{layout::Layout, root::Root};
 use crate::local::{error::Error, execution::Execution};

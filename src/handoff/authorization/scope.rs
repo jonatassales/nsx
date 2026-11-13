@@ -13,8 +13,6 @@
 //! - The words "the team" are fixed. Only an authorized intent runs, and
 //!   authorization is the team's: no actor's name is printed.
 //! - The line is the same in every variant of the run.
-//!
-//! Spec 0079.
 
 use crate::handoff::authorization::Authorization;
 use crate::session::line::Line;

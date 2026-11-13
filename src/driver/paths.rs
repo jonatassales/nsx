@@ -5,8 +5,6 @@
 //!
 //! Definition only: the `Paths` type, which carries `inputTokens` and
 //! `outputTokens`, each a dotted path into the agent's output.
-//!
-//! Spec 0080.
 
 use serde::Deserialize;
 

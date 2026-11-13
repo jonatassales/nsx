@@ -13,8 +13,6 @@
 //!
 //! - The line prints only when nothing collides. A collision is a stop, and
 //!   the simulation has no line for it.
-//!
-//! Spec 0079.
 
 use crate::components::collisions::Collisions;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

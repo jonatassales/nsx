@@ -16,8 +16,6 @@
 //!   prints nothing.
 //! - A ledger that cannot be cleaned up is a stop: a run never brings its
 //!   runtime up beside what an earlier one left.
-//!
-//! Spec 0081.
 
 use crate::files::{layout::Layout, root::Root};
 use crate::local::{cluster::Cluster, error::Error, execution::Execution};

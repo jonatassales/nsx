@@ -8,33 +8,31 @@
 //! the product: nsx does exactly what the simulation shows, nothing more and
 //! nothing less.
 //!
-//! A folder belongs to one element of the simulation, and to its spec:
+//! A folder belongs to one element of the simulation:
 //!
-//! - `command`: the three commands, each as its steps in order (spec 0048)
-//! - `session`: a printed line, its four kinds and the stop rule (spec 0048)
-//! - `contract`: every shape a file or the console sees (spec 0049)
-//! - `handoff`: `plan.json` and the intent the team authorizes (spec 0050)
-//! - `evidence`: the run's id, `run.json` and the usage record (spec 0065)
-//! - `request`: the ticket and the documents it links (spec 0053)
-//! - `harness`: the guardrail and the bound on cpu and memory (spec 0054)
-//! - `money`: the estimate, the gate and what is released (spec 0056)
-//! - `rag`: the project's episodes and the search over them (spec 0052)
-//! - `judgment`: the judge and its three questions (spec 0051)
-//! - `components`: the client's components, inspected (spec 0066)
-//! - `runtime`: the sizing and the `runtime.md` draft (spec 0055)
-//! - `flow`: the stages and the checkpoints a person confirms (spec 0057)
-//! - `driver`: the coding agent, called once per stage (spec 0058)
-//! - `skills`: the skills and the report each one writes (spec 0059)
-//! - `hook`: the effort, recorded before implement may start (spec 0060)
-//! - `seat`: the part a person writes, and Safe Seat (spec 0061)
-//! - `local`: the cluster on the person's machine (spec 0062)
-//! - `delivery`: the branch, the push and the pull request (spec 0063)
-//! - `checks`: the client's CI checks (spec 0064)
-//! - `console`: the report to the console, Play and Pause (specs 0073, 0076)
+//! - `command`: the three commands, each as its steps in order
+//! - `session`: a printed line, its four kinds and the stop rule
+//! - `contract`: every shape a file or the console sees
+//! - `handoff`: `plan.json` and the intent the team authorizes
+//! - `evidence`: the run's id, `run.json` and the usage record
+//! - `request`: the ticket and the documents it links
+//! - `harness`: the guardrail and the bound on cpu and memory
+//! - `money`: the estimate, the gate and what is released
+//! - `rag`: the project's episodes and the search over them
+//! - `judgment`: the judge and its three questions
+//! - `components`: the client's components, inspected
+//! - `runtime`: the sizing and the `runtime.md` draft
+//! - `flow`: the stages and the checkpoints a person confirms
+//! - `driver`: the coding agent, called once per stage
+//! - `skills`: the skills and the report each one writes
+//! - `hook`: the effort, recorded before implement may start
+//! - `seat`: the part a person writes, and Safe Seat
+//! - `local`: the cluster on the person's machine
+//! - `delivery`: the branch, the push and the pull request
+//! - `checks`: the client's CI checks
+//! - `console`: the report to the console, Play and Pause
 //! - `process`: running other programs (shared)
 //! - `files`: the project's files (shared)
-//!
-//! Specs 0077 to 0081.
 
 #![deny(clippy::unwrap_used, clippy::expect_used)]
 

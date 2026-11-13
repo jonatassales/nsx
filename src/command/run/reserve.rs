@@ -23,8 +23,6 @@
 //! - The gate is decided before any paid call (FIN-02, FIN-03).
 //! - A paused gate ends the run with exit code 0. No branch is started, and
 //!   no stage call, cluster or forge operation happens.
-//!
-//! Spec 0077.
 
 use std::path::PathBuf;
 

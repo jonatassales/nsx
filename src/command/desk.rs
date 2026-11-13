@@ -5,8 +5,6 @@
 //!
 //! Definition only: the `Desk` type: the one writer of `plan.json` and the
 //! state of the reports to the console. Its function is the file in `desk/`.
-//!
-//! Spec 0077.
 
 pub mod record;
 

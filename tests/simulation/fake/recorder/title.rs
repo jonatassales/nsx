@@ -2,8 +2,6 @@
 //!
 //! One function: it takes the window's title and keeps it in place of the
 //! one it held. It never stops.
-//!
-//! Spec 0077.
 
 use nsx::session::{stop::Stop, title::Title, window::Window};
 

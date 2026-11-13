@@ -17,8 +17,6 @@
 //!   card data first.
 //! - A ticket without a title or a status line stops the plan (the stop rule).
 //!   There is no "no status" fallback.
-//!
-//! Spec 0078.
 
 use std::path::Path;
 

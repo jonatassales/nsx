@@ -18,8 +18,6 @@
 //!   before the first stage (the stop rule). So does a ticket with no
 //!   number: its branch has no name.
 //! - No branch is started in an over-budget run.
-//!
-//! Spec 0081.
 
 use crate::contract::ticket::Ticket;
 use crate::delivery::{branch::Branch, error::Error, forge::Forge};

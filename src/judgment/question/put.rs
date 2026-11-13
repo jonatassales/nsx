@@ -13,8 +13,6 @@
 //!   JSON object, is refused.
 //! - Whether the answer breaks a rule is for the asking function to say: it
 //!   knows what the answer must agree with.
-//!
-//! Spec 0078.
 
 use serde::de::DeserializeOwned;
 

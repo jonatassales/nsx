@@ -10,17 +10,15 @@
 //!
 //! ## Rules
 //!
-//! - It does not choose the model or the effort: spec 0057 applies the choice
-//!   and spec 0051 suggests it.
-//! - It does not run implement or print its line (specs 0058 and 0059).
+//! - It does not choose the model or the effort: `flow/` applies the choice
+//!   and `judgment/` suggests it.
+//! - It does not run implement or print its line: `driver/` and `skills/` do.
 //! - No script hook runs in a stage, and no line reports a script's exit.
 //!
 //! ## Open
 //!
 //! - Whether the hook ships the `llm-effort-analyzer` skill and its guard into
 //!   `.langdrift/`, instead of this built-in step, is the owner's decision.
-//!
-//! Spec 0080.
 
 pub mod effort;
 pub mod error;

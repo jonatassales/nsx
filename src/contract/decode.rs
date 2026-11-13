@@ -13,8 +13,6 @@
 //! - A field the shape does not define is refused.
 //! - A text that holds more than one record is refused.
 //! - A `null` stays unknown. It is never read as zero, empty or false.
-//!
-//! Spec 0077.
 
 use serde::de::DeserializeOwned;
 

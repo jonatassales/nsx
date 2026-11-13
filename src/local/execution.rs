@@ -5,7 +5,7 @@
 //! written before the thing is created, so that cleanup removes exactly what
 //! the run created. It is settled once everything is removed and the space's
 //! absence is confirmed. It is not the money ledger, which is
-//! `money/ledger.rs` (spec 0056).
+//! `money/ledger.rs`.
 //!
 //! Definition only: the `Execution` type: the run and its runtime, the space,
 //! the Deployments' names, the names already removed and whether the ledger
@@ -14,14 +14,12 @@
 //! ## Rules
 //!
 //! - It lives at `.langdrift/agent/state/runs/<run>/execution.json`, beside
-//!   the run's stage reports. `<run>` is the run's id (spec 0065).
+//!   the run's stage reports. `<run>` is the run's id, from `evidence/`.
 //! - It is private.
 //! - The space is named after the run and this project (`space`), so that
 //!   two checkouts on one machine never share one.
 //! - It feeds the removed count and "nothing left" of the stopped line.
 //! - It lets a later run remove what a stopped run left.
-//!
-//! Spec 0081.
 
 pub mod card;
 pub mod cleanup;

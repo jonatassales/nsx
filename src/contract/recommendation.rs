@@ -13,8 +13,6 @@
 //! - `by` has one value, `recommendation`: the team authorizes, never the
 //!   judge.
 //! - No other field is allowed.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

@@ -8,8 +8,6 @@
 //! ## Reads and writes
 //!
 //! - reads `.langdrift/microruntimes/episodes/<id>-<slug>.json`
-//!
-//! Spec 0078.
 
 use std::path::Path;
 

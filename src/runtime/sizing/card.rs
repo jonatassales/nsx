@@ -15,8 +15,6 @@
 //! - The proposed totals and the bound are already on the card: each was set
 //!   when its own line printed.
 //! - This function writes no file: the one writer in `handoff/` does.
-//!
-//! Spec 0079.
 
 use crate::contract::{
 	amount::Amount,

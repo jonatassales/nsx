@@ -20,8 +20,6 @@
 //! - The usage record keeps the call before anything can stop the run, so
 //!   no spend goes unrecorded.
 //! - A stage with no skill makes no call.
-//!
-//! Spec 0077.
 
 use crate::command::{
 	applied::Applied, run::Run, session::Session, work::Work,

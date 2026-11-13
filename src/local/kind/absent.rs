@@ -12,8 +12,6 @@
 //! - It asks the cluster and changes nothing in it. "Nothing left" is said
 //!   from this answer and no other.
 //! - A cluster that does not exist holds nothing of the run.
-//!
-//! Spec 0081.
 
 use crate::local::{
 	error::Error,

@@ -18,7 +18,7 @@
 //! - The run waits only when the project has the connection, no intent is
 //!   authorized, and exactly one recorded intent is proposed and has no
 //!   completed run. A project with no connection is told so at once
-//!   (`Error::Offline`), and the run stops as spec 0048 says.
+//!   (`Error::Offline`), and the run stops under the stop rule.
 //! - While it waits, it prints nothing.
 //! - When the console stops answering, it keeps waiting and never starts on
 //!   its own. There is no timeout.
@@ -27,8 +27,6 @@
 //! - A Play whose choice differs from the intent's is ignored, and the run
 //!   keeps waiting.
 //! - An intent that no longer reads is a stop, with its file.
-//!
-//! Spec 0081.
 
 use std::path::Path;
 use std::time::Duration;

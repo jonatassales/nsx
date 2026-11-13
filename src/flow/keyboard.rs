@@ -5,8 +5,6 @@
 //!
 //! Definition only: the `Keyboard` type. Its function is the file in
 //! `keyboard/`.
-//!
-//! Spec 0080.
 
 pub mod line;
 

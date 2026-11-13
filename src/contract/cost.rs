@@ -2,8 +2,6 @@
 //!
 //! Definition only: the `Cost` type: whole cents, who priced them, and
 //! whether the figure is illustrative. The one provenance sits beside it.
-//!
-//! Spec 0078.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

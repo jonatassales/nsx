@@ -18,14 +18,12 @@
 //! - nsx commits nothing itself. The stages and the person write the commits.
 //! - Nothing here happens in an over-budget run.
 //! - Every failure follows the stop rule, with no line of its own, and the
-//!   runtime, when up, is taken down silently (spec 0062).
+//!   runtime, when up, is taken down silently.
 //!
 //! ## Open
 //!
 //! - Who delivers. Until the owner decides, nsx does. The alternative is that
 //!   the coding agent delivers and nsx only reports.
-//!
-//! Spec 0081.
 
 pub mod branch;
 pub mod error;

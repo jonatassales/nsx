@@ -17,14 +17,12 @@
 //! - `args` must carry `{{model}}` and `{{effort}}`.
 //! - `passEnv` names the variables passed through from nsx's environment.
 //! - The two usage entries are dotted paths into the agent's JSON output.
-//! - No placeholder carries a lap: laps are gone.
+//! - No placeholder carries a lap: a stage is one call.
 //!
 //! ## Open
 //!
 //! - Whether `nsx init` writes a working `driver.json` for one coding agent,
 //!   and which. Until the owner decides, the file is the team's to fill.
-//!
-//! Spec 0080.
 
 pub mod load;
 

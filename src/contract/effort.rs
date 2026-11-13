@@ -11,8 +11,6 @@
 //! - The applied pair and the moment are required. The suggested pair is
 //!   required and `null` when the plan carried no suggestion.
 //! - No other field is allowed, and the record carries no token.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

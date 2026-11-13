@@ -14,8 +14,6 @@
 //! - The header is written before the plan's first line, so the card is
 //!   there when its links arrive. With no header there is no card to add
 //!   them to.
-//!
-//! Spec 0078.
 
 use crate::contract::{cards::Cards, linked::Linked};
 use crate::request::links::Links;

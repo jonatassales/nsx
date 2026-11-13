@@ -8,16 +8,14 @@
 //! - Safe Seat is met when the run's dev ticket was closed by the person
 //!   with no paid call during it. A count that is unknown is not zero: it
 //!   does not meet it.
-//! - It is decided after `✓ checks     4 of 4 passed` has printed (spec
-//!   0064). A run that did not reach the checks gets no verdict at all.
+//! - It is decided after `✓ checks     4 of 4 passed` has printed. A run
+//!   that did not reach the checks gets no verdict at all.
 //!
 //! ## Open
 //!
 //! - How "met" is decided. The simulation never shows the measure. The rule
 //!   above holds until the owner decides. A floor measured on the diff, the
 //!   checks' result, or both may be wanted.
-//!
-//! Spec 0080.
 
 use crate::contract::step::DONE;
 use crate::evidence::clock::Clock;

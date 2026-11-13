@@ -11,8 +11,6 @@
 //! - Half up: 47.5 cents is 48 cents.
 //! - The same formula, with the same rounding, prices the observed tokens, so
 //!   the estimate and the observed spend compare like for like.
-//!
-//! Spec 0080.
 
 use crate::money::{cents::Cents, model::Model};
 

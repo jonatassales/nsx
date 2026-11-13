@@ -6,8 +6,6 @@
 //! it is told is required, so this adds it back.
 //!
 //! One function: it takes the schema of such a field and lets it be `null`.
-//!
-//! Spec 0077.
 
 use schemars::Schema;
 use serde_json::Value;

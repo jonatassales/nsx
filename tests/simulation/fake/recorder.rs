@@ -10,8 +10,6 @@
 //! ## Rules
 //!
 //! - It writes nothing anywhere: standard output stays empty.
-//!
-//! Spec 0077.
 
 mod print;
 mod title;

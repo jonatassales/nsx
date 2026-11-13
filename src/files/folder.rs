@@ -15,8 +15,6 @@
 //! - `./services/api`, `services/api/` and, on a disk that ignores case,
 //!   `services/API` give the same folder.
 //! - A folder the disk cannot name is refused, with its path.
-//!
-//! Spec 0077.
 
 use std::path::{Path, PathBuf};
 

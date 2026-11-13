@@ -10,8 +10,6 @@
 //!   whatever cluster the person's own configuration points at.
 //! - They follow the arguments, so that the call's first argument is its
 //!   verb, which a failure names.
-//!
-//! Spec 0081.
 
 use crate::local::{
 	error::Error,

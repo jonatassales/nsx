@@ -20,8 +20,6 @@
 //!
 //! - Whether a team may change the margin, and where. The simulation never
 //!   says who sets it.
-//!
-//! Spec 0080.
 
 pub mod total;
 

@@ -17,8 +17,6 @@
 //!
 //! - Whether this type also carries the judge's short statement, which the
 //!   card's FIN line shows, or only what the document holds.
-//!
-//! Spec 0078.
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Criterion {

@@ -21,8 +21,6 @@
 //!
 //! - A pull request with no checks. The owner may prefer `0 of 0` to the
 //!   stop, or a longer wait than twenty answers.
-//!
-//! Spec 0081.
 
 use std::time::Duration;
 

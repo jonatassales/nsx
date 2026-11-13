@@ -2,8 +2,6 @@
 //!
 //! `Github` is `Forge` as `git` and `gh` serve it: each operation of the
 //! trait is the file of the same name in this folder.
-//!
-//! Spec 0081.
 
 use crate::checks::check::Check;
 use crate::delivery::{

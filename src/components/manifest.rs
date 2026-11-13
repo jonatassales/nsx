@@ -13,8 +13,6 @@
 //!
 //! - Only these five are manifests. `pyproject.toml` and a `Dockerfile` are
 //!   not.
-//!
-//! Spec 0079.
 
 pub mod classify;
 pub mod code;

@@ -7,8 +7,6 @@
 //!
 //! - Card: Analysis · the design doc row of DOCUMENTS, set by the
 //!   `readDesignDoc` line
-//!
-//! Spec 0078.
 
 use crate::contract::{
 	cards::Cards, design::Design as Row, envelope::Envelope,

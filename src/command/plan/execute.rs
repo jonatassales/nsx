@@ -35,8 +35,6 @@
 //! - Lines print when their work is done. No line is delayed to imitate the
 //!   simulation's pacing.
 //! - A plan that stops writes no draft and no intent.
-//!
-//! Spec 0077.
 
 use crate::command::{brief::Brief, desk::Desk, plan::Plan, session::Session};
 use crate::console::report::Report;

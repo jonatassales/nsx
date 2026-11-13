@@ -1,7 +1,4 @@
 //! The hand-off records read strictly, and an intent names every problem
-//!
-//! Ported from Core's Go tests, in its package `handoff` (removed with ticket
-//! 0434).
 
 use nsx::contract::{
 	cards::Cards, decode::decode, error::Error, intent::Intent, outcome::Outcome,

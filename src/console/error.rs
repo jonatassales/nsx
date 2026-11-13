@@ -6,8 +6,6 @@
 //! hold a password, and a file that does not read may hold the secret.
 //!
 //! Definition only: the `Error` type.
-//!
-//! Spec 0081.
 
 use std::path::PathBuf;
 

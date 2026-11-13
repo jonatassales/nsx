@@ -10,11 +10,9 @@
 //!
 //! ## Rules
 //!
-//! - It follows `✓ checks     4 of 4 passed` (spec 0064) and comes before the
-//!   runtime's stopped line (spec 0062).
+//! - It follows `✓ checks     4 of 4 passed` and comes before the runtime's
+//!   stopped line.
 //! - `decidedAt` is written when the line prints.
-//!
-//! Spec 0080.
 
 use crate::seat::verdict::Verdict;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

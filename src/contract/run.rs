@@ -22,8 +22,6 @@
 //! - `runtime` is ready, then stopped (`hosted.rs`). `delivery` gains its
 //!   branch and commit at the push, its pull request when it opens, and the
 //!   pull request's checks as the forge lists them (`delivery.rs`).
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

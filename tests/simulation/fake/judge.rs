@@ -1,6 +1,6 @@
 //! The judge of the golden test: it answers as the simulation's judge did
 //!
-//! The answers are Core's samples, kept beside the contract's tests.
+//! The answers are the samples kept beside the contract's tests.
 
 use std::path::Path;
 

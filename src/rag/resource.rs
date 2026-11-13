@@ -4,8 +4,6 @@
 //!
 //! Definition only: the `Resource` type: the workload's kind, such as
 //! `Deployment`, how many there were and the replicas of each.
-//!
-//! Spec 0078.
 
 use serde::{Deserialize, Serialize};
 

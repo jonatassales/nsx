@@ -1,4 +1,4 @@
-//! One of Core's samples, as copied beside these tests
+//! One of the contract samples kept beside these tests
 
 use std::path::Path;
 

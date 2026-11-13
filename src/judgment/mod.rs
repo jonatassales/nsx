@@ -29,8 +29,6 @@
 //! - When the judge cannot be reached, declines, or gives an answer the checks
 //!   refuse, the stop rule applies: the plan stops before the line the answer
 //!   would feed and writes no draft.
-//!
-//! Spec 0078.
 
 pub mod absent;
 pub mod client;

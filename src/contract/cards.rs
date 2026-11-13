@@ -13,13 +13,10 @@
 //! - A section is absent until its card has something to show. Absent means
 //!   not revealed yet.
 //! - `ticket`, `workflow` and the EPISODES threshold are there before the
-//!   plan's first line. Every other field arrives when its line prints
-//!   (spec 0050).
+//!   plan's first line. Every other field arrives when its line prints.
 //! - Values are units, never formatted text. Labels, copy and thousands
 //!   separators are the receiver's.
 //! - No other section is allowed.
-//!
-//! Spec 0077.
 
 pub mod components;
 pub mod documents;

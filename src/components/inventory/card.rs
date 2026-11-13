@@ -12,8 +12,6 @@
 //! - The rows are in the spec's order. Each is filled when its own row line
 //!   prints.
 //! - This function writes no file: the one writer in `handoff/` does.
-//!
-//! Spec 0079.
 
 use crate::components::inventory::Inventory;
 use crate::contract::{cards::Cards, resolved::Resolved};

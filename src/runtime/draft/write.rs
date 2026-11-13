@@ -11,18 +11,16 @@
 //!
 //! ## Rules
 //!
-//! - `<runtime id>` is the ticket's slug (spec 0053): `book-a-demo-runtime`
-//!   for the simulation's ticket.
+//! - `<runtime id>` is the ticket's slug: `book-a-demo-runtime` for the
+//!   simulation's ticket.
 //! - The draft is written only when its validation count is 0, after the
-//!   `validate` line and before the `draft` line of spec 0050.
+//!   `validate` line and before the hand-off's `draft` line.
 //! - A plan that stops writes no draft.
 //! - The file is a title, the runtime's id; the `langdrift` block, the fence
 //!   as JSON; and `## Sizing`, the report: a table of the proposed totals,
 //!   the bound and the headroom, then one line with the resource, the limits
 //!   statement and the validation result.
 //! - The file is written whole or not at all, over an earlier draft.
-//!
-//! Spec 0079.
 
 use std::path::Path;
 

@@ -11,8 +11,6 @@
 //! - A play carries the authorized choice as `intent`. A pause carries
 //!   nothing more.
 //! - No other field is allowed.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

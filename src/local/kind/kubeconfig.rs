@@ -15,8 +15,6 @@
 //! - Outside a project there is no such file: a stop.
 //! - A path that is not UTF-8 cannot be given to the tools as it is: a
 //!   stop, never another path in its place.
-//!
-//! Spec 0081.
 
 use crate::files::{inside::inside, layout::Layout, root::Root};
 use crate::local::{error::Error, kind::Kind};

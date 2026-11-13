@@ -15,7 +15,7 @@
 //!   interrupts.
 //! - A check that completes as failed, cancelled or skipped is a stop under
 //!   the stop rule, as soon as the forge says so: no line, the runtime taken
-//!   down (spec 0062), the pull request left a draft (spec 0063).
+//!   down, the pull request left a draft.
 //! - An interrupt, or a forge answer that cannot be read, is a stop under the
 //!   same rule.
 //! - An answer that lists no check any more decides nothing: the forge is
@@ -33,8 +33,6 @@
 //! - A check that fails, is cancelled or is skipped: the stop is provisional.
 //!   The owner may prefer the run to report and go on, or the coding agent to
 //!   fix and push again.
-//!
-//! Spec 0081.
 
 use std::time::Duration;
 

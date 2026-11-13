@@ -14,8 +14,6 @@
 //! - The PRD, the design doc and the spec are the client's and sit in the
 //!   client's artifact folder, so they name no folder of their own. The
 //!   guardrail is LangDrift's and sits in `.langdrift/harness/guardrails/`.
-//!
-//! Spec 0078.
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct Kind {

@@ -9,8 +9,6 @@
 //! ## Rules
 //!
 //! - The same document gives the same fact every time: no model reads it.
-//!
-//! Spec 0078.
 
 pub mod card;
 pub mod line;

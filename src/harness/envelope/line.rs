@@ -13,8 +13,6 @@
 //! - The provenance always reads "set by the team in the design doc".
 //! - The line prints after the judge's line on the criteria and before the
 //!   plan's `budget` line.
-//!
-//! Spec 0078.
 
 use crate::harness::envelope::Envelope;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

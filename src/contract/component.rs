@@ -16,8 +16,6 @@
 //! - A port is a whole number from 1 to 65535.
 //! - The share is whole millicores and MiB, and `replicas` is 1.
 //! - Which of its values break a rule is the fence's `validate` to say.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

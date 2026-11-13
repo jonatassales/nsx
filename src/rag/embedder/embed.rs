@@ -11,9 +11,8 @@
 //!   into one of the dimensions, added or subtracted by the hash's last bit so
 //!   that collisions spread out. A count above zero is dampened to
 //!   `1 + ln(count)`.
-//! - It is the embedder the Go CLI had, kept figure for figure.
-//!
-//! Spec 0078.
+//! - Its figures belong to its id: an index built under that id stays in
+//!   step, and changing any figure means a new id.
 
 use crate::rag::embedder::{DIMENSIONS, Embedder};
 

@@ -15,8 +15,6 @@
 //! - A plan that stops writes no intent.
 //! - The intent is checked with the contract's own rules before it is
 //!   written: one that breaks a rule is refused, with each field and rule.
-//!
-//! Spec 0079.
 
 use std::path::Path;
 

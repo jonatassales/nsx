@@ -16,8 +16,6 @@
 //!   and the paused gate is a warning. Every other line is output.
 //! - The simulation has a kind for the typed command. It is the person's
 //!   typing and is never printed, so it is not one of the four.
-//!
-//! Spec 0077.
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Kind {

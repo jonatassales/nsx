@@ -14,8 +14,6 @@
 //! - `plan.json` is a file anyone can edit, so its figures are checked: a
 //!   negative amount, or a token count that is negative or too large, stops
 //!   the run before its first line. No such figure is ever printed.
-//!
-//! Spec 0080.
 
 use crate::contract::workflow::Workflow;
 use crate::money::{error::Error, ledger::Ledger};

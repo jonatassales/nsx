@@ -11,8 +11,6 @@
 //!   below zero opens with a minus sign, as in `-$1.60`.
 //! - The card formats money in the viewer's locale. That is the console's
 //!   concern: the records carry cents, never formatted text.
-//!
-//! Spec 0079.
 
 use crate::money::cents::Cents;
 

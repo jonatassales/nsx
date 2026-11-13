@@ -6,8 +6,6 @@
 //! ## Rules
 //!
 //! - The words come without the `# ` that opens a comment: the layout adds it.
-//!
-//! Spec 0077.
 
 use crate::session::{kind::Kind, line::Line, shape::Shape};
 

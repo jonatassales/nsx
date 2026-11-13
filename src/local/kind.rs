@@ -42,11 +42,9 @@
 //!   that kind lists and that does not work. nsx never deletes the shared
 //!   cluster, so until the owner decides otherwise the person removes it
 //!   (`kind delete cluster --name langdrift`).
-//! - The 20-minute wait is the spec's choice. The simulation shows no wait.
+//! - The 20-minute bound is nsx's own choice: the simulation shows no wait.
 //! - A namespace per run is the owner's answer to the shared cluster. The
 //!   simulation shows only the Deployments.
-//!
-//! Spec 0081.
 
 pub mod absent;
 pub mod apply;

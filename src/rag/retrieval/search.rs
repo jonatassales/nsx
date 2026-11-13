@@ -8,8 +8,6 @@
 //! - `vectorSearch`: `console › vector search · project episodes · top 6 by cosine similarity`
 //! - Card: Analysis · EPISODES rows: not set until this line, which shows six
 //!   placeholder rows
-//!
-//! Spec 0078.
 
 use crate::rag::retrieval::Retrieval;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

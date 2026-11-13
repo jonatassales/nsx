@@ -1,8 +1,9 @@
 //! The `runtime.md` draft
 //!
 //! The draft is the runtime's file as the plan proposes it. It holds the
-//! `langdrift` fence, whose fields are spec 0049's, and beside it the sizing
-//! report. It keeps only what the plan shows and what the run applies.
+//! `langdrift` fence, whose fields `contract/fence.rs` defines, and beside it
+//! the sizing report. It keeps only what the plan shows and what the run
+//! applies.
 //!
 //! Definition only: the `Draft` type: the fence and the sizing the report
 //! is written from. Its functions are the files in `draft/`.
@@ -20,8 +21,6 @@
 //! - The sizing report carries the proposed totals, the bound, the headroom,
 //!   the resource, the limits statement and the validation result.
 //! - Amounts are whole millicores and whole MiB.
-//!
-//! Spec 0079.
 
 pub mod card;
 pub mod line;

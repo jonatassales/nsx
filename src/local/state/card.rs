@@ -12,8 +12,6 @@
 //! - The run asks here when the runtime is ready. `removed` and `left` are
 //!   absent until the runtime is stopped, which the execution ledger marks
 //!   (`execution/card.rs`).
-//!
-//! Spec 0081.
 
 use crate::contract::{
 	hosted::{Hosted, READY},

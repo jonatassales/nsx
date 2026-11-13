@@ -4,8 +4,6 @@
 //! lists it.
 //!
 //! Definition only: the `Check` type: the check's name and where it stands.
-//!
-//! Spec 0081.
 
 use crate::checks::standing::Standing;
 

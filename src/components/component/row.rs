@@ -16,14 +16,12 @@
 //! ## Rules
 //!
 //! - The values are the path, `<stack> · <role>` and `<cpu>m · <memory> MiB`.
-//!   The padding between the columns belongs to spec 0048.
+//!   The padding between the columns belongs to `session`.
 //! - The card's row carries the same data: the stack's mark, the path, the
 //!   stack, the role, the cpu and the memory, with a bar of the component's
 //!   cpu as a share of the bound's cpu.
 //! - Numbers print as plain integers: `1024 MiB`, not `1,024 MiB`. The
 //!   grouping is the card's.
-//!
-//! Spec 0079.
 
 use crate::components::component::Component;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

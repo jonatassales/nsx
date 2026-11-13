@@ -11,19 +11,18 @@
 //! ## Rules
 //!
 //! - The program is started directly, never through a shell, and each
-//!   argument reaches it whole (spec 0058).
+//!   argument reaches it whole.
 //! - The program sees only the variables of the environment it is given,
-//!   never nsx's own (ADR 0002).
+//!   never nsx's own.
 //! - A program with no input reads nothing: its standard input is closed.
 //! - It prints nothing. A program that fails is its caller's stop.
 //!
 //! ## Open
 //!
-//! - What an interrupt does to a program still running. Ctrl-C is a stop
-//!   (spec 0048), and no spec says how the program is ended. Until one
-//!   does, a program is killed when the command that waits for it stops.
-//! - Whether a program has a time limit. Spec 0058 leaves it open for the
-//!   coding agent.
+//! - What an interrupt does to a program still running. Ctrl-C is a stop,
+//!   and how the program is ended is not settled. Until it is, a program is
+//!   killed when the command that waits for it stops.
+//! - Whether a program, the coding agent among them, has a time limit.
 //!
 //! Shared: used by `driver`, `local` and `delivery`.
 

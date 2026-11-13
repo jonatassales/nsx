@@ -13,8 +13,6 @@
 //! - The console's answer, or its silence, changes nothing: a command that
 //!   ends has nothing left to apply.
 //! - Only keeping the console's id can fail, as a file.
-//!
-//! Spec 0081.
 
 use crate::console::{client::Client, error::Error, report::Report};
 use crate::contract::{cards::Cards, intent::Intent, run::Run, status::Status};

@@ -13,8 +13,6 @@
 //! - Lines print when their work is done. No line is delayed to imitate the
 //!   simulation's pacing.
 //! - Nothing the simulation does not show is printed.
-//!
-//! Spec 0077.
 
 use crate::session::{line::Line, stop::Stop};
 

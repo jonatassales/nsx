@@ -2,7 +2,7 @@
 //!
 //! The stack is what a component is built on, as its manifest decides it. The
 //! plan prints it on the component's row and records it in the draft, and the
-//! episode a run leaves keeps it (spec 0052).
+//! episode a run leaves keeps it.
 //!
 //! Definition only: the `Stack` type and its five values: `Rust`, `Node.js`,
 //! `NATS`, `Redis` and `Next.js`. Each carries its name, the ids of its
@@ -15,8 +15,6 @@
 //! - Each value is spelled as the simulation shows it.
 //! - NATS usually serves on 4222, Redis on 6379 and Next.js on 3000. Rust
 //!   and Node.js have no usual port.
-//!
-//! Spec 0079.
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct Stack {

@@ -10,8 +10,6 @@
 //! - `similarity` is a number with two decimals.
 //! - `verdict` is `kept` or `dropped`, absent until the `drop` line prints.
 //!   `reason` is the judge's, from its closed set, absent until then too.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

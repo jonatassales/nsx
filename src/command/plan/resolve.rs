@@ -26,8 +26,6 @@
 //! ## Simulation
 //!
 //! - `planning`: `# plan · resolving the components, then sizing them inside the envelope`
-//!
-//! Spec 0077.
 
 use crate::command::{
 	brief::Brief, desk::Desk, plan::Plan, resolved::Resolved, session::Session,

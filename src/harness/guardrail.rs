@@ -20,8 +20,6 @@
 //!   and cite FIN ids only as references.
 //! - The FIN line shows each criterion as `<id>: <short statement>`, joined by
 //!   ` · `, in table order. The statements are the judge's.
-//!
-//! Spec 0078.
 
 pub mod card;
 pub mod line;

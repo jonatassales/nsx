@@ -4,8 +4,6 @@
 //! can print it as it is.
 //!
 //! Definition only: the `Error` type.
-//!
-//! Spec 0081.
 
 use std::path::PathBuf;
 

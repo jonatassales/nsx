@@ -9,9 +9,7 @@
 //! - No stage-driver call may happen between the stage's two lines: the run's
 //!   script makes none, and the count it measured, zero, is what is
 //!   recorded. `verdict/reach.rs` reads it.
-//! - `code-review` runs only after the close (spec 0059).
-//!
-//! Spec 0080.
+//! - `code-review` runs only after the close.
 
 use crate::contract::step::DONE;
 use crate::seat::part::{PERSON, Part};

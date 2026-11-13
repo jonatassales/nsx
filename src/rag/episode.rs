@@ -17,8 +17,6 @@
 //!   memory: unknown is never zero. Runs measure neither today, so every
 //!   episode nsx writes has `measured: null`.
 //! - An episode with no components is one whose run changed no runtime.
-//!
-//! Spec 0078.
 
 pub mod filed;
 pub mod load;

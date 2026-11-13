@@ -32,8 +32,6 @@
 //!
 //! - The embedder is local, the judge is neither priced nor gated, and
 //!   nothing is reserved: the act keeps the promise of the plan's first line.
-//!
-//! Spec 0077.
 
 use crate::command::{brief::Brief, desk::Desk, plan::Plan, session::Session};
 use crate::harness::{envelope::Envelope, guardrail::Guardrail};

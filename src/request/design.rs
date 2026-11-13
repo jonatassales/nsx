@@ -15,8 +15,6 @@
 //!   `money/`. This type extracts; it states neither.
 //! - The design doc is the team's document, so whatever it sets, the team
 //!   set.
-//!
-//! Spec 0078.
 
 pub mod card;
 pub mod line;

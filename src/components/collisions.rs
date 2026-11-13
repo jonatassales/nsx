@@ -11,10 +11,8 @@
 //! ## Rules
 //!
 //! - "Images resolved" counts images actually resolved, not components.
-//! - Components are unique by path (what survives of ADR 0004). The
-//!   cross-check extends that rule to ports and images.
-//!
-//! Spec 0079.
+//! - Components are unique by path. The cross-check extends that rule to
+//!   ports and images.
 
 pub mod card;
 pub mod check;

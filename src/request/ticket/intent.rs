@@ -13,8 +13,6 @@
 //!   beneath it.
 //! - The same text embeds a finished run's episode, so a ticket planned twice
 //!   meets itself.
-//!
-//! Spec 0078.
 
 use pulldown_cmark::{Event, Parser, Tag, TagEnd};
 

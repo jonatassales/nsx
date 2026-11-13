@@ -11,8 +11,6 @@
 //!
 //! - Both fields are required and not empty. No other field is allowed.
 //! - The statement is free text.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

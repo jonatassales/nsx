@@ -14,11 +14,9 @@
 //!
 //! ## Open
 //!
-//! - The workflow has two more stages, `dev-ticket` and `merge` (spec 0057),
-//!   and `run.json` records the dev ticket among its stages. Whether this type
-//!   names all seven is settled when spec 0057's fields join.
-//!
-//! Spec 0077.
+//! - The workflow has two more stages, `dev-ticket` and `merge`, and
+//!   `run.json` records the dev ticket among its stages. Whether this type
+//!   names all seven is not settled yet.
 
 use serde::{Deserialize, Serialize};
 

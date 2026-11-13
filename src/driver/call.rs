@@ -3,7 +3,7 @@
 //! One start of the coding agent, for one stage that has a skill. The call
 //! carries what the agent needs to do the stage's work on the model and at
 //! the effort the team chose, and where the skill must write its report. Its
-//! result goes to the usage record (spec 0065).
+//! result goes to the usage record.
 //!
 //! Definition only: the `Call` type, which carries the project's root, the
 //! run, the ticket, the stage, the skill text, the applied model and effort
@@ -18,10 +18,8 @@
 //! - The prompt names the stage's skill text, the ticket, the effort and the
 //!   instruction to write the stage's report at the report path.
 //! - Tokens the agent did not report are unknown (`null`), never zero.
-//! - The implement call follows the `hook` line (spec 0060). The review call
-//!   follows the dev ticket's `closed` line (spec 0061).
-//!
-//! Spec 0080.
+//! - The implement call follows the `hook` line. The review call follows the
+//!   dev ticket's `closed` line.
 
 pub mod log;
 pub mod prompt;

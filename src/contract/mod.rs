@@ -24,8 +24,8 @@
 //! - `Run` and `Outcome`: `run.json` and how the run ended, with `Hosted`
 //!   for its runtime and `Delivery`, `Pull` and `Checks` for what it
 //!   delivered
-//! - `Report` and `Status`: what nsx sends the console (spec 0073), and
-//!   `Reply`: what the console answers
+//! - `Report` and `Status`: what nsx sends the console, and `Reply`: what
+//!   the console answers
 //! - `Judged`, with its `Used` and `Cost`: the console judge's response to
 //!   one question
 //! - `Criteria`, `Episodes` and `Suggestion`: the judge's three answers, each
@@ -41,8 +41,6 @@
 //! - A field no shape defines is refused.
 //! - A section absent from a hand-off record has not been revealed yet.
 //! - No shape carries a secret.
-//!
-//! Spec 0077.
 
 pub mod amount;
 pub mod analysis;

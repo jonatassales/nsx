@@ -11,8 +11,6 @@
 //!
 //! - Only a file that is not there means no ledger: a run that never reached
 //!   its bring-up. One that is there and does not read is a stop.
-//!
-//! Spec 0081.
 
 use std::io::ErrorKind;
 use std::path::Path;

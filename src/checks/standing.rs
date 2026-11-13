@@ -6,8 +6,6 @@
 //! ## Rules
 //!
 //! - A check that was cancelled or skipped did not pass: it is `Failed`.
-//!
-//! Spec 0081.
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Standing {

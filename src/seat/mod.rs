@@ -16,10 +16,8 @@
 //! - No share, percentage, line count or reserved-part path is recorded.
 //! - Nothing about Safe Seat is on the Plan card, and there are no Safe Seat
 //!   rules or overrides to configure.
-//! - Implement, its report and `code-review` are specs 0058 and 0059's. The
-//!   checks are spec 0064's.
-//!
-//! Spec 0080.
+//! - Implement, its report and `code-review` belong to `driver/` and
+//!   `skills/`. The checks belong to `checks/`.
 
 pub mod error;
 pub mod part;

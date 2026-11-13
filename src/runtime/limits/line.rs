@@ -12,8 +12,6 @@
 //! ## Rules
 //!
 //! - The line is a warning by kind. It stops nothing: the plan goes on.
-//!
-//! Spec 0079.
 
 use crate::runtime::limits::Limits;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

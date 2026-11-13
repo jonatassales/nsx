@@ -4,8 +4,6 @@
 //! can print it as it is.
 //!
 //! Definition only: the `Error` type.
-//!
-//! Spec 0081.
 
 #[derive(Debug, thiserror::Error)]
 pub enum Error {

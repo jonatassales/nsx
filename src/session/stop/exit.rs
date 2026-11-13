@@ -15,8 +15,6 @@
 //!   simulation.
 //! - The over-budget pause never comes here: it is a shown ending and exits
 //!   0.
-//!
-//! Spec 0077.
 
 use std::io::Write;
 use std::process::ExitCode;

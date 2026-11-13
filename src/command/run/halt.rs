@@ -14,8 +14,8 @@
 //! ## Rules
 //!
 //! - Any stop after the bring-up started takes the runtime down, and an
-//!   interrupt is a stop (spec 0062). A run that stopped before its bring-up
-//!   has no ledger: nothing is asked of the cluster.
+//!   interrupt is a stop. A run that stopped before its bring-up has no
+//!   ledger: nothing is asked of the cluster.
 //! - Only this run's ledger is cleaned up here. What earlier runs left is
 //!   removed before a run's first stage (`prepare`).
 //! - The stop is said first. A take-down that fails is said after it, and
@@ -24,8 +24,6 @@
 //! - A second interrupt gives the take-down up, and says so: the next run of
 //!   the runtime removes what is left.
 //! - It prints no line.
-//!
-//! Spec 0077.
 
 use crate::command::{applied::Applied, run::Run, session::Session};
 use crate::evidence::record::Record;

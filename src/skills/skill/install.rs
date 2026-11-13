@@ -13,8 +13,6 @@
 //!
 //! - `nsx init` calls it, and it prints nothing.
 //! - A file already there is kept byte for byte, so installing twice changes
-//!   nothing (spec 0048).
+//!   nothing.
 //! - The skills are taken from the ones this repository runs, in
 //!   `.claude/skills/`.
-//!
-//! Spec 0080.

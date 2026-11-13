@@ -6,8 +6,6 @@
 //! Definition only: the `Problem` type. It carries the field, as a dotted path
 //! such as `components[1].port`, and the rule in a few words. Its function is
 //! the file in `problem/`.
-//!
-//! Spec 0077.
 
 pub mod at;
 

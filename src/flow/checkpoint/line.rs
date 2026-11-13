@@ -21,11 +21,9 @@
 //!   pairs print only when their stage is ticked.
 //! - A pair prints before its stage's own work: Planning's before `grilling`,
 //!   Spec's before `to-spec`, Tickets' before `to-tickets`, Implement's
-//!   before the `hook` line (spec 0060).
+//!   before the `hook` line.
 //! - Nothing prints between the two lines of a pair.
 //! - The lines carry the stage's id, not the card's label.
-//!
-//! Spec 0080.
 
 use crate::flow::checkpoint::Checkpoint;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

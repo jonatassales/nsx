@@ -20,8 +20,6 @@
 //! - A label of 10 columns or more is followed by exactly one space
 //!   (`to-tickets`, `code-review`).
 //! - Columns count characters: `›`, `·`, `✓` and the em dash count one each.
-//!
-//! Spec 0077.
 
 use crate::session::{line::Line, shape::Shape};
 

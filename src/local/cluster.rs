@@ -15,11 +15,9 @@
 //! - "Available" is the Deployment's own available condition with its one
 //!   replica running. No probe is added.
 //! - A space is the run's own boundary in the cluster, named after the run
-//!   and its project.
-//!   Spec 0062 named four operations for a cluster made per run; with the
-//!   shared cluster the owner kept, closing the space is the fifth.
-//!
-//! Spec 0081.
+//!   and its project. Closing the space is an operation of its own because
+//!   the cluster is shared and kept: a run removes its space, never the
+//!   cluster.
 
 use std::future::Future;
 use std::pin::Pin;

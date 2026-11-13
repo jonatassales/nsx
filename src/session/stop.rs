@@ -17,7 +17,7 @@
 //! - If the run started the runtime, it is taken down without a line.
 //! - The records reflect what happened, never more: a paid call is never
 //!   left out of the usage record, a stage keeps the state it reached in the
-//!   run's record, and money settles as spec 0056 says.
+//!   run's record, and `money/` settles the money.
 //! - Nothing is retried and nothing resumes inside the command.
 //! - One plain sentence naming the cause goes to standard error. It names no
 //!   secret. Standard error is not the session: standard output stays a
@@ -26,8 +26,6 @@
 //! - A command that ends on its last simulation line exits 0. The
 //!   over-budget pause is a shown ending and exits 0. An interrupt (Ctrl-C)
 //!   is a stop.
-//!
-//! Spec 0077.
 
 pub mod exit;
 pub mod from;

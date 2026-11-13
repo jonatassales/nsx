@@ -16,9 +16,7 @@
 //!   dropped.
 //! - No other field is allowed.
 //! - That a verdict equals the threshold's is checked where the question is
-//!   asked, in `judgment` (spec 0051).
-//!
-//! Spec 0077.
+//!   asked, in `judgment`.
 
 pub mod check;
 

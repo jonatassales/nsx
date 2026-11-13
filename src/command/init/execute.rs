@@ -1,16 +1,15 @@
 //! Creating `.langdrift/`
 //!
 //! One function: it takes the working directory and writes `.langdrift/`
-//! there, with exactly the files the specs declare as written by `nsx init`.
-//! It prints nothing and exits 0.
+//! there, with exactly the files below. It prints nothing and exits 0.
 //!
 //! ## Reads and writes
 //!
-//! - writes `.langdrift/skills/`, one folder per skill (spec 0059)
-//! - writes `.langdrift/finops/prices.json` (spec 0056)
-//! - writes `.langdrift/finops/forecasts.json` (spec 0056)
-//! - writes `.langdrift/harness/workflow.json` (spec 0057)
-//! - writes `.langdrift/harness/guardrails/0001-finops.gr.md` (spec 0054)
+//! - writes `.langdrift/skills/`, one folder per skill
+//! - writes `.langdrift/finops/prices.json`
+//! - writes `.langdrift/finops/forecasts.json`
+//! - writes `.langdrift/harness/workflow.json`
+//! - writes `.langdrift/harness/guardrails/0001-finops.gr.md`
 //! - writes `.langdrift/templates/`: `ticket.md`, `prd.md`, `dd.md`, `spec.md`
 //! - environment: `LANGDRIFT_SECRET` and `MCP_CONSOLE_URL`
 //! - when the environment offers a secret: records the console's connection
@@ -18,10 +17,10 @@
 //!
 //! ## Rules
 //!
-//! - Each file's content belongs to the folder that reads it. A spec that
-//!   needs another init file declares it first.
+//! - Each file's content belongs to the folder that reads it. Another init
+//!   file joins only when a folder reads it.
 //! - An existing file is kept byte for byte. Running it twice changes nothing.
-//! - `harness/driver.json` is not written: the team writes it (spec 0058).
+//! - `harness/driver.json` is not written: the team writes it.
 //! - The content is built into the binary from `langdrift/`, beside `src/`.
 //! - It never writes through a symbolic link: a `.langdrift/` that is one is
 //!   refused.
@@ -33,8 +32,6 @@
 //!
 //! - The document templates. The plan and the run never read them. Until the
 //!   owner decides, they are written under `.langdrift/templates/`.
-//!
-//! Spec 0077.
 
 use std::path::Path;
 

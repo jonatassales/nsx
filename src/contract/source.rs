@@ -10,8 +10,6 @@
 //! - `source` is required and `null` while the runtime has no price source:
 //!   an unknown price is never a zero.
 //! - No other field is allowed.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

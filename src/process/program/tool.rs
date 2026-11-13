@@ -6,8 +6,7 @@
 //!
 //! ## Rules
 //!
-//! - The tool sees the minimal base and the variables named, and no other
-//!   (ADR 0002).
+//! - The tool sees the minimal base and the variables named, and no other.
 //!
 //! Shared: used by `local` and `delivery`.
 

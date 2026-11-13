@@ -10,8 +10,6 @@
 //! ## Rules
 //!
 //! - The file is private: only the person who runs nsx reads it.
-//!
-//! Spec 0081.
 
 use crate::contract::encode::encode;
 use crate::files::{

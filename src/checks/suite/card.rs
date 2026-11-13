@@ -15,8 +15,6 @@
 //!   counts are absent while the checks run.
 //! - A record with no pull request yet is left as it is: the checks belong
 //!   to one.
-//!
-//! Spec 0081.
 
 use crate::checks::suite::Suite;
 use crate::contract::{

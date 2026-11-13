@@ -14,8 +14,6 @@
 //! - `readCount` counts the ticket, the PRD, the design doc and the spec.
 //!   `documentsRead` counts the four documents the ticket links.
 //! - No other field is allowed.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

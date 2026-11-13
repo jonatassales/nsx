@@ -11,8 +11,6 @@
 //! - A resolver builds nothing, loads nothing and starts nothing.
 //! - The plan asks through `Image::resolve`, which checks the answer. Nothing
 //!   else calls a resolver.
-//!
-//! Spec 0079.
 
 use crate::components::{component::Component, error::Error, image::Image};
 

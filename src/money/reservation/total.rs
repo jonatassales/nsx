@@ -8,8 +8,6 @@
 //!
 //! - The result rounds up to the next cent: an estimate of 26 cents reserves
 //!   32.
-//!
-//! Spec 0080.
 
 use crate::money::{cents::Cents, reservation::Reservation, spend::MARGIN};
 

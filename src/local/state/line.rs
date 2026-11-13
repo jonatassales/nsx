@@ -23,8 +23,6 @@
 //!   stages checked. Neither prints when the gate pauses the run.
 //! - No other runtime line exists: none for a bring-up, a timeout or an
 //!   unknown state.
-//!
-//! Spec 0081.
 
 use crate::local::state::State;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

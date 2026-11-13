@@ -16,10 +16,8 @@
 //!   least 1. For the simulation's plan it reads `runtime.md`, `draft`, 1 and
 //!   `console`.
 //! - `authorization` and `evidence` are written once, when the plan is
-//!   proposed. A run never changes them (spec 0050).
+//!   proposed. A run never changes them.
 //! - No other section is allowed.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

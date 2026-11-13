@@ -1,7 +1,7 @@
 //! Asking the criteria question
 //!
 //! One function: it takes the judge and the guardrail's criteria with their
-//! rule text (spec 0054), and gives back one statement per criterion.
+//! rule text, and gives back one statement per criterion.
 //!
 //! ## Reads and writes
 //!
@@ -14,8 +14,6 @@
 //! - A refused answer, or a judge that cannot be reached or declines, is a
 //!   stop: the plan stops before the `judgeGuardrail` line and writes no
 //!   draft.
-//!
-//! Spec 0078.
 
 use crate::contract::{
 	criteria::Criteria as Answer, plain::plain, problem::Problem,

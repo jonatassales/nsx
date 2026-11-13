@@ -22,8 +22,6 @@
 //! - Should nsx also satisfy an effort guard inside the client's coding agent,
 //!   and how would the call's session be bound to this record? The simulation
 //!   shows only nsx's own gate.
-//!
-//! Spec 0080.
 
 pub mod line;
 pub mod permit;

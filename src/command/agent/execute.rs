@@ -3,8 +3,6 @@
 //! One function: it takes the `agent` command a person typed and runs the
 //! plan or the run. It gives back how that command ended: on its last
 //! simulation line, or stopped.
-//!
-//! Spec 0077.
 
 use crate::command::{agent::Agent, session::Session};
 use crate::session::stop::Stop;

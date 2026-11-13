@@ -10,8 +10,6 @@
 //! - The id is what the intent, the judge's suggestion and the coding agent
 //!   use. The name is what the MODEL choice shows, the short name what the
 //!   Workflow header shows.
-//!
-//! Spec 0079.
 
 use serde::{Deserialize, Serialize};
 

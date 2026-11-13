@@ -15,15 +15,13 @@
 //!
 //! - A run that stops before the checks pass has no verdict: no line prints
 //!   and SAFE SEAT stays unset.
-//! - The verdict goes into the run's record (spec 0065).
+//! - The verdict goes into the run's record.
 //! - It never carries a share, a percentage or a line count.
 //!
 //! ## Open
 //!
 //! - What a run that does not meet Safe Seat prints. The simulation never
 //!   shows one.
-//!
-//! Spec 0080.
 
 pub mod card;
 pub mod line;

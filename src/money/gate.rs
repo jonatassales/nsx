@@ -11,8 +11,6 @@
 //!
 //! - A paused gate is not a failure: the run ends with exit code 0.
 //! - Amounts are whole cents.
-//!
-//! Spec 0080.
 
 pub mod line;
 pub mod open;

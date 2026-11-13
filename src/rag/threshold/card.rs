@@ -10,8 +10,6 @@
 //!
 //! - It is written before the plan's first line: the header shows the
 //!   threshold from the moment the card appears.
-//!
-//! Spec 0078.
 
 use crate::contract::cards::Cards;
 use crate::rag::threshold::Threshold;

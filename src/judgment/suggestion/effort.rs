@@ -6,8 +6,6 @@
 //! ## Simulation
 //!
 //! - `weighEffort`: `console › weighing effort · low skips the broker wiring · high is not warranted by 5 components`
-//!
-//! Spec 0078.
 
 use crate::judgment::suggestion::Suggestion;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

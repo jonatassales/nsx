@@ -7,8 +7,6 @@
 //!
 //! - The fields are written in the order the type declares them.
 //! - The text carries no final newline: the file's writer adds it.
-//!
-//! Spec 0077.
 
 use serde::Serialize;
 use serde::ser::Error;

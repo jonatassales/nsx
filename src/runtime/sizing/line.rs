@@ -14,8 +14,6 @@
 //!
 //! - A proposal over the bound never reaches this line: the plan stops
 //!   before it (`fit.rs`).
-//!
-//! Spec 0079.
 
 use crate::runtime::sizing::Sizing;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

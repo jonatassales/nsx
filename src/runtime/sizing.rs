@@ -11,17 +11,14 @@
 //!
 //! ## Simulation
 //!
-//! - Card: Plan · BOUNDED, `2,000m · 3,072 MiB`, set from the `bounds` line of
-//!   spec 0054
+//! - Card: Plan · BOUNDED, `2,000m · 3,072 MiB`, set from the `bounds` line
 //!
 //! ## Rules
 //!
 //! - Amounts are whole millicores and whole MiB.
 //! - Headroom is never clamped at zero: a sum over the bound stops the plan.
 //! - What the run applies is exactly these shares: the runtime's ready line
-//!   reads `1450m · 2304 MiB` from them (spec 0062).
-//!
-//! Spec 0079.
+//!   reads `1450m · 2304 MiB` from them.
 
 pub mod card;
 pub mod fit;

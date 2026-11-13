@@ -20,8 +20,6 @@
 //! - `-p` followed by digits is read as the port wherever it stands, so
 //!   `mkdir -p 2026 && node server.js` reads 2026. Telling the server's flag
 //!   from another tool's needs to know which command starts the server.
-//!
-//! Spec 0079.
 
 use serde_json::Value;
 

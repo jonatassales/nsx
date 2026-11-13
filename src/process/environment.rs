@@ -9,20 +9,19 @@
 //!
 //! ## Rules
 //!
-//! - The base is `PATH`, `HOME`, `TMPDIR` and the locale (ADR 0002).
+//! - The base is `PATH`, `HOME`, `TMPDIR` and the locale.
 //! - The coding agent also gets the `LANGDRIFT_` variables of its call, and
-//!   the variables the team's `driver.json` passes through (spec 0058).
-//! - `kind`, `kubectl` and Docker run with the same minimal environment
-//!   (spec 0062).
+//!   the variables the team's `driver.json` passes through.
+//! - `kind`, `kubectl` and Docker run with the same minimal environment.
 //! - A variable nobody names is not passed.
 //!
 //! ## Open
 //!
-//! - Which variables each family of tools needs beyond the base. ADR 0002
-//!   says "what that tool family needs" and lists none for `git`, `gh`,
-//!   `kind`, `kubectl` or Docker.
-//! - Which variables make up the locale. Until a spec says, they are `LANG`,
-//!   `LC_ALL`, `LC_CTYPE` and `LC_MESSAGES`.
+//! - Which variables each family of tools needs beyond the base. `git` and
+//!   `gh`, and `kind`, `kubectl` and Docker, each name their own, and neither
+//!   list is settled.
+//! - Which variables make up the locale. Until that is settled, they are
+//!   `LANG`, `LC_ALL`, `LC_CTYPE` and `LC_MESSAGES`.
 //!
 //! Shared: used by `driver`, `local` and `delivery`.
 

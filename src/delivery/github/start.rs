@@ -7,8 +7,6 @@
 //!
 //! - runs `git rev-parse`, to know whether the branch exists
 //! - runs `git checkout`, with `-b` for a new branch
-//!
-//! Spec 0081.
 
 use crate::delivery::{
 	error::Error,

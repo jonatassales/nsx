@@ -11,8 +11,6 @@
 //!
 //! - The line reports a read that already happened: the ticket is resolved and
 //!   its header read before the plan's first line.
-//!
-//! Spec 0078.
 
 use crate::request::ticket::Ticket;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

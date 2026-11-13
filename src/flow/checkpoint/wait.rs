@@ -14,9 +14,8 @@
 //! - Yes confirms. Anything else declines, and so does the end of the
 //!   input: the run stops right after the `waiting` line, prints nothing
 //!   more and leaves the stage `waiting` in the record (the stop rule).
-//! - Ticket 0426 reads the person's "done" for the dev ticket the same way.
-//!
-//! Spec 0080.
+//! - `seat` reads the person's "done" for the dev ticket from the same
+//!   input.
 
 use crate::flow::{checkpoint::Checkpoint, error::Error, reader::Reader};
 

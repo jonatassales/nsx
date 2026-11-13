@@ -18,8 +18,6 @@
 //!   `console/hold`).
 //! - Only keeping the console's id can fail the command: a state file nsx
 //!   cannot write is a stop, as for any file of the project.
-//!
-//! Spec 0081.
 
 use crate::console::{client::Client, error::Error, report::Report};
 use crate::contract::{cards::Cards, intent::Intent, run::Run};

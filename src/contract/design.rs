@@ -10,8 +10,6 @@
 //! ## Rules
 //!
 //! - All four are required. The budget is whole cents.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

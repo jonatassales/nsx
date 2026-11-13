@@ -19,8 +19,6 @@
 //! - An open pull request that is not a draft is made one again
 //!   (`gh pr ready --undo`): it is marked ready only at the end of the run.
 //! - What gh says is read strictly: a number and a title, or a stop.
-//!
-//! Spec 0081.
 
 use serde_json::Value;
 

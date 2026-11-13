@@ -16,8 +16,6 @@
 //! - A missing file, a field the configuration does not define, or `args`
 //!   without `{{model}}` and `{{effort}}`, is refused. The run then stops
 //!   before its first stage, with nothing paid (the stop rule).
-//!
-//! Spec 0080.
 
 use crate::contract::decode::decode;
 use crate::driver::{config::Config, error::Error};

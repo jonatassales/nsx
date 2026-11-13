@@ -11,8 +11,6 @@
 //!
 //! - A Deployment that is not there is already deleted, and so is any
 //!   Deployment of a cluster that does not exist.
-//!
-//! Spec 0081.
 
 use crate::local::{error::Error, kind::Kind};
 

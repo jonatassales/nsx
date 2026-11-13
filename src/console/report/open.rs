@@ -13,8 +13,6 @@
 //!
 //! - A runtime with no kept id sends none: the console opens a new runtime
 //!   and answers its id.
-//!
-//! Spec 0081.
 
 use crate::console::report::Report;
 use crate::contract::status::Status;

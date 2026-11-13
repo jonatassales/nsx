@@ -9,8 +9,6 @@
 //!   resolves it and when the fence is validated.
 //! - It reads the shape only. Whether a registry holds the image is nobody's
 //!   to say during a plan.
-//!
-//! Spec 0077.
 
 use crate::contract::plain::plain;
 

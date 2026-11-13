@@ -5,18 +5,13 @@
 //!
 //! ## Rules
 //!
-//! - The checks are the ones Core's contract made, in its Go package
-//!   `handoff` (removed with ticket 0434); spec 0049 names only the efforts,
-//!   the status and Planning.
 //! - `ticket`, `runtimeId` and `model` are not empty.
 //! - `revision` is at least 1.
 //! - `effort` is `low`, `medium` or `high`.
 //! - `human.planning` is true: Planning always has a person.
 //! - `status` is `proposed` or `authorized`.
 //! - It does not compare the model with the price list or the revision with
-//!   the draft's. Those are the run's checks (spec 0050).
-//!
-//! Spec 0077.
+//!   the draft's. Those are the run's checks.
 
 use crate::contract::{
 	fence::EFFORTS,

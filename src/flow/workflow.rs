@@ -32,8 +32,6 @@
 //! - Whether a team may change the stages, their skills or their order. Until
 //!   the owner decides, nsx plays these seven.
 //! - Whether the default follows the judge's suggestion when the two differ.
-//!
-//! Spec 0080.
 
 pub mod load;
 

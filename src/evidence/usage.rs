@@ -15,10 +15,7 @@
 //!   are `null` when any call's tokens are `null`: unknown is never zero.
 //! - The dev ticket makes no call and adds no entry to the calls.
 //! - A run paused at the gate makes no call and adds no entry.
-//! - The record holds tokens, not money: pricing them is `money`'s (spec
-//!   0056).
-//!
-//! Spec 0080.
+//! - The record holds tokens, not money: pricing them is `money`'s.
 
 pub mod kept;
 pub mod line;

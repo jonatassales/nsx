@@ -11,8 +11,6 @@
 //!
 //! - The short hash is seven characters, cut from the whole hash here: nsx
 //!   never asks `git` for a short one, which grows when seven are ambiguous.
-//!
-//! Spec 0081.
 
 use crate::delivery::branch::Branch;
 

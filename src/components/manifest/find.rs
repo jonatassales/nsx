@@ -18,8 +18,6 @@
 //!   before the component's inspect line, under the stop rule.
 //! - The folder is inside the project, and neither it nor its manifest is a
 //!   symbolic link.
-//!
-//! Spec 0079.
 
 use std::path::Path;
 

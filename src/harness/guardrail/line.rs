@@ -20,10 +20,8 @@
 //! ## Open
 //!
 //! - The line lists FIN-02 and FIN-04 and omits FIN-03, while the judge's line
-//!   and the card list all three. The spec follows the simulation literally. Is
+//!   and the card list all three. nsx follows the simulation literally. Is
 //!   the omission meant?
-//!
-//! Spec 0078.
 
 use std::path::Path;
 

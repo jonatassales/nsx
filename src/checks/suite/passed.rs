@@ -6,8 +6,6 @@
 //! ## Rules
 //!
 //! - A suite with no check has not passed: nothing was checked.
-//!
-//! Spec 0081.
 
 use crate::checks::{standing::Standing, suite::Suite};
 

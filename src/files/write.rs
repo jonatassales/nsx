@@ -13,17 +13,16 @@
 //!
 //! - `plan.json` is replaced this way each time a line reveals a field, and
 //!   `run.json` each time one of its sections changes, so that a receiver can
-//!   follow the cards live (specs 0050 and 0065).
+//!   follow the cards live.
 //! - A record that cannot be written is a stop, before the line that needed
 //!   it.
 //!
 //! ## Open
 //!
-//! - `nsx init` keeps a file that exists byte for byte (spec 0048). Whether
-//!   that is a second way of writing here or `command`'s own check is not
-//!   settled.
-//! - Spec 0073 asks for mode 0600 on the credentials file. Whether the mode
-//!   is given to this function is not settled.
+//! - `nsx init` keeps a file that exists byte for byte. Whether that is a
+//!   second way of writing here or `command`'s own check is not settled.
+//! - The credentials file has mode 0600. Whether the mode is given to this
+//!   function is not settled.
 //!
 //! Shared: used by every folder that writes a file under `.langdrift/`.
 

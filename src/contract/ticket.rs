@@ -13,12 +13,10 @@
 //!   empty.
 //! - `number`, `status` and `title` are `null` when the ticket does not state
 //!   them, never an empty text.
-//! - The header is written before the plan's first line (spec 0050).
+//! - The header is written before the plan's first line.
 //! - `links` is absent until the plan's `links` line prints, then holds the
 //!   four documents in the order PRD, design doc, spec, guardrail.
 //! - No other field is allowed.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

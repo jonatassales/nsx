@@ -19,8 +19,6 @@
 //! - If the record cannot be written, the stop rule applies: the run stops
 //!   before the `hook` line, implement is never called and nothing is
 //!   printed instead.
-//!
-//! Spec 0080.
 
 use crate::console::client::Client;
 use crate::contract::{effort::Effort as Recorded, intent::Intent};

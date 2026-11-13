@@ -14,8 +14,6 @@
 //! - Both arrive when the plan's last result line prints, and are never
 //!   rewritten.
 //! - This function writes no file: the one writer in `handoff/` does.
-//!
-//! Spec 0079.
 
 use crate::contract::{
 	authorization::Authorization, cards::Cards, evidence::Evidence,

@@ -13,8 +13,6 @@
 //! - The suggestion is a recommendation. It authorizes nothing.
 //! - No other section is allowed. `documents` is a `Documents`, `episodes` a
 //!   `Retrieval` and `suggestion` a `Recommendation`.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

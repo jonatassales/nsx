@@ -21,8 +21,6 @@
 //!   A price list without one of the models, or a forecast without one of
 //!   the efforts, stops the command, and so does an amount too large to
 //!   state in cents.
-//!
-//! Spec 0079.
 
 use crate::contract::fence::EFFORTS;
 use crate::money::{

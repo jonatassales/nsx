@@ -4,7 +4,7 @@
 //! each path it finds the manifest, which gives the stack and the role, takes
 //! the port, resolves the image and proposes a share. Then it cross-checks the
 //! components for collisions. Each resolved component goes to the `runtime.md`
-//! draft (spec 0055) and to the plan's card data (spec 0050).
+//! draft and to the plan's card data.
 //!
 //! - `Component`: one component and what the plan resolved for it
 //! - `Manifest`: the file that says what a component is
@@ -18,18 +18,15 @@
 //!
 //! ## Rules
 //!
-//! - What survives of ADR 0004: a component is its folder in the client's
-//!   project, named by its path; its image is resolved by nsx, never typed
-//!   into the fence or sent by the console; components are unique by path.
-//! - What ADR 0005 superseded: the Dockerfile as the component's definition,
-//!   the derived image tag, `EXPOSE` as the port, `HEALTHCHECK` as readiness,
-//!   the env file and its Secret.
-//! - No Dockerfile, healthcheck, env file or ceiling takes part in the plan.
+//! - A component is its folder in the client's project, named by its path;
+//!   its image is resolved by nsx, never typed into the fence or sent by the
+//!   console; components are unique by path.
+//! - A component is not a Dockerfile: `EXPOSE` is not its port and
+//!   `HEALTHCHECK` is not its readiness. No Dockerfile, healthcheck, env
+//!   file, Secret or ceiling takes part in the plan.
 //! - Nothing is built, loaded, started or probed here: images are resolved,
-//!   never built or run (spec 0062).
-//! - Reading the spec and counting its components belong to spec 0053.
-//!
-//! Spec 0079.
+//!   never built or run.
+//! - Reading the spec and counting its components belong to `request`.
 
 pub mod collisions;
 pub mod component;

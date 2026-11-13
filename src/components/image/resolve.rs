@@ -16,8 +16,6 @@
 //! - The answer is checked with the fence's own rule for an image
 //!   (`contract/reference.rs`): plain text with no space in it. An answer
 //!   that is empty or breaks the rule is refused: it goes into the draft.
-//!
-//! Spec 0079.
 
 use crate::components::{
 	component::Component, error::Error, image::Image, resolver::Resolver,

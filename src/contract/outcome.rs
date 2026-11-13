@@ -16,8 +16,6 @@
 //! - `completed` is set when the `ready` line prints.
 //! - The card's paused result reads the money ledger, not this field.
 //! - In `run.json` the outcome is `null` until known.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

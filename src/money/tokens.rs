@@ -8,8 +8,6 @@
 //! ## Rules
 //!
 //! - A count is a whole number, never negative and never a fraction.
-//!
-//! Spec 0079.
 
 use serde::{Deserialize, Serialize};
 

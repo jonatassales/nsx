@@ -11,8 +11,6 @@
 //! - `kind` is `Deployment` and `replicas` is 1: the plan proposes nothing
 //!   else.
 //! - Every field is required, and no other field is allowed.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

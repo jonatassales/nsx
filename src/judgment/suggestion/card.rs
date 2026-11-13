@@ -14,8 +14,6 @@
 //!
 //! - Nothing of the suggestion is written before the `suggest` line: the card
 //!   shows placeholders until then.
-//!
-//! Spec 0078.
 
 use crate::contract::{cards::Cards, recommendation::BY};
 use crate::judgment::suggestion::Suggestion;

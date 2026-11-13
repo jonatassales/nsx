@@ -11,9 +11,8 @@
 //! ## Rules
 //!
 //! - It has no merge operation: nothing in nsx merges.
-//! - It is the one port spec 0063 asks for, with its four operations: start
-//!   the branch, push, open a draft pull request, mark it ready. Spec 0064
-//!   extends it with the read of the checks.
+//! - It is delivery's one port, with five operations: start the branch,
+//!   push, open a draft pull request, read the checks and mark it ready.
 //! - No operation commits.
 //! - Pushing gives back the pushed head's hash, whole, and opening gives
 //!   back the pull request's number and title.
@@ -21,8 +20,6 @@
 //!   one the run pushed. A pull request that is not at that commit has no
 //!   checks of it to give: the answer is nothing, which is not an empty
 //!   list.
-//!
-//! Spec 0081.
 
 use std::future::Future;
 use std::pin::Pin;

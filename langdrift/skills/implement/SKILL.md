@@ -15,7 +15,7 @@ Every ticket reserves a dev part for the owner, as the Dev part section of `.age
 - Never create, edit or delete anything in its paths, and that includes its tests: the owner writes the solution and the tests. Write only the boundary the section names, outside those paths.
 - When only the dev part remains, stop. Typechecking and the tests then fail on the dev part's missing symbols, as expected, and on nothing else. Report its paths, the boundary you wrote, its goal and acceptance criteria, and those expected failures, then wait for the owner.
 - An override in place of the fields leaves no dev part. An override beside the fields lets you write its paths.
-- A ticket from 0199 on with neither a `Dev part` section nor an override stops you before you start: ask the owner for one. Tickets up to 0198 predate the policy and run as before.
+- A ticket with neither a `Dev part` section nor an override stops you before you start: ask the owner for one.
 
 Call the Skill tool with "tdd" where possible, at pre-agreed seams.
 

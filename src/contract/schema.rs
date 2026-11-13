@@ -13,7 +13,7 @@
 //!
 //! - Published: the fence, the judge's three answers, the five stage reports,
 //!   `plan.json`, `intent.json` and `run.json`, and the report to the console
-//!   with its answer. Spec 0073 publishes the hand-off's and the report's.
+//!   with its answer.
 //! - A schema refuses every field its shape does not define. A section whose
 //!   fields are not defined yet allows no field.
 //! - A schema keeps the `$id` it is published under. The report refers to the
@@ -28,8 +28,6 @@
 //!   them: integer formats, the type beside a closed set, and an object
 //!   without a property list. A shape published on its own is referred to by
 //!   its `$id`, never inlined.
-//!
-//! Spec 0077.
 
 use schemars::{
 	JsonSchema, Schema,

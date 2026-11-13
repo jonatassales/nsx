@@ -9,8 +9,6 @@
 //! - The removed count is what the execution ledger records as removed.
 //! - It is asked only once the ledger is settled: a state is stopped only
 //!   when nothing is left.
-//!
-//! Spec 0081.
 
 use crate::local::{execution::Execution, state::State};
 

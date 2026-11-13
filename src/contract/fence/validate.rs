@@ -6,14 +6,12 @@
 //!
 //! ## Rules
 //!
-//! - The bounds are the ones Core's contract enforced, in its Go package
-//!   `configuration` (removed with ticket 0434); spec 0049 names the fields.
 //! - It collects every problem and never stops at the first.
 //! - `version` is 3, `runtimeId` is a lowercase DNS label and `revision` is at
 //!   least 1.
 //! - The bound is 1 to 64,000 millicores and 1 to 1,048,576 MiB.
-//! - `model` is not empty and `effort` is one of the three. Whether the model
-//!   is in the price list is spec 0056's check.
+//! - `model` is not empty and `effort` is one of the three. The price list is
+//!   not read here.
 //! - There are 1 to 16 components.
 //! - Each `path` is clean, relative, outside `.langdrift` and unique.
 //! - Each `stack` and each `role` is in its closed set.
@@ -21,8 +19,6 @@
 //! - Each `image` is an image reference and distinct.
 //! - Each share is positive, and the shares sum to at most the bound.
 //! - Each `replicas` is 1.
-//!
-//! Spec 0077.
 
 use std::collections::HashSet;
 

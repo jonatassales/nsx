@@ -21,8 +21,6 @@
 //! - A run that paid for a call meanwhile stops before the `closed` line,
 //!   which says "no paid call". So does one whose usage record holds fewer
 //!   of its calls than before the wait: that count measures nothing.
-//!
-//! Spec 0077.
 
 use crate::command::{
 	applied::Applied, run::Run, session::Session, work::Work,

@@ -25,8 +25,6 @@
 //!   run before anything is paid.
 //! - A branch that can be neither started nor checked out stops the run
 //!   before the first stage.
-//!
-//! Spec 0077.
 
 use crate::command::{
 	applied::Applied, run::Run, session::Session, work::Work,

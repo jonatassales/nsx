@@ -14,8 +14,6 @@
 //! - The kubeconfig is written when the cluster is first reached: the
 //!   cluster may have been created by another project, or made anew since
 //!   the last run. Once reached, the cluster is not asked again.
-//!
-//! Spec 0081.
 
 use crate::local::{
 	error::Error,

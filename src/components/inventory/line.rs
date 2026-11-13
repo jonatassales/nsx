@@ -12,8 +12,6 @@
 //! ## Rules
 //!
 //! - The line says "named in the spec": that is where the list comes from.
-//!
-//! Spec 0079.
 
 use crate::components::inventory::Inventory;
 use crate::request::named::Named;

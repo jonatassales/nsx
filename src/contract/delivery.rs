@@ -12,8 +12,6 @@
 //!   `pullRequest` until the run opens it.
 //! - `commit` is the pushed head's seven-character short hash.
 //! - No other field is allowed.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

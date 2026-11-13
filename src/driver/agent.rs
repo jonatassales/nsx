@@ -14,8 +14,6 @@
 //! - What the agent prints never enters evidence.
 //! - How the agent maps the effort onto its own reasoning setting is its own
 //!   configuration. nsx guarantees only that the applied value reaches it.
-//!
-//! Spec 0080.
 
 use std::future::Future;
 use std::pin::Pin;

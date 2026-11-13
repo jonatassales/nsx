@@ -17,8 +17,6 @@
 //!   body without the answer's text stops the plan with one sentence that
 //!   carries the console's reason and never the secret.
 //! - What the answer says is checked by whoever asked.
-//!
-//! Spec 0078.
 
 use std::future::Future;
 use std::pin::Pin;

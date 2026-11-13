@@ -21,8 +21,6 @@
 //!   holds `{{effort}}`, such as a ticket's id, stays as it is.
 //! - The placeholders are `{{prompt}}`, `{{model}}`, `{{effort}}`,
 //!   `{{report}}`, `{{skill}}`, `{{stage}}`, `{{ticket}}` and `{{run}}`.
-//!
-//! Spec 0080.
 
 use std::future::Future;
 use std::pin::Pin;

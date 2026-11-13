@@ -22,8 +22,6 @@
 //!   reads, is a stop. The console is told `error` once, and nothing waits
 //!   for its answer beyond the client's own bound.
 //! - It prints nothing.
-//!
-//! Spec 0077.
 
 use crate::command::{run::Run, session::Session};
 use crate::console::{error::Error, play::Play, report::Report};

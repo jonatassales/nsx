@@ -12,8 +12,6 @@
 //! - A target that climbs out of the project is refused.
 //! - Short ids: a name of the form `<number>-<KIND>-<rest>` is shown as
 //!   `<number>-<KIND>`, any other name without its suffix.
-//!
-//! Spec 0078.
 
 use std::path::{Component, Path, PathBuf};
 

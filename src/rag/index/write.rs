@@ -6,8 +6,6 @@
 //! ## Reads and writes
 //!
 //! - writes `.langdrift/agent/state/rag/index.json`
-//!
-//! Spec 0078.
 
 use serde_json::to_vec;
 

@@ -18,11 +18,9 @@
 //!
 //! ## Open
 //!
-//! - The stages and the default choice join with spec 0080.
+//! - The stages and the default choice are not in the section yet.
 //! - The price list's model names and its read date are not in the section
 //!   yet: the card's header and its MODEL price line need them.
-//!
-//! Spec 0077.
 
 pub mod pair;
 

@@ -26,8 +26,6 @@
 //! - Whether a `Checked at` column is the way a guardrail says which step a
 //!   criterion governs. The column is provisional: if the `reads` line's
 //!   omission of FIN-03 is a slip, the column is dropped.
-//!
-//! Spec 0078.
 
 use crate::files::{
 	root::Root,

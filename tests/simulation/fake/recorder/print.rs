@@ -2,8 +2,6 @@
 //!
 //! One function: it takes a line and keeps it after the lines it already
 //! holds. It never stops.
-//!
-//! Spec 0077.
 
 use nsx::session::{line::Line, sink::Sink, stop::Stop};
 

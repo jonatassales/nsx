@@ -7,8 +7,6 @@
 //!
 //! - The gate is decided before any paid call (FIN-02, FIN-03).
 //! - A reservation equal to the budget opens the gate.
-//!
-//! Spec 0080.
 
 use crate::money::{cents::Cents, gate::Gate};
 

@@ -20,8 +20,6 @@
 //! - Which model judges. Until the owner decides, it is `claude-sonnet-5-5`,
 //!   and a console that does not offer it stops the plan with the console's
 //!   own answer.
-//!
-//! Spec 0078.
 
 pub mod ask;
 pub mod open;

@@ -33,8 +33,6 @@
 //! - Where the port comes from when the manifest cannot declare one, as with
 //!   `Cargo.toml`. The chain above is provisional: every component's port may
 //!   come from the spec instead.
-//!
-//! Spec 0079.
 
 use std::path::Path;
 

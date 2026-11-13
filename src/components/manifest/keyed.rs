@@ -16,8 +16,6 @@
 //!   level counts: a `port` inside a block is another listener's.
 //! - The value is given back as written. Whether it is a port is
 //!   `port.rs`'s to say.
-//!
-//! Spec 0079.
 
 use crate::components::manifest::Manifest;
 

@@ -10,8 +10,6 @@
 //!
 //! - The short id is what the lines show, the file name what the card shows.
 //! - `Links` holds one link per kind.
-//!
-//! Spec 0078.
 
 pub mod locate;
 

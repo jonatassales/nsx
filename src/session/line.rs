@@ -14,17 +14,14 @@
 //!   trailing space.
 //! - Items inside a value are separated by ` · `.
 //! - Numbers print without thousands separators (`1450m`, `2304 MiB`). Money
-//!   and token figures follow spec 0056 (`$25.00`, `3.5M`, `250K`).
+//!   and token figures follow `money/` (`$25.00`, `3.5M`, `250K`).
 //! - The words of a line belong to the folder that owns it, never to this
 //!   one.
 //!
 //! ## Open
 //!
-//! - Where the catalog lives. The spec keeps one catalog of the lines, keyed
-//!   by the simulation's line ids. This draft has no file for it: each
-//!   line's words sit in its owner's `line.rs`.
-//!
-//! Spec 0077.
+//! - Whether the lines get one catalog, keyed by the simulation's line ids.
+//!   No file holds one: each line's words sit in its owner's `line.rs`.
 
 pub mod comment;
 pub mod render;

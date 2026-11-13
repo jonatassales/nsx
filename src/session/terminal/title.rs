@@ -18,8 +18,6 @@
 //! - Piped output carries no escape sequence, so nothing is written there.
 //! - A folder name that carries a control character is never written into
 //!   the sequence: it is a stop.
-//!
-//! Spec 0077.
 
 use std::io::Write;
 

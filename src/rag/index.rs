@@ -14,8 +14,6 @@
 //! - It is rebuilt from the episode records only when it is missing or was
 //!   built by another embedder.
 //! - No command rebuilds it: it is always right without one.
-//!
-//! Spec 0078.
 
 pub mod current;
 pub mod load;

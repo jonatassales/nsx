@@ -11,8 +11,6 @@
 //! ## Rules
 //!
 //! - All four are required. The counts are never negative.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

@@ -20,8 +20,6 @@
 //!   belongs to `runtime/`.
 //! - A design doc without the envelope stops the plan (the stop rule). The
 //!   plan never sizes against an invented bound.
-//!
-//! Spec 0078.
 
 pub mod card;
 pub mod line;

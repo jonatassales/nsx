@@ -9,15 +9,13 @@
 //!
 //! ## Simulation
 //!
-//! - Card: Analysis · the FIN line, which spec 0054 shows from these
+//! - Card: Analysis · the FIN line, which `harness/` shows from these
 //!   statements
 //!
 //! ## Rules
 //!
 //! - Every criterion is judged, in the guardrail's order: none is skipped and
 //!   none is invented.
-//!
-//! Spec 0078.
 
 pub mod ask;
 pub mod card;

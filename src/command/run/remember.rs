@@ -20,8 +20,6 @@
 //!   component's stack or role, or without the suggested resource, stops
 //!   here: nothing is written in its place.
 //! - It prints nothing.
-//!
-//! Spec 0077.
 
 use crate::command::{applied::Applied, run::Run};
 use crate::files::text::{DOCUMENT, text};

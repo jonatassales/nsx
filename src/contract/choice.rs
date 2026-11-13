@@ -13,8 +13,6 @@
 //! - It never carries who pressed or when: that evidence stays in the
 //!   console.
 //! - No other field is allowed.
-//!
-//! Spec 0077.
 
 pub mod of;
 

@@ -12,8 +12,6 @@
 //!
 //! - A verdict that is not met writes nothing: the section stays unset.
 //! - This function writes no file: `evidence/record/write.rs` does.
-//!
-//! Spec 0080.
 
 use crate::contract::{
 	run::Run,

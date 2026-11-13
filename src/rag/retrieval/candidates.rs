@@ -12,7 +12,7 @@
 //! ## Rules
 //!
 //! - Similarities print with two decimals.
-//! - The judge's `judgeRelevance` line follows this one (spec 0051).
+//! - The judge's `judgeRelevance` line follows this one.
 //!
 //! ## Open
 //!
@@ -20,8 +20,6 @@
 //!   the line keeps its template with the real count. With no candidate it
 //!   reads `0 candidates`, without the similarity part: a wording the
 //!   simulation does not show yet, and the owner may replace it.
-//!
-//! Spec 0078.
 
 use crate::rag::retrieval::Retrieval;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

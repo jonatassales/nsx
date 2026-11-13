@@ -12,8 +12,6 @@
 //!
 //! - The words for one component or one criterion. The golden shows only
 //!   plurals, and the line keeps them for any count.
-//!
-//! Spec 0078.
 
 use crate::request::spec::Spec;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

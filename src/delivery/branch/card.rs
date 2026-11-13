@@ -11,8 +11,6 @@
 //!
 //! - `commit` is the short hash, as the card shows it.
 //! - What the section already holds of the pull request stays.
-//!
-//! Spec 0081.
 
 use crate::contract::run::Run;
 use crate::delivery::branch::Branch;

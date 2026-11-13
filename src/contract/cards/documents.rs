@@ -3,8 +3,6 @@
 //! One function: it gives back the `documents` section of the card data,
 //! opening the Analysis card and the section when a line fills them for the
 //! first time.
-//!
-//! Spec 0077.
 
 use crate::contract::{cards::Cards, documents::Documents};
 

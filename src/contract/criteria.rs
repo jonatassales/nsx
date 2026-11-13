@@ -13,9 +13,7 @@
 //! - Each `statement` is not empty. It is free text.
 //! - No other field is allowed.
 //! - That no criterion is skipped and none invented is checked where the
-//!   question is asked, in `judgment` (spec 0051).
-//!
-//! Spec 0077.
+//!   question is asked, in `judgment`.
 
 pub mod check;
 

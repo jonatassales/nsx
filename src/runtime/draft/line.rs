@@ -13,9 +13,7 @@
 //! - The line prints only when the count is 0: the simulation shows no other
 //!   count.
 //! - The plan's `draft` line is not printed here. It belongs to the hand-off
-//!   (spec 0050).
-//!
-//! Spec 0079.
+//!   (`handoff/`).
 
 use crate::runtime::draft::Draft;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

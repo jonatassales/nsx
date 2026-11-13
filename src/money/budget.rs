@@ -15,16 +15,14 @@
 //!   no allocation per ticket and no period envelope.
 //! - The run reads the budget the plan recorded, so the gate is the one the
 //!   card described.
-//! - The console's team budget (spec 0075) is a different thing: nsx neither
-//!   sets, reads nor sends it.
+//! - The console's team budget is a different thing: nsx neither sets, reads
+//!   nor sends it.
 //!
 //! ## Open
 //!
 //! - Raising the budget after a pause means editing the design doc. Whether
 //!   that needs a new plan, or the next `nsx agent run` reads it again, is
 //!   open.
-//!
-//! Spec 0079.
 
 pub mod cite;
 pub mod line;

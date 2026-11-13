@@ -12,8 +12,6 @@
 //!
 //! - The ledger is written first and the creation comes second, so cleanup
 //!   acts only on what the run created.
-//!
-//! Spec 0081.
 
 use crate::files::{layout::Layout, root::Root};
 use crate::local::{error::Error, execution::Execution};

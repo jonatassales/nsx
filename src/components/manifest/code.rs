@@ -15,8 +15,6 @@
 //!   wrapped whole in braces, as JSON is, keeps its keys at the top level.
 //! - `redis.conf` has no blocks: every line is at the top level.
 //! - A quoted value never runs past its line.
-//!
-//! Spec 0079.
 
 use crate::components::manifest::Manifest;
 

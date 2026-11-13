@@ -10,8 +10,6 @@
 //!
 //! - A port the spec does not name is unknown, never zero. `components/`
 //!   finds it in the manifest or in the stack's usual port.
-//!
-//! Spec 0078.
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Named {

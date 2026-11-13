@@ -11,8 +11,6 @@
 //! - Every field is required, and no other field is allowed.
 //! - The count is the real one. A plan whose count is not 0 stops before it
 //!   writes this.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

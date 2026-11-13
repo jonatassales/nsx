@@ -5,8 +5,6 @@
 //! ## Rules
 //!
 //! - Any other value is refused: nsx never guesses what the team meant.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

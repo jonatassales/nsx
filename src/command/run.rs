@@ -14,7 +14,7 @@
 //! - It applies the one intent whose status is authorized and that has no
 //!   completed run. More than one is a stop. None is a stop, unless the
 //!   project is connected to the console and one intent is proposed: then
-//!   the run waits, printing nothing, for the team's Play (spec 0076).
+//!   the run waits, printing nothing, for the team's Play.
 //! - A completed intent is not runnable again. A stopped run's intent stays
 //!   runnable and starts again from the gate.
 //! - A person's answer is a line on the run's standard input, never a second
@@ -24,8 +24,6 @@
 //!
 //! - Which intent runs when several are authorized, and whether an intent
 //!   may run a second time. The rules above stand until the owner decides.
-//!
-//! Spec 0077.
 
 pub mod authorize;
 pub mod call;

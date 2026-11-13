@@ -19,8 +19,6 @@
 //! - How many components are resolved is the number of filled rows of the
 //!   card's COMPONENTS. This function adds the totals.
 //! - This function writes no file: the one writer in `handoff/` does.
-//!
-//! Spec 0079.
 
 use crate::contract::{amount::Amount, cards::Cards};
 use crate::runtime::sizing::Sizing;

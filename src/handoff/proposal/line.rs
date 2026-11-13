@@ -11,8 +11,6 @@
 //!
 //! - Whether the words "proposed to the console" stay. The owner keeps them
 //!   or changes them in the simulation first.
-//!
-//! Spec 0079.
 
 use crate::handoff::proposal::Proposal;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

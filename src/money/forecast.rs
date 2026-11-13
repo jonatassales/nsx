@@ -22,8 +22,6 @@
 //!   effort, a figure derived from the spec's components, or episodes that
 //!   measured tokens. Until the owner decides, the file is the team's forecast
 //!   per effort.
-//!
-//! Spec 0079.
 
 pub mod load;
 

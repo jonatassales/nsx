@@ -12,8 +12,6 @@
 //! - The bearer is the secret. It is never printed or logged.
 //! - No redirect is followed: the secret goes to the recorded origin alone.
 //! - A call waits at most 4 seconds.
-//!
-//! Spec 0081.
 
 pub mod open;
 pub mod report;

@@ -26,8 +26,6 @@
 //! - Who keeps the price list current, and whether a team may edit or extend
 //!   `finops/prices.json`. Until that is decided, a model beyond the three is
 //!   refused when the list is read, never silently skipped.
-//!
-//! Spec 0079.
 
 pub mod card;
 pub mod line;

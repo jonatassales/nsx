@@ -10,10 +10,8 @@
 //! - A count other than 0 stops the plan before the `validate` line, under
 //!   the stop rule. The count goes into the one sentence on stderr, with
 //!   each field and the rule it breaks, and no draft is written.
-//! - The schema and the fence's own rules are spec 0049's. This function
-//!   counts what they report.
-//!
-//! Spec 0079.
+//! - The schema and the fence's own rules belong to `contract/`. This
+//!   function counts what they report.
 
 use crate::runtime::{draft::Draft, error::Error};
 

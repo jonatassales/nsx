@@ -14,8 +14,6 @@
 //! - The file is written before anything is sent: the console is told only
 //!   what the project holds.
 //! - A console that does not answer stops nothing (`console/report/send.rs`).
-//!
-//! Spec 0080.
 
 use crate::console::client::Client;
 use crate::contract::{encode::encode, run::Run};

@@ -14,8 +14,6 @@
 //!   is the last segment of the component's path:
 //!   `book-a-demo-runtime/signup-api:r1`.
 //! - Nothing is built, pulled or looked up.
-//!
-//! Spec 0079.
 
 pub mod resolve;
 

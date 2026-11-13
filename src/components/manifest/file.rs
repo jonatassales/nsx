@@ -2,8 +2,6 @@
 //!
 //! One function: it gives back the name of the file a manifest is, as it sits
 //! in the component's folder and as the inspect line names it.
-//!
-//! Spec 0079.
 
 use crate::components::manifest::Manifest;
 

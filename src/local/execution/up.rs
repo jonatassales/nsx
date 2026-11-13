@@ -20,8 +20,6 @@
 //! - A space not opened, an image not available or a Deployment never
 //!   available is a stop under the stop rule: what was created is taken
 //!   down and the ledger is settled (`cleanup`).
-//!
-//! Spec 0081.
 
 use crate::files::{layout::Layout, root::Root};
 use crate::local::{

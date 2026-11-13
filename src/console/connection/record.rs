@@ -23,8 +23,6 @@
 //!   written. A project that is not a Git repository tracks nothing.
 //! - The secret never enters a tracked file, a log or a printed line, and no
 //!   refusal's sentence carries it.
-//!
-//! Spec 0081.
 
 use crate::console::{connection::Connection, error::Error, origin::origin};
 use crate::contract::encode::encode;

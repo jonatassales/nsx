@@ -25,9 +25,7 @@
 //! - A checkpoint is answered inside `nsx agent run`: no other command, no
 //!   second run and no prompt line.
 //! - This folder runs no skill and no effort hook, prices nothing and prints
-//!   no `ready` line: specs 0058, 0059, 0060, 0056 and 0063 do.
-//!
-//! Spec 0080.
+//!   no `ready` line: `driver`, `skills`, `hook`, `money` and `delivery` do.
 
 pub mod checkpoint;
 pub mod choice;

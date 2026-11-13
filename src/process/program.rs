@@ -11,7 +11,7 @@
 //! ## Rules
 //!
 //! - The name is looked up on the environment's `PATH`, never a shell line.
-//! - The arguments are never split or joined (spec 0058).
+//! - The arguments are never split or joined.
 //! - The input is what the program reads on its standard input. With none,
 //!   the program reads nothing.
 //!

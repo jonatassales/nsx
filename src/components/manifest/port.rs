@@ -21,8 +21,6 @@
 //!
 //! - How `next.config.ts` sets a port. Until a rule exists, a Next.js
 //!   component serves on its stack's usual port.
-//!
-//! Spec 0079.
 
 use std::path::Path;
 

@@ -11,14 +11,12 @@
 //!
 //! - Each drop reason is listed once, in the set's order: `other runtime`,
 //!   `no broker`, `docs only`, joined by `, `.
-//! - It comes between the `candidates` line and the `drop` line (spec 0052).
+//! - It comes between the `candidates` line and the `drop` line.
 //!
 //! ## Open
 //!
 //! - What the line reads when no candidate is dropped, or none is kept: the
-//!   spec gives one template, with both counts.
-//!
-//! Spec 0078.
+//!   simulation shows one template, with both counts.
 
 use crate::contract::episode::REASONS;
 use crate::judgment::relevance::Relevance;

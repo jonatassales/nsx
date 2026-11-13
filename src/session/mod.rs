@@ -22,8 +22,6 @@
 //!   output, not a claim that the console reasons (ADR 0005).
 //! - Standard output is always a prefix of the simulation's transcript.
 //! - Nothing the simulation does not show is printed.
-//!
-//! Spec 0077.
 
 pub mod interrupt;
 pub mod kind;

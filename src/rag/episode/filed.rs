@@ -8,8 +8,6 @@
 //! - The id is the name up to its second hyphen, and it is an episode's id
 //!   (`number`).
 //! - Any other name in the episodes folder is no record.
-//!
-//! Spec 0078.
 
 use crate::rag::episode::Episode;
 

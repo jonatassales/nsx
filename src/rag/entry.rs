@@ -5,8 +5,6 @@
 //!
 //! Definition only: the `Entry` type: the episode's id, its slug and the
 //! vector its intent was embedded into.
-//!
-//! Spec 0078.
 
 use serde::{Deserialize, Serialize};
 

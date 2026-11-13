@@ -17,9 +17,7 @@
 //! ## Rules
 //!
 //! - The verdict is the threshold's. The reason is the judge's, from its
-//!   closed set (spec 0051).
-//!
-//! Spec 0078.
+//!   closed set.
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Candidate {

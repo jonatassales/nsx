@@ -16,8 +16,6 @@
 //!   figure that was not measured.
 //! - It runs after the `runtimeReady` line and before the push.
 //! - The release is written when the `ready` line prints (`carry`).
-//!
-//! Spec 0077.
 
 use crate::command::{applied::Applied, run::Run, session::Session};
 use crate::evidence::{error::Error as Evidence, usage::Usage};

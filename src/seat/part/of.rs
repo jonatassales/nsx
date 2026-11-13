@@ -7,8 +7,6 @@
 //!
 //! - Safe Seat is decided from what the record says, not from what the run
 //!   remembers: the state, who closed the stage and the paid calls counted.
-//!
-//! Spec 0080.
 
 use crate::contract::step::Step;
 use crate::seat::part::Part;

@@ -12,15 +12,13 @@
 //!
 //! ## Rules
 //!
-//! - `for review` or `to merge` follows spec 0057's `reviewed` and nothing
-//!   else.
-//! - The released amount inside `ready` is supplied by `money/settlement`
-//!   (spec 0056). It is the run's reserved minus observed, so it changes with
-//!   the model and the effort. The pr line does not show it.
-//! - The run's `# next` comment follows the ready line (spec 0057).
+//! - `for review` or `to merge` follows `reviewed`, the Review tick, and
+//!   nothing else.
+//! - The released amount inside `ready` is supplied by `money/settlement`.
+//!   It is the run's reserved minus observed, so it changes with the model
+//!   and the effort. The pr line does not show it.
+//! - The run's `# next` comment follows the ready line.
 //! - Neither line prints in an over-budget run.
-//!
-//! Spec 0081.
 
 use crate::delivery::{pull::Pull, readiness::Readiness};
 use crate::money::cents::Cents;

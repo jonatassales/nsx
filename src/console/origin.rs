@@ -11,8 +11,6 @@
 //!   beyond `/`.
 //! - The origin is the scheme, the host and the port, as the URL standard
 //!   writes them.
-//!
-//! Spec 0081.
 
 use reqwest::Url;
 

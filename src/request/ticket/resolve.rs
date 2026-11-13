@@ -21,11 +21,9 @@
 //!
 //! ## Open
 //!
-//! - The spec names the artifact folder as `.agents/` or `.claude/`. It does
-//!   not say which one it is when a project has both. Until the owner
-//!   decides, both are searched.
-//!
-//! Spec 0078.
+//! - The client's artifact folder is `.agents/` or `.claude/`. Which one it
+//!   is when a project has both is not settled. Until the owner decides,
+//!   both are searched.
 
 use std::ffi::OsString;
 use std::io::ErrorKind;

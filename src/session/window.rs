@@ -11,8 +11,6 @@
 //!
 //! - The title is never part of standard output's lines: a piped session
 //!   holds no trace of it.
-//!
-//! Spec 0077.
 
 use crate::session::{stop::Stop, title::Title};
 

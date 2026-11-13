@@ -2,8 +2,6 @@
 //!
 //! `Kind` is `Cluster` as kind, kubectl and Docker serve it: each operation
 //! of the trait is the file of the same name in this folder.
-//!
-//! Spec 0081.
 
 use crate::local::{
 	cluster::{Asked, Cluster},

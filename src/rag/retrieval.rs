@@ -20,14 +20,12 @@
 //! - It fills the episodes of `plan.json` but does not write the file:
 //!   `handoff/writer.rs` is its only writer.
 //! - The candidates and the counts go to the judge, which gives back one
-//!   reason per candidate (spec 0051).
+//!   reason per candidate.
 //!
 //! ## Open
 //!
 //! - What the EPISODES section shows with fewer than six episodes, or with
 //!   none: the simulation only shows six.
-//!
-//! Spec 0078.
 
 pub mod candidates;
 pub mod citations;

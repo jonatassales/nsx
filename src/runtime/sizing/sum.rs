@@ -25,8 +25,6 @@
 //! - One one-replica Deployment is proposed per component.
 //! - The figures are not set before the first component resolves.
 //! - Records hold plain integers. The grouping (`1,450m`) is the card's.
-//!
-//! Spec 0079.
 
 use crate::components::component::Component;
 use crate::harness::envelope::Envelope;

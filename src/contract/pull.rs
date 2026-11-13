@@ -4,8 +4,6 @@
 //! title, its state and, once the forge lists them, its checks.
 //!
 //! Definition only: the `Pull` type, with the three states beside it.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

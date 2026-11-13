@@ -8,8 +8,6 @@
 //! - The folder is closed first (mode 0700), so the file is never readable by
 //!   others while it is written, then the file is closed too (mode 0600).
 //! - Where a file has no such mode, the file is written as any other.
-//!
-//! Spec 0077.
 
 use std::path::Path;
 

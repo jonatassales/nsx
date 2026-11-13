@@ -14,8 +14,6 @@
 //!   and does not read is a stop.
 //! - A run asks before its first paid call: a usage record that does not
 //!   read stops the run while nothing is owed, never after a call.
-//!
-//! Spec 0080.
 
 use std::io::ErrorKind;
 use std::path::Path;

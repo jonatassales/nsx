@@ -21,8 +21,6 @@
 //! - A held run never resumes on its own, even when the console stops
 //!   answering. There is no timeout.
 //! - With no connection, nothing is sent, so nothing holds.
-//!
-//! Spec 0081.
 
 use std::time::Duration;
 

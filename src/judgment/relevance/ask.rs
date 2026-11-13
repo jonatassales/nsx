@@ -1,9 +1,9 @@
 //! Asking the episodes question
 //!
 //! One function: it takes the judge, the retrieval, with its candidates,
-//! their records, similarities and the threshold's verdicts (spec 0052), and
-//! the documents read with their facts (spec 0053). It gives back a verdict
-//! and a reason for every candidate.
+//! their records, similarities and the threshold's verdicts, and the
+//! documents read with their facts. It gives back a verdict and a reason for
+//! every candidate.
 //!
 //! ## Reads and writes
 //!
@@ -16,8 +16,6 @@
 //! - A refused answer, or a judge that cannot be reached or declines, is a
 //!   stop: the plan stops before the `judgeRelevance` line and writes no
 //!   draft.
-//!
-//! Spec 0078.
 
 use crate::contract::{
 	episode::VERDICTS, episodes::Episodes, problem::Problem,

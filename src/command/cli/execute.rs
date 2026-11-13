@@ -9,8 +9,6 @@
 //! - A command that ends on its last simulation line exits 0. A stop exits 1
 //!   (`session/stop.rs`).
 //! - The typed command is never printed.
-//!
-//! Spec 0077.
 
 use crate::command::{cli::Cli, session::Session};
 use crate::session::stop::Stop;

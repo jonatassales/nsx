@@ -6,8 +6,6 @@
 //! ## Rules
 //!
 //! - An interrupt is a stop like any other: one sentence, exit 1.
-//!
-//! Spec 0077.
 
 use crate::session::stop::Stop;
 

@@ -12,8 +12,6 @@
 //! - The namespace is chosen by the run's label, never by its name alone:
 //!   one that nsx did not create for this run is not deleted.
 //! - A cluster that does not exist holds no namespace to delete.
-//!
-//! Spec 0081.
 
 use crate::local::{
 	error::Error,

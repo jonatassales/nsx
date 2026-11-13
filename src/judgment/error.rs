@@ -4,8 +4,6 @@
 //! can print it as it is.
 //!
 //! Definition only: the `Error` type. Its function is the file in `error/`.
-//!
-//! Spec 0078.
 
 pub mod refused;
 

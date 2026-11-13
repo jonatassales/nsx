@@ -12,8 +12,6 @@
 //!   `resolve` line on. Every other field is absent until its line prints.
 //! - `stack` and `role` are spelled as the fence spells them.
 //! - No other field is allowed.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

@@ -9,9 +9,7 @@
 //!
 //! ## Rules
 //!
-//! - An interrupt is a stop (spec 0048): one sentence on standard error.
-//!
-//! Spec 0077.
+//! - An interrupt is a stop: one sentence on standard error.
 
 use std::future::Future;
 use std::pin::Pin;

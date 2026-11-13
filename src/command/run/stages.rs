@@ -33,9 +33,7 @@
 //! - No stage call is allowed while the dev ticket waits, and no runtime is
 //!   up while anyone waits.
 //! - Before a stage's work, after its checkpoint, the team's Pause holds the
-//!   run without a line (`console/hold`, spec 0076).
-//!
-//! Spec 0077.
+//!   run without a line (`console/hold`).
 
 use crate::command::{
 	applied::Applied, run::Run, session::Session, work::Work,

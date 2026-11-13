@@ -8,8 +8,6 @@
 //! - `gateOpened`: `console › gate       reserved $11.40 of $25.00 · opened`
 //! - `gatePaused`: `console › gate       reservation $40.80 exceeds the $25.00 budget · paused`
 //! - `paused`: `# needs a decision: raise the budget or lower the effort · nothing was paid for`
-//!
-//! Spec 0080.
 
 use crate::money::gate::Gate;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

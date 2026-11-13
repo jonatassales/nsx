@@ -10,8 +10,6 @@
 //!
 //! - A field the file does not define is refused.
 //! - How a run plays a stage is `Stage`'s, not this type's.
-//!
-//! Spec 0080.
 
 use serde::Deserialize;
 

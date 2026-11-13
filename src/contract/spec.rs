@@ -14,9 +14,7 @@
 //! - The line prints the spec's short id, not this path: the first two
 //!   dash-separated parts of the file name, such as `0011-SPEC`.
 //! - Whether a `false` flag or another spec fails the stage is `skills`'
-//!   check (spec 0059).
-//!
-//! Spec 0077.
+//!   check.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

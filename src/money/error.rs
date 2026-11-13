@@ -5,8 +5,6 @@
 //! or the effort it could not price.
 //!
 //! Definition only: the `Error` type.
-//!
-//! Spec 0079.
 
 use std::path::PathBuf;
 

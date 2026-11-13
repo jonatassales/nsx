@@ -10,8 +10,6 @@
 //!   called.
 //! - The hook is a gate, not a note: the implement call asks here before the
 //!   coding agent starts, and no other path reaches the agent.
-//!
-//! Spec 0080.
 
 use crate::hook::{effort::Effort, error::Error};
 

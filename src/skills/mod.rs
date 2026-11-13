@@ -12,11 +12,9 @@
 //!
 //! - One paid call stands behind each stage line. `implement · tdd` is one
 //!   stage with one line.
-//! - The shapes of the five stage reports live in `contract/` (spec 0049).
-//! - Starting the coding agent is spec 0058's. The order of the stages and
-//!   their checkpoints is spec 0057's.
-//!
-//! Spec 0080.
+//! - The shapes of the five stage reports live in `contract/`.
+//! - Starting the coding agent belongs to `driver/`. The order of the stages
+//!   and their checkpoints belongs to `flow/`.
 
 pub mod error;
 pub mod report;

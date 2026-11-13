@@ -15,9 +15,9 @@
 //! ## Rules
 //!
 //! - A program nsx starts never inherits nsx's environment. It is given a
-//!   small, explicit set of variables (ADR 0002).
+//!   small, explicit set of variables.
 //! - The coding agent is started directly, never through a shell, and its
-//!   arguments are never split again (spec 0058).
+//!   arguments are never split again.
 //! - What a program prints is not printed by nsx: only the simulation's lines
 //!   reach the terminal.
 //!

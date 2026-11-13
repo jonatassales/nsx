@@ -13,16 +13,16 @@
 //! - A pending line that already matches, or a pending id that names no
 //!   line, is a disagreement too: the list only shrinks.
 
-use std::collections::{BTreeMap, BTreeSet};
+use std::collections::BTreeSet;
 
 use crate::simulation::frozen::Frozen;
 
 pub fn diff(
 	golden: &[Frozen],
 	printed: &[Frozen],
-	pending: &[(&str, &str)],
+	pending: &[&str],
 ) -> Vec<String> {
-	let listed = pending.iter().copied().collect::<BTreeMap<_, _>>();
+	let listed = pending.iter().copied().collect::<BTreeSet<_>>();
 	let mut differences = Vec::new();
 	let mut excused = BTreeSet::new();
 	let mut extras = BTreeSet::new();
@@ -45,7 +45,7 @@ pub fn diff(
 	for (position, (want, pair)) in golden.iter().zip(&pairs).enumerate() {
 		let number = position + 1;
 		let id = want.id.as_str();
-		let is_listed = listed.contains_key(id);
+		let is_listed = listed.contains(id);
 		let got = pair.map(|index| &printed[index]);
 		let differs = got.is_none_or(|got| got.text != want.text);
 
@@ -90,7 +90,7 @@ pub fn diff(
 			continue;
 		}
 
-		let first_of_a_listed_id = listed.contains_key(id) && extras.insert(id);
+		let first_of_a_listed_id = listed.contains(id) && extras.insert(id);
 
 		if first_of_a_listed_id {
 			continue;
@@ -106,13 +106,14 @@ pub fn diff(
 
 	for (position, want) in golden.iter().enumerate() {
 		let id = want.id.as_str();
-		let Some(spec) = listed.get(id) else {
+
+		if !listed.contains(id) {
 			continue;
-		};
+		}
 
 		if !excused.contains(id) {
 			differences.push(format!(
-				"line {}, {id}, matches but is pending under spec {spec}: drop it from the pending list",
+				"line {}, {id}, matches but is pending: drop it from the pending list",
 				position + 1
 			));
 		}
@@ -123,12 +124,12 @@ pub fn diff(
 		.map(|line| line.id.as_str())
 		.collect::<BTreeSet<_>>();
 
-	for (id, spec) in &listed {
+	for id in &listed {
 		let excuses = named.contains(id) || extras.contains(id);
 
 		if !excuses {
 			differences.push(format!(
-				"pending {id}, under spec {spec}, names no line that differs: drop it from the pending list"
+				"pending {id} names no line that differs: drop it from the pending list"
 			));
 		}
 	}

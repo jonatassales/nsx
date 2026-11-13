@@ -10,8 +10,6 @@
 //! ## Rules
 //!
 //! - Nothing is printed to ask: the `waiting` line already did.
-//!
-//! Spec 0080.
 
 pub trait Reader {
 	fn line(&self) -> std::io::Result<Option<String>>;

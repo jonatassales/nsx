@@ -8,8 +8,6 @@
 //! Definition only: the `Work` type: the driver configuration, the linked
 //! spec, the usage record with the file that keeps it, the effort record,
 //! absent until Implement starts, and the run's branch.
-//!
-//! Spec 0077.
 
 use std::path::PathBuf;
 

@@ -6,8 +6,6 @@
 //! ## Simulation
 //!
 //! - `weighModel`: `console › weighing model · Haiku 5.5 retries the broker wiring · Opus 5.5 costs more per outcome`
-//!
-//! Spec 0078.
 
 use crate::judgment::suggestion::Suggestion;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

@@ -11,16 +11,15 @@
 //!
 //! ## Rules
 //!
-//! - The number and the slug are the ticket's (spec 0053).
+//! - The number and the slug are the ticket's.
 //! - The run's record keeps `branch` and `commit`, the hash's first seven
-//!   characters (spec 0065).
+//!   characters.
 //!
 //! ## Open
 //!
-//! - A second run of the same ticket. This spec reuses the branch an earlier
-//!   run left. The alternatives are a fresh branch name per run, or a stop.
-//!
-//! Spec 0081.
+//! - A second run of the same ticket. Until the owner decides, it reuses the
+//!   branch an earlier run left. The alternatives are a fresh branch name per
+//!   run, or a stop.
 
 pub mod card;
 pub mod line;

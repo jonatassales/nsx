@@ -6,8 +6,6 @@
 //!
 //! One function: it takes a text and says whether it is a lowercase DNS
 //! label: lowercase letters, digits and inner dashes, 63 characters at most.
-//!
-//! Spec 0077.
 
 const MAXIMUM: usize = 63;
 

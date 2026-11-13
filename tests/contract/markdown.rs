@@ -1,4 +1,4 @@
-//! The simulation's `runtime.md`: Core's fence sample in its block
+//! The simulation's `runtime.md`: the fence sample in its block
 
 use crate::contract::sample::sample;
 

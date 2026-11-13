@@ -6,8 +6,6 @@
 //! ## Simulation
 //!
 //! - `readPrd`: `console › tool call: read 0002-PRD · use case: book-a-demo request`
-//!
-//! Spec 0078.
 
 use crate::request::prd::Prd;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

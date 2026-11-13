@@ -18,8 +18,6 @@
 //!   refused: a similarity is never worked out from a vector that cannot
 //!   have one.
 //! - The index is read up to 256 MiB, which is about sixty thousand episodes.
-//!
-//! Spec 0078.
 
 use std::io::ErrorKind;
 

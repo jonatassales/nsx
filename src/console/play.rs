@@ -19,12 +19,10 @@
 //! - A Play applies only when its choice equals the revision, model, effort
 //!   and checkpoints of `intent.json`. One that differs is ignored.
 //! - A Play never changes a budget or a reservation. The gate still decides
-//!   whether the paid run goes ahead (spec 0056).
+//!   whether the paid run goes ahead.
 //! - An intent authorized by hand needs no Play: the run starts at once.
 //! - Waiting prints no line (the owner's exception to ADR 0005). The run's
 //!   header prints only once the team has authorized.
-//!
-//! Spec 0081.
 
 pub mod wait;
 

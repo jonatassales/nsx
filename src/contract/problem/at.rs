@@ -2,8 +2,6 @@
 //!
 //! One function: it takes a field, as a dotted path, and the rule it breaks,
 //! in a few words, and gives back the problem.
-//!
-//! Spec 0077.
 
 use crate::contract::problem::Problem;
 

@@ -4,8 +4,6 @@
 //! the file or the link, so that the stop rule can print it as it is.
 //!
 //! Definition only: the `Error` type.
-//!
-//! Spec 0078.
 
 use std::path::PathBuf;
 

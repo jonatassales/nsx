@@ -10,11 +10,9 @@
 //!
 //! ## Rules
 //!
-//! - It follows the `completed` line (spec 0065).
+//! - It follows the `completed` line.
 //! - It reports what the run did. It always carries the hash and never reads
 //!   `unknown`.
-//!
-//! Spec 0081.
 
 use crate::delivery::branch::Branch;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

@@ -14,11 +14,9 @@
 //!
 //! - Evidence and reports carry no secret.
 //! - Every value is in units. What is not known is `null`, never zero.
-//! - The money is not copied here: the money ledger is `money`'s (spec
-//!   0056). The episode is `rag`'s (spec 0052).
+//! - The money is not copied here: the money ledger is `money`'s. The
+//!   episode is `rag`'s.
 //! - This folder decides the content of no section but its own.
-//!
-//! Spec 0080.
 
 pub mod clock;
 pub mod error;

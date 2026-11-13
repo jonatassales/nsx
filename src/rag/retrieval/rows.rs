@@ -8,8 +8,6 @@
 //!
 //! - Card: Analysis · EPISODES rows: from the `candidates` line each row
 //!   carries its id, its slug and its similarity
-//!
-//! Spec 0078.
 
 use crate::contract::candidate::Candidate as Row;
 use crate::contract::cards::Cards;

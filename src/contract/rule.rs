@@ -10,8 +10,6 @@
 //!
 //! - `id` is set when the guardrail's line prints. `statement` is the
 //!   judge's, absent until the judge's line on the criteria prints.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

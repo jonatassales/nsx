@@ -9,8 +9,6 @@
 //! - The terminal counts what was read before its line: the ticket itself and
 //!   every linked document but the guardrail, which `harness/` reads next. That
 //!   is as many as the links.
-//!
-//! Spec 0078.
 
 use crate::request::{links::Links, reading::Reading};
 

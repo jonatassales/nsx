@@ -7,8 +7,6 @@
 //!
 //! - An unknown price is `null`, never zero.
 //! - This function writes no file: the one writer in `handoff/` does.
-//!
-//! Spec 0079.
 
 use crate::contract::{cards::Cards, source::Source};
 use crate::money::price::Price;

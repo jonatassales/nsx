@@ -5,14 +5,10 @@
 //!
 //! ## Rules
 //!
-//! - The rules are Core's, from its Go package `judgment` (removed with
-//!   ticket 0434), in its words:
-//!   an id of the form `ep-NNNN`, each episode judged once, a verdict of
+//! - An id of the form `ep-NNNN`, each episode judged once, a verdict of
 //!   `kept` or `dropped`, and a reason that fits the verdict.
 //! - Whether the verdicts are the threshold's is checked where the question
 //!   is asked, in `judgment/`.
-//!
-//! Spec 0077.
 
 use std::collections::HashSet;
 

@@ -10,8 +10,6 @@
 //! ## Rules
 //!
 //! - The answer is echoed as typed: it is one word and no secret.
-//!
-//! Spec 0080.
 
 use crate::flow::{keyboard::Keyboard, reader::Reader};
 

@@ -14,9 +14,9 @@
 //!
 //! ## Rules
 //!
-//! - It runs once per finished run, after the `ready` line (spec 0063), once
-//!   the run's outcome is `completed` (spec 0065).
-//! - A run paused at the gate leaves no episode (spec 0056).
+//! - It runs once per finished run, after the `ready` line, once the run's
+//!   outcome is `completed`.
+//! - A run paused at the gate leaves no episode.
 //! - The number is the highest existing number plus one, whatever id the
 //!   episode came with, and it keeps all its digits past 9999.
 //! - The slug is a lowercase label, so the record's file is always inside
@@ -28,8 +28,6 @@
 //!   embedder, gets one built from its episodes, the new one among them.
 //!   Otherwise the index gains the one entry, without a rebuild.
 //! - It prints nothing.
-//!
-//! Spec 0078.
 
 use crate::contract::encode::encode;
 use crate::contract::label::label;

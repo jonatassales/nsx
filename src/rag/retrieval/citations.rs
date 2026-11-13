@@ -7,8 +7,6 @@
 //!
 //! - Card: Analysis · MEASURED RESOURCES: `none cited`, from the `episodes`
 //!   line
-//!
-//! Spec 0078.
 
 use crate::contract::cards::Cards;
 use crate::rag::retrieval::Retrieval;

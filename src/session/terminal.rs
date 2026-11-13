@@ -13,8 +13,6 @@
 //! - Piped output carries no escape sequence: a file holds exactly the
 //!   session's lines.
 //! - Standard error is not the session.
-//!
-//! Spec 0077.
 
 pub mod print;
 pub mod title;

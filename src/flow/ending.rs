@@ -17,12 +17,10 @@
 //!
 //! - The ending follows `reviewed`, the Review tick, and nothing else. It
 //!   never depends on whether the delivery looked clean.
-//! - The run's record keeps `reviewed` (spec 0065). Spec 0063 words its
-//!   `ready` line from it.
+//! - The run's record keeps `reviewed`. `delivery` words its `ready` line
+//!   from it.
 //! - No proposed ticket status is written.
 //! - nsx never merges.
-//!
-//! Spec 0080.
 
 pub mod line;
 

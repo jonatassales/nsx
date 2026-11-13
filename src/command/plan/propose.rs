@@ -22,8 +22,6 @@
 //! - The console is told the proposed intent last, with the cards.
 //! - A plan that stops writes no draft and no intent.
 //! - nsx records the team's authorization, it never decides it.
-//!
-//! Spec 0077.
 
 use crate::command::{
 	brief::Brief, desk::Desk, plan::Plan, resolved::Resolved, session::Session,

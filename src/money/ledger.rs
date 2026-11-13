@@ -26,8 +26,6 @@
 //! - Money is not copied into `run.json`. RESERVED, OBSERVED, RELEASED and the
 //!   paused result come from this record.
 //! - The entry keeps no laps, billing, totals or planning spend.
-//!
-//! Spec 0080.
 
 pub mod open;
 pub mod write;

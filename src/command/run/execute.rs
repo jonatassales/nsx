@@ -42,8 +42,6 @@
 //! - A failure before the opening comment is a stop with nothing printed and
 //!   nothing reserved.
 //! - The over-budget pause is a shown ending: the run exits 0.
-//!
-//! Spec 0077.
 
 use crate::command::{applied::Applied, run::Run, session::Session};
 use crate::console::report::Report;

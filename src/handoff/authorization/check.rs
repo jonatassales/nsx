@@ -14,15 +14,11 @@
 //! - `status` must be `authorized`: nothing runs before the team authorizes.
 //! - `revision` must be the draft's current revision: the run never applies
 //!   a plan the team did not see.
-//! - `model` must be in the price list and `effort` one of the efforts
-//!   (specs 0056, 0057).
+//! - `model` must be in the price list and `effort` one of the efforts.
 //! - Any failure is a stop before the run's opening comment: nothing on
 //!   standard output, one sentence on standard error, exit status 1.
 //! - In a project connected to the console, a run whose intent is still
-//!   proposed first waits for the team's Play (spec 0076). This check comes
-//!   after.
-//!
-//! Spec 0079.
+//!   proposed first waits for the team's Play. This check comes after.
 
 use crate::contract::{fence::Fence, intent::Intent};
 use crate::files::{

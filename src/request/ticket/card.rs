@@ -9,8 +9,6 @@
 //! - A number the id does not state is `null`, never an empty text.
 //! - The header is handed to the plan's card data before the plan's first
 //!   line.
-//!
-//! Spec 0078.
 
 use crate::contract::{cards::Cards, ticket::Ticket as Card};
 use crate::request::ticket::Ticket;

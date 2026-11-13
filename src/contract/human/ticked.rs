@@ -8,8 +8,6 @@
 //! - Spec, Tickets, Implement and Review are ticked as the choice says.
 //! - Any other stage has no box: the dev ticket is always the person's and
 //!   Merge always the owner's, and neither is a tick.
-//!
-//! Spec 0077.
 
 use crate::contract::human::Human;
 

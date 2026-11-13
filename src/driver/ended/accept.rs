@@ -10,8 +10,6 @@
 //!   line.
 //! - The run asks after the usage record has kept the call, so a refused
 //!   call is still on record.
-//!
-//! Spec 0080.
 
 use crate::driver::{ended::Ended, error::Error};
 

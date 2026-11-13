@@ -10,8 +10,6 @@
 //! ## Rules
 //!
 //! - One ticket is one query, and embedding it makes no paid call.
-//!
-//! Spec 0078.
 
 use crate::rag::retrieval::Retrieval;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

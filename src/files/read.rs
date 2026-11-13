@@ -10,15 +10,15 @@
 //! ## Rules
 //!
 //! - A file that is missing or cannot be read is a stop for its caller: a
-//!   linked document that is unreadable stops the plan (spec 0053).
+//!   linked document that is unreadable stops the plan.
 //! - Only a regular file is read. A pipe, a device or a folder is refused
 //!   before a byte is asked of it.
 //!
 //! ## Open
 //!
-//! - No spec sets a limit on a file nsx reads, or says what a larger file
-//!   does. Spec 0053 removes the old limits on what a plan collects. Which
-//!   files are bounded, and at how many bytes, is to decide.
+//! - Nothing sets a limit on a file nsx reads, or says what a larger file
+//!   does, and what a plan collects has no limit. Which files are bounded,
+//!   and at how many bytes, is to decide.
 //!
 //! Shared: used by every folder that reads a file of the project.
 

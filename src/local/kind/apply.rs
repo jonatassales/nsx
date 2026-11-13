@@ -22,10 +22,9 @@
 //!
 //! ## Open
 //!
-//! - Spec 0062 loads an image "when it is only there". nsx cannot tell that
-//!   without pulling, so an image this machine holds is always loaded.
-//!
-//! Spec 0081.
+//! - An image is to be loaded only when this machine alone holds it. nsx
+//!   cannot tell that without pulling, so an image this machine holds is
+//!   always loaded.
 
 use crate::local::{
 	deployment::Deployment,

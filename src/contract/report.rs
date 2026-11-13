@@ -21,8 +21,6 @@
 //! - A field outside the report or outside a record is refused. So is an
 //!   intent with a problem.
 //! - The report carries no secret.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

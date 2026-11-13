@@ -1,10 +1,10 @@
 //! The coding agent that does each stage as the simulation shows it
 //!
-//! It writes the stage's report where the call says, with Core's sample
-//! figures, and reports the tokens a test gives it for every call. A test
-//! can make one stage fail, leave its report unwritten or its tokens unsaid,
-//! put a folder where the run would write a file after that stage's call,
-//! or make one stage never end.
+//! It writes the stage's report where the call says, with the contract
+//! samples' figures, and reports the tokens a test gives it for every call.
+//! A test can make one stage fail, leave its report unwritten or its tokens
+//! unsaid, put a folder where the run would write a file after that stage's
+//! call, or make one stage never end.
 
 mod start;
 

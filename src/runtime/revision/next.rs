@@ -17,8 +17,6 @@
 //!   revision 1.
 //! - An earlier draft nsx cannot read as a file stops the plan: it is never
 //!   written over unread.
-//!
-//! Spec 0079.
 
 use std::path::Path;
 

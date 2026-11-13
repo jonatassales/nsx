@@ -21,8 +21,6 @@
 //!   checkout without an earlier run's ledger entry still does not reuse
 //!   that run's id, nor the private files kept under it.
 //! - The id is given when the run starts, before its first line.
-//!
-//! Spec 0080.
 
 use std::fs::FileType;
 use std::path::Path;

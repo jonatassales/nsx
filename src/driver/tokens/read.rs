@@ -13,8 +13,6 @@
 //!   or to anything else, leaves that count unknown: unknown is never zero.
 //! - Output that does not yield both counts at those paths makes the call a
 //!   failed call, with its tokens unknown.
-//!
-//! Spec 0080.
 
 use serde_json::Value;
 

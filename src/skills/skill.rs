@@ -14,10 +14,8 @@
 //!
 //! - The skills work on the client's own tickets and documents, which stay in
 //!   the client's `.agents/` or `.claude/` folder.
-//! - The stage driver runs them with the chosen model and effort (spec 0058).
+//! - The stage driver runs them with the chosen model and effort.
 //! - What a skill does inside the client's project, beyond the report it
 //!   writes, is out of scope.
-//!
-//! Spec 0080.
 
 pub mod install;

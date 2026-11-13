@@ -9,8 +9,6 @@
 //! ## Rules
 //!
 //! - The set is closed. There is no worker role.
-//!
-//! Spec 0079.
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct Role {

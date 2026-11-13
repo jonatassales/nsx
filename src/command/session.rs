@@ -19,8 +19,6 @@
 //!
 //! - A command reaches nothing outside itself except through its session, so
 //!   that the tests can put a fake in its place.
-//!
-//! Spec 0077.
 
 use std::path::PathBuf;
 use std::time::Duration;

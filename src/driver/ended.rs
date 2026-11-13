@@ -11,8 +11,6 @@
 //!
 //! - The exit status is unknown when the agent was ended by a signal.
 //! - Tokens the agent did not report are unknown, never zero.
-//!
-//! Spec 0080.
 
 pub mod accept;
 

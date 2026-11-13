@@ -25,8 +25,6 @@
 //! - The tools see the person's own sign-in, through the variables named
 //!   here, and nsx never reads or prints it.
 //! - Forges other than the one `gh` serves are out of scope.
-//!
-//! Spec 0081.
 
 pub mod checks;
 pub mod forge;

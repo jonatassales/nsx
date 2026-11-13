@@ -9,8 +9,6 @@
 //! ## Rules
 //!
 //! - Whole millicores and MiB. Both are required.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

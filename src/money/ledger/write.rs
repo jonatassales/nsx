@@ -16,8 +16,6 @@
 //!   release is known.
 //! - A paused run keeps its entry, with the gate paused and nothing observed.
 //! - The record holds amounts and tokens, and no secret.
-//!
-//! Spec 0080.
 
 use crate::contract::encode::encode;
 use crate::files::{inside::inside, layout::Layout, root::Root, write::write};

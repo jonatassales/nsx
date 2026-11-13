@@ -23,8 +23,6 @@
 //!   applied pair, so the gate is the one the card described.
 //! - A model or an effort missing from the table stops the command (the stop
 //!   rule).
-//!
-//! Spec 0079.
 
 pub mod build;
 pub mod card;

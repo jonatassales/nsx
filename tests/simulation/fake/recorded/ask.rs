@@ -2,8 +2,6 @@
 //!
 //! The `Judge` the tests use: whatever is asked, the answer is the text
 //! recorded for that question.
-//!
-//! Spec 0078.
 
 use std::future::Future;
 use std::pin::Pin;

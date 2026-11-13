@@ -11,8 +11,6 @@
 //!   them, must sit under the root.
 //! - Either way it never leaves the project and never passes through a
 //!   symbolic link: `within` decides.
-//!
-//! Spec 0077.
 
 use std::path::{Path, PathBuf};
 

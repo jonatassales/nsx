@@ -9,8 +9,6 @@
 //!
 //! - `removed` and `left` join when the runtime is stopped, and are absent
 //!   before.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

@@ -8,8 +8,6 @@
 //! - On Unix it is the file's mode: no bit for the group or for others.
 //! - Elsewhere the file's mode says nothing, and a regular file counts as
 //!   private: the project's folder is the boundary there.
-//!
-//! Spec 0077.
 
 use std::path::Path;
 

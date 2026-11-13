@@ -15,8 +15,6 @@
 //!   first line.
 //! - A field the forecast does not define is refused, and so is a count that
 //!   is negative or not whole.
-//!
-//! Spec 0079.
 
 use crate::contract::decode::decode;
 use crate::files::{

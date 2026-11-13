@@ -14,13 +14,11 @@
 //! - `workflow`: `nsx agent run` while the workflow plays, a person's waits
 //!   included.
 //! - `held`: `nsx agent run` waits for the team's Play, before its header or
-//!   before a stage's work (spec 0076). It is the console's, never the gate's.
+//!   before a stage's work. It is the console's, never the gate's.
 //! - `paused`: the run paused at the budget gate, and the process ended.
 //! - `done`: the run ended ready for review or ready to merge.
 //! - `error`: the plan or the run stopped on a failure.
 //! - Any other status is refused.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

@@ -28,15 +28,13 @@
 //! - The kind cluster is shared and stays for the next run: the owner's
 //!   decision of 2026-11-11, as the Microruntimes page says. What a run
 //!   creates in it is its namespace and the Deployments inside.
-//! - Images are resolved by spec 0066 and never built here. Nothing here
+//! - Images are resolved by `components/` and never built here. Nothing here
 //!   measures cpu or memory.
 //!
 //! ## Open
 //!
 //! - What uses the runtime between ready and stopped. No line shows anything
 //!   reaching it. Until the owner decides, nothing in nsx uses it.
-//!
-//! Spec 0081.
 
 pub mod cluster;
 pub mod deployment;

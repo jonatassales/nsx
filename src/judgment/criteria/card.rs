@@ -12,8 +12,6 @@
 //!
 //! - The row and its criteria are the guardrail's, written with its own line.
 //!   The statements go to them in the guardrail's order.
-//!
-//! Spec 0078.
 
 use crate::contract::cards::Cards;
 use crate::judgment::criteria::Criteria;

@@ -16,8 +16,6 @@
 //!
 //! - The sizing basis is not a question: it follows from the retrieval.
 //! - A question carries no secret.
-//!
-//! Spec 0078.
 
 pub mod name;
 pub mod prompt;

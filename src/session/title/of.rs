@@ -7,8 +7,6 @@
 //!
 //! - The project's name is the name of the folder that holds `.langdrift/`.
 //!   A root with no name of its own, the filesystem's, is named by its path.
-//!
-//! Spec 0077.
 
 use crate::files::root::Root;
 use crate::session::title::Title;

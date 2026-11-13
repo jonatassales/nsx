@@ -9,8 +9,6 @@
 //!
 //! - `passed` and `total` join when the checks have passed, and are absent
 //!   while they run.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

@@ -16,8 +16,6 @@
 //!   client's artifact folder. The guardrail is LangDrift's and sits in
 //!   `.langdrift/harness/guardrails/`.
 //! - The guardrail link is handed to `harness/`, which reads the document.
-//!
-//! Spec 0078.
 
 pub mod card;
 pub mod line;

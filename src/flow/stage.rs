@@ -16,9 +16,7 @@
 //!
 //! ## Rules
 //!
-//! - The states go into the run's record (spec 0065).
+//! - The states go into the run's record.
 //! - A stage that fails keeps the state it had. There is no failed state.
 //! - A run paused at the gate leaves every stage pending.
-//! - The Dev ticket's states are spec 0061's.
-//!
-//! Spec 0080.
+//! - The Dev ticket's states are `seat`'s.

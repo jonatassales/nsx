@@ -11,8 +11,6 @@
 //!
 //! - The line follows the `bounded` line and changes no card field: the
 //!   budget is already on the design doc's row.
-//!
-//! Spec 0079.
 
 use crate::money::budget::Budget;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

@@ -24,8 +24,6 @@
 //!   implement that went past the boundary, a spec written rather than
 //!   revised, tickets without blocking edges. Until the owner decides, such a
 //!   report fails the stage.
-//!
-//! Spec 0080.
 
 use std::path::Path;
 

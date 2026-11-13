@@ -13,8 +13,6 @@
 //! - The section is there before the plan's first line.
 //! - The budget's source is the design doc's path from the project's root.
 //! - This function writes no file: the one writer in `handoff/` does.
-//!
-//! Spec 0079.
 
 use crate::contract::{cards::Cards, pair::Pair as Row, workflow::Workflow};
 use crate::money::spend::Spend;

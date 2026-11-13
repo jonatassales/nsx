@@ -6,8 +6,6 @@
 //! ## Rules
 //!
 //! - Every money figure of a run is this lookup: nothing is priced again.
-//!
-//! Spec 0077.
 
 use crate::contract::{pair::Pair, workflow::Workflow};
 

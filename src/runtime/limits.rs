@@ -14,8 +14,6 @@
 //!
 //! - The statement is the schema's fact. No fact is scanned for "gpu" or
 //!   "disk".
-//!
-//! Spec 0079.
 
 pub mod card;
 pub mod line;

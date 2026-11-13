@@ -11,17 +11,15 @@
 //! ## Rules
 //!
 //! - It prints nowhere. It is kept in `run.json` as `run`.
-//! - It names `finops/ledger/<run>.ledger.json` (spec 0056), the private
-//!   folder `agent/state/runs/<run>/` (specs 0058, 0059, 0062), and the
-//!   stage driver's `{{run}}` and `LANGDRIFT_RUN` (spec 0058).
+//! - It names `finops/ledger/<run>.ledger.json`, the private folder
+//!   `agent/state/runs/<run>/`, and the stage driver's `{{run}}` and
+//!   `LANGDRIFT_RUN`.
 //!
 //! ## Open
 //!
-//! - The id's form. The simulation shows no run id, and the spec chooses
+//! - The id's form. The simulation shows no run id, and nsx chooses
 //!   `<runtime id>-<NNNN>`. The owner may prefer another identity, such as a
 //!   timestamp or one tied to the intent's revision.
-//!
-//! Spec 0080.
 
 pub mod mint;
 pub mod text;

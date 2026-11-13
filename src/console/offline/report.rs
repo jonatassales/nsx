@@ -2,8 +2,6 @@
 //!
 //! One function: it takes a report, sends nothing and answers that the
 //! project is not connected.
-//!
-//! Spec 0081.
 
 use std::future::Future;
 use std::pin::Pin;

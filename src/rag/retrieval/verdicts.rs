@@ -12,8 +12,6 @@
 //! ## Rules
 //!
 //! - The verdict is the threshold's; the reason is the judge's.
-//!
-//! Spec 0078.
 
 use crate::contract::cards::Cards;
 use crate::contract::episode::VERDICTS;

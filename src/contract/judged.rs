@@ -12,8 +12,6 @@
 //! - The cost's provenance is `console`: the console prices it, and marks
 //!   it illustrative until the owner prices a plan.
 //! - No other field is allowed.
-//!
-//! Spec 0078.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

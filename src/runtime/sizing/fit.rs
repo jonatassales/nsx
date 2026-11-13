@@ -11,8 +11,6 @@
 //!   the sum of all the components, the bound and the design doc that sets
 //!   it.
 //! - A sum equal to the bound fits it: the headroom is zero.
-//!
-//! Spec 0079.
 
 use crate::runtime::{error::Error, sizing::Sizing};
 

@@ -20,8 +20,6 @@
 //! - Safe Seat is stated only after every check passed. A verdict that is
 //!   not met prints no line and stops the run: the pull request stays a
 //!   draft.
-//!
-//! Spec 0077.
 
 use crate::checks::suite::Suite;
 use crate::command::{applied::Applied, run::Run, session::Session};

@@ -16,11 +16,9 @@
 //! - The run's order: `pullRequest`, then `checks`, then `checksPassed`, then
 //!   `safeSeatMet`.
 //! - A run paused at the gate reads no checks.
-//! - The forge is the one delivery already uses (spec 0063), so a person
-//!   installs nothing more.
+//! - The forge is the one delivery already uses, so a person installs
+//!   nothing more.
 //! - `guardrails` is a check of the client's CI, not something nsx runs.
-//!
-//! Spec 0081.
 
 pub mod check;
 pub mod error;

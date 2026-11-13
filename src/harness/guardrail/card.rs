@@ -14,8 +14,6 @@
 //!
 //! - The enforcement is always review: nsx enforces no criterion.
 //! - Each criterion's statement is the judge's, and arrives with its line.
-//!
-//! Spec 0078.
 
 use crate::contract::{
 	cards::Cards,

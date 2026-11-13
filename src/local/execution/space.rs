@@ -12,8 +12,6 @@
 //!   digest keeps their spaces apart.
 //! - The name is a lowercase label of at most 63 characters, as the cluster
 //!   asks of a namespace.
-//!
-//! Spec 0081.
 
 use sha2::{Digest, Sha256};
 

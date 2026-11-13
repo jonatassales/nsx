@@ -13,8 +13,6 @@
 //! - The order is PRD, design doc, spec, guardrail. The guardrail is preceded
 //!   by the label `guardrail`.
 //! - The line shows short ids. The card shows the full file names.
-//!
-//! Spec 0078.
 
 use crate::request::links::Links;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

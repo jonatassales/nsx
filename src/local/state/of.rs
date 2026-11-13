@@ -7,8 +7,6 @@
 //!
 //! - The runtime's id and the revision are the applied intent's. The totals
 //!   are the sum of the started Deployments' shares.
-//!
-//! Spec 0081.
 
 use crate::contract::intent::Intent;
 use crate::local::{deployment::Deployment, state::State};

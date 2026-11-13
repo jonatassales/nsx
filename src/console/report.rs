@@ -19,15 +19,13 @@
 //!   before a stage's work. `paused` means the gate paused the run and the
 //!   process ended.
 //! - nsx sends the hand-off records themselves and no console-specific shape.
-//!   The report's shape and its status live in `contract/` (spec 0049).
+//!   The report's shape and its status live in `contract/`.
 //! - A report carries no secret.
 //! - The runtime's id is kept in `.langdrift/agent/state/console/<runtime
 //!   id>.id`, private state Git ignores.
 //! - Once a call fails, the console is unavailable: the records' sends stop,
 //!   and nothing stops, until an ask is answered again. The run's waits,
 //!   hold points and end always ask.
-//!
-//! Spec 0081.
 
 pub mod ask;
 pub mod end;

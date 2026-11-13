@@ -21,19 +21,17 @@
 //! ## Rules
 //!
 //! - The stage starts only after implement's report says it stopped at the
-//!   reserved part (spec 0059).
+//!   reserved part.
 //! - `paidCalls` is a known zero: the run made no stage-driver call between
 //!   the stage's two lines.
-//! - The state goes into the run's record (spec 0065), within spec 0057's
-//!   stage states.
+//! - The state goes into the run's record, within the stage states of
+//!   `flow/`.
 //! - The run states what it did. It does not observe the person's own tools.
 //!
 //! ## Open
 //!
 //! - Who writes the dev ticket: whether it must be a particular person, and
 //!   whether nsx should record who. nsx records `person`.
-//!
-//! Spec 0080.
 
 pub mod close;
 pub mod line;

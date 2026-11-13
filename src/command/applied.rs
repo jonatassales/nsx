@@ -6,8 +6,6 @@
 //! Definition only: the `Applied` type: the project's root and the paths
 //! under `.langdrift/`, the authorized intent, the plan's cards, the run's
 //! id, the price list and the workflow.
-//!
-//! Spec 0077.
 
 use crate::contract::cards::Cards;
 use crate::evidence::id::Id;

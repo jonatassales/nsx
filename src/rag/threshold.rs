@@ -15,15 +15,13 @@
 //!
 //! - The comparison is "at least", not "more than": 0.55 is kept and 0.54 is
 //!   dropped.
-//! - Spec 0052 calls the threshold strict: it is the only rule, and no other
-//!   score keeps a candidate below it.
+//! - The threshold is strict: it is the only rule, and no other score keeps a
+//!   candidate below it.
 //! - "Kept" always means at or above 0.55.
 //!
-//! - A similarity is rounded half away from zero, to two decimals, as the Go
-//!   CLI rounded it, and the threshold compares the rounded value: the screen
-//!   never contradicts the verdict (owner, 2026-11-11).
-//!
-//! Spec 0078.
+//! - A similarity is rounded half away from zero, to two decimals, and the
+//!   threshold compares the rounded value: the screen never contradicts the
+//!   verdict (owner, 2026-11-11).
 
 pub mod card;
 

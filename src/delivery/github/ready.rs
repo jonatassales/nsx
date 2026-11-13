@@ -6,8 +6,6 @@
 //! ## Reads and writes
 //!
 //! - runs `gh pr ready`
-//!
-//! Spec 0081.
 
 use crate::delivery::{
 	error::Error,

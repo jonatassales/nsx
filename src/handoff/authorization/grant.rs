@@ -13,8 +13,6 @@
 //! - nsx records the team's authorization, it never decides it: this runs
 //!   only after a Play whose choice equals the intent's.
 //! - Nothing but the status changes in the file.
-//!
-//! Spec 0079.
 
 use std::path::Path;
 

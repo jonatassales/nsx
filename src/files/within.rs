@@ -9,12 +9,13 @@
 //!   that climbs with `..`.
 //! - A path that is a symbolic link is refused.
 //! - A refusal is a stop: a ticket's link that leaves the project or is a
-//!   symlink stops the plan before its next line (spec 0053).
+//!   symlink stops the plan before its next line.
 //!
 //! ## Open
 //!
-//! - Spec 0053 also refuses a link that points at a secret. No spec says how
-//!   a secret is recognised, or whether that check lives here or in `request`.
+//! - A link that points at a secret is refused too. How a secret is
+//!   recognised, and whether that check lives here or in `request`, is not
+//!   settled.
 //!
 //! Shared: used by `request` and `components`.
 

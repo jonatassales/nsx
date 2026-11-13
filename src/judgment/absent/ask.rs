@@ -2,8 +2,6 @@
 //!
 //! One function: whatever the question, it gives back the same refusal, which
 //! stops the plan before the line the answer would feed.
-//!
-//! Spec 0078.
 
 use std::future::Future;
 use std::pin::Pin;

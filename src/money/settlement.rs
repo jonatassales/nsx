@@ -24,8 +24,6 @@
 //! - A run paused at the gate has no settlement: nothing was observed.
 //! - A run that stops after the gate keeps its reservation. Its release stays
 //!   unknown, never zero.
-//!
-//! Spec 0080.
 
 pub mod settle;
 

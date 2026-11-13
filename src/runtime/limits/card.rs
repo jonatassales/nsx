@@ -12,8 +12,6 @@
 //! - The list of requested limits is empty, and it is there: empty says
 //!   "none requested", absent says "not stated yet".
 //! - This function writes no file: the one writer in `handoff/` does.
-//!
-//! Spec 0079.
 
 use crate::contract::cards::Cards;
 use crate::runtime::limits::Limits;

@@ -7,8 +7,6 @@
 //! ## Rules
 //!
 //! - The sentence is the failure's own, unchanged.
-//!
-//! Spec 0077.
 
 use crate::session::stop::Stop;
 

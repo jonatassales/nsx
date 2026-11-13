@@ -29,10 +29,8 @@
 //!
 //! ## Open
 //!
-//! - Deleting what earlier stopped runs left, before a bring-up, is the
-//!   spec's choice. The simulation shows no such step.
-//!
-//! Spec 0081.
+//! - Deleting what earlier stopped runs left, before a bring-up, is nsx's
+//!   own choice: the simulation shows no such step.
 
 use crate::files::{layout::Layout, root::Root};
 use crate::local::{cluster::Cluster, error::Error, execution::Execution};

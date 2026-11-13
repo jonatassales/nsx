@@ -23,10 +23,8 @@
 //!
 //! ## Open
 //!
-//! - What a missing or malformed file does. The spec lists no such failure:
-//!   the stop above holds until the owner decides.
-//!
-//! Spec 0080.
+//! - What a missing or malformed file does. The simulation shows no such
+//!   failure: the stop above holds until the owner decides.
 
 use crate::contract::{decode::decode, fence::EFFORTS};
 use crate::files::{

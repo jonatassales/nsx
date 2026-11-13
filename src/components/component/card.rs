@@ -13,8 +13,6 @@
 //!   path, the first one not filled yet. A component with no placeholder gets
 //!   a new row.
 //! - This function writes no file: the one writer in `handoff/` does.
-//!
-//! Spec 0079.
 
 use crate::components::component::Component;
 use crate::contract::{cards::Cards, resolved::Resolved};

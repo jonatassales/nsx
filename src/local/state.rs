@@ -12,15 +12,13 @@
 //! ## Rules
 //!
 //! - The state goes into the runtime section of `run.json`, through the
-//!   record's one writer (spec 0065). This file writes nothing itself. The
+//!   record's one writer, in `evidence/`. This file writes nothing itself. The
 //!   settled execution ledger marks that section stopped
 //!   (`execution/card.rs`), on a silent take-down too.
 //! - The fields are `revision`, `deployments` (`5`), the applied totals
 //!   `cpuMillis` (`1450`) and `memoryMiB` (`2304`), `state` (`ready`, then
 //!   `stopped`), `removed` (`5`) and `left` (`0`).
 //! - The record is token-free.
-//!
-//! Spec 0081.
 
 pub mod card;
 pub mod line;

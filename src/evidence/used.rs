@@ -9,8 +9,6 @@
 //! ## Rules
 //!
 //! - Tokens are whole numbers, or `null` when the call reported none.
-//!
-//! Spec 0080.
 
 use serde::{Deserialize, Serialize};
 

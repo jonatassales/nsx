@@ -5,8 +5,6 @@
 //!
 //! Definition only: the `Part` type: the component's path, its stack and its
 //! role.
-//!
-//! Spec 0078.
 
 use serde::{Deserialize, Serialize};
 

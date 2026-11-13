@@ -16,8 +16,6 @@
 //!   the runtime was ready.
 //! - The record is marked on a silent take-down too, so that it never says
 //!   `ready` of a runtime that is gone.
-//!
-//! Spec 0081.
 
 use crate::contract::{hosted::STOPPED, run::Run};
 use crate::local::execution::Execution;

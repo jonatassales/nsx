@@ -2,8 +2,6 @@
 //!
 //! One function: it gives back the `sizing` section of the Plan card, to
 //! fill, and makes the card and the section first when they are not there.
-//!
-//! Spec 0077.
 
 use crate::contract::{cards::Cards, sizing::Sizing};
 

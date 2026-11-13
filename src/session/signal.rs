@@ -11,8 +11,6 @@
 //!   that arrives before anyone waits is not lost, and does not end nsx
 //!   without its sentence.
 //! - nsx runs on macOS and Linux: the signals are those systems'.
-//!
-//! Spec 0077.
 
 pub mod wait;
 pub mod watch;

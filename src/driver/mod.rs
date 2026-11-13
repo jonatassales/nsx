@@ -3,7 +3,7 @@
 //! Starts the team's coding agent once for each stage that has a skill:
 //! Planning, Spec, Tickets, Implement and Review. The model and the effort
 //! the run applies reach every call. The driver prints nothing itself: each
-//! stage's one line belongs to the skills (spec 0059).
+//! stage's one line belongs to the skills.
 //!
 //! - `Agent`: the coding agent, as a trait
 //! - `Config`: `driver.json`, which says how the coding agent is started
@@ -17,11 +17,8 @@
 //!   in an over-budget run.
 //! - No terminal line and no card field belongs to this folder.
 //! - Nothing is retried and nothing resumes.
-//! - The driver does not choose the model, the effort or the stages (spec
-//!   0057), price the tokens (spec 0056) or keep the usage record (spec
-//!   0065).
-//!
-//! Spec 0080.
+//! - The driver does not choose the model, the effort or the stages, price
+//!   the tokens or keep the usage record.
 
 pub mod agent;
 pub mod call;

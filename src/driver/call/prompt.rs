@@ -8,8 +8,6 @@
 //! - It names the skill text, the ticket, the effort and the instruction to
 //!   write the stage's report at the report path, and nothing else: what a
 //!   skill does is the skill's own text, in `.langdrift/skills/`.
-//!
-//! Spec 0080.
 
 use crate::driver::call::Call;
 

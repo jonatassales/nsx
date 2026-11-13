@@ -2,8 +2,6 @@
 //!
 //! One function: it gives back the current moment, to the second, as an
 //! RFC 3339 timestamp in UTC.
-//!
-//! Spec 0080.
 
 use jiff::Timestamp;
 

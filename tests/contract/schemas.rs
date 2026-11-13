@@ -1,8 +1,7 @@
 //! Each schema generated from a type equals its published file
 //!
-//! The published copies in `schema/` started as Core's files. `plan.json`'s
-//! has grown with the cards' fields; the others still equal Core's. They are
-//! compared as JSON documents: whitespace and key order do not count.
+//! The published files live in `schema/`. They are compared as JSON
+//! documents: whitespace and key order do not count.
 
 use nsx::contract::{
 	cards::Cards, criteria::Criteria, episodes::Episodes, fence::Fence,

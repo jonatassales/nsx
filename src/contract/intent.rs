@@ -17,8 +17,6 @@
 //! - nsx records the team's authorization. It never decides it.
 //! - The judge's suggestion does not set `model` or `effort`: the plan
 //!   proposes the workflow's default choice, and the team may change it.
-//!
-//! Spec 0077.
 
 pub mod validate;
 

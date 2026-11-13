@@ -27,9 +27,7 @@
 //!
 //! - The Plan card after the run. It still reads "pending team
 //!   authorization" while the run's opening comment says "authorized by the
-//!   team". The spec follows the simulation; the owner decides.
-//!
-//! Spec 0079.
+//!   team". nsx follows the simulation until the owner decides.
 
 pub mod write;
 

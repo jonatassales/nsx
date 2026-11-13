@@ -5,8 +5,6 @@
 //! a person did not confirm.
 //!
 //! Definition only: the `Error` type.
-//!
-//! Spec 0080.
 
 use std::path::PathBuf;
 

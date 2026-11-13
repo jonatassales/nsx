@@ -18,8 +18,6 @@
 //!   (the stop rule).
 //! - A link that is, or passes through, a symbolic link is refused. Whether
 //!   the document is there is found when it is read.
-//!
-//! Spec 0078.
 
 use std::path::Path;
 

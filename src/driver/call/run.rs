@@ -24,8 +24,6 @@
 //!
 //! - What a failed or hung call prints and records, and whether a time limit
 //!   is wanted. Until the owner decides, such a call stops the run silently.
-//!
-//! Spec 0080.
 
 use std::io::ErrorKind;
 

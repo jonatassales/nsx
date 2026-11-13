@@ -17,10 +17,8 @@
 //! ## Open
 //!
 //! - Whether an amount may be negative. A release is the reservation minus the
-//!   observed spend and is not clamped at zero, and the spec leaves open what
-//!   it reads when the observed spend is the higher of the two.
-//!
-//! Spec 0079.
+//!   observed spend and is not clamped at zero, and what it reads when the
+//!   observed spend is the higher of the two is not settled.
 
 pub mod format;
 pub mod parse;

@@ -16,8 +16,6 @@
 //!
 //! - It runs after the `completed` line.
 //! - nsx commits nothing: the push carries the committed head.
-//!
-//! Spec 0077.
 
 use crate::command::{
 	applied::Applied, run::Run, session::Session, work::Work,

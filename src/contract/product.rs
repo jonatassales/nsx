@@ -9,8 +9,6 @@
 //! ## Rules
 //!
 //! - All three are required. No other field is allowed.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

@@ -15,8 +15,6 @@
 //!   a disk that ignores case are one folder.
 //! - A component whose image is not resolved shares no image and is not
 //!   counted among the images resolved.
-//!
-//! Spec 0079.
 
 use std::collections::BTreeMap;
 

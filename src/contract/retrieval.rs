@@ -14,8 +14,6 @@
 //!   line prints; `kept` and `dropped` until the `drop` line; `cited` and
 //!   `citedMeasured` until the `episodes` line.
 //! - No other field is allowed.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

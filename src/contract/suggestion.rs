@@ -15,8 +15,6 @@
 //! - The two reasons are free text, each in its own field. There is no free
 //!   list of reasons.
 //! - The suggestion is a recommendation. The team authorizes the choice.
-//!
-//! Spec 0077.
 
 pub mod check;
 

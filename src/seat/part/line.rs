@@ -12,11 +12,9 @@
 //! ## Rules
 //!
 //! - The two lines follow the `implement` line and come before the
-//!   `code-review` line (spec 0059).
+//!   `code-review` line.
 //! - They print in every run that reaches them. No choice adds or removes
 //!   them.
-//!
-//! Spec 0080.
 
 use crate::contract::step::DONE;
 use crate::seat::part::Part;

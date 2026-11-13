@@ -5,8 +5,6 @@
 //!
 //! Definition only: the `Launcher` type, which carries the runner of
 //! programs. Its function is the file in `launcher/`.
-//!
-//! Spec 0080.
 
 pub mod start;
 

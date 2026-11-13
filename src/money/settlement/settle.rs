@@ -19,8 +19,6 @@
 //! - What RELEASED and the `ready` line say when the observed spend is above
 //!   the reservation: a negative release or something else. No gate is added
 //!   during the run.
-//!
-//! Spec 0080.
 
 use crate::money::{
 	cents::Cents, estimate::Estimate, model::Model, settlement::Settlement,

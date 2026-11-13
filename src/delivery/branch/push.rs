@@ -11,7 +11,7 @@
 //!
 //! ## Rules
 //!
-//! - It runs after the `completed` line has printed (spec 0065).
+//! - It runs after the `completed` line has printed.
 //! - The hash is the head's whole hash: forty hexadecimal characters or
 //!   more, in lowercase. Anything else the forge gives back is no hash, and
 //!   a stop.
@@ -22,8 +22,6 @@
 //!
 //! - Work the stages or the person left uncommitted. The push carries only
 //!   the committed head. Until the owner decides, nsx commits nothing itself.
-//!
-//! Spec 0081.
 
 use crate::delivery::{branch::Branch, error::Error, forge::Forge};
 

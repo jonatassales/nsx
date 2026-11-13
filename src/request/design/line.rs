@@ -13,8 +13,6 @@
 //!   team's document, so whatever it sets, the team set.
 //! - The line shows the envelope and not the budget. The card's row shows
 //!   both.
-//!
-//! Spec 0078.
 
 use crate::request::design::Design;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

@@ -19,9 +19,7 @@
 //! - Similarity alone ranks and keeps the candidates: no other score exists.
 //! - History sizes nothing: no component's share comes from an episode.
 //! - Each candidate's reason, the sizing basis and the suggestion are the
-//!   judge's (spec 0051).
-//!
-//! Spec 0078.
+//!   judge's.
 
 pub mod candidate;
 pub mod embedder;

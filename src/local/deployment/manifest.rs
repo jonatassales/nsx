@@ -11,8 +11,6 @@
 //! - The Deployment's progress deadline is the bound nsx waits for it, so
 //!   that the cluster does not give up on it sooner.
 //! - The Deployment carries the run's label, as its space does.
-//!
-//! Spec 0081.
 
 use serde_json::{Value, json};
 

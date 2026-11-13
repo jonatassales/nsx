@@ -10,9 +10,7 @@
 //!
 //! ## Rules
 //!
-//! - The checks' state the section already holds stays (spec 0064).
-//!
-//! Spec 0081.
+//! - The checks' state the section already holds stays.
 
 use crate::contract::{pull::Pull as Recorded, run::Run};
 use crate::delivery::pull::Pull;

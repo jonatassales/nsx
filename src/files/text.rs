@@ -13,8 +13,6 @@
 //! - A text is read up to the bound its caller gives. A document is at most
 //!   1 MiB, the bound `runtime.md` has.
 //! - A file that is not UTF-8 is refused, never read lossily.
-//!
-//! Spec 0077.
 
 use std::path::Path;
 

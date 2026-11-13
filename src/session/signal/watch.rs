@@ -9,8 +9,6 @@
 //!   waits decides how it stops.
 //! - A signal that cannot be watched is a failure of its own, said before
 //!   the command starts.
-//!
-//! Spec 0077.
 
 use tokio::signal::unix::{SignalKind, signal};
 use tokio::sync::Mutex;

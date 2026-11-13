@@ -26,11 +26,9 @@
 //! - The outcome tells `command` whether an intent has a completed run, and
 //!   tells `rag` when a run finished, so that its episode is written.
 //! - The money is not copied here: RESERVED, OBSERVED and RELEASED, and the
-//!   paused result, come from the money ledger (spec 0056).
+//!   paused result, come from the money ledger.
 //! - Every value is in units and carries no secret. What is not known is
 //!   `null`, never zero.
-//!
-//! Spec 0080.
 
 pub mod stage;
 pub mod write;

@@ -9,11 +9,9 @@
 //!
 //! ## Rules
 //!
-//! - The questions and flags of the old setup are removed: the envelope and
-//!   the budget come from the design doc, where the team set them.
+//! - It asks no question and takes no flag: the envelope and the budget come
+//!   from the design doc, where the team set them.
 //! - It works in the working directory.
-//!
-//! Spec 0077.
 
 pub mod execute;
 

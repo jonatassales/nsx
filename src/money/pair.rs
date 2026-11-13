@@ -16,8 +16,6 @@
 //! - Amounts are whole cents, and tokens are whole thousands.
 //! - `over` is the gate the run will meet: the run pauses on a pair that is
 //!   over the budget.
-//!
-//! Spec 0079.
 
 use crate::money::{cents::Cents, tokens::Tokens};
 

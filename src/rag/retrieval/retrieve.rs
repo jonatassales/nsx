@@ -10,9 +10,7 @@
 //!
 //! - One ticket is one query vector.
 //! - It makes no paid call.
-//! - It does not decide a candidate's reason: the judge does (spec 0051).
-//!
-//! Spec 0078.
+//! - It does not decide a candidate's reason: the judge does.
 
 use crate::files::{layout::Layout, root::Root};
 use crate::rag::{

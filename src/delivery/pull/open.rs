@@ -17,9 +17,7 @@
 //! - A pull request that cannot be opened, or that comes back with no number
 //!   or no title, stops the run before the pr line, with the branch pushed
 //!   (the stop rule).
-//! - Once the pr line has printed, the number goes to spec 0064.
-//!
-//! Spec 0081.
+//! - Once the pr line has printed, the number goes to `checks`.
 
 use crate::delivery::{
 	branch::Branch, error::Error, forge::Forge, pull::Pull, readiness::Readiness,

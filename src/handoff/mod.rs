@@ -22,9 +22,7 @@
 //! - This folder computes no card value: each field's value belongs to the
 //!   folder that owns it.
 //! - The run's record, `run.json`, is the third part of the hand-off.
-//!   `evidence` keeps it (spec 0065).
-//!
-//! Spec 0079.
+//!   `evidence` keeps it.
 
 pub mod authorization;
 pub mod error;

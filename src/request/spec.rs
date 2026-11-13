@@ -11,8 +11,6 @@
 //!
 //! - The component paths, in the spec's order and each with the port the spec
 //!   names beside it, are handed on to `components/`, which inspects them.
-//!
-//! Spec 0078.
 
 pub mod card;
 pub mod line;

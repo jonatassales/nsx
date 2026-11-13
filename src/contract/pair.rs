@@ -12,8 +12,6 @@
 //! - `model` is a price-list id, and `effort` is low, medium or high.
 //! - Money is whole cents and tokens are whole thousands, never negative.
 //! - `overBudget` is stated by nsx. A receiver never compares the amounts.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

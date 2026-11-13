@@ -17,8 +17,6 @@
 //!   revision since the intent was authorized is a stop: the run brings up
 //!   the revision it applies and no other.
 //! - No line prints until every Deployment is available.
-//!
-//! Spec 0077.
 
 use crate::command::{applied::Applied, run::Run, session::Session};
 use crate::contract::fence::Fence;

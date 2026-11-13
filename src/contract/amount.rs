@@ -11,8 +11,6 @@
 //! - Both are whole numbers, never negative: a headroom may be zero, and a
 //!   plan over the bound stops before it writes one.
 //! - No other field is allowed.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

@@ -19,8 +19,6 @@
 //!   name does not say the id it holds, so the two always agree.
 //! - A JSON file in the folder whose name is no record's puts the index out
 //!   of step: the rebuild then says what is wrong with it.
-//!
-//! Spec 0078.
 
 use crate::files::{layout::Layout, root::Root};
 use crate::rag::{episode::Episode, error::Error, index::Index};

@@ -16,8 +16,6 @@
 //! - A gate that paused ends the run there, as `paused`: no stage plays and
 //!   no branch is started.
 //! - A run that plays its last line ends `completed`.
-//!
-//! Spec 0077.
 
 use crate::command::{applied::Applied, run::Run, session::Session};
 use crate::contract::outcome::Outcome;

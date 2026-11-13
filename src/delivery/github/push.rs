@@ -7,8 +7,6 @@
 //!
 //! - runs `git push` of the branch to `origin`, with its upstream set
 //! - runs `git rev-parse`, for the head's hash
-//!
-//! Spec 0081.
 
 use crate::delivery::{
 	error::Error,

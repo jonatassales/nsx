@@ -18,8 +18,6 @@
 //!   never decides it.
 //! - A plan of the same ticket that writes a new revision writes a new
 //!   proposed intent for it.
-//!
-//! Spec 0079.
 
 pub mod card;
 pub mod intent;

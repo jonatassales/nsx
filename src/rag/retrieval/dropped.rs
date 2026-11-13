@@ -13,12 +13,9 @@
 //! ## Rules
 //!
 //! - It comes after the judge's `judgeRelevance` line and is never
-//!   contradicted by it: the judge's verdicts equal the threshold's
-//!   (spec 0051).
+//!   contradicted by it: the judge's verdicts equal the threshold's.
 //! - The kept and total counts also feed the Analysis header's second state,
-//!   which is spec 0051's.
-//!
-//! Spec 0078.
+//!   which `judgment/` owns.
 
 use crate::rag::retrieval::Retrieval;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

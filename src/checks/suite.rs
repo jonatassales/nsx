@@ -12,17 +12,14 @@
 //!
 //! - Only the state PULL REQUEST shows is recorded: `pullRequest.checks` in
 //!   `run.json`, with `state` `running`, then `passed` with `passed` (`4`)
-//!   and `total` (`4`). It goes through the record's one writer (spec 0065).
+//!   and `total` (`4`). It goes through the record's one writer.
 //! - The names and the per-check results are read, printed and used to
 //!   decide. They are not kept, because no card field shows them.
 //! - The forge is asked every 15 seconds.
 //!
 //! ## Open
 //!
-//! - The poll interval: the spec keeps the existing one and gives no number.
-//!   Until the owner decides, it is 15 seconds.
-//!
-//! Spec 0081.
+//! - The poll interval is not set. Until the owner decides, it is 15 seconds.
 
 pub mod card;
 pub mod line;

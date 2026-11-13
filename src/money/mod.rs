@@ -32,8 +32,6 @@
 //!   before the line that needs it (the stop rule).
 //! - This folder does not read the budget out of the design doc, measure the
 //!   tokens the stages use or choose the model and effort.
-//!
-//! Spec 0079.
 
 pub mod budget;
 pub mod cents;

@@ -6,8 +6,6 @@
 //! ## Simulation
 //!
 //! - Card: Analysis · the spec row of DOCUMENTS, set by the `readSpec` line
-//!
-//! Spec 0078.
 
 use crate::contract::{cards::Cards, specified::Specified};
 use crate::request::spec::Spec;

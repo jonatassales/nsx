@@ -14,8 +14,6 @@
 //! - A cluster created here writes its access into the project's own
 //!   kubeconfig, never the person's.
 //! - The namespace is named after the space and carries its label.
-//!
-//! Spec 0081.
 
 use serde_json::json;
 

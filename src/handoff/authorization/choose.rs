@@ -25,8 +25,6 @@
 //!   a folder or a broken link under that name is never skipped.
 //! - An intent that names another runtime than the folder it sits in is a
 //!   stop: its run would write into the other runtime's records.
-//!
-//! Spec 0079.
 
 use std::path::Path;
 

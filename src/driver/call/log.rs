@@ -13,8 +13,6 @@
 //!   evidence.
 //! - It is written after the usage record has kept the call: a log that
 //!   cannot be written stops the run, and the paid call is still on record.
-//!
-//! Spec 0080.
 
 use crate::driver::{call::Call, ended::Ended, error::Error};
 use crate::files::{inside::inside, root::Root, sealed::sealed};

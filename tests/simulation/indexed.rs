@@ -1,10 +1,9 @@
 //! The fixture's episode index, built so the six cosines are the simulation's
 //!
-//! As spec 0052 has it: the index holds six vectors built from the fixture
-//! ticket's own query vector, so that the real embedder and the real search
-//! give 0.81, 0.74, 0.66, 0.52, 0.47 and 0.42. Each vector leans on the query
-//! by its similarity and, for the rest, on a direction the query does not
-//! have.
+//! The index holds six vectors built from the fixture ticket's own query
+//! vector, so that the real embedder and the real search give 0.81, 0.74,
+//! 0.66, 0.52, 0.47 and 0.42. Each vector leans on the query by its
+//! similarity and, for the rest, on a direction the query does not have.
 
 use std::path::Path;
 

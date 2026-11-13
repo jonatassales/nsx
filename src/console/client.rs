@@ -12,10 +12,8 @@
 //!
 //! - It carries the one tool and no other.
 //! - A call prints no line (the owner's exception to ADR 0005).
-//! - The answer carries the runtime's id and, when the team asked
-//!   something nsx has not applied yet, that request (spec 0076).
-//!
-//! Spec 0081.
+//! - The answer carries the runtime's id and, when the team asked something
+//!   nsx has not applied yet, that request.
 
 use std::future::Future;
 use std::pin::Pin;

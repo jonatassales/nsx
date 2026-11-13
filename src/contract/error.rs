@@ -5,8 +5,6 @@
 //! sit inside the sentence of whoever read the record, which names the file.
 //!
 //! Definition only: the `Error` type.
-//!
-//! Spec 0077.
 
 #[derive(Debug, thiserror::Error)]
 pub enum Error {

@@ -10,9 +10,7 @@
 //!
 //! ## Rules
 //!
-//! - It follows the plan's `budget` line (spec 0056).
-//!
-//! Spec 0078.
+//! - It follows the plan's `budget` line.
 
 use crate::rag::retrieval::Retrieval;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

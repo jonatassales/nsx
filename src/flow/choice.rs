@@ -23,10 +23,8 @@
 //!   workflow's defaults.
 //! - The judge's suggestion is a recommendation and does not change the
 //!   choice. No flag sets the model or the effort.
-//! - The intent that carries the choice between plan, card and run is spec
-//!   0050's. The run's record keeps the choice as applied (spec 0065).
-//!
-//! Spec 0080.
+//! - The intent that carries the choice between plan, card and run is
+//!   `handoff`'s. The run's record keeps the choice as applied.
 
 use serde::Deserialize;
 

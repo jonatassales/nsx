@@ -13,8 +13,6 @@
 //!   under its old folder.
 //! - Any other space is not one nsx made for this run: a ledger that was
 //!   edited to name another namespace is never cleaned up from.
-//!
-//! Spec 0081.
 
 use crate::files::root::Root;
 use crate::local::execution::Execution;

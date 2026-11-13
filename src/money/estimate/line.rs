@@ -16,8 +16,6 @@
 //! - The line cites FIN-02: the estimate comes before any paid call.
 //! - The plan's line with the same label, on the runtime's price, belongs to
 //!   the price list.
-//!
-//! Spec 0080.
 
 use crate::money::estimate::Estimate;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

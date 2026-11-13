@@ -21,8 +21,6 @@
 //! - `pass` is passed and `pending` is running. `fail`, `cancel` and
 //!   `skipping` did not pass. Any other word is a stop: nsx never guesses a
 //!   check's state.
-//!
-//! Spec 0081.
 
 use serde_json::Value;
 

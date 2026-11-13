@@ -6,8 +6,6 @@
 //! ## Rules
 //!
 //! - The verdict stays the threshold's. Only the reason is the judge's.
-//!
-//! Spec 0078.
 
 use crate::judgment::relevance::Relevance;
 use crate::rag::retrieval::Retrieval;

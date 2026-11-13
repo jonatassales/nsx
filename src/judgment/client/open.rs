@@ -6,8 +6,6 @@
 //! ## Rules
 //!
 //! - The HTTP client follows no redirect.
-//!
-//! Spec 0078.
 
 use reqwest::redirect::Policy;
 

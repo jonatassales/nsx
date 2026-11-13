@@ -2,8 +2,6 @@
 //!
 //! One function: it takes the design doc as `request/` read it and gives back
 //! the envelope, with the design doc's path as its source.
-//!
-//! Spec 0078.
 
 use crate::harness::envelope::Envelope;
 use crate::request::design::Design;

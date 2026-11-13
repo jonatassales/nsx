@@ -9,8 +9,6 @@
 //!   `package.json` gives Node.js and api. `nats.conf` gives NATS and broker.
 //!   `redis.conf` gives Redis and cache.
 //! - `package.json` never decides Next.js, and no combined stack exists.
-//!
-//! Spec 0079.
 
 use crate::components::{
 	manifest::Manifest,

@@ -18,8 +18,6 @@
 //! - Cpu and memory are both requested and limited at exactly the proposed
 //!   share: `250m` and `256Mi` for `services/signup-api`.
 //! - No Service stands between components, and no Secret or volume exists.
-//!
-//! Spec 0081.
 
 pub mod manifest;
 pub mod of;

@@ -5,8 +5,6 @@
 //!
 //! Definition only: the `Documents` type: the PRD, the design doc and the
 //! spec, each borrowed from the plan that read it.
-//!
-//! Spec 0078.
 
 use crate::request::{design::Design, prd::Prd, spec::Spec};
 

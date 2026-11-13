@@ -6,10 +6,8 @@
 //!
 //! ## Rules
 //!
-//! - Which of the two a ready pull request is follows the Review tick
-//!   (spec 0057) and nothing else.
-//!
-//! Spec 0081.
+//! - Which of the two a ready pull request is follows the Review tick and
+//!   nothing else.
 
 pub mod word;
 

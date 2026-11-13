@@ -15,8 +15,6 @@
 //! - Otherwise the bytes are the plain text, with no escape sequence.
 //! - A line that carries a control character, a line break or an escape among
 //!   them, is not printed: it is a stop, whatever it was read from.
-//!
-//! Spec 0077.
 
 use std::io::Write;
 

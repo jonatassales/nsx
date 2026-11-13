@@ -21,8 +21,6 @@
 //! - `report` is absent until the stage's skill writes it, and holds the
 //!   stage's figures as its own report shapes them.
 //! - No other field is allowed.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

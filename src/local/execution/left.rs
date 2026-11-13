@@ -21,12 +21,9 @@
 //!
 //! ## Open
 //!
-//! - Nothing tells a run that is still going from one that stopped: the
-//!   specs removed the locks. A second run of one runtime started in the
-//!   same checkout while the first still has its runtime up would take that
-//!   runtime down.
-//!
-//! Spec 0081.
+//! - Nothing tells a run that is still going from one that stopped: nsx
+//!   keeps no lock. A second run of one runtime started in the same checkout
+//!   while the first still has its runtime up would take that runtime down.
 
 use std::io::ErrorKind;
 

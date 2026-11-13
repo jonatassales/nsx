@@ -13,9 +13,7 @@
 //! - Every field is required and never `null`. No other field is allowed.
 //! - `method` is `tdd`. No other method is accepted.
 //! - The counts are never negative.
-//! - Whether a `false` flag fails the stage is `skills`' check (spec 0059).
-//!
-//! Spec 0077.
+//! - Whether a `false` flag fails the stage is `skills`' check.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

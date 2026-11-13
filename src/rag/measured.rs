@@ -9,8 +9,6 @@
 //!
 //! - A run that measured neither has no `Measured` at all: unknown is never
 //!   zero.
-//!
-//! Spec 0078.
 
 use serde::{Deserialize, Serialize};
 

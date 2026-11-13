@@ -13,7 +13,7 @@
 //! - An unticked stage has no checkpoint: it runs without waiting.
 //! - Review never has one. `code-review` runs without waiting even when
 //!   Review is ticked: the tick only decides how the run ends.
-//! - The Dev ticket's wait is not a checkpoint: it is spec 0061's.
+//! - The Dev ticket's wait is not a checkpoint: it is `seat`'s.
 //!
 //! ## Open
 //!
@@ -22,8 +22,6 @@
 //!   else, or the end of the input, declines and stops the run.
 //! - Who "the owner" is. nsx cannot tell who answers at the terminal, and
 //!   records the role `owner`.
-//!
-//! Spec 0080.
 
 pub mod confirm;
 pub mod line;

@@ -22,8 +22,6 @@
 //!   lacking `Checked at`, or a design doc without the envelope stops the plan
 //!   before the line this folder would print: no further line, no draft, one
 //!   sentence on stderr, exit 1 (the stop rule).
-//!
-//! Spec 0078.
 
 pub mod criterion;
 pub mod envelope;

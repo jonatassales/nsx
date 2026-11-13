@@ -14,8 +14,6 @@
 //! - The run takes its estimate from the plan's spend-table row for the applied
 //!   pair, so the run's figure is the one the card showed.
 //! - Amounts are whole cents.
-//!
-//! Spec 0080.
 
 pub mod compute;
 pub mod line;

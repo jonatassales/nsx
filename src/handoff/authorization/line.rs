@@ -13,8 +13,6 @@
 //! - The model and the effort are the authorized intent's, so the line
 //!   differs between runs. With Claude Opus 5.5 at high effort it reads
 //!   `console › intent     claude-opus-5-5 · effort high · runtime.md revision 1`.
-//!
-//! Spec 0079.
 
 use crate::handoff::authorization::Authorization;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

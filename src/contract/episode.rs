@@ -12,9 +12,7 @@
 //! - `verdict` is `kept` or `dropped`.
 //! - `reason` comes from a closed set: `shares the stack and scale` when
 //!   kept; `other runtime`, `no broker` or `docs only` when dropped. That it
-//!   fits the verdict is the answer's check (spec 0078).
-//!
-//! Spec 0077.
+//!   fits the verdict is the answer's check.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

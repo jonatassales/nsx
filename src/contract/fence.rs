@@ -21,9 +21,7 @@
 //! - The fence has no uid, project id, name, budget, env file, passed
 //!   variable, Dockerfile, readiness or migration field, and no gpu or disk.
 //! - The sizing report beside the fence in `runtime.md` is not part of the
-//!   fence (spec 0055).
-//!
-//! Spec 0077.
+//!   fence.
 
 pub mod parse;
 pub mod validate;

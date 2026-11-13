@@ -12,8 +12,6 @@
 //! - `rows` arrives with the `resolve` line, as placeholders. The three counts
 //!   arrive with the `crossCheck` line.
 //! - A field is absent until its line prints, and no other field is allowed.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

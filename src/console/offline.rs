@@ -5,8 +5,6 @@
 //!
 //! Definition only: the `Offline` type. Its function is the file in
 //! `offline/`.
-//!
-//! Spec 0081.
 
 pub mod report;
 

@@ -9,8 +9,6 @@
 //!   them, as in `$25` and `$25.00`.
 //! - The dollars may be grouped in threes with commas, as in `$1,250.00`, or
 //!   not grouped at all. Any other comma is refused: `$25,00` is not $2,500.
-//!
-//! Spec 0079.
 
 use crate::money::cents::Cents;
 

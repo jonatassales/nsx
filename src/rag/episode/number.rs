@@ -7,8 +7,6 @@
 //!
 //! - The number has four digits or more, and nothing but digits.
 //! - Any other text is no episode's id.
-//!
-//! Spec 0078.
 
 use crate::rag::episode::Episode;
 

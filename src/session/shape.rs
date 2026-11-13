@@ -12,8 +12,6 @@
 //! - The shape says how a line is laid out, never what it means: the kind
 //!   does that. The opened gate is a labeled line of the success kind.
 //! - The layout itself, with its columns, is `line/render.rs`.
-//!
-//! Spec 0077.
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum Shape {

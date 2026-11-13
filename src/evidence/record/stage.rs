@@ -11,8 +11,6 @@
 //!
 //! - Only the entry of that stage changes. A stage the record does not list
 //!   changes nothing.
-//!
-//! Spec 0080.
 
 use crate::console::client::Client;
 use crate::contract::step::Step;

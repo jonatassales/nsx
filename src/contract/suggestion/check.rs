@@ -5,15 +5,11 @@
 //!
 //! ## Rules
 //!
-//! - The rules are Core's, from its Go package `judgment` (removed with
-//!   ticket 0434), in its words:
-//!   a model is named, the effort is one of the three, and each reason is
+//! - A model is named, the effort is one of the three, and each reason is
 //!   given.
 //! - Whether the model is in the price list, and whether each reason weighs
 //!   what was not chosen, is checked where the question is asked, in
 //!   `judgment/`.
-//!
-//! Spec 0077.
 
 use crate::contract::{
 	fence::EFFORTS, problem::Problem, suggestion::Suggestion,

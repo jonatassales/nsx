@@ -16,15 +16,13 @@
 //!
 //! - A line prints only once its call has ended and its report is checked.
 //! - The counts come from the report. The rest of each line is fixed text.
-//! - `to-spec` names the spec by its short id, `0011-SPEC`, under spec 0053's
-//!   rule for linked documents.
+//! - `to-spec` names the spec by its short id, `0011-SPEC`, as `request/`
+//!   names every linked document.
 //! - A count of 1 takes the singular noun: "1 ticket", "1 finding",
 //!   "1 acceptance criterion", "1 open question", "1 component", "1 file".
 //! - `code-review` never has a `waiting` line before it, whether or not
 //!   Review is ticked.
-//! - No card field. The card's stage states (spec 0057) turn on these lines.
-//!
-//! Spec 0080.
+//! - No card field. The card's stage states turn on these lines.
 
 use crate::contract::figures::Figures;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

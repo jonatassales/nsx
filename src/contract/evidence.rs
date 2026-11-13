@@ -12,8 +12,6 @@
 //! - A value not known yet is `null`, never an empty text or zero.
 //! - `revision` is at least 1.
 //! - No other field is allowed.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

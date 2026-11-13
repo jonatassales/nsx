@@ -11,8 +11,6 @@
 //! - `kind` is `prd`, `designDoc`, `spec` or `guardrail`, and the four come in
 //!   that order.
 //! - All four fields are required. No other field is allowed.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

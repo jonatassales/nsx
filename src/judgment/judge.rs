@@ -17,8 +17,6 @@
 //!   answers carry no cost and no usage.
 //! - No test reaches a real model: the golden test uses a recorded judge.
 //! - The sizing basis is not a question: it follows from the retrieval.
-//!
-//! Spec 0078.
 
 use std::future::Future;
 use std::pin::Pin;

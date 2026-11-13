@@ -9,21 +9,19 @@
 //! ## Rules
 //!
 //! - nsx has three commands: `nsx init`, `nsx agent plan <ticket>` and
-//!   `nsx agent run`. Every other command is removed.
-//! - The global flags are removed: the project is found from the working
+//!   `nsx agent run`. No other command exists.
+//! - There is no global flag: the project is found from the working
 //!   directory.
 //! - `--version` is removed, because the session does not show it. `--help`
-//!   stays as clap prints it until the owner decides (spec 0077), and the
-//!   `help` command is removed.
+//!   stays as clap prints it until the owner decides, and the `help` command
+//!   is removed.
 //!
 //! ## Open
 //!
 //! - Whether `--help` stays and `--version` returns as conventions outside
 //!   the session. The owner decides.
-//! - What nsx does with a command it does not have. The spec names no such
-//!   case; the stop rule covers a refusal the simulation does not show.
-//!
-//! Spec 0077.
+//! - What nsx does with a command it does not have. The simulation shows no
+//!   such case; the stop rule covers a refusal it does not show.
 
 pub mod execute;
 

@@ -13,25 +13,23 @@
 //!
 //! - Card: Workflow · PULL REQUEST: a dash until the pr line, then
 //!   `#19 · 3f9c2e1`. From the ready line its state reads `ready for review`
-//!   or `ready to merge`. Before that it shows the checks' state (spec 0064).
+//!   or `ready to merge`. Before that it shows the checks' state (`checks`).
 //! - Card: Workflow · the header, at the ready line:
 //!   `#19 · ready for review · $9.80` or `#19 · ready to merge · $9.80`. The
-//!   observed figure is spec 0056's.
+//!   observed figure is `money`'s.
 //!
 //! ## Rules
 //!
 //! - The run's record keeps `pullRequest.number`, `pullRequest.title` and
-//!   `pullRequest.state` (spec 0065).
+//!   `pullRequest.state`.
 //! - A stopped run leaves its pull request a draft.
 //!
 //! ## Open
 //!
 //! - Where the title comes from. Until the owner decides, it is the subject
 //!   of the branch's first commit, which the stages write.
-//! - Opening the pull request as a draft is this spec's choice. The
-//!   simulation shows only the pr line, then the ready line.
-//!
-//! Spec 0081.
+//! - Opening the pull request as a draft is a choice: the simulation shows
+//!   only the pr line, then the ready line.
 
 pub mod card;
 pub mod line;

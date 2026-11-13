@@ -14,8 +14,6 @@
 //! - Every `.json` file is listed, whatever its name: the index is built
 //!   from all of them, so being in step with it is asked of all of them.
 //! - The files are not read.
-//!
-//! Spec 0078.
 
 use std::io::ErrorKind;
 

@@ -19,13 +19,11 @@
 //! ## Rules
 //!
 //! - The model is one of the three of the price list, the ones the Workflow
-//!   card offers (spec 0056). The effort is low, medium or high.
+//!   card offers. The effort is low, medium or high.
 //! - It always comes from the judge: no recorded choice stands in for it.
-//! - It goes into the plan's card data (spec 0050) and the `runtime.md` draft
-//!   (spec 0055) as a recommendation, never as an authorization.
-//! - It does not set the Workflow card's default choice (spec 0057).
-//!
-//! Spec 0078.
+//! - It goes into the plan's card data and the `runtime.md` draft as a
+//!   recommendation, never as an authorization.
+//! - It does not set the Workflow card's default choice.
 
 pub mod ask;
 pub mod card;

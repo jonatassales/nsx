@@ -10,11 +10,8 @@
 //!
 //! ## Rules
 //!
-//! - It follows the `ready` line (spec 0063), which supplies the pull
-//!   request's number.
+//! - It follows the `ready` line, which supplies the pull request's number.
 //! - A run paused at the gate ends without it.
-//!
-//! Spec 0080.
 
 use crate::flow::ending::Ending;
 use crate::session::line::Line;

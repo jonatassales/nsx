@@ -10,10 +10,7 @@
 //!
 //! ## Rules
 //!
-//! - It comes after the `guardrail` line and before the `bounds` line
-//!   (spec 0054).
-//!
-//! Spec 0078.
+//! - It comes after the `guardrail` line and before the `bounds` line.
 
 use crate::judgment::criteria::Criteria;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

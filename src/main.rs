@@ -2,8 +2,7 @@
 //!
 //! The binary a person types: `nsx init`, `nsx agent plan <ticket>` and
 //! `nsx agent run`. This header is the crate's architecture document; the
-//! behaviour is defined by the simulation on the website's home (ADR 0005)
-//! and by specs 0077 to 0081.
+//! behaviour is defined by the simulation on the website's home (ADR 0005).
 //!
 //! ## Shape
 //!
@@ -16,9 +15,9 @@
 //!
 //! ## Folders
 //!
-//! A folder under `src/` belongs to one spec. `command` holds the three
-//! commands; the plan and the run are scripts there, each step calling the
-//! folder that owns its line. `session` fixes how a line prints and how a
+//! A folder under `src/` owns one part of the session. `command` holds the
+//! three commands; the plan and the run are scripts there, each step calling
+//! the folder that owns its line. `session` fixes how a line prints and how a
 //! command stops. `contract` holds every shape a file or the console sees.
 //! Every other folder is one element of the simulation, and `files` and
 //! `process` are the machinery they share.
@@ -38,8 +37,6 @@
 //! - A command reaches the outside only through its session, so that every
 //!   outside system has a fake in the tests.
 //! - Every test lives under `tests/`, never under `src/`.
-//!
-//! Specs 0077 to 0081.
 
 #![deny(clippy::unwrap_used, clippy::expect_used)]
 

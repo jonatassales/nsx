@@ -8,8 +8,6 @@
 //!
 //! - The order is descending similarity, ties broken by ascending id.
 //! - Cosine similarity is the only measure: no structured score takes part.
-//!
-//! Spec 0078.
 
 use crate::rag::{candidate::Candidate, index::Index, threshold::THRESHOLD};
 

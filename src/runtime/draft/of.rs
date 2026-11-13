@@ -13,8 +13,6 @@
 //! - The components keep the spec's order.
 //! - A component with no image gets an empty one, which validation counts as
 //!   an error: nothing is invented in its place.
-//!
-//! Spec 0079.
 
 use crate::components::component::Component;
 use crate::contract::{

@@ -20,10 +20,8 @@
 //! ## Open
 //!
 //! - Which set "documents read" means. The terminal and the card count
-//!   different sets that agree on the simulation's ticket. The spec keeps both
-//!   counts until the owner decides.
-//!
-//! Spec 0078.
+//!   different sets that agree on the simulation's ticket. Both counts stay
+//!   until the owner decides.
 
 pub mod card;
 pub mod count;

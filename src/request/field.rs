@@ -10,8 +10,6 @@
 //! ## Rules
 //!
 //! - The first line of the field counts. No model reads a document.
-//!
-//! Spec 0078.
 
 pub fn field<'text>(text: &'text str, name: &str) -> Option<&'text str> {
 	let opening = format!("**{name}:**");

@@ -2,8 +2,8 @@
 //!
 //! One function: it takes the judge, the retrieval with its cited episodes,
 //! the documents read with their facts, and the price list, whose models
-//! carry their short names (spec 0056). It gives back the suggestion: a
-//! model, an effort, an effort reason and a model reason.
+//! carry their short names. It gives back the suggestion: a model, an effort,
+//! an effort reason and a model reason.
 //!
 //! ## Reads and writes
 //!
@@ -21,8 +21,6 @@
 //!   by its short name, in ascending order of list price.
 //! - A refused answer, or a judge that cannot be reached or declines, is a
 //!   stop: the plan stops before the `weighEffort` line and writes no draft.
-//!
-//! Spec 0078.
 
 use crate::contract::{
 	fence::EFFORTS, plain::plain, problem::Problem,

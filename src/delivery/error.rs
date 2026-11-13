@@ -9,8 +9,6 @@
 //!
 //! - No sentence quotes what `git` or `gh` printed: a remote's address can
 //!   hold a token.
-//!
-//! Spec 0081.
 
 #[derive(Debug, thiserror::Error)]
 pub enum Error {

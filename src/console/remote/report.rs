@@ -17,8 +17,6 @@
 //!   "unavailable": a refusal, a timeout, a status that is not 200 or a body
 //!   that is not the tool's result. The reason is kept without the request's
 //!   address.
-//!
-//! Spec 0081.
 
 use std::future::Future;
 use std::pin::Pin;

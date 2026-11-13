@@ -8,8 +8,6 @@
 //! - The name is the component's path with `/` replaced by `-`.
 //! - A path whose name is no lowercase label cannot name a Deployment: the
 //!   run stops before anything is created.
-//!
-//! Spec 0081.
 
 use crate::contract::{component::Component, label::label};
 use crate::local::{deployment::Deployment, error::Error};

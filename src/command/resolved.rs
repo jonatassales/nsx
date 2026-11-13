@@ -5,8 +5,6 @@
 //!
 //! Definition only: the `Resolved` type: the inventory, its sizing and the
 //! revision the draft takes.
-//!
-//! Spec 0077.
 
 use crate::components::inventory::Inventory;
 use crate::runtime::{revision::Revision, sizing::Sizing};

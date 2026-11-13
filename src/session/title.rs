@@ -15,8 +15,6 @@
 //!
 //! - The plan and the run set it when they start, with the standard terminal
 //!   title sequence, and only when standard output is a terminal.
-//!
-//! Spec 0077.
 
 pub mod of;
 

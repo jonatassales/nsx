@@ -12,8 +12,6 @@
 //!
 //! - It gives its texts back as they are. The asking function reads and
 //!   checks them like any judge's, so a recorded answer can be a wrong one.
-//!
-//! Spec 0078.
 
 mod ask;
 

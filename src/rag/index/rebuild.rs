@@ -16,9 +16,7 @@
 //! - Every JSON file in the folder is a record, and its name says the id it
 //!   holds, as `<id>-<slug>.json`. One that does not is a stop: an index
 //!   built over it could never be found in step (`current`).
-//! - No command asks for it: the `reindex` command is removed (spec 0048).
-//!
-//! Spec 0078.
+//! - No command asks for it: nsx has no `reindex` command.
 
 use crate::files::{layout::Layout, root::Root};
 use crate::rag::{

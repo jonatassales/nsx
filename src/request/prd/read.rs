@@ -17,8 +17,6 @@
 //!
 //! - Whether LangDrift imposes this field line on the client's documents is
 //!   the owner's decision.
-//!
-//! Spec 0078.
 
 use crate::files::{
 	root::Root,

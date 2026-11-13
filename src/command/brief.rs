@@ -8,8 +8,6 @@
 //! Definition only: the `Brief` type: the project's root and the paths under
 //! `.langdrift/`, the ticket and the text of its file, its four links, the
 //! design doc and the price list.
-//!
-//! Spec 0077.
 
 use crate::files::{layout::Layout, root::Root};
 use crate::flow::workflow::Workflow;

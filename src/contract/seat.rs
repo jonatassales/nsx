@@ -10,8 +10,6 @@
 //! - `safeSeat` is `met`: a run that did not meet it writes no section.
 //! - It never carries a share, a percentage or a line count.
 //! - No other field is allowed.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

@@ -5,14 +5,10 @@
 //!
 //! ## Rules
 //!
-//! - The rules are Core's, from its Go package `judgment` (removed with
-//!   ticket 0434), in its words:
-//!   each entry names its criterion once, and says what the criterion
+//! - Each entry names its criterion once, and says what the criterion
 //!   requires.
 //! - Whether the criteria are the guardrail's is checked where the question
 //!   is asked, in `judgment/`.
-//!
-//! Spec 0077.
 
 use std::collections::HashSet;
 

@@ -13,8 +13,6 @@
 //! - The line prints in the plan, after the `limits` line.
 //! - Its label is `estimate`, but it states no amount. The run's `estimate`
 //!   line belongs to the estimate.
-//!
-//! Spec 0079.
 
 use crate::money::price::Price;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

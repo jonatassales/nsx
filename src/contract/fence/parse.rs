@@ -11,8 +11,6 @@
 //! - A field version 3 does not define is refused.
 //! - It reads the shape only. Which rules the fence breaks is `validate`'s to
 //!   say.
-//!
-//! Spec 0077.
 
 use serde_json::Value;
 

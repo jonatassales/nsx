@@ -13,8 +13,6 @@
 //! - No lock refuses a new plan while an earlier run of the runtime exists.
 //! - The simulation shows only revision 1. Nothing about a later revision
 //!   prints differently.
-//!
-//! Spec 0079.
 
 pub mod next;
 

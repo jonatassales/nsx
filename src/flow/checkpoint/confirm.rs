@@ -7,8 +7,6 @@
 //!
 //! - `yes` or `y` confirms, in any case, with spaces around it or not.
 //! - Anything else declines, an empty line too.
-//!
-//! Spec 0080.
 
 use crate::flow::checkpoint::Checkpoint;
 

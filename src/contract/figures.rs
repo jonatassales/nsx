@@ -11,8 +11,6 @@
 //! - Each report keeps its own schema, referred to by its `$id`. No two
 //!   share a field, so a report is told apart by its fields alone.
 //! - Only figures are kept, never a free-text summary.
-//!
-//! Spec 0077.
 
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};

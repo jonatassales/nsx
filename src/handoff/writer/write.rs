@@ -12,12 +12,10 @@
 //!
 //! - The file is replaced atomically each time a line that fills a field
 //!   prints, so that a receiver can fill the cards live.
-//! - The file's shape is the one `contract` holds (spec 0049), so it is valid
-//!   after every write and holds every field written before.
+//! - The file's shape is the one `contract` holds, so it is valid after
+//!   every write and holds every field written before.
 //! - The file never leaves the project: a runtime folder that is a symbolic
 //!   link is refused.
-//!
-//! Spec 0079.
 
 use crate::contract::{cards::Cards, encode::encode};
 use crate::files::{inside::inside, root::Root, write::write};

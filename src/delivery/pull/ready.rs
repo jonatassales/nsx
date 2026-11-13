@@ -14,14 +14,12 @@
 //! - Ready means checked and met: the forge is asked only when every check
 //!   passed and Safe Seat is met. Otherwise the pull request stays a draft
 //!   and the run stops, with the forge not asked.
-//! - It runs after the runtime's stopped line has printed (spec 0062).
-//! - The state follows spec 0057's `reviewed` and nothing else.
+//! - It runs after the runtime's stopped line has printed.
+//! - The state follows `reviewed`, the Review tick, and nothing else.
 //! - A pull request that cannot be marked ready stops the run before the
 //!   ready line, and it stays a draft (the stop rule).
 //! - Marking ready is the last thing nsx does to the pull request. It never
 //!   merges.
-//!
-//! Spec 0081.
 
 use crate::checks::suite::Suite;
 use crate::delivery::{

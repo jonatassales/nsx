@@ -10,8 +10,6 @@
 //! ## Rules
 //!
 //! - This function writes no file: the one writer in `handoff/` does.
-//!
-//! Spec 0078.
 
 use crate::contract::{bound::Bound, cards::Cards};
 use crate::harness::envelope::Envelope;

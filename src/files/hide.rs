@@ -13,8 +13,6 @@
 //! - It is written before anything private is: a secret, a call's log, an
 //!   execution ledger or the cluster's kubeconfig.
 //! - The file ignores everything beside it, itself included.
-//!
-//! Spec 0077.
 
 use crate::files::{
 	error::Error, inside::inside, layout::Layout, root::Root, sealed::sealed,

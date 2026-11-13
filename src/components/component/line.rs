@@ -17,8 +17,6 @@
 //! - One line per component, in the spec's order, each before its result row.
 //! - A component that cannot be inspected prints no line: the plan stops
 //!   before it.
-//!
-//! Spec 0079.
 
 use crate::components::component::Component;
 use crate::session::{kind::Kind, line::Line, shape::Shape};

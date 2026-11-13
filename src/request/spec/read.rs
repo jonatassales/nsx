@@ -22,8 +22,6 @@
 //!
 //! - Whether LangDrift imposes these sections on the client's documents is
 //!   the owner's decision.
-//!
-//! Spec 0078.
 
 use crate::files::{
 	root::Root,

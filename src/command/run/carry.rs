@@ -24,8 +24,6 @@
 //!   ledger at the same step.
 //! - `next` follows `ready` with the pull request's number, and its wording
 //!   follows the Review tick.
-//!
-//! Spec 0077.
 
 use crate::command::{
 	applied::Applied, run::Run, session::Session, work::Work,

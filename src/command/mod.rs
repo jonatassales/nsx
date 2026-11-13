@@ -15,14 +15,11 @@
 //!
 //! ## Rules
 //!
-//! - Every command and flag the simulation does not show is removed
-//!   (ADR 0005).
+//! - No command or flag exists that the simulation does not show (ADR 0005).
 //! - The typed command is never echoed: the person's shell shows it once.
 //! - The plan and the run find the project from any folder inside it. The
 //!   root is the nearest folder, from the working directory up, that holds
 //!   `.langdrift/`. None is a stop.
-//!
-//! Spec 0077.
 
 pub mod agent;
 pub mod applied;

@@ -5,8 +5,6 @@
 //! its file.
 //!
 //! Definition only: the `Error` type.
-//!
-//! Spec 0079.
 
 use std::path::PathBuf;
 

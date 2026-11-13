@@ -6,8 +6,6 @@
 //!
 //! - A signal that arrived since the last wait ended this one at once.
 //!   Several that arrive together count as one.
-//!
-//! Spec 0077.
 
 use std::future::Future;
 use std::pin::Pin;

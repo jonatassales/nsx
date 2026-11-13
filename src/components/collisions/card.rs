@@ -15,8 +15,6 @@
 //!   the image of the component at its place.
 //! - The card's ports are the rows' ports. This function adds the counts.
 //! - This function writes no file: the one writer in `handoff/` does.
-//!
-//! Spec 0079.
 
 use crate::components::{collisions::Collisions, component::Component};
 use crate::contract::cards::Cards;
