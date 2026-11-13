@@ -21,7 +21,7 @@
 //! - A Play never changes a budget or a reservation. The gate still decides
 //!   whether the paid run goes ahead.
 //! - An intent authorized by hand needs no Play: the run starts at once.
-//! - Waiting prints no line (the owner's exception to ADR 003). The run's
+//! - Waiting prints no line (the owner's exception to ADR 001). The run's
 //!   header prints only once the team has authorized.
 
 pub mod wait;

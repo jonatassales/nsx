@@ -37,7 +37,7 @@ binary=$package/dist/nsx-$os-$arch
 [ -f "$binary" ] || binary=$package/target/release/nsx
 
 if [ ! -x "$binary" ]; then
-  printf '%s\n' "nsx has no binary for $os/$arch: reinstall @langdrift/nsx, or run cargo build --release in nsx/." >&2
+  printf '%s\n' "nsx has no binary for $os/$arch: reinstall @langdrift/nsx, or run cargo build --release in the repository." >&2
   exit 1
 fi
 

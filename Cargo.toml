@@ -4,7 +4,8 @@ edition = "2024"
 description = "LangDrift FinOps and Microruntimes CLI"
 license = "Apache-2.0"
 homepage = "https://langdrift.md"
-repository = "https://github.com/jonatassales/lang-drift"
+repository = "https://github.com/jonatassales/nsx"
+rust-version = "1.99"
 publish = false
 
 [dependencies]
@@ -34,3 +35,6 @@ rstest = "0.28.0"
 # that a schema printed from the types reads in declaration order.
 serde_json = { version = "1.0.154", features = ["preserve_order"] }
 tempfile = "3.27.0"
+
+[profile.release]
+strip = true

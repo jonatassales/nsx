@@ -1,0 +1,33 @@
+name: Set up workspace
+description: Install the Rust toolchain rust-toolchain.toml names with the cargo cache, and ripgrep for drift quality.
+
+inputs:
+  rust:
+    description: Whether to install the Rust toolchain and restore the cargo cache.
+    default: 'true'
+
+runs:
+  using: composite
+  steps:
+    # drift quality reads the tree through ripgrep, which the runner image
+    # lacks; the release archive is checked against its published SHA-256.
+    - name: ripgrep
+      if: runner.os == 'Linux'
+      shell: sh
+      env:
+        RIPGREP_VERSION: 15.2.0
+        RIPGREP_SHA256: 33e15bcf1624b25cdd2a55813a47a2f95dbe126268203e76aa6a585d1e7b149c
+      run: |
+        archive="ripgrep-$RIPGREP_VERSION-x86_64-unknown-linux-musl.tar.gz"
+        curl -fsSL -o "$RUNNER_TEMP/$archive" "https://github.com/BurntSushi/ripgrep/releases/download/$RIPGREP_VERSION/$archive"
+        printf '%s  %s\n' "$RIPGREP_SHA256" "$RUNNER_TEMP/$archive" | sha256sum -c -
+        tar -xzf "$RUNNER_TEMP/$archive" -C "$RUNNER_TEMP"
+        printf '%s\n' "$RUNNER_TEMP/${archive%.tar.gz}" >>"$GITHUB_PATH"
+    # The runner image ships rustup; the channel, clippy and rustfmt come from
+    # rust-toolchain.toml.
+    - name: Rust
+      if: inputs.rust == 'true'
+      shell: sh
+      run: rustup toolchain install
+    - uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
+      if: inputs.rust == 'true'

@@ -19,7 +19,7 @@
 //! ## Rules
 //!
 //! - Every actor line starts with `console › `. The prefix is part of the
-//!   output, not a claim that the console reasons (ADR 003).
+//!   output, not a claim that the console reasons (ADR 001).
 //! - Standard output is always a prefix of the simulation's transcript.
 //! - Nothing the simulation does not show is printed.
 

@@ -1,6 +1,6 @@
 # nsx
 
-nsx is the LangDrift CLI, written in Rust. Its structure answers the question ADR 003 asks of the product: **where does each line of the simulation live?** Every file under `src/` opens with a preface that says what it holds. A file not built yet holds only its preface.
+nsx is the LangDrift CLI, written in Rust. Its structure answers the question ADR 001 asks of the product: **where does each line of the simulation live?** Every file under `src/` opens with a preface that says what it holds. A file not built yet holds only its preface.
 
 ## The design
 
@@ -45,29 +45,6 @@ A section appears only when it has something true to say. A preface states nothi
 ## Open questions
 
 Each question nsx has not settled is recorded under `## Open` in the file it touches, among them how often the checks are polled (`checks/suite.rs`), what an unknown command does (`command/cli.rs`), which folder wins when a project has both `.agents/` and `.claude/` (`request/ticket/resolve.rs`), whether `nsx init` writes a working `driver.json` (`driver/config.rs`) and who delivers the pull request (`delivery/mod.rs`).
-
-## From googleworkspace/cli
-
-The owner pointed at the CLI crate of [`googleworkspace/cli`](https://github.com/googleworkspace/cli/tree/main/crates/google-workspace-cli) as a reference. This is what nsx takes from it, what is worth taking later, and what it leaves.
-
-**Taken**
-
-- **A preface on every file.** Each of its modules opens by saying what the file is for and what it is responsible for. Its logging module lists, in the preface, the environment variables it reads; the prefaces here do the same under `## Reads and writes`.
-- **Data the binary carries lives outside `src/`.** Its `registry/` and `templates/` sit beside `src/`, as `langdrift/` and `schema/` do here.
-
-**Worth taking, and the owner's to decide**
-
-- **Untrusted text is cleaned before it reaches the terminal.** Its output module strips escape sequences and look-alike characters from anything it did not write itself. nsx prints text taken from the client's ticket, documents and manifests and from the coding agent's reports. It cleans nothing: a line that carries a control character is a stop, never printed (`session/terminal/print.rs`).
-- **Exit codes are written down once, beside the errors**, so the help text and the behavior cannot drift apart. nsx has two: 1 for a stop, 0 for a pause at the gate.
-- **A secret is wiped from memory after use** and kept in the system's keychain where there is one. nsx keeps the console's secret in a private file, `.langdrift/agent/state/credentials/console.json`.
-- **A README inside a folder says when a new file there is justified**, with the mistakes to avoid. Here that would be ADR 003's rule, stated once per folder: a file exists because the simulation shows its line.
-
-**Left**
-
-- **A flat `src/` of about 25 files, each with many functions, and a `helpers/` folder.** It breaks one function per file, one-word names and the rule against bucket directories.
-- **Two crates, a library and a CLI.** nsx is one crate, its library and the thin binary over it, in one package, `@langdrift/nsx`.
-- **A licence header at the top of every file.** A preface explains the file.
-- **An npm package that downloads the binary when it is installed**, through JavaScript scripts. The repository's automation is shell only, and `@langdrift/nsx` carries its binaries in the package, under `dist/`, with `bin/nsx.sh` choosing the machine's.
 
 ## Files
 
@@ -445,7 +422,7 @@ The owner allows `../` inside this crate and asks that it be avoided where there
 
 ## Commands
 
-Run from `nsx/`.
+Run from the repository root.
 
 ```bash
 cargo check

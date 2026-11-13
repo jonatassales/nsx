@@ -1,0 +1,35 @@
+# cargo deny check: the licences, advisories, bans and sources nsx accepts.
+[graph]
+all-features = true
+
+[advisories]
+# Every advisory in the RustSec database fails the check unless listed here
+# with its reason.
+ignore = [
+	# unsafe-libyaml, under serde_yaml_ng, is unmaintained, not vulnerable. Moving
+	# off it is a code change of its own.
+	{ id = "RUSTSEC-2024-0449", reason = "unmaintained, no known vulnerability; replacing serde_yaml_ng is its own change" },
+]
+
+[licenses]
+# Permissive licences only, compatible with nsx's Apache-2.0.
+allow = [
+	"Apache-2.0",
+	"Apache-2.0 WITH LLVM-exception",
+	"BSD-3-Clause",
+	"CDLA-Permissive-2.0",
+	"ISC",
+	"MIT",
+	"Unicode-3.0",
+	"Zlib",
+]
+confidence-threshold = 0.9
+
+[bans]
+multiple-versions = "warn"
+wildcards = "deny"
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
+allow-registry = ["https://github.com/rust-lang/crates.io-index"]

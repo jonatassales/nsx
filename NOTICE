@@ -1,0 +1,16 @@
+nsx, the LangDrift CLI
+Copyright 2026 LangDrift
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+The agent skills under .claude/skills/ are third-party and keep their own licences:
+
+  rust-best-practices        MIT           apollographql/skills
+  rust-mcp-server-generator  MIT           github/awesome-copilot
+  rust-async-patterns        MIT           wshobson/agents
+  rust-testing, rust-patterns MIT          affaan-m/ECC
+  cargo-fuzz                 CC-BY-SA-4.0  trailofbits/skills, by Trail of Bits
+
+skills-lock.json records the source and the hash of each.
+
+This information is provided for informational purposes only, in accordance with
+section 4(d) of the Apache License 2.0, and does not modify the License.

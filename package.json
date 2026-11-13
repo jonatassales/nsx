@@ -6,8 +6,7 @@
 	"homepage": "https://langdrift.md",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/jonatassales/lang-drift.git",
-		"directory": "nsx"
+		"url": "git+https://github.com/jonatassales/nsx.git"
 	},
 	"bin": {
 		"nsx": "./bin/nsx.sh"
@@ -41,8 +40,6 @@
 	},
 	"scripts": {
 		"build": "cargo build --release --locked",
-		"check": "cargo fmt --check",
-		"test": "cargo test --locked",
-		"typecheck": "cargo clippy --all-targets --locked -- -D warnings"
+		"test": "cargo test --locked"
 	}
 }

@@ -1,0 +1,12 @@
+# Build output
+target/
+dist/
+
+# Local experiment and diagnostic output (testing rules, item 3)
+.audits/
+.lab/
+
+# Editors and systems
+.DS_Store
+.idea/
+.vscode/

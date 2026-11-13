@@ -22,7 +22,7 @@
 //!   nor starts a new run.
 //! - A Pause during Review's work has no stage left to hold before. The run
 //!   ends as it would.
-//! - Holding prints no line (the owner's exception to ADR 003).
+//! - Holding prints no line (the owner's exception to ADR 001).
 
 pub mod wait;
 
