@@ -1,0 +1,23 @@
+# The detectors of drift quality check and drift quality coverage, one per line,
+# fields separated by a tab: rule, violation, scope, mode, roots, globs, pattern.
+# A dash fills an unused field.
+# scope: code skips tests/ and langdrift/, all looks everywhere.
+# mode: lines (each matching line), multiline (each match across lines),
+# files (each file with a match), tracked (each tracked path the pattern
+# matches), names (each tracked path whose name breaks the naming rule),
+# markdown (each Markdown file without a type suffix), awk (each file the awk
+# program named in pattern prints) and unmeasured (a rule file no detector
+# covers; the violation says what does).
+00-general	One-letter binding in Rust	code	lines	src	*.rs	\blet\s+(mut\s+)?[a-z]\b\s*[=:]|\|\s*[a-z]\s*(,\s*[a-z]\s*)*\|
+00-general	else after an exit in shell	all	multiline	drift,.github,bin	*.sh	\b(exit|return)\b[^\n]*\n\s*else\b
+00-general	An error discarded with let _ =	code	lines	src	*.rs	^\s*let\s+_\s*=
+01-filesystem	Name breaks the naming rule	all	names	-	-	-
+01-filesystem	Markdown without a type suffix	all	markdown	-	-	-
+01-filesystem	File in a bucket directory	all	tracked	-	-	(^|/)(utils|helpers|common|misc)/
+01-filesystem	../ in a shell path	all	lines	drift,.github,bin	*.sh	^[^#\n]*["'/]\.\./
+02-tooling	Automation script that is not shell	all	tracked	-	-	^(drift|\.github)/.*\.(js|mjs|cjs|ts|mts|py)$
+02-tooling	npm, npx, yarn, bun or corepack in tooling	all	lines	.github,drift,package.json	*.yml,*.yaml,*.sh,package.json	(^|[\s;&|(])(npx|yarn|bun|bunx|corepack)\s+[^\s]|\bnpm\s+(run|install|i|ci|exec)\b
+10-testing	Tracked local evidence in .audits/	all	tracked	-	-	^\.audits/
+14-rust	A test under src/	all	lines	src	*.rs	#\[(test|cfg\(test\)|tokio::test)
+14-rust	A doc test under src/	all	lines	src	*.rs	^\s*//[!/]\s*```
+14-rust	A type and an impl in one file	all	awk	src	*.rs	definition-and-impl.awk

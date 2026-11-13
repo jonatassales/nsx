@@ -1,0 +1,75 @@
+# Validates a pull request into main: validate.yml, then the guardrails that
+# only a pull request has, its commit range, and the CI Gates dashboard.
+name: Pull request
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate
+    uses: ./.github/workflows/validate.yml
+
+  guardrails:
+    name: Harness - Guardrails
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          # Every commit of the pull request, not only the merge result.
+          fetch-depth: 0
+      - name: Commit messages
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: drift/drift.sh git lint-history "$BASE_SHA" "$HEAD_SHA"
+
+  harness-score:
+    name: Harness - Score
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup-workspace
+        with:
+          rust: 'false'
+      - name: Harness rules audit
+        run: drift/drift.sh quality coverage >>"$GITHUB_STEP_SUMMARY"
+
+  delivery-dashboard:
+    name: Delivery - Dashboard
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    needs: [guardrails]
+    if: always()
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: ./.github/actions/setup-workspace
+        with:
+          rust: 'false'
+      - name: Publish delivery widgets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          WIDGET_SHA: ${{ github.event.pull_request.head.sha }}
+          WIDGET_PULL_REQUEST: ${{ github.event.pull_request.number }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: drift/drift.sh widget dashboard --publish >>"$GITHUB_STEP_SUMMARY"
