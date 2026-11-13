@@ -4,7 +4,8 @@ edition = "2024"
 description = "LangDrift FinOps and Microruntimes CLI"
 license = "Apache-2.0"
 homepage = "https://langdrift.md"
-repository = "https://github.com/jonatassales/lang-drift"
+repository = "https://github.com/jonatassales/nsx"
+rust-version = "1.99"
 publish = false
 
 [dependencies]

@@ -445,7 +445,7 @@ The owner allows `../` inside this crate and asks that it be avoided where there
 
 ## Commands
 
-Run from `nsx/`.
+Run from the repository root.
 
 ```bash
 cargo check

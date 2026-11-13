@@ -22,7 +22,7 @@ The JSON Schemas of nsx: the shapes of `src/contract/`, for whoever reads them w
 
 ## What the console needs unchanged
 
-The console validates a report against these files, never against a copy of its own (`apps/console/src/app/api/mcp/invalid-report-field.compute.ts` and `report-tool.data.ts`), and the `runtimes` function's answer against `report/answer.schema.json` before it reaches nsx (`valid-report-answer.compute.ts`).
+The LangDrift console, in the `jonatassales/lang-drift` repository, validates a report against these files, never against a copy of its own (`apps/console/src/app/api/mcp/invalid-report-field.compute.ts` and `report-tool.data.ts`), and the `runtimes` function's answer against `report/answer.schema.json` before it reaches nsx (`valid-report-answer.compute.ts`).
 
 - **The paths it imports.** `handoff/plan.schema.json`, `handoff/intent.schema.json`, `handoff/run.schema.json`, `report/report.schema.json`, `report/answer.schema.json`, the three `judgment/` answer schemas, `judge/response.schema.json` and the five stage report schemas, under the package's name.
 - **The `$id` of the three hand-off schemas.** The console registers them first, then compiles the report's schema. The report refers to each record by a `$ref` to its `$id`: `https://langdrift.md/schemas/handoff/plan.schema.json`, `…/intent.schema.json` and `…/run.schema.json`. A changed `$id` or `$ref` leaves the reference unresolved.
