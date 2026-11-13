@@ -39,7 +39,13 @@
 		"./samples/*": "./tests/contract/samples/*"
 	},
 	"publishConfig": {
-		"access": "public"
+		"access": "public",
+		"executableFiles": [
+			"./dist/nsx-darwin-arm64",
+			"./dist/nsx-darwin-amd64",
+			"./dist/nsx-linux-amd64",
+			"./dist/nsx-linux-arm64"
+		]
 	},
 	"scripts": {
 		"build": "cargo build --release --locked",
