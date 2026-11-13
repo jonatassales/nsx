@@ -6,6 +6,12 @@ Every notable change to nsx, newest first, in the shape of
 
 ## [Unreleased]
 
+### Changed
+
+- The README presents nsx to a team that would use it, with a banner, its
+  badges and one link to the docs; the map of `src/` it held is now
+  `docs/architecture.guide.md`.
+
 ## [0.1.1] - 2026-11-13
 
 ### Changed
