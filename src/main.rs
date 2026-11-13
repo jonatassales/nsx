@@ -2,7 +2,7 @@
 //!
 //! The binary a person types: `nsx init`, `nsx agent plan <ticket>` and
 //! `nsx agent run`. This header is the crate's architecture document; the
-//! behaviour is defined by the simulation on the website's home (ADR 003).
+//! behaviour is defined by the simulation on the website's home (ADR 001).
 //!
 //! ## Shape
 //!

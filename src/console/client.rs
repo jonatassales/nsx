@@ -11,7 +11,7 @@
 //! ## Rules
 //!
 //! - It carries the one tool and no other.
-//! - A call prints no line (the owner's exception to ADR 003).
+//! - A call prints no line (the owner's exception to ADR 001).
 //! - The answer carries the runtime's id and, when the team asked something
 //!   nsx has not applied yet, that request.
 

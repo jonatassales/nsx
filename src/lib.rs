@@ -4,7 +4,7 @@
 //! has three commands. `nsx init` creates the `.langdrift/` folder in a team's
 //! project. `nsx agent plan <ticket>` reads the ticket and proposes a sized
 //! `runtime.md` draft to the team, with nothing built, started or paid for.
-//! `nsx agent run` applies the intent the team authorized. ADR 003 defines
+//! `nsx agent run` applies the intent the team authorized. ADR 001 defines
 //! the product: nsx does exactly what the simulation shows, nothing more and
 //! nothing less.
 //!

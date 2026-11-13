@@ -1,6 +1,6 @@
 # nsx
 
-nsx is the LangDrift CLI, written in Rust. Its structure answers the question ADR 003 asks of the product: **where does each line of the simulation live?** Every file under `src/` opens with a preface that says what it holds. A file not built yet holds only its preface.
+nsx is the LangDrift CLI, written in Rust. Its structure answers the question ADR 001 asks of the product: **where does each line of the simulation live?** Every file under `src/` opens with a preface that says what it holds. A file not built yet holds only its preface.
 
 ## The design
 
@@ -60,7 +60,7 @@ The owner pointed at the CLI crate of [`googleworkspace/cli`](https://github.com
 - **Untrusted text is cleaned before it reaches the terminal.** Its output module strips escape sequences and look-alike characters from anything it did not write itself. nsx prints text taken from the client's ticket, documents and manifests and from the coding agent's reports. It cleans nothing: a line that carries a control character is a stop, never printed (`session/terminal/print.rs`).
 - **Exit codes are written down once, beside the errors**, so the help text and the behavior cannot drift apart. nsx has two: 1 for a stop, 0 for a pause at the gate.
 - **A secret is wiped from memory after use** and kept in the system's keychain where there is one. nsx keeps the console's secret in a private file, `.langdrift/agent/state/credentials/console.json`.
-- **A README inside a folder says when a new file there is justified**, with the mistakes to avoid. Here that would be ADR 003's rule, stated once per folder: a file exists because the simulation shows its line.
+- **A README inside a folder says when a new file there is justified**, with the mistakes to avoid. Here that would be ADR 001's rule, stated once per folder: a file exists because the simulation shows its line.
 
 **Left**
 
