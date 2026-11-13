@@ -1,6 +1,6 @@
 [package]
 name = "nsx"
-version = "0.1.1"
+version = "0.2.0"
 edition = "2024"
 description = "LangDrift FinOps, LLMOps and Microruntimes CLI"
 license = "Apache-2.0"
