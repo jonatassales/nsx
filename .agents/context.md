@@ -48,6 +48,10 @@ Local Markdown under `.agents/`:
 - A `**Status:**` line holds one of `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `completed` or `wontfix`.
 - A commit touching `src/`, `tests/`, `schema/`, `langdrift/` or `bin/` names its ticket in a `Ticket: <NNNN>` trailer; the commit-msg hook and CI check it.
 
+## Agent skills
+
+`.claude/skills/` holds third-party Rust skills, installed with `pnpm dlx skills add <owner/repo> --skill <name> --agent claude-code --copy -y` and recorded in the root `skills-lock.json`; `NOTICE` lists their licences. Their Markdown references were renamed with a type suffix (`.guide.md`) to follow the filesystem rules, so `pnpm dlx skills update` brings the upstream names back: rename them again after one. A skill runs with the agent's permissions: read it before it lands.
+
 ## Continuous integration
 
 | File | Runs on | Does |

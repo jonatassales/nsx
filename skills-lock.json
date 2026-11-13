@@ -1,0 +1,47 @@
+{
+	"version": 2,
+	"skills": {
+		"cargo-fuzz": {
+			"source": "trailofbits/skills",
+			"sourceType": "github",
+			"skillPath": "plugins/testing-handbook-skills/skills/cargo-fuzz/SKILL.md",
+			"computedHash": "aadcb6ae5be75f384a2c119e2d2cbb352d08c54af3a526b88d097ddbe2e613f4",
+			"installMode": "copy"
+		},
+		"rust-async-patterns": {
+			"source": "wshobson/agents",
+			"sourceType": "github",
+			"skillPath": "plugins/systems-programming/skills/rust-async-patterns/SKILL.md",
+			"computedHash": "286b73077a434af5844dd480e5b98026bea5b31fcfafce3c04405a7392331601",
+			"installMode": "copy"
+		},
+		"rust-best-practices": {
+			"source": "apollographql/skills",
+			"sourceType": "github",
+			"skillPath": "skills/rust-best-practices/SKILL.md",
+			"computedHash": "",
+			"installMode": "copy"
+		},
+		"rust-mcp-server-generator": {
+			"source": "github/awesome-copilot",
+			"sourceType": "github",
+			"skillPath": "skills/rust-mcp-server-generator/SKILL.md",
+			"computedHash": "",
+			"installMode": "copy"
+		},
+		"rust-patterns": {
+			"source": "affaan-m/ECC",
+			"sourceType": "github",
+			"skillPath": "skills/rust-patterns/SKILL.md",
+			"computedHash": "14ef9aaa812d58a8342ac913f2c00b1564b85606e588c9a2d9a4e4ffe2e5441e",
+			"installMode": "copy"
+		},
+		"rust-testing": {
+			"source": "affaan-m/ECC",
+			"sourceType": "github",
+			"skillPath": "skills/rust-testing/SKILL.md",
+			"computedHash": "4a16853504a8d9ee1af3abb29e4db9b506ddc46f5ef6bafff45193a1a1a1e520",
+			"installMode": "copy"
+		}
+	}
+}
