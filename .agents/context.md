@@ -56,9 +56,9 @@ Local Markdown under `.agents/`:
 
 | File | Runs on | Does |
 | --- | --- | --- |
-| `workflows/pull-request.yml` | a pull request into `main` | `validate.yml`, then Harness - Guardrails, Harness - Score and Delivery - Dashboard |
-| `workflows/main.yml` | a push to `main` | `validate.yml`, then the `nsx` binaries for Linux and macOS on x64 and arm64, attested and kept as a workflow artifact for 30 days |
-| `workflows/validate.yml` | a call from the two above | Check, Test (Ubuntu and macOS) and Security |
+| `workflows/pull-request.yml` | a pull request into `main` | `ci.yml`, then Harness - Guardrails, Harness - Score and Delivery - Dashboard |
+| `workflows/main.yml` | a push to `main` | `ci.yml`, then the `nsx` binaries for Linux and macOS on x64 and arm64, attested and kept as a workflow artifact for 30 days |
+| `workflows/ci.yml` | a call from the two above, shown as CI | Check, Test (Ubuntu and macOS) and Security |
 | `actions/setup-workspace/` | a step | installs the toolchain `rust-toolchain.toml` names and restores the cargo cache |
 | `widgets/` | a step, through `vtec widget` | the pull request widgets and the two ways they are published |
 

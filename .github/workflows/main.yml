@@ -11,13 +11,13 @@ permissions:
   contents: read
 
 jobs:
-  validate:
-    name: Validate
-    uses: ./.github/workflows/validate.yml
+  ci:
+    name: CI
+    uses: ./.github/workflows/ci.yml
 
   nsx:
     name: nsx ${{ matrix.os }}-${{ matrix.arch }}
-    needs: validate
+    needs: ci
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 30
     permissions:

@@ -1,4 +1,4 @@
-# Validates a pull request into main: validate.yml, then the guardrails that
+# Validates a pull request into main: ci.yml, then the guardrails that
 # only a pull request has, its commit range, and the CI Gates dashboard.
 name: Pull request
 
@@ -14,9 +14,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  validate:
-    name: Validate
-    uses: ./.github/workflows/validate.yml
+  ci:
+    name: CI
+    uses: ./.github/workflows/ci.yml
 
   guardrails:
     name: Harness - Guardrails
