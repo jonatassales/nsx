@@ -6,6 +6,15 @@ Every notable change to nsx, newest first, in the shape of
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-11-13
+
+### Changed
+
+- The package and the crate describe nsx as the LangDrift FinOps, LLMOps
+  and Microruntimes CLI.
+- The workflow that checks, tests and audits the crate is `ci.yml`, and a
+  pull request shows its checks as CI.
+
 ## [0.1.0] - 2026-11-13
 
 The first release of nsx, on npm as `@langdrift/nsx`.
@@ -29,5 +38,6 @@ The first release of nsx, on npm as `@langdrift/nsx`.
 - The repository's tooling CLI is `vtec`, in `vtec/`, so it is not
   confused with the LangDrift monorepo's `drift`.
 
-[Unreleased]: https://github.com/jonatassales/nsx/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/jonatassales/nsx/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/jonatassales/nsx/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/jonatassales/nsx/releases/tag/v0.1.0

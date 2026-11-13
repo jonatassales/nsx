@@ -1,6 +1,6 @@
-# Validates the crate at one commit: check, test and security.
+# Checks the crate at one commit: check, test and security.
 # pull-request.yml and main.yml call it; it never runs by itself.
-name: Validate
+name: CI
 
 on:
   workflow_call:
