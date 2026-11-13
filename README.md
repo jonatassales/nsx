@@ -1,10 +1,10 @@
 # nsx
 
-nsx is the LangDrift CLI, rewritten in Rust (PRD 0002). Its structure answers the question ADR 0005 asks of the product: **where does each line of the simulation live?** Every file under `src/` opens with a preface that says what it holds. A file not built yet holds only its preface. Specs 0077 to 0081 build it, and the tickets from 0399 on carry the work.
+nsx is the LangDrift CLI, written in Rust. Its structure answers the question ADR 0005 asks of the product: **where does each line of the simulation live?** Every file under `src/` opens with a preface that says what it holds. A file not built yet holds only its preface.
 
 ## The design
 
-1. **A folder under `src/` belongs to one spec.** Five specs build nsx: 0077 (`command`, `session`, `contract`, and the shared `files` and `process`), 0078 (`request`, `harness`, `rag`, `judgment`), 0079 (`components`, `runtime`, `handoff`, and `money` for the plan), 0080 (`money` for the run, `flow`, `driver`, `skills`, `hook`, `seat`, `evidence`) and 0081 (`local`, `delivery`, `checks`, `console`). A ticket's scope and a pending line's tag name the same spec.
+1. **A folder under `src/` owns one part of the session.** `command` holds the three commands, `session` how a line prints and how a command stops, and `contract` every shape a file or the console sees. `files` and `process` are the machinery the others share. Every other folder is one element of the simulation: `request`, `harness`, `rag`, `judgment`, `components`, `runtime`, `handoff`, `money`, `flow`, `driver`, `skills`, `hook`, `seat`, `evidence`, `local`, `delivery`, `checks` and `console`.
 2. **A file is a type or a function, never just a word.** A word that is a variant or a field lives inside its type: the four kinds of line are `session/kind.rs`, and "paused" is an outcome of `money/gate.rs`.
 3. **One pattern everywhere.** `gate.rs` holds a definition. `gate/open.rs` holds one function of it. That keeps one function per file, definitions apart from implementations, one-word names and the two-folder limit, all at once. No type sits inside another type's folder.
 4. **`line.rs` is the line.** Under a type, `line.rs` holds its method `line`: the line of the simulation that type owns. A type with several lines has one method, and so one file, per line (`suggestion/effort.rs`).
@@ -16,16 +16,16 @@ nsx is the LangDrift CLI, rewritten in Rust (PRD 0002). Its structure answers th
 
 ## What it costs
 
-- **More folders.** 23 against 15. Three are small (`hook`, `checks`, `skills`) and could fold into `flow`.
+- **More folders.** There are 23. Three are small (`hook`, `checks`, `skills`) and could fold into `flow`.
 - **Some names repeat across folders.** `plan.rs` is a command and a card; `report.rs` is a stage's report, the console's report and its shape; `criteria.rs`, `effort.rs` and `kind.rs` each appear twice. The folder tells them apart, and a search for the bare name does not.
 - **One change can touch several folders.** A new field on a card touches its shape in `contract/`, the element that fills it and the line that prints it.
-- **The function files are a first cut.** The types follow the specs closely; which functions each needs is settled when its spec is built.
 - **Three names are open:** `contract`, `process` and `files`.
 
 ## Left out on purpose
 
 - **Errors**: an element defines its own error when it has its first failure. `session/stop.rs` prints any of them as one sentence.
-- **The goldens and the fixture project**: copied from the Go CLI (removed with ticket 0434) into `tests/simulation/golden/` and `tests/simulation/project/`, saying `nsx`. The golden test plays them.
+- **The goldens and the fixture project**: `tests/simulation/golden/` holds the six goldens, the plan and five runs (`run`, `run-all-stages`, `run-over-budget`, `run-to-merge` and `run-haiku-low`), each line as its id, its kind and its text, a tab between them. `tests/simulation/project/` holds the project they play on: its ticket and linked documents under `.agents/`, its guardrail and episodes under `.langdrift/`, and its five components. The golden test plays them.
+- **Speed, size and memory**: they are not criteria for nsx. No choice is made or refused for how fast nsx runs, how large its binary is or how much memory it uses.
 - **The files `nsx init` lays down and the published schemas**: `langdrift/` and `schema/` each hold them beside a README that lists them.
 
 ## Prefaces
@@ -38,37 +38,13 @@ Every file under `src/` opens with a preface; a file not built yet holds nothing
 - `## Simulation`: the lines of the goldens it owns, quoted as the golden has them, and its card fields;
 - `## Reads and writes`: the files, programs, calls and environment variables it touches;
 - `## Rules`: the constraints that bind it;
-- `## Open`: a question its spec leaves open that the file will have to answer;
-- the spec it belongs to.
+- `## Open`: a question still open that the file will have to answer.
 
-A section appears only when it has something true to say. A preface states nothing its spec does not say, and holds no code block, so Cargo has no doc test to run (Rust rules, item 1).
+A section appears only when it has something true to say. A preface states nothing the simulation or the code does not bear out, and holds no code block, so Cargo has no doc test to run (Rust rules, item 1).
 
-## What writing the prefaces showed
+## Open questions
 
-Each preface was written from its spec, and the specs disagreed with the structure in places. Nothing was moved: the prefaces say what the spec says, and specs 0077 to 0081 settle each point, file by file, in the tickets that build it.
-
-**Files the specs do not justify**
-
-- `files/lock.rs`: specs 0055 and 0065 remove the locks, and the design doc lists the run lock among what never appears again. Ticket 0404 removed it.
-- `evidence/clock.rs`: spec 0065 names no clock. Only the design doc's port and two timestamps (specs 0060 and 0061) ask for the time.
-- `money/settlement/line.rs`: spec 0056 says money prints neither `completed` nor `ready`. It supplies their amounts. Ticket 0427 removed it.
-- `delivery/git.rs`: spec 0063 asks for one forge with four operations, not a forge and git apart. Ticket 0430 folded it into `delivery/forge.rs`.
-- `judgment/client.rs`: spec 0051 leaves where the judge runs open. Only spec 0073 backs reaching it over HTTP.
-- `rag/embedder.rs` as a trait: the design doc says the embedder runs for real, in tests too.
-- `components/inventory/resolve.rs`: a component's two lines print as it resolves, and a component that cannot be resolved stops the plan with the earlier ones already printed. So the plan act inspects them one by one and nothing resolves them all at once. Ticket 0414 removed it.
-
-**Things the specs ask for that have no file**
-
-- the catalog of lines keyed by id (spec 0048);
-- choosing the one authorized intent, and listing the recorded intents (specs 0048 and 0050);
-- reading a person's answer from standard input, which the checkpoint and the dev ticket both do (specs 0057 and 0061);
-- the console reached over MCP, behind `console/client.rs` (spec 0073);
-- the image resolver as a port with a fake (spec 0066): `components/resolver.rs` since ticket 0415;
-- adding an episode to the index when one is written (spec 0052);
-- the three states of the Analysis card's header (spec 0051);
-- writing `status: authorized` into `intent.json` on the team's Play (spec 0076).
-
-**Questions the specs leave open**, each recorded under `## Open` in the file it touches: where the credentials file sits (0073), how often the checks are polled (0064), what an unknown command does (0048), which folder wins when a project has both `.agents/` and `.claude/` (0053), and whether `dev-ticket` and `merge` are stages of the contract (0049).
+Each question nsx has not settled is recorded under `## Open` in the file it touches, among them how often the checks are polled (`checks/suite.rs`), what an unknown command does (`command/cli.rs`), which folder wins when a project has both `.agents/` and `.claude/` (`request/ticket/resolve.rs`), whether `nsx init` writes a working `driver.json` (`driver/config.rs`) and who delivers the pull request (`delivery/mod.rs`).
 
 ## From googleworkspace/cli
 
@@ -81,28 +57,28 @@ The owner pointed at the CLI crate of [`googleworkspace/cli`](https://github.com
 
 **Worth taking, and the owner's to decide**
 
-- **Untrusted text is cleaned before it reaches the terminal.** Its output module strips escape sequences and look-alike characters from anything it did not write itself. nsx prints text taken from the client's ticket, documents and manifests and from the coding agent's reports. No spec asks for this yet.
+- **Untrusted text is cleaned before it reaches the terminal.** Its output module strips escape sequences and look-alike characters from anything it did not write itself. nsx prints text taken from the client's ticket, documents and manifests and from the coding agent's reports. It cleans nothing: a line that carries a control character is a stop, never printed (`session/terminal/print.rs`).
 - **Exit codes are written down once, beside the errors**, so the help text and the behavior cannot drift apart. nsx has two: 1 for a stop, 0 for a pause at the gate.
-- **A secret is wiped from memory after use** and kept in the system's keychain where there is one. Spec 0073 keeps the console's secret in a private file.
+- **A secret is wiped from memory after use** and kept in the system's keychain where there is one. nsx keeps the console's secret in a private file, `.langdrift/agent/state/credentials/console.json`.
 - **A README inside a folder says when a new file there is justified**, with the mistakes to avoid. Here that would be ADR 0005's rule, stated once per folder: a file exists because the simulation shows its line.
 
 **Left**
 
 - **A flat `src/` of about 25 files, each with many functions, and a `helpers/` folder.** It breaks one function per file, one-word names and the rule against bucket directories.
-- **Two crates, a library and a CLI.** The owner decided on one package, `@langdrift/nsx`.
+- **Two crates, a library and a CLI.** nsx is one crate, its library and the thin binary over it, in one package, `@langdrift/nsx`.
 - **A licence header at the top of every file.** A preface explains the file.
-- **An npm package that downloads the binary when it is installed**, through JavaScript scripts. The repository's automation is shell only, and the Go CLI's package shipped its binaries inside it.
+- **An npm package that downloads the binary when it is installed**, through JavaScript scripts. The repository's automation is shell only, and `@langdrift/nsx` carries its binaries in the package, under `dist/`, with `bin/nsx.sh` choosing the machine's.
 
 ## Files
 
 Each table lists a folder's files, what each holds and the lines of the goldens it owns, by the id in the golden's first column. `mod.rs` is in every folder and not listed.
 
-### command (spec 0077)
+### command
 
 | Files | Holds | Lines |
 | --- | --- | --- |
 | `cli.rs`, `cli/execute.rs` | the parser: `init` and `agent` | |
-| `init.rs`, `init/execute.rs` | `nsx init`: creates `.langdrift/` with what the specs declare, prints nothing | |
+| `init.rs`, `init/execute.rs` | `nsx init`: creates `.langdrift/` with what the plan and the run need, prints nothing | |
 | `agent.rs`, `agent/execute.rs` | the `agent` family: `plan` and `run` | |
 | `brief.rs` | what the plan has read before its first line | |
 | `resolved.rs` | what the plan act hands on: the inventory, its sizing and the draft's revision | |
@@ -125,7 +101,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `run/host.rs`, `run/ship.rs`, `run/follow.rs` | the act's steps: the runtime brought up; the branch pushed and the pull request opened; the checks followed and Safe Seat stated | |
 | `run/halt.rs` | on any stop, an interrupt included: what this run brought up taken down, with no line, and the record's runtime marked stopped | |
 
-### session (spec 0077)
+### session
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -139,7 +115,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `interrupt.rs`, `signal.rs`, `signal/watch.rs`, `signal/wait.rs` | the interrupt, as a trait, and as the system sends it: Ctrl-C, a request to end or the terminal closing, watched from the start of the command | |
 | `stop.rs`, `stop/exit.rs`, `stop/from.rs`, `stop/usage.rs`, `stop/interrupted.rs` | the stop rule: one sentence on stderr, then exit 1, for any folder's failure, for a command line nsx does not accept and for an interrupt | |
 
-### contract (spec 0077)
+### contract
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -171,7 +147,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `stage.rs` | the stages, as the records spell them | |
 | `planning.rs`, `spec.rs`, `tickets.rs`, `implement.rs`, `review.rs` | the five stage reports | |
 
-### handoff (spec 0079)
+### handoff
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -182,7 +158,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `authorization/scope.rs` | the run's opening comment | `scope` (run) |
 | `authorization/line.rs` | the intent's line | `intent` |
 
-### evidence (spec 0080)
+### evidence
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -192,7 +168,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `record.rs`, `record/write.rs`, `record/stage.rs` | the one writer of `run.json`, which tells the console each write, and where a stage stands in it | |
 | `usage.rs`, `usage/kept.rs`, `usage/write.rs`, `usage/line.rs`, `used.rs` | the usage record: the tokens each paid call of a run used, and their totals | `completed` |
 
-### request (spec 0078)
+### request
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -207,7 +183,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `reading.rs`, `reading/count.rs`, `reading/line.rs`, `reading/card.rs` | what was read, and nothing outside the links | `reads` |
 | `error.rs` | what reading the ticket, its links and its documents can refuse | |
 
-### harness (spec 0078)
+### harness
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -216,7 +192,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `envelope.rs`, `envelope/of.rs`, `envelope/line.rs`, `envelope/card.rs` | the bound on cpu and memory, taken from the design doc, as the plan states it and as the Plan card shows it | `bounds` |
 | `error.rs` | what reading the harness can refuse | |
 
-### money (specs 0079 and 0080)
+### money
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -232,7 +208,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `ledger.rs`, `ledger/open.rs`, `ledger/write.rs` | the money ledger: a run's entry, opened from the plan's spend table with its figures checked, and written as the run goes | |
 | `settlement.rs`, `settlement/settle.rs` | observed and released | the amounts in `completed` and `ready` |
 
-### rag (spec 0078)
+### rag
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -246,7 +222,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `retrieval/rows.rs`, `retrieval/verdicts.rs`, `retrieval/citations.rs` | the EPISODES of the Analysis card, each part written when its line prints | |
 | `retrieval/memory.rs`, `retrieval/embedding.rs`, `retrieval/search.rs`, `retrieval/candidates.rs`, `retrieval/dropped.rs`, `retrieval/cited.rs` | its six lines | `memory`, `embed`, `vectorSearch`, `candidates`, `drop`, `episodes` |
 
-### judgment (spec 0078)
+### judgment
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -260,7 +236,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `suggestion.rs`, `suggestion/ask.rs`, `suggestion/card.rs` | the suggested model and effort | |
 | `suggestion/resources.rs`, `suggestion/effort.rs`, `suggestion/model.rs`, `suggestion/line.rs` | its four lines | `reasonResources`, `weighEffort`, `weighModel`, `suggest` |
 
-### components (spec 0079)
+### components
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -274,7 +250,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `inventory.rs`, `inventory/line.rs`, `inventory/card.rs` | the components the spec names, and their placeholder rows on the Plan card | `resolve` |
 | `collisions.rs`, `collisions/check.rs`, `collisions/line.rs`, `collisions/card.rs` | the cross-check of ports, images and paths, and its counts on the Plan card | `crossCheck` |
 
-### runtime (spec 0079)
+### runtime
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -284,7 +260,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `draft.rs`, `draft/of.rs`, `draft/validate.rs`, `draft/line.rs`, `draft/card.rs`, `draft/write.rs` | the `runtime.md` draft: made from the plan, validated, and written as a title, the fence and the sizing report | `validate` |
 | `error.rs` | what sizing the plan and writing its draft can refuse | |
 
-### flow (spec 0080)
+### flow
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -296,7 +272,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `checkpoint.rs`, `checkpoint/wait.rs`, `checkpoint/confirm.rs`, `checkpoint/line.rs` | a stage a person confirms | `waiting-planning`, `confirmed-planning`; when the stage is checked, `waiting-spec`, `confirmed-spec`, `waiting-tickets`, `confirmed-tickets`, `waiting-implement`, `confirmed-implement` |
 | `ending.rs`, `ending/line.rs` | how the run ends | `next` (run) |
 
-### driver (spec 0080)
+### driver
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -307,7 +283,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `tokens.rs`, `tokens/read.rs` | the tokens a call used | |
 | `error.rs` | what a stage call can refuse | |
 
-### skills (spec 0080)
+### skills
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -315,14 +291,14 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `report.rs`, `report/check.rs`, `report/line.rs` | a stage's checked report, as one line | `grilling`, `toSpec`, `toTickets`, `implement`, `codeReview` |
 | `error.rs` | what a stage's report can be refused for | |
 
-### hook (spec 0080)
+### hook
 
 | Files | Holds | Lines |
 | --- | --- | --- |
 | `effort.rs`, `effort/record.rs`, `effort/permit.rs`, `effort/line.rs` | the effort, recorded before implement may start, and the gate that asks for it | `hook` |
 | `error.rs` | what the effort hook can refuse | |
 
-### seat (spec 0080)
+### seat
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -330,7 +306,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `verdict.rs`, `verdict/reach.rs`, `verdict/line.rs`, `verdict/card.rs` | whether Safe Seat was met, and its section of `run.json` | `safeSeatMet` |
 | `error.rs` | what the dev ticket can refuse | |
 
-### local (spec 0081)
+### local
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -344,7 +320,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `state.rs`, `state/of.rs`, `state/stopped.rs`, `state/line.rs`, `state/card.rs` | the runtime: ready or stopped | `runtimeReady`, `runtimeStopped` |
 | `error.rs` | what the local cluster can refuse | |
 
-### delivery (spec 0081)
+### delivery
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -356,7 +332,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `readiness.rs`, `readiness/word.rs` | where a pull request stands: draft, ready for review or ready to merge | |
 | `error.rs` | what the delivery can refuse | |
 
-### checks (spec 0081)
+### checks
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -364,7 +340,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `check.rs`, `standing.rs` | one check, and where it stands | |
 | `error.rs` | what following the checks can refuse | |
 
-### console (spec 0081)
+### console
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -377,7 +353,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `play.rs`, `play/wait.rs` | waiting, silently, for the team's Play of a proposed intent | |
 | `hold.rs`, `hold/wait.rs` | holding before a stage's work while the team paused the run | |
 
-### process (spec 0077)
+### process
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -388,7 +364,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `output.rs`, `output/ended.rs` | what a program printed and how it ended; whether it ended well | |
 | `error.rs` | what can go wrong with a program, as one sentence | |
 
-### files (spec 0077)
+### files
 
 | Files | Holds | Lines |
 | --- | --- | --- |
@@ -433,19 +409,19 @@ The cards are sections of `plan.json`, and a run is sections of `run.json`. `con
 
 Outside `src/` (Rust rules, item 1), as one test target. `tests/main.rs` declares a folder per area of `src/`, and each folder's `mod.rs` declares its files. One target means a fake or a fixture is written once and every test reaches it through `crate::`: no path climbs, and nothing only the tests use sits under `src/`.
 
-The owner allowed `../` inside this crate on 2026-11-11 and asked that it be avoided where there is a way. This layout is that way: no file of the crate climbs.
+The owner allows `../` inside this crate and asks that it be avoided where there is a way. This layout is that way: no file of the crate climbs.
 
 | Files | Holds |
 | --- | --- |
 | `tests/main.rs` | the one test target: it declares the folders below |
 | `tests/simulation/` | the golden test, and what every other folder borrows: the fixture project, the goldens and the fakes |
 | `tests/simulation/plan.rs`, `run.rs`, `stages.rs`, `budget.rs`, `merge.rs`, `haiku.rs` | one case per golden |
-| `tests/simulation/pending.rs` | the pending lists, one per golden: all empty since ticket 0431 |
+| `tests/simulation/pending.rs` | the pending lists, one per golden, all empty: nsx prints the six goldens whole |
 | `tests/simulation/diff.rs`, `rules.rs`, `sketch.rs` | comparing what nsx printed with a golden, that comparison's own rules, and the short session they play on |
 | `tests/simulation/frozen.rs`, `golden.rs`, `printed.rs` | a line as a golden freezes it, a golden's lines, and what nsx printed |
 | `tests/simulation/fixture.rs`, `project.rs`, `indexed.rs`, `ran.rs` | the fixture project read in place, a copy of it, its episode index built for the simulation's six similarities, and a run played in a copy |
-| `tests/simulation/fake/` | the fakes, declared by `fake/mod.rs`: `recorder.rs` (the sink and window that keep what they are given), `refuser.rs` (a sink that refuses every line), `session.rs` (the session the tests play a command over), `witness.rs` (a sink that looks at `plan.json` each time a line prints), `recorded.rs` (the judge that answers with recorded texts), `judge.rs` (the golden test's judge, which answers with Core's samples), `console.rs` (the console that keeps every report, answers one runtime id and the requests a test scripts, can fall silent, rewrite a file as a report arrives, and pause before a stage, `console/pausing.rs`), `answers.rs` (the person who answers each wait), `silence.rs` (the person who never does), `spender.rs` (the person whose answers come with a call paid behind their back), `host.rs` (the cluster that does as it is asked and keeps nothing), `machine.rs` (the cluster that keeps what is created in it), `forged.rs` (the forge that delivers as the simulation shows), `hub.rs` (the forge that keeps what it is asked and answers a script), `calm.rs` (the person who never interrupts), `hasty.rs` (the person who interrupts as soon as the command first waits), `coder.rs` (the coding agent that writes each stage's report and says what it used), `moment.rs` (the clock that always shows one moment) and `programs.rs` (the runner that starts nothing), and `answering.rs` (the image resolver that gives one answer). |
-| `tests/contract/` | the fence, the hand-off records and the report read strictly; each generated schema against its published file; each of Core's samples read and written back |
+| `tests/simulation/fake/` | the fakes, declared by `fake/mod.rs`: `recorder.rs` (the sink and window that keep what they are given), `refuser.rs` (a sink that refuses every line), `session.rs` (the session the tests play a command over), `witness.rs` (a sink that looks at `plan.json` each time a line prints), `recorded.rs` (the judge that answers with recorded texts), `judge.rs` (the golden test's judge, which answers with the samples of `tests/contract/samples/judgment/`), `console.rs` (the console that keeps every report, answers one runtime id and the requests a test scripts, can fall silent, rewrite a file as a report arrives, and pause before a stage, `console/pausing.rs`), `answers.rs` (the person who answers each wait), `silence.rs` (the person who never does), `spender.rs` (the person whose answers come with a call paid behind their back), `host.rs` (the cluster that does as it is asked and keeps nothing), `machine.rs` (the cluster that keeps what is created in it), `forged.rs` (the forge that delivers as the simulation shows), `hub.rs` (the forge that keeps what it is asked and answers a script), `calm.rs` (the person who never interrupts), `hasty.rs` (the person who interrupts as soon as the command first waits), `coder.rs` (the coding agent that writes each stage's report and says what it used), `moment.rs` (the clock that always shows one moment) and `programs.rs` (the runner that starts nothing), `answering.rs` (the image resolver that gives one answer) and `served.rs` (a console that answers one request on this machine and keeps what it got). |
+| `tests/contract/` | the fence, the hand-off records and the report read strictly; each generated schema against its published file; each sample of `tests/contract/samples/` read and written back |
 | `tests/command/` | the command line, `nsx init`, and what a run leaves past its gate, through its delivery, and where it stops |
 | `tests/local/` | a Deployment from its component, the execution ledger written first and found again, the cleanup of exactly what it lists, the runtime's two lines, and kind, kubectl and Docker as they are started |
 | `tests/delivery/` | the branch named, pushed and said, the pull request opened and said, ready only when checked and met, and git and gh as they are started |
