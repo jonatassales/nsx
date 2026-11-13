@@ -6,7 +6,7 @@ cd "$DRIFT_PROJECT_ROOT"
 
 # How much of the tree applies each rule file in .claude/rules, as a Markdown
 # table: of the files a rule's detectors look at, the share with no finding.
-# A rule (05-react.rule.md, react.rule.md or react) narrows it to that row.
+# A rule (14-rust.rule.md, rust.rule.md or rust) narrows it to that row.
 # The detectors are patterns, so the percentage is an estimate.
 
 workdir=$(mktemp -d)

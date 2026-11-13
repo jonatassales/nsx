@@ -1,8 +1,8 @@
 #!/bin/sh
 set -eu
 
-: "${DRIFT_PROJECT_ROOT:=$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
-: "${DRIFT_CLI_DIR:=$DRIFT_PROJECT_ROOT/drift/src}"
+: "${DRIFT_PROJECT_ROOT:?Run it through drift/drift.sh widget.}"
+: "${DRIFT_CLI_DIR:?Run it through drift/drift.sh widget.}"
 . "$DRIFT_CLI_DIR/core/common.sh"
 
 # The CI Gates of a pull request, each widget in its own section; with
@@ -17,7 +17,8 @@ if [ "${1:-}" = "--publish" ]; then
 fi
 
 dashboard_tmp=$(mktemp)
-trap 'rm -f "$dashboard_tmp"' EXIT
+# drift's own EXIT trap prints the queued results, so this one chains to it.
+trap 'rm -f "$dashboard_tmp"; drift_flush_results' EXIT
 
 {
   printf '## nsx CI Gates\n\n'

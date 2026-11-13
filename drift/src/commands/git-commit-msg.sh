@@ -10,7 +10,8 @@ cd "$DRIFT_PROJECT_ROOT"
 
 # Git's comment lines never reach the commit.
 clean=$(mktemp)
-trap 'rm -f "$clean"' EXIT
+# drift's own EXIT trap prints the queued results, so this one chains to it.
+trap 'rm -f "$clean"; drift_flush_results' EXIT
 grep -v '^#' "$message" >"$clean" || true
 
 # 1. No AI-generated signature, trailer or footer.

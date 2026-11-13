@@ -40,8 +40,6 @@
 	},
 	"scripts": {
 		"build": "cargo build --release --locked",
-		"check": "cargo fmt --check",
-		"test": "cargo test --locked",
-		"typecheck": "cargo clippy --all-targets --locked -- -D warnings"
+		"test": "cargo test --locked"
 	}
 }

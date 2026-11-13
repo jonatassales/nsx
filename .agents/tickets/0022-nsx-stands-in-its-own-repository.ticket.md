@@ -17,8 +17,8 @@
 - [x] The repository keeps a licence, a security policy, a changelog, contribution notes and a dependency policy, and Dependabot watches cargo and the workflows.
 - [x] The most-installed Rust skills sit in `.claude/skills/`, recorded in `skills-lock.json`.
 
-**Note, 2026-11-13:** tickets 0001 to 0021 are LangDrift's former tickets 0186 to 0205 and 0207, in their order. ADR 001 states for nsx the decision LangDrift records as ADR 003.
+**Note, 2026-11-13:** tickets 0001 to 0021 are the LangDrift monorepo's tickets about the CLI, in their order. ADR 001 states for nsx the decision the monorepo records for its product. Of the gates, the Workflow, Contracts and Code Quality widgets report what they measure; the monorepo's FinOps and Agentic widgets print fixed figures, so they did not come. Of skills.sh's Rust skills, `rust-review` needs Python scripts that ship only with its plugin, and `m15-anti-pattern`, `rust-skills` and `rust-engineer` are broad collections that overlap the ones installed; the owner may add them.
 
 ## Dev part
 
-**Override:** on 2026-11-13 no part qualifies: the ticket moves a crate, its records and its tooling, which the safe-seat policy excludes as a rename and configuration.
+**Override:** on 2026-11-13 no part qualifies: the ticket moves a crate, its records and its tooling, work with no problem of its own to hand-write.

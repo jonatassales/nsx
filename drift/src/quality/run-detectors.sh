@@ -12,8 +12,8 @@ cd "$DRIFT_PROJECT_ROOT"
 # it writes rules (the rule files measured, in the detectors' order), and per
 # rule file scope/<rule> (the paths its detectors look at) and
 # findings/<rule> (each path with a finding, a tab, then the violation). A
-# rule names one file of .claude/rules: 05-react.rule.md, react.rule.md or
-# react.
+# rule names one file of .claude/rules: 14-rust.rule.md, rust.rule.md or
+# rust.
 
 workdir=$1
 rule_argument=${2:-}

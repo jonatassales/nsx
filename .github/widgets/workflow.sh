@@ -1,8 +1,8 @@
 #!/bin/sh
 set -eu
 
-: "${DRIFT_PROJECT_ROOT:=$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
-: "${DRIFT_CLI_DIR:=$DRIFT_PROJECT_ROOT/drift/src}"
+: "${DRIFT_PROJECT_ROOT:?Run it through drift/drift.sh widget.}"
+: "${DRIFT_CLI_DIR:?Run it through drift/drift.sh widget.}"
 . "$DRIFT_CLI_DIR/core/common.sh"
 
 # The ticket the commit range names in its Ticket trailers, with its title,
@@ -14,7 +14,9 @@ head_sha=${2:-${HEAD_SHA:-HEAD}}
 range=$head_sha
 [ -z "$base_sha" ] || range="$base_sha..$head_sha"
 
-tickets=$(git log --format=%B "$range" 2>/dev/null |
+messages=$(git log --format=%B "$range") || drift_die "git log could not read $range."
+
+tickets=$(printf '%s\n' "$messages" |
   sed -n -E 's/^[[:space:]]*Ticket:[[:space:]]*([0-9]{4})[[:space:]]*$/\1/p' | sort -u)
 
 printf '### Workflow Gate\n\n'

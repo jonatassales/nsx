@@ -50,7 +50,7 @@ Local Markdown under `.agents/`:
 
 ## Agent skills
 
-`.claude/skills/` holds third-party Rust skills, installed with `pnpm dlx skills add <owner/repo> --skill <name> --agent claude-code --copy -y` and recorded in the root `skills-lock.json`; `NOTICE` lists their licences. Their Markdown references were renamed with a type suffix (`.guide.md`) to follow the filesystem rules, so `pnpm dlx skills update` brings the upstream names back: rename them again after one. A skill runs with the agent's permissions: read it before it lands.
+`.claude/skills/` holds third-party Rust skills, installed with `pnpm dlx skills add <owner/repo> --skill <name> --agent claude-code --copy -y` and recorded in the root `skills-lock.json`; `NOTICE` lists their licences. Their Markdown references were renamed with a type suffix (`.guide.md`) to follow the filesystem rules, so `pnpm dlx skills update` brings the upstream names back: rename them again after one. A skill runs with the agent's permissions: read it before it lands. `.agents/skills` is a link to `../.claude/skills`, the one folder that holds them, so agents that read either path find the same skills.
 
 ## Continuous integration
 

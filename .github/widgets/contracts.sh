@@ -1,8 +1,8 @@
 #!/bin/sh
 set -eu
 
-: "${DRIFT_PROJECT_ROOT:=$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
-: "${DRIFT_CLI_DIR:=$DRIFT_PROJECT_ROOT/drift/src}"
+: "${DRIFT_PROJECT_ROOT:?Run it through drift/drift.sh widget.}"
+: "${DRIFT_CLI_DIR:?Run it through drift/drift.sh widget.}"
 . "$DRIFT_CLI_DIR/core/common.sh"
 
 # Whether the commit range changes the crate, its contracts or the JSON
@@ -16,7 +16,11 @@ count() {
     printf 'unknown'
     return 0
   }
-  git diff --name-only "$base_sha" "$head_sha" -- "$@" 2>/dev/null | grep -c . || true
+
+  changed=$(git diff --name-only "$base_sha" "$head_sha" -- "$@") ||
+    drift_die "git diff could not compare $base_sha with $head_sha."
+
+  printf '%s\n' "$changed" | grep -c . || true
 }
 
 crate=$(count src)

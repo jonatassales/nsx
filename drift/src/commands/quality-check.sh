@@ -6,7 +6,7 @@ cd "$DRIFT_PROJECT_ROOT"
 
 # Each path that does not apply a rule file in .claude/rules, in red, with the
 # rule and the violation: the same detectors as drift quality coverage. A rule
-# (05-react.rule.md, react.rule.md or react) narrows it to that file. The
+# (14-rust.rule.md, rust.rule.md or rust) narrows it to that file. The
 # detectors are patterns, so the list is one to review; it never fails.
 
 workdir=$(mktemp -d)

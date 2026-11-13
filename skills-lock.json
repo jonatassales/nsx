@@ -19,14 +19,14 @@
 			"source": "apollographql/skills",
 			"sourceType": "github",
 			"skillPath": "skills/rust-best-practices/SKILL.md",
-			"computedHash": "",
+			"computedHash": "a3db351ec552ed9d36b59e547d6c1d94077867eb5bcb98b3f802dfebb0a8a248",
 			"installMode": "copy"
 		},
 		"rust-mcp-server-generator": {
 			"source": "github/awesome-copilot",
 			"sourceType": "github",
 			"skillPath": "skills/rust-mcp-server-generator/SKILL.md",
-			"computedHash": "",
+			"computedHash": "420ae9213c67ac826ea54fbc3d7571189d74f22f3dfda3645fd3c6f7277c4944",
 			"installMode": "copy"
 		},
 		"rust-patterns": {

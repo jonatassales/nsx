@@ -35,4 +35,4 @@ Where the simulation contradicts itself, nsx follows it literally, and the contr
 ## Consequences
 
 - A component is found by its manifest (`next.config.ts`, `Cargo.toml`, `package.json`, `nats.conf`, `redis.conf`), which gives its stack and role, and nsx resolves its image. No Dockerfile takes part in the plan.
-- A failure the simulation does not show is a stop: no further line, so the terminal stays a prefix of the simulation, one sentence on standard error that carries no secret, and exit status 1. An over-budget run pauses at the gate, as the simulation shows, and exits 0.
+- How a failure the simulation does not show is handled is decided ticket by ticket, under the canonical rule.
