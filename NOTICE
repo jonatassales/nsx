@@ -1,0 +1,9 @@
+nsx, the LangDrift CLI
+Copyright 2026 LangDrift
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+The agent skills under .claude/skills/ keep their own licences, each in its
+folder or recorded in skills-lock.json.
+
+This information is provided for informational purposes only, in accordance with
+section 4(d) of the Apache License 2.0, and does not modify the License.

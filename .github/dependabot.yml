@@ -1,0 +1,19 @@
+# Weekly updates for the crate's dependencies and the workflows' actions;
+# each pull request still passes the guardrails and the owner merges it.
+version: 2
+updates:
+  - package-ecosystem: cargo
+    directory: /
+    # The guardrails require Conventional Commits.
+    commit-message:
+      prefix: chore(deps)
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: github-actions
+    directory: /
+    commit-message:
+      prefix: ci(deps)
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5

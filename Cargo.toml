@@ -35,3 +35,6 @@ rstest = "0.28.0"
 # that a schema printed from the types reads in declaration order.
 serde_json = { version = "1.0.154", features = ["preserve_order"] }
 tempfile = "3.27.0"
+
+[profile.release]
+strip = true
