@@ -1,6 +1,15 @@
-<div align="center">
+![nsx: the wordmark beside a terminal playing the plan and the run of a bounded execution, from the team's bound and budget to a pull request ready for review.](https://raw.githubusercontent.com/jonatassales/nsx/main/docs/assets/images/banner.svg)
 
-# nsx
+<p align="center">
+  <a href="https://paladini.io/harness-score/guide/maturity-model.html"><img alt="Harness Score L4" src="https://paladini.io/harness-score/maturity/badge-l4.svg" height="20"></a>
+  <a href="https://github.com/jonatassales/nsx/actions/workflows/main.yml"><img alt="Build" src="https://img.shields.io/github/actions/workflow/status/jonatassales/nsx/main.yml?branch=main&amp;label=build&amp;logo=github" height="20"></a>
+  <a href="https://www.npmjs.com/package/@langdrift/nsx"><img alt="npm version" src="https://img.shields.io/npm/v/@langdrift/nsx?logo=npm" height="20"></a>
+  <a href="https://github.com/jonatassales/nsx/tags"><img alt="Latest tag" src="https://img.shields.io/github/v/tag/jonatassales/nsx?label=tag" height="20"></a>
+  <a href="https://github.com/jonatassales/nsx/blob/main/LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue" height="20"></a>
+  <img alt="Platforms: macOS and Linux" src="https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey" height="20">
+</p>
+
+<div align="center">
 
 ### Let agents build. Keep the bound, the budget and the last word.
 
@@ -17,17 +26,6 @@ The LangDrift CLI plans, runs and records a bounded execution around your own so
 </p>
 
 </div>
-
-![nsx: the wordmark beside a terminal playing the plan and the run of a bounded execution, from the team's bound and budget to a pull request ready for review.](https://raw.githubusercontent.com/jonatassales/nsx/main/docs/assets/images/banner.svg)
-
-<p align="center">
-  <a href="https://paladini.io/harness-score/guide/maturity-model.html"><img alt="Harness Score L4" src="https://paladini.io/harness-score/maturity/badge-l4.svg" height="20"></a>
-  <a href="https://github.com/jonatassales/nsx/actions/workflows/main.yml"><img alt="Build" src="https://img.shields.io/github/actions/workflow/status/jonatassales/nsx/main.yml?branch=main&amp;label=build&amp;logo=github" height="20"></a>
-  <a href="https://www.npmjs.com/package/@langdrift/nsx"><img alt="npm version" src="https://img.shields.io/npm/v/@langdrift/nsx?logo=npm" height="20"></a>
-  <a href="https://github.com/jonatassales/nsx/tags"><img alt="Latest tag" src="https://img.shields.io/github/v/tag/jonatassales/nsx?label=tag" height="20"></a>
-  <a href="https://github.com/jonatassales/nsx/blob/main/LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue" height="20"></a>
-  <img alt="Platforms: macOS and Linux" src="https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey" height="20">
-</p>
 
 ## A run with edges
 
