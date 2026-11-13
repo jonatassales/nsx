@@ -17,7 +17,7 @@
 //!
 //! ## Rules
 //!
-//! - The console is the owner's exception to ADR 0005. Nothing this folder
+//! - The console is the owner's exception to ADR 003. Nothing this folder
 //!   does prints a line: the terminal prints exactly the simulation's lines,
 //!   byte for byte, whether or not the console answers.
 //! - The secret is never printed, logged or written into evidence.

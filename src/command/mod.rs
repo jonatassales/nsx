@@ -15,7 +15,7 @@
 //!
 //! ## Rules
 //!
-//! - No command or flag exists that the simulation does not show (ADR 0005).
+//! - No command or flag exists that the simulation does not show (ADR 003).
 //! - The typed command is never echoed: the person's shell shows it once.
 //! - The plan and the run find the project from any folder inside it. The
 //!   root is the nearest folder, from the working directory up, that holds
