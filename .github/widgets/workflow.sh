@@ -1,9 +1,9 @@
 #!/bin/sh
 set -eu
 
-: "${DRIFT_PROJECT_ROOT:?Run it through drift/drift.sh widget.}"
-: "${DRIFT_CLI_DIR:?Run it through drift/drift.sh widget.}"
-. "$DRIFT_CLI_DIR/core/common.sh"
+: "${VTEC_PROJECT_ROOT:?Run it through vtec/vtec.sh widget.}"
+: "${VTEC_CLI_DIR:?Run it through vtec/vtec.sh widget.}"
+. "$VTEC_CLI_DIR/core/common.sh"
 
 # The ticket the commit range names in its Ticket trailers, with its title,
 # status and spec, as the ticket file states them.
@@ -14,7 +14,7 @@ head_sha=${2:-${HEAD_SHA:-HEAD}}
 range=$head_sha
 [ -z "$base_sha" ] || range="$base_sha..$head_sha"
 
-messages=$(git log --format=%B "$range") || drift_die "git log could not read $range."
+messages=$(git log --format=%B "$range") || vtec_die "git log could not read $range."
 
 tickets=$(printf '%s\n' "$messages" |
   sed -n -E 's/^[[:space:]]*Ticket:[[:space:]]*([0-9]{4})[[:space:]]*$/\1/p' | sort -u)
@@ -29,7 +29,7 @@ fi
 printf '| Ticket | Title | Status | Spec |\n| :--- | :--- | :--- | :--- |\n'
 
 for ticket in $tickets; do
-  file=$(find "$DRIFT_PROJECT_ROOT/.agents/tickets" -type f -name "$ticket-*.ticket.md" | head -n 1)
+  file=$(find "$VTEC_PROJECT_ROOT/.agents/tickets" -type f -name "$ticket-*.ticket.md" | head -n 1)
   if [ -z "$file" ]; then
     printf '| %s | not in the tree | unknown | unknown |\n' "$ticket"
     continue

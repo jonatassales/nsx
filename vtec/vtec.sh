@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-# Resolve symlinks so `drift` also works when linked into a bin directory.
+# Resolve symlinks so `vtec` also works when linked into a bin directory.
 source_path=$0
 while [ -L "$source_path" ]; do
   source_dir=$(CDPATH='' cd -P "$(dirname "$source_path")" && pwd)
@@ -13,4 +13,4 @@ while [ -L "$source_path" ]; do
 done
 
 cli_dir=$(CDPATH='' cd -P "$(dirname "$source_path")" && pwd)
-exec "$cli_dir/src/drift.sh" "$@"
+exec "$cli_dir/src/vtec.sh" "$@"

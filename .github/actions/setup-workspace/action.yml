@@ -1,5 +1,5 @@
 name: Set up workspace
-description: Install the Rust toolchain rust-toolchain.toml names with the cargo cache, and ripgrep for drift quality.
+description: Install the Rust toolchain rust-toolchain.toml names with the cargo cache, and ripgrep for vtec quality.
 
 inputs:
   rust:
@@ -9,7 +9,7 @@ inputs:
 runs:
   using: composite
   steps:
-    # drift quality reads the tree through ripgrep, which the runner image
+    # vtec quality reads the tree through ripgrep, which the runner image
     # lacks; the release archive is checked against its published SHA-256.
     - name: ripgrep
       if: runner.os == 'Linux'

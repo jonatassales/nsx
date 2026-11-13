@@ -12,7 +12,7 @@ A single Rust crate, `nsx`, at the root, built with Cargo.
 - `langdrift/`: the files `nsx init` lays down in a client's `.langdrift/`, embedded in the binary.
 - `bin/nsx.sh`: the POSIX launcher the npm package runs, which picks the binary for the machine.
 - `package.json`: the npm package `@langdrift/nsx`, nothing more; publishing it is the owner's.
-- `drift/`: this repository's own POSIX shell tooling, the commit guardrails, the quality check and the pull request widgets. It never ships.
+- `vtec/`: this repository's own POSIX shell tooling, the commit guardrails, the quality check and the pull request widgets. It never ships.
 - `.github/`: the workflows, the composite action and the widgets.
 
 ## Toolchain and commands
@@ -27,9 +27,9 @@ A single Rust crate, `nsx`, at the root, built with Cargo.
 | `cargo clippy --all-targets --locked -- -D warnings` | Lints the crate and its tests. |
 | `cargo fmt --check` | Checks the formatting. |
 | `cargo deny check` | Checks licences, advisories and banned crates against `deny.toml`. |
-| `drift/drift.sh git setup` | Points Git at the commit-msg hook in `drift/hooks/`. |
-| `drift/drift.sh quality check` | Lists each path that does not apply a rule file. |
-| `drift/drift.sh widget dashboard` | Prints the pull request's CI Gates dashboard. |
+| `vtec/vtec.sh git setup` | Points Git at the commit-msg hook in `vtec/hooks/`. |
+| `vtec/vtec.sh quality check` | Lists each path that does not apply a rule file. |
+| `vtec/vtec.sh widget dashboard` | Prints the pull request's CI Gates dashboard. |
 
 ## Spec-driven development
 
@@ -60,7 +60,7 @@ Local Markdown under `.agents/`:
 | `workflows/main.yml` | a push to `main` | `validate.yml`, then the `nsx` binaries for Linux and macOS on x64 and arm64, attested and kept as a workflow artifact for 30 days |
 | `workflows/validate.yml` | a call from the two above | Check, Test (Ubuntu and macOS) and Security |
 | `actions/setup-workspace/` | a step | installs the toolchain `rust-toolchain.toml` names and restores the cargo cache |
-| `widgets/` | a step, through `drift widget` | the pull request widgets and the two ways they are published |
+| `widgets/` | a step, through `vtec widget` | the pull request widgets and the two ways they are published |
 
 Actions are pinned to full commit SHAs with the version in a comment, and the workflow tokens are read-only unless a job asks for more.
 
@@ -72,10 +72,10 @@ _Avoid_: the agent (for the whole CLI)
 
 **nsx**:
 The LangDrift CLI's command, as a person types it: `nsx init`, `nsx agent plan`, `nsx agent run`.
-_Avoid_: drift
+_Avoid_: vtec
 
-**drift**:
-This repository's own tooling, the POSIX shell CLI in `drift/` that runs the guardrails, the quality check and the widgets. It never ships.
+**vtec**:
+This repository's own tooling, the POSIX shell CLI in `vtec/` that runs the guardrails, the quality check and the widgets. It never ships.
 _Avoid_: nsx
 
 **Microruntime**:

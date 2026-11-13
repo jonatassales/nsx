@@ -23,7 +23,7 @@ jobs:
       - name: Lint
         run: cargo clippy --all-targets --locked -- -D warnings
       - name: Repository rules
-        run: drift/drift.sh quality check
+        run: vtec/vtec.sh quality check
 
   test:
     name: Test (${{ matrix.runner }})

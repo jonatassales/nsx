@@ -1,14 +1,14 @@
 #!/bin/sh
 set -eu
 
-: "${DRIFT_PROJECT_ROOT:?Run it through drift/drift.sh widget.}"
-: "${DRIFT_CLI_DIR:?Run it through drift/drift.sh widget.}"
-. "$DRIFT_CLI_DIR/core/common.sh"
+: "${VTEC_PROJECT_ROOT:?Run it through vtec/vtec.sh widget.}"
+: "${VTEC_CLI_DIR:?Run it through vtec/vtec.sh widget.}"
+. "$VTEC_CLI_DIR/core/common.sh"
 
 # The CI Gates of a pull request, each widget in its own section; with
 # --publish, also a sticky comment per gate and a check run per gate.
 
-widgets_dir="$DRIFT_PROJECT_ROOT/.github/widgets"
+widgets_dir="$VTEC_PROJECT_ROOT/.github/widgets"
 
 publish=false
 if [ "${1:-}" = "--publish" ]; then
@@ -17,8 +17,8 @@ if [ "${1:-}" = "--publish" ]; then
 fi
 
 dashboard_tmp=$(mktemp)
-# drift's own EXIT trap prints the queued results, so this one chains to it.
-trap 'rm -f "$dashboard_tmp"; drift_flush_results' EXIT
+# vtec's own EXIT trap prints the queued results, so this one chains to it.
+trap 'rm -f "$dashboard_tmp"; vtec_flush_results' EXIT
 
 {
   printf '## nsx CI Gates\n\n'
@@ -41,11 +41,11 @@ cat "$dashboard_tmp"
 [ "$publish" = true ] || exit 0
 
 if [ -n "${WIDGET_PULL_REQUEST:-}" ] && [ -n "${GITHUB_REPOSITORY:-}" ]; then
-  "$widgets_dir/sticky-comment.sh" "nsx-ci-gates" <"$dashboard_tmp" || drift_warn "Could not update the CI Gates comment"
+  "$widgets_dir/sticky-comment.sh" "nsx-ci-gates" <"$dashboard_tmp" || vtec_warn "Could not update the CI Gates comment"
 fi
 
 if [ -n "${WIDGET_SHA:-}" ] && [ -n "${GITHUB_REPOSITORY:-}" ]; then
-  sh "$widgets_dir/workflow.sh" "$@" | "$widgets_dir/check-run.sh" "Workflow" "neutral" "Tickets named" || drift_warn "Could not publish the Workflow check run"
-  sh "$widgets_dir/contracts.sh" "$@" | "$widgets_dir/check-run.sh" "Contracts" "neutral" "Contract changes" || drift_warn "Could not publish the Contracts check run"
-  sh "$widgets_dir/code-quality.sh" "$@" | "$widgets_dir/check-run.sh" "Code Quality" "neutral" "Rules applied" || drift_warn "Could not publish the Code Quality check run"
+  sh "$widgets_dir/workflow.sh" "$@" | "$widgets_dir/check-run.sh" "Workflow" "neutral" "Tickets named" || vtec_warn "Could not publish the Workflow check run"
+  sh "$widgets_dir/contracts.sh" "$@" | "$widgets_dir/check-run.sh" "Contracts" "neutral" "Contract changes" || vtec_warn "Could not publish the Contracts check run"
+  sh "$widgets_dir/code-quality.sh" "$@" | "$widgets_dir/check-run.sh" "Code Quality" "neutral" "Rules applied" || vtec_warn "Could not publish the Code Quality check run"
 fi

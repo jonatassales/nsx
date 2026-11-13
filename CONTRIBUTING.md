@@ -11,11 +11,11 @@ rustup toolchain install
 ```
 
 ```bash
-drift/drift.sh git setup
+vtec/vtec.sh git setup
 ```
 
 The first installs the toolchain `rust-toolchain.toml` pins; the second points
-Git at the commit-msg hook in `drift/hooks/`.
+Git at the commit-msg hook in `vtec/hooks/`.
 
 ## Before a pull request
 
@@ -36,7 +36,7 @@ cargo deny check
 ```
 
 ```bash
-drift/drift.sh quality check
+vtec/vtec.sh quality check
 ```
 
 Commits follow Conventional Commits, carry no AI signature, and a commit that

@@ -1,9 +1,9 @@
 #!/bin/sh
 set -eu
 
-: "${DRIFT_PROJECT_ROOT:?Run it through drift/drift.sh widget.}"
-: "${DRIFT_CLI_DIR:?Run it through drift/drift.sh widget.}"
-. "$DRIFT_CLI_DIR/core/common.sh"
+: "${VTEC_PROJECT_ROOT:?Run it through vtec/vtec.sh widget.}"
+: "${VTEC_CLI_DIR:?Run it through vtec/vtec.sh widget.}"
+. "$VTEC_CLI_DIR/core/common.sh"
 
 # Whether the commit range changes the crate, its contracts or the JSON
 # Schemas the LangDrift console validates reports against.
@@ -18,7 +18,7 @@ count() {
   }
 
   changed=$(git diff --name-only "$base_sha" "$head_sha" -- "$@") ||
-    drift_die "git diff could not compare $base_sha with $head_sha."
+    vtec_die "git diff could not compare $base_sha with $head_sha."
 
   printf '%s\n' "$changed" | grep -c . || true
 }
