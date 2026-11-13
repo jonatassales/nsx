@@ -6,11 +6,13 @@ Every notable change to nsx, newest first, in the shape of
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-11-13
+
 ### Changed
 
-- The README presents nsx to a team that would use it, with a banner, its
-  badges and one link to the docs; the map of `src/` it held is now
-  `docs/architecture.guide.md`.
+- The README presents nsx to a team that would use it: a banner in
+  LangDrift violet, then its badges, its tagline and one link to the
+  docs. The map of `src/` it held is now `docs/architecture.guide.md`.
 
 ## [0.1.1] - 2026-11-13
 
@@ -44,6 +46,7 @@ The first release of nsx, on npm as `@langdrift/nsx`.
 - The repository's tooling CLI is `vtec`, in `vtec/`, so it is not
   confused with the LangDrift monorepo's `drift`.
 
-[Unreleased]: https://github.com/jonatassales/nsx/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/jonatassales/nsx/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/jonatassales/nsx/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/jonatassales/nsx/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/jonatassales/nsx/releases/tag/v0.1.0

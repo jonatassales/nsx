@@ -3,17 +3,17 @@
 	<desc id="banner-description">The nsx wordmark beside a terminal that plays the plan and the run of a bounded execution: the team's bound and budget, the suggested model, the gate opened, the spend observed and the pull request ready for review.</desc>
 	<defs>
 		<linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="0%">
-			<stop offset="0%" stop-color="#F97316"/>
-			<stop offset="100%" stop-color="#FF9500"/>
+			<stop offset="0%" stop-color="#8C3BEF"/>
+			<stop offset="100%" stop-color="#A970FF"/>
 		</linearGradient>
 		<radialGradient id="glow" cx="18%" cy="38%" r="60%">
-			<stop offset="0%" stop-color="#F97316" stop-opacity="0.20"/>
-			<stop offset="100%" stop-color="#F97316" stop-opacity="0"/>
+			<stop offset="0%" stop-color="#6D0AD6" stop-opacity="0.32"/>
+			<stop offset="100%" stop-color="#6D0AD6" stop-opacity="0"/>
 		</radialGradient>
 		<linearGradient id="drift" x1="0%" y1="0%" x2="100%" y2="0%">
-			<stop offset="0%" stop-color="#F97316" stop-opacity="0"/>
-			<stop offset="35%" stop-color="#F97316" stop-opacity="0.55"/>
-			<stop offset="100%" stop-color="#FF9500" stop-opacity="0.05"/>
+			<stop offset="0%" stop-color="#8C3BEF" stop-opacity="0"/>
+			<stop offset="35%" stop-color="#8C3BEF" stop-opacity="0.55"/>
+			<stop offset="100%" stop-color="#A970FF" stop-opacity="0.05"/>
 		</linearGradient>
 		<pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
 			<circle cx="1.5" cy="1.5" r="1" fill="#FFFFFF" fill-opacity="0.05"/>
@@ -29,7 +29,7 @@
 			.output { fill: #E6E6EA; }
 			.success { fill: #4ADE80; }
 			.warning { fill: #FBBF24; }
-			.prompt { fill: #F97316; }
+			.prompt { fill: #A970FF; }
 			.cursor { animation: blink 1.2s steps(1) infinite; }
 			@keyframes blink { 50% { opacity: 0; } }
 		</style>
@@ -44,7 +44,7 @@
 		<path d="M -20 560 C 140 540, 220 470, 330 480 S 520 560, 660 540 S 980 500, 1300 548" fill="none" stroke="url(#drift)" stroke-width="3"/>
 
 		<!-- The wordmark. -->
-		<text x="66" y="150" class="sans" font-size="15" font-weight="600" letter-spacing="4" fill="#F97316">LANGDRIFT CLI</text>
+		<text x="66" y="150" class="sans" font-size="15" font-weight="600" letter-spacing="4" fill="#A970FF">LANGDRIFT CLI</text>
 		<text x="60" y="300" class="mono" font-size="150" font-weight="700" fill="url(#brand)" textLength="270" lengthAdjust="spacingAndGlyphs">nsx</text>
 		<rect class="cursor" x="346" y="196" width="56" height="108" rx="4" fill="url(#brand)"/>
 		<text x="66" y="364" class="sans" font-size="26" font-weight="600" fill="#F4F4F6">A bounded execution</text>
@@ -60,7 +60,7 @@
 		</g>
 
 		<!-- The envelope: the bound the team sets around the run. -->
-		<rect x="470" y="50" width="776" height="480" rx="22" fill="none" stroke="#F97316" stroke-opacity="0.45" stroke-width="1.5" stroke-dasharray="6 8"/>
+		<rect x="470" y="50" width="776" height="480" rx="22" fill="none" stroke="#8C3BEF" stroke-opacity="0.6" stroke-width="1.5" stroke-dasharray="6 8"/>
 
 		<!-- The terminal. -->
 		<rect x="484" y="64" width="748" height="452" rx="12" fill="#121218" stroke="#2A2A33"/>
@@ -90,8 +90,8 @@
 
 		<!-- The path of a run, and the harness that keeps this repository. -->
 		<g class="mono" font-size="15">
-			<text x="66" y="594"><tspan fill="#F4F4F6">plan</tspan><tspan fill="#F97316">  →  </tspan><tspan fill="#F4F4F6">authorize</tspan><tspan fill="#F97316">  →  </tspan><tspan fill="#F4F4F6">run</tspan><tspan fill="#F97316">  →  </tspan><tspan fill="#F4F4F6">evidence</tspan></text>
-			<path d="M 1082 578 l 9 -4 l 9 4 v 8 c 0 6 -4 10 -9 12 c -5 -2 -9 -6 -9 -12 z" fill="none" stroke="#F97316" stroke-width="1.5"/>
+			<text x="66" y="594"><tspan fill="#F4F4F6">plan</tspan><tspan fill="#A970FF">  →  </tspan><tspan fill="#F4F4F6">authorize</tspan><tspan fill="#A970FF">  →  </tspan><tspan fill="#F4F4F6">run</tspan><tspan fill="#A970FF">  →  </tspan><tspan fill="#F4F4F6">evidence</tspan></text>
+			<path d="M 1082 578 l 9 -4 l 9 4 v 8 c 0 6 -4 10 -9 12 c -5 -2 -9 -6 -9 -12 z" fill="none" stroke="#A970FF" stroke-width="1.5"/>
 			<text x="1110" y="594" fill="#9A9AA6">guarded by <tspan fill="#F4F4F6" font-weight="700">vtec</tspan></text>
 		</g>
 	</g>
