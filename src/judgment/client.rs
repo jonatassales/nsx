@@ -4,8 +4,8 @@
 //! with the connection `nsx init` recorded.
 //!
 //! Definition only: the `Client` type, which carries the connection and the
-//! HTTP client. The model nsx still names, the version of nsx's words and
-//! the limits of a call sit beside the type. Its functions are the files in
+//! HTTP client. The version of nsx's words and the limits of a call sit
+//! beside the type. Its functions are the files in
 //! `client/`.
 //!
 //! ## Rules
@@ -16,10 +16,8 @@
 //!   110.
 //! - The console chooses which model judges: the team's judge model, set on
 //!   the console's Settings → AI Models and called with the team's own key.
-//!   nsx holds no model key and no model option.
-//! - `MODEL` is deprecated. The console ignores the request's `model`, but
-//!   its request is read strictly and still requires the field, so nsx
-//!   sends it until the console accepts a request without it.
+//!   nsx holds no model key, no model option and names no model: its
+//!   question carries none.
 
 pub mod ask;
 pub mod open;
@@ -27,8 +25,6 @@ pub mod open;
 use std::time::Duration;
 
 use crate::console::connection::Connection;
-
-pub const MODEL: &str = "claude-sonnet-5-5";
 
 pub const WORDS: &str = "nsx-1";
 

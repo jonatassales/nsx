@@ -42,7 +42,7 @@ pub enum Error {
 	)]
 	Offer { cause: String },
 	#[error(
-		"The console's Settings → AI Models offers none of the models nsx prices: offer claude-opus-5-5, claude-sonnet-5-5 or claude-haiku-5-5."
+		"The console's Settings → AI Models offers no model with a list price nsx knows: nsx cannot price a run, and an unknown price is never zero."
 	)]
 	Unoffered,
 	#[error(

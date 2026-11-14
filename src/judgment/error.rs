@@ -15,6 +15,10 @@ pub enum Error {
 	Unconnected,
 	#[error("The console's judge did not answer: {cause}.")]
 	Unavailable { cause: String },
+	#[error(
+		"The console has no Anthropic key: add one on the console's Settings → AI Models."
+	)]
+	KeyMissing,
 	#[error("nsx could not read the judge's {question} answer: {cause}.")]
 	Unread {
 		question: &'static str,

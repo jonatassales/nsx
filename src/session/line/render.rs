@@ -1,10 +1,10 @@
 //! The layout of a line
 //!
 //! Labels and values line up down the terminal as they do in the simulation,
-//! because every line takes one of six shapes.
+//! because every line takes one of seven shapes.
 //!
 //! One function: it gives back a line's text in the line format: one of the
-//! six shapes below, with its columns padded.
+//! seven shapes below, with its columns padded.
 //!
 //! ## Rules
 //!
@@ -14,6 +14,8 @@
 //!   space, the value.
 //! - Result line: `✓ `, the label padded to 10 columns, one space, the value.
 //! - Status line: the label padded to 10 columns, one space, the value.
+//! - Failure line: `✗ `, the label padded to 10 columns, one space, the
+//!   value.
 //! - Component row: `✓ `, the path padded to 19 columns, three spaces,
 //!   `<stack> · <role>` padded to 15 columns, one space,
 //!   `<cpu>m · <memory> MiB`.
@@ -44,6 +46,10 @@ impl Line {
 				label,
 				value,
 			} => format!("✓ {label:<LABEL_COLUMNS$} {value}"),
+			Shape::Failure {
+				label,
+				value,
+			} => format!("✗ {label:<LABEL_COLUMNS$} {value}"),
 			Shape::Status {
 				label,
 				value,

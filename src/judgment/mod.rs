@@ -14,18 +14,23 @@
 //! - `Criteria`: judging the guardrail's criteria
 //! - `Relevance`: judging which episodes are relevant
 //! - `Suggestion`: the suggested model and effort, and its four lines
+//! - `Keyless`: the plan that stops because the team has no Anthropic key
 //!
 //! ## Simulation
 //!
 //! - Card: Analysis · header, in three states: `4 documents read` from the
 //!   `reads` line, `3 of 6 episodes kept` from the `drop` line, and
-//!   `Claude Sonnet 5.5 · effort medium` from the `suggest` line on
+//!   `Claude Sonnet 5.5 · effort medium` from the `suggest` line on; or
+//!   `judge unavailable · no Anthropic key` once a plan without a key stops
 //!
 //! ## Rules
 //!
 //! - Nothing about the judge is priced, reserved or gated in the plan.
-//! - The six judged lines are the only lines about the judge: no warning line
-//!   and no mode without a judge exist.
+//! - The six judged lines, and the two lines of a plan without a key, are the
+//!   only lines about the judge: no warning line and no mode without a judge
+//!   exist.
+//! - When the team has no Anthropic key, the plan prints the two lines of
+//!   `keyless/` in place of `judgeGuardrail`, then stops.
 //! - When the judge cannot be reached, declines, or gives an answer the checks
 //!   refuse, the stop rule applies: the plan stops before the line the answer
 //!   would feed and writes no draft.
@@ -35,6 +40,7 @@ pub mod client;
 pub mod criteria;
 pub mod error;
 pub mod judge;
+pub mod keyless;
 pub mod question;
 pub mod relevance;
 pub mod suggestion;

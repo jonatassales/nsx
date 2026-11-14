@@ -8,7 +8,7 @@ A single Rust crate, `nsx`, at the root, built with Cargo.
 
 - `src/`: the crate, one folder per part of the session; [`docs/architecture.guide.md`](/docs/architecture.guide.md) maps every file.
 - `docs/`: the architecture guide and [`environment.guide.md`](/docs/environment.guide.md), the variables nsx reads, by key.
-- `tests/`: one test target, `tests/main.rs`, with a folder per area, the fakes, the fixture project and the six goldens.
+- `tests/`: one test target, `tests/main.rs`, with a folder per area, the fakes, the fixture project and the seven goldens.
 - `schema/`: the JSON Schemas of the records nsx writes and sends, published with the npm package; the LangDrift console validates reports against them.
 - `langdrift/`: the files `nsx init` lays down in a client's `.langdrift/`, embedded in the binary.
 - `bin/nsx.sh`: the POSIX launcher the npm package runs, which picks the binary for the machine.
@@ -24,7 +24,7 @@ A single Rust crate, `nsx`, at the root, built with Cargo.
 | Command | Effect |
 | --- | --- |
 | `cargo build --release --locked` | Builds `target/release/nsx`. |
-| `cargo test --locked` | Runs every test, the six goldens included. |
+| `cargo test --locked` | Runs every test, the seven goldens included. |
 | `cargo clippy --all-targets --locked -- -D warnings` | Lints the crate and its tests. |
 | `cargo fmt --check` | Checks the formatting. |
 | `cargo deny check` | Checks licences, advisories and banned crates against `deny.toml`. |

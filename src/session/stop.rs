@@ -24,8 +24,11 @@
 //!   prefix of the simulation.
 //! - The command exits with status 1.
 //! - A command that ends on its last simulation line exits 0. The
-//!   over-budget pause is a shown ending and exits 0. An interrupt (Ctrl-C)
-//!   is a stop.
+//!   over-budget pause is a shown ending and exits 0.
+//! - The plan without the team's Anthropic key is a shown stop: its two
+//!   lines print as the simulation shows, then this rule applies, with its
+//!   sentence on standard error and exit status 1, since no draft exists.
+//! - An interrupt (Ctrl-C) is a stop.
 
 pub mod exit;
 pub mod from;

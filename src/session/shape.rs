@@ -1,11 +1,11 @@
-//! The six shapes of a line
+//! The seven shapes of a line
 //!
-//! Every line of the simulation is laid out in one of six ways, and a shape
+//! Every line of the simulation is laid out in one of seven ways, and a shape
 //! carries the words that way of laying out needs: a text, a label and its
 //! value, or a component's path, stack and role, and share.
 //!
-//! Definition only: the `Shape` type, with exactly six shapes: comment,
-//! narrative, labeled, result, status and component.
+//! Definition only: the `Shape` type, with exactly seven shapes: comment,
+//! narrative, labeled, result, status, failure and component.
 //!
 //! ## Rules
 //!
@@ -30,6 +30,10 @@ pub enum Shape {
 		value: String,
 	},
 	Status {
+		label: String,
+		value: String,
+	},
+	Failure {
 		label: String,
 		value: String,
 	},
