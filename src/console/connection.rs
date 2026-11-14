@@ -3,7 +3,7 @@
 //! What a project needs to reach the console: the secret a team member
 //! generated on the console's Settings → Secrets, the console's
 //! origin, `https://langdrift.md` unless the team names another.
-//! The judge and the reports use this one connection.
+//! The judge, the reports and the team's offer use this one connection.
 //!
 //! Definition only: the `Connection` type, which carries the console's
 //! origin and the secret. The default origin and the two environment
@@ -21,6 +21,9 @@
 //! - The runtime's id comes in the console's answer to the runtime's first
 //!   report. nsx keeps it in the project's private, git-ignored state
 //!   (`report.rs`) and sends it with every later report of that runtime.
+//! - The same connection reads the team's offer, the models and efforts it
+//!   sets on the console's Settings → AI Models, before a plan's first line.
+//!   nsx holds no model key and no model option: only the secret.
 
 pub mod load;
 pub mod record;

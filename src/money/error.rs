@@ -38,6 +38,18 @@ pub enum Error {
 	#[error("The price list has no model {id}: nsx cannot price a run with it.")]
 	Model { id: String },
 	#[error(
+		"nsx could not read the models and efforts the team offers on the console's Settings → AI Models. {cause}"
+	)]
+	Offer { cause: String },
+	#[error(
+		"The console's Settings → AI Models offers none of the models nsx prices: offer claude-opus-5-5, claude-sonnet-5-5 or claude-haiku-5-5."
+	)]
+	Unoffered,
+	#[error(
+		"The console's Settings → AI Models offers the models nsx prices at no effort nsx knows: offer low, medium or high."
+	)]
+	Effortless,
+	#[error(
 		"The forecast has no expected tokens for the effort {effort}: nsx cannot price a run at it."
 	)]
 	Effort { effort: String },

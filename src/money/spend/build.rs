@@ -1,8 +1,9 @@
 //! Building the spend table
 //!
-//! One function: it takes the price list, the forecast and the budget, and
-//! gives back the spend table: every model and effort pair with its expected
-//! tokens, its estimate, its reservation and whether it is over the budget.
+//! One function: it takes the candidates, the forecast and the budget, and
+//! gives back the spend table: every candidate model at each of its efforts,
+//! with its expected tokens, its estimate, its reservation and whether it is
+//! over the budget.
 //!
 //! ## Rules
 //!
@@ -17,48 +18,42 @@
 //!   written once.
 //! - A pair is over the budget when its reservation exceeds the budget. A
 //!   reservation equal to the budget is not over it.
-//! - The rows follow the three models nsx reads, then low, medium and high.
-//!   A price list without one of the models, or a forecast without one of
-//!   the efforts, stops the command, and so does an amount too large to
+//! - The rows follow the candidates: the models in the order of the three
+//!   nsx reads, each at its efforts from low to high. A forecast without one
+//!   of those efforts stops the command, and so does an amount too large to
 //!   state in cents.
 
-use crate::contract::fence::EFFORTS;
 use crate::money::{
 	budget::Budget,
+	candidates::Candidates,
 	error::Error,
 	estimate::Estimate,
 	forecast::Forecast,
 	pair::Pair,
-	price::{MODELS, Price},
 	reservation::Reservation,
 	spend::{MARGIN, Spend},
 };
 
 impl Spend {
 	pub fn build(
-		prices: &Price,
+		candidates: &Candidates,
 		forecast: &Forecast,
 		budget: &Budget,
 	) -> Result<Self, Error> {
 		let mut pairs = Vec::new();
 
-		for id in MODELS {
-			let listed = prices.models.iter().find(|model| model.id == id);
-			let Some(model) = listed else {
-				return Err(Error::Model {
-					id: String::from(id),
-				});
-			};
+		for candidate in &candidates.models {
+			let model = &candidate.model;
 
-			for effort in EFFORTS {
-				let Some(tokens) = forecast.by_effort.get(effort) else {
+			for effort in &candidate.efforts {
+				let Some(tokens) = forecast.by_effort.get(effort.as_str()) else {
 					return Err(Error::Effort {
-						effort: String::from(effort),
+						effort: effort.clone(),
 					});
 				};
 				let unpriced = || Error::Unpriced {
-					model: String::from(id),
-					effort: String::from(effort),
+					model: model.id.clone(),
+					effort: effort.clone(),
 				};
 				let estimate = Estimate::compute(
 					model,
@@ -70,8 +65,8 @@ impl Spend {
 					Reservation::total(estimate).ok_or_else(unpriced)?.amount;
 
 				pairs.push(Pair {
-					model: String::from(id),
-					effort: String::from(effort),
+					model: model.id.clone(),
+					effort: effort.clone(),
 					tokens: *tokens,
 					estimate,
 					reserved,

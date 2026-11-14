@@ -182,7 +182,8 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `estimate.rs`, `estimate/compute.rs`, `estimate/line.rs` | the estimate | `estimate` |
 | `reservation.rs`, `reservation/total.rs` | the estimate plus its margin | |
 | `gate.rs`, `gate/open.rs`, `gate/line.rs` | the gate: opened or paused | `gateOpened`, `gatePaused`, `paused` |
-| `spend.rs`, `spend/build.rs`, `spend/card.rs`, `pair.rs` | the spend table: one row per model and effort, priced before the first line and put on the Workflow card | |
+| `candidate.rs`, `candidates.rs`, `candidates/of.rs`, `candidates/read.rs`, `candidates/holds.rs` | the candidates: the models of the price list the team offers on the console's Settings → AI Models, each at the efforts nsx knows that the team offers for it, read before the first line | |
+| `spend.rs`, `spend/build.rs`, `spend/card.rs`, `pair.rs` | the spend table: one row per candidate model and effort, priced before the first line and put on the Workflow card | |
 | `ledger.rs`, `ledger/open.rs`, `ledger/write.rs` | the money ledger: a run's entry, opened from the plan's spend table with its figures checked, and written as the run goes | |
 | `settlement.rs`, `settlement/settle.rs` | observed and released | the amounts in `completed` and `ready` |
 
@@ -242,7 +243,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 
 | Files | Holds | Lines |
 | --- | --- | --- |
-| `workflow.rs`, `workflow/load.rs`, `entry.rs` | the ordered stages as the workflow file lists them, and the default choice | |
+| `workflow.rs`, `workflow/load.rs`, `workflow/within.rs`, `entry.rs` | the ordered stages as the workflow file lists them, and the default choice, which a connected plan checks against the candidates | |
 | `error.rs` | what reading the workflow can refuse | |
 | `stage.rs` | one stage of this run and where it stands | |
 | `choice.rs` | the choice per run: checkpoints, model, effort | |
@@ -322,9 +323,9 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 
 | Files | Holds | Lines |
 | --- | --- | --- |
-| `client.rs` | the console, as a trait | |
-| `remote.rs`, `remote/open.rs`, `remote/report.rs` | the console over the network: one JSON-RPC tool call per report | |
-| `offline.rs`, `offline/report.rs` | the console of a project with no connection: nothing is sent | |
+| `client.rs` | the console, as a trait: the report tool and the offer tool | |
+| `remote.rs`, `remote/open.rs`, `remote/call.rs`, `remote/client.rs` | the console over the network: one JSON-RPC tool call per report, and one for the team's offer | |
+| `offline.rs`, `offline/client.rs` | the console of a project with no connection: nothing is sent, and no offer is read | |
 | `connection.rs`, `connection/record.rs`, `connection/load.rs`, `origin.rs` | the console's origin and the secret, recorded by `nsx init` in a private file Git does not track; and where nsx will send a secret | |
 | `report.rs`, `report/open.rs`, `report/ask.rs`, `report/send.rs`, `report/end.rs` | asking the console, sending each record as it is written, and telling it how a command ended, keeping the runtime's id the console answers | |
 | `error.rs` | what reaching the console can refuse | |
@@ -398,7 +399,7 @@ The owner allows `../` inside this crate and asks that it be avoided where there
 | `tests/simulation/diff.rs`, `rules.rs`, `sketch.rs` | comparing what nsx printed with a golden, that comparison's own rules, and the short session they play on |
 | `tests/simulation/frozen.rs`, `golden.rs`, `printed.rs` | a line as a golden freezes it, a golden's lines, and what nsx printed |
 | `tests/simulation/fixture.rs`, `project.rs`, `indexed.rs`, `ran.rs` | the fixture project read in place, a copy of it, its episode index built for the simulation's six similarities, and a run played in a copy |
-| `tests/simulation/fake/` | the fakes, declared by `fake/mod.rs`: `recorder.rs` (the sink and window that keep what they are given), `refuser.rs` (a sink that refuses every line), `session.rs` (the session the tests play a command over), `witness.rs` (a sink that looks at `plan.json` each time a line prints), `recorded.rs` (the judge that answers with recorded texts), `judge.rs` (the golden test's judge, which answers with the samples of `tests/contract/samples/judgment/`), `console.rs` (the console that keeps every report, answers one runtime id and the requests a test scripts, can fall silent, rewrite a file as a report arrives, and pause before a stage, `console/pausing.rs`), `answers.rs` (the person who answers each wait), `silence.rs` (the person who never does), `spender.rs` (the person whose answers come with a call paid behind their back), `host.rs` (the cluster that does as it is asked and keeps nothing), `machine.rs` (the cluster that keeps what is created in it), `forged.rs` (the forge that delivers as the simulation shows), `hub.rs` (the forge that keeps what it is asked and answers a script), `calm.rs` (the person who never interrupts), `hasty.rs` (the person who interrupts as soon as the command first waits), `coder.rs` (the coding agent that writes each stage's report and says what it used), `moment.rs` (the clock that always shows one moment) and `programs.rs` (the runner that starts nothing), `answering.rs` (the image resolver that gives one answer) and `served.rs` (a console that answers one request on this machine and keeps what it got). |
+| `tests/simulation/fake/` | the fakes, declared by `fake/mod.rs`: `recorder.rs` (the sink and window that keep what they are given), `refuser.rs` (a sink that refuses every line), `session.rs` (the session the tests play a command over), `witness.rs` (a sink that looks at `plan.json` each time a line prints), `recorded.rs` (the judge that answers with recorded texts), `judge.rs` (the golden test's judge, which answers with the samples of `tests/contract/samples/judgment/`), `console.rs` (the console that keeps every report, answers one runtime id and the requests a test scripts, can fall silent, rewrite a file as a report arrives, and pause before a stage, `console/pausing.rs`, and serves the team's offer, `console/client.rs`), `offer.rs` (what the simulation's team offers, the sample of `tests/contract/samples/offer/`), `answers.rs` (the person who answers each wait), `silence.rs` (the person who never does), `spender.rs` (the person whose answers come with a call paid behind their back), `host.rs` (the cluster that does as it is asked and keeps nothing), `machine.rs` (the cluster that keeps what is created in it), `forged.rs` (the forge that delivers as the simulation shows), `hub.rs` (the forge that keeps what it is asked and answers a script), `calm.rs` (the person who never interrupts), `hasty.rs` (the person who interrupts as soon as the command first waits), `coder.rs` (the coding agent that writes each stage's report and says what it used), `moment.rs` (the clock that always shows one moment) and `programs.rs` (the runner that starts nothing), `answering.rs` (the image resolver that gives one answer) and `served.rs` (a console that answers one request on this machine and keeps what it got). |
 | `tests/contract/` | the fence, the hand-off records and the report read strictly; each generated schema against its published file; each sample of `tests/contract/samples/` read and written back |
 | `tests/command/` | the command line, `nsx init`, and what a run leaves past its gate, through its delivery, and where it stops |
 | `tests/local/` | a Deployment from its component, the execution ledger written first and found again, the cleanup of exactly what it lists, the runtime's two lines, and kind, kubectl and Docker as they are started |
@@ -408,7 +409,7 @@ The owner allows `../` inside this crate and asks that it be avoided where there
 | `tests/skills/` | each stage's report accepted or refused, and its line |
 | `tests/hook/` | the effort record as the gate on implement |
 | `tests/seat/` | the dev ticket waited for and closed, and the verdict |
-| `tests/console/` | the origin nsx will send a secret to, the connection recorded and read back, the wire of the console's and the judge's clients against a local server, the reports a connected plan and run send, a hold on its own (`hold.rs`), and the team's Play and Pause through a run (`played.rs`, on a project whose intent is still proposed, `proposed.rs`) |
+| `tests/console/` | the origin nsx will send a secret to, the connection recorded and read back, the wire of the console's and the judge's clients against a local server, the reports a connected plan and run send, the team's offer a connected plan reads first (`offer.rs`), a hold on its own (`hold.rs`), and the team's Play and Pause through a run (`played.rs`, on a project whose intent is still proposed, `proposed.rs`) |
 | `tests/components/` | the manifest found and classified, the port's three sources, a component's two lines and its row on the Plan card, an image asked and checked, and every collision named |
 | `tests/session/`, `tests/files/`, `tests/process/` | the lines, the stop rule and the system's interrupt; the project's files; and other programs |
 | `tests/runtime/` | the shares summed against the bound, the limits statement, the next revision, and the draft made, validated and written as `runtime.md` |
@@ -416,7 +417,7 @@ The owner allows `../` inside this crate and asks that it be avoided where there
 | `tests/harness/` | the guardrail's criteria table and the envelope |
 | `tests/rag/` | the embedder run for real, an episode record, the index and its rebuild, the search, the retrieval's lines, and the episode a run leaves |
 | `tests/judgment/` | each of the judge's three answers, read and checked before its line prints |
-| `tests/money/` | an amount printed as dollars, the price list and the forecast read back, the budget's two lines, the spend table's nine rows, and the estimate, the reservation and the gate |
+| `tests/money/` | an amount printed as dollars, the price list and the forecast read back, the budget's two lines, the candidates an offer leaves, the spend table's rows, and the estimate, the reservation and the gate |
 | `tests/evidence/` | the run's id, the usage record with its totals, and the machine's clock |
 | `tests/handoff/` | `plan.json` whole and valid after every section, the proposed intent, and the authorized intent chosen, checked and applied by a run |
 | `tests/flow/` | the workflow read back, with its stages and its default choice, and a checkpoint answered, declined or left unanswered |

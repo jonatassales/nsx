@@ -6,15 +6,19 @@
 //! play once the run has reported `held` as often as the test says. A test
 //! can make the console down, down from one report on, or forget one
 //! runtime id, and can have a file rewritten as one report arrives.
+//!
+//! It offers what the simulation's team offers, the three models at low,
+//! medium and high, unless a test gives it another offer. `down` concerns
+//! the reports; a test makes the offer down on its own.
 
+mod client;
 mod pausing;
-mod report;
 
 use std::cell::{Cell, RefCell};
 use std::collections::VecDeque;
 use std::path::PathBuf;
 
-use nsx::contract::{report::Report, requested::Requested};
+use nsx::contract::{offer::Offer, report::Report, requested::Requested};
 
 pub const RUNTIME: &str = "019a0000-0000-7000-8000-00000000cafe";
 
@@ -29,4 +33,6 @@ pub struct Console {
 	pub plays_after: Option<u32>,
 	pub holds: Cell<u32>,
 	pub rewrite: RefCell<Option<(usize, PathBuf, String)>>,
+	pub offer: Option<Offer>,
+	pub offer_down: bool,
 }

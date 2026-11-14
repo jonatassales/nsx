@@ -151,7 +151,7 @@ impl Plan {
 		session.sink.print(&Suggestion::resources())?;
 
 		let suggestion =
-			Suggestion::ask(session.judge, &retrieval, documents, &brief.prices)
+			Suggestion::ask(session.judge, &retrieval, documents, &brief.candidates)
 				.await?;
 
 		session.sink.print(&suggestion.effort())?;

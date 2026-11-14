@@ -14,6 +14,7 @@ pub mod hub;
 pub mod judge;
 pub mod machine;
 pub mod moment;
+pub mod offer;
 pub mod programs;
 pub mod recorded;
 pub mod recorder;

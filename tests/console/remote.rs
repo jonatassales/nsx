@@ -1,4 +1,5 @@
-//! The wire: what the console and its judge are sent, and what is read back
+//! The wire: what the console and its judge are sent, and what is read back:
+//! a report, the team's offer and a question
 
 use std::path::PathBuf;
 
@@ -6,7 +7,9 @@ use nsx::console::{
 	client::Client as Console, connection::Connection, error::Error,
 	remote::Remote,
 };
-use nsx::contract::{report::Report, status::Status};
+use nsx::contract::{
+	decode::decode, offer::Offer, report::Report, status::Status,
+};
 use nsx::harness::{criterion::Criterion, guardrail::Guardrail};
 use nsx::judgment::{
 	client::Client as Asker, judge::Judge, question::Question,
@@ -81,6 +84,54 @@ async fn a_console_that_refuses_is_unavailable_and_the_secret_stays_unsaid() {
 	assert!(
 		refusal.to_string().contains("unauthorized"),
 		"said {refusal}"
+	);
+	assert!(!refusal.to_string().contains(SECRET));
+}
+
+#[tokio::test]
+async fn the_offer_is_one_tool_call_with_no_argument() {
+	let offer = r#"{"providers":[{"provider":"anthropic","models":["claude-sonnet-5-5"],"efforts":["medium"]}]}"#;
+	let answer = format!(
+		r#"{{"jsonrpc":"2.0","id":1,"result":{{"structuredContent":{offer},"content":[{{"type":"text","text":{}}}]}}}}"#,
+		serde_json::to_string(offer).unwrap()
+	);
+	let (origin, received) = served("200 OK", &answer).await;
+	let remote = Remote::open(Connection {
+		origin,
+		secret: String::from(SECRET),
+	})
+	.unwrap();
+
+	let offered = remote.offer().await.unwrap();
+	let request = received.await.unwrap();
+	let lowered = request.to_lowercase();
+	let (_head, body) = request.split_once("\r\n\r\n").unwrap();
+	let call: serde_json::Value = serde_json::from_str(body).unwrap();
+
+	assert_eq!(offered, decode::<Offer>(offer).unwrap());
+	assert!(request.starts_with("POST /api/mcp HTTP/1.1"));
+	assert!(lowered.contains("mcp-protocol-version: 2025-11-25"));
+	assert!(request.contains(&format!("Bearer {SECRET}")));
+	assert_eq!(call["method"], "tools/call");
+	assert_eq!(call["params"]["name"], "langdrift.account.offer");
+	assert_eq!(call["params"]["arguments"], serde_json::json!({}));
+}
+
+#[tokio::test]
+async fn an_offer_that_does_not_read_as_one_is_unavailable() {
+	let answer = r#"{"jsonrpc":"2.0","id":1,"result":{"structuredContent":{"providers":[],"budget":100},"content":[]}}"#;
+	let (origin, _received) = served("200 OK", answer).await;
+	let remote = Remote::open(Connection {
+		origin,
+		secret: String::from(SECRET),
+	})
+	.unwrap();
+
+	let refusal = remote.offer().await.unwrap_err();
+
+	assert!(
+		matches!(refusal, Error::Unavailable { .. }),
+		"was {refusal:?}"
 	);
 	assert!(!refusal.to_string().contains(SECRET));
 }

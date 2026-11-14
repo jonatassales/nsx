@@ -4,6 +4,7 @@
 mod asked;
 mod connection;
 mod hold;
+mod offer;
 mod opened;
 mod origin;
 mod play;

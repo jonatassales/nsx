@@ -25,6 +25,8 @@
 //! - `defaults` is `claude-sonnet-5-5` at `medium`, with Planning and Review.
 //!   It only seeds the plan's default choice, and the judge's suggestion does
 //!   not change it.
+//! - A connected plan proposes `defaults` only when the team offers it on the
+//!   console's Settings → AI Models (`within`).
 //! - Merge is never played: it is always the owner's.
 //!
 //! ## Open
@@ -34,6 +36,7 @@
 //! - Whether the default follows the judge's suggestion when the two differ.
 
 pub mod load;
+pub mod within;
 
 pub const STAGES: [&str; 7] = [
 	"planning",

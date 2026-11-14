@@ -20,12 +20,17 @@
 //! - The list holds exactly three models: `claude-opus-5-5`,
 //!   `claude-sonnet-5-5` and `claude-haiku-5-5`. nsx reads only them.
 //! - The unit is cents per million tokens, in USD.
+//! - The list prices the models; the team's offer, read from the console,
+//!   says which of them a connected plan may suggest and price (`Candidates`).
 //!
 //! ## Open
 //!
 //! - Who keeps the price list current, and whether a team may edit or extend
 //!   `finops/prices.json`. Until that is decided, a model beyond the three is
 //!   refused when the list is read, never silently skipped.
+//! - Who prices the models of other providers the team may offer. Until the
+//!   owner decides, nsx prices only these three, and a model of another
+//!   provider is never a candidate.
 
 pub mod card;
 pub mod line;

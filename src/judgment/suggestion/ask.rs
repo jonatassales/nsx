@@ -1,9 +1,10 @@
 //! Asking the suggestion question
 //!
 //! One function: it takes the judge, the retrieval with its cited episodes,
-//! the documents read with their facts, and the price list, whose models
-//! carry their short names. It gives back the suggestion: a model, an effort,
-//! an effort reason and a model reason.
+//! the documents read with their facts, and the candidates: the models of
+//! the price list the team offers, which carry their short names, each with
+//! its efforts. It gives back the suggestion: a model, an effort, an effort
+//! reason and a model reason.
 //!
 //! ## Reads and writes
 //!
@@ -11,25 +12,27 @@
 //!
 //! ## Rules
 //!
-//! - The answer is refused when the model or the effort is not one of the
-//!   three.
-//! - It is refused when the effort reason does not name each effort not
-//!   chosen, in ascending order. A name counts as a whole word: `follow` does
-//!   not name `low`.
+//! - The answer is refused when the model is not a candidate, or the effort
+//!   is not one of that candidate's efforts.
+//! - It is refused when the effort reason does not name each effort of the
+//!   chosen model not chosen, in ascending order. A name counts as a whole
+//!   word: `follow` does not name `low`.
 //! - It is refused when a reason is not one line of plain text.
-//! - It is refused when the model reason does not name each model not chosen,
-//!   by its short name, in ascending order of list price.
+//! - It is refused when the model reason does not name each candidate model
+//!   not chosen, by its short name, in ascending order of list price.
+//! - A reason with nothing left to weigh, because the team offers one model
+//!   or one effort, names nothing: the question asks it to say that the
+//!   team offers only that one, and nsx checks that it is one plain line.
 //! - A refused answer, or a judge that cannot be reached or declines, is a
 //!   stop: the plan stops before the `weighEffort` line and writes no draft.
 
 use crate::contract::{
-	fence::EFFORTS, plain::plain, problem::Problem,
-	suggestion::Suggestion as Answer,
+	plain::plain, problem::Problem, suggestion::Suggestion as Answer,
 };
 use crate::judgment::{
 	error::Error, judge::Judge, question::Question, suggestion::Suggestion,
 };
-use crate::money::price::Price;
+use crate::money::candidates::Candidates;
 use crate::rag::retrieval::Retrieval;
 use crate::request::documents::Documents;
 
@@ -38,7 +41,7 @@ impl Suggestion {
 		judge: &dyn Judge,
 		retrieval: &Retrieval,
 		documents: Documents<'_>,
-		prices: &Price,
+		candidates: &Candidates,
 	) -> Result<Self, Error> {
 		// Whether a reason names each of these as whole words, in this order.
 		fn weighs(reason: &str, names: &[&str]) -> bool {
@@ -68,7 +71,7 @@ impl Suggestion {
 		let question = Question::Suggestion {
 			retrieval,
 			documents,
-			prices,
+			candidates,
 		};
 		let refused = |field: &str, rule: &str| {
 			Error::refused(&question, Problem::at(field, rule))
@@ -79,20 +82,34 @@ impl Suggestion {
 			.check()
 			.map_err(|problem| Error::refused(&question, problem))?;
 
-		if !prices.models.iter().any(|model| model.id == answer.model) {
-			return Err(refused("model", "must be a model of the price list"));
-		}
-
-		let mut others = prices
+		let chosen = candidates
 			.models
 			.iter()
+			.find(|candidate| candidate.model.id == answer.model);
+		let Some(chosen) = chosen else {
+			return Err(refused("model", "must be a model the team offers"));
+		};
+
+		if !chosen.efforts.contains(&answer.effort) {
+			return Err(refused(
+				"effort",
+				"must be an effort the team offers for the model",
+			));
+		}
+
+		let mut others = candidates
+			.models
+			.iter()
+			.map(|candidate| &candidate.model)
 			.filter(|model| model.id != answer.model)
 			.collect::<Vec<_>>();
 
 		others.sort_by_key(|model| (model.input_cents, model.output_cents));
 
-		let efforts = EFFORTS
-			.into_iter()
+		let efforts = chosen
+			.efforts
+			.iter()
+			.map(String::as_str)
 			.filter(|effort| *effort != answer.effort)
 			.collect::<Vec<_>>();
 		let models = others

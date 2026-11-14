@@ -9,8 +9,9 @@
 //! guardrail, with each criterion's rule text. The relevance question
 //! carries the retrieval, with each candidate's record, similarity and
 //! verdict, and the documents read. The suggestion question carries the
-//! same, and the price list with its three models. Its functions are the
-//! files in `question/`.
+//! same, and the candidates: the models of the price list the team offers,
+//! each with its prices and its efforts. Its functions are the files in
+//! `question/`.
 //!
 //! ## Rules
 //!
@@ -22,7 +23,7 @@ pub mod prompt;
 pub mod put;
 
 use crate::harness::guardrail::Guardrail;
-use crate::money::price::Price;
+use crate::money::candidates::Candidates;
 use crate::rag::retrieval::Retrieval;
 use crate::request::documents::Documents;
 
@@ -38,6 +39,6 @@ pub enum Question<'plan> {
 	Suggestion {
 		retrieval: &'plan Retrieval,
 		documents: Documents<'plan>,
-		prices: &'plan Price,
+		candidates: &'plan Candidates,
 	},
 }

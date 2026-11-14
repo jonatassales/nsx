@@ -7,9 +7,9 @@
 //!
 //! - A model is named, the effort is one of the three, and each reason is
 //!   given.
-//! - Whether the model is in the price list, and whether each reason weighs
-//!   what was not chosen, is checked where the question is asked, in
-//!   `judgment/`.
+//! - Whether the model and the effort are ones the team offers, and whether
+//!   each reason weighs what was not chosen, is checked where the question
+//!   is asked, in `judgment/`.
 
 use crate::contract::{
 	fence::EFFORTS, problem::Problem, suggestion::Suggestion,

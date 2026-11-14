@@ -6,19 +6,19 @@
 
 **Blocked by:** None (can start immediately).
 
-**Status:** ready-for-agent
+**Status:** completed
 
 **Alignment:** change. Canonical rule (ADR 001): what is done beyond the simulation is removed; what the simulation shows and the code lacks becomes a new ticket that builds it. The simulation's team offers the three models at low, medium and high, so every line and card it shows is unchanged.
 
-- [ ] `schema/offer/offer.schema.json` is generated from a contract type: per provider (`anthropic`, `openai` or `gemini`) its models and its efforts, non-empty strings, each list without repeats, no other field. A sample sits under `tests/contract/samples/offer/`, and `@langdrift/nsx` exports `./offer/*`.
-- [ ] The console answers the offer through a second MCP tool, `langdrift.account.offer`, called with no arguments, on the same endpoint, bearer and 4-second patience as the report tool.
-- [ ] A connected plan reads the offer before the spend table is built. The candidates are the price list's models the offer names, each at the efforts nsx knows that its provider offers; a model offered at no such effort is no candidate. A project with no connection plans with every model and effort, as before.
-- [ ] A failed read, or an offer that leaves no candidate model or no known effort, stops the plan before its first line, with a sentence that names the console's Settings → AI Models.
-- [ ] The workflow's default choice must be a candidate, or the plan stops before its first line.
-- [ ] The suggestion question lists only the candidates; the answer must name a candidate model at one of its efforts, and its reasons weigh the candidates not chosen, however many there are.
-- [ ] The Workflow card's spend rows are the candidate models, each at its efforts.
-- [ ] The goldens are unchanged.
-- [ ] `cargo fmt --check`, `cargo clippy --all-targets --locked -- -D warnings`, `cargo test --locked`, `cargo deny check`, `vtec/vtec.sh quality check` and `vtec/vtec.sh git lint-history origin/main HEAD` pass.
+- [x] `schema/offer/offer.schema.json` is generated from a contract type: per provider (`anthropic`, `openai` or `gemini`) its models and its efforts, non-empty strings, each list without repeats, no other field. A sample sits under `tests/contract/samples/offer/`, and `@langdrift/nsx` exports `./offer/*`.
+- [x] The console answers the offer through a second MCP tool, `langdrift.account.offer`, called with no arguments, on the same endpoint, bearer and 4-second patience as the report tool.
+- [x] A connected plan reads the offer before the spend table is built. The candidates are the price list's models the offer names, each at the efforts nsx knows that its provider offers; a model offered at no such effort is no candidate. A project with no connection plans with every model and effort, as before.
+- [x] A failed read, or an offer that leaves no candidate model or no known effort, stops the plan before its first line, with a sentence that names the console's Settings → AI Models.
+- [x] The workflow's default choice must be a candidate, or the plan stops before its first line.
+- [x] The suggestion question lists only the candidates; the answer must name a candidate model at one of its efforts, and its reasons weigh the candidates not chosen, however many there are.
+- [x] The Workflow card's spend rows are the candidate models, each at its efforts.
+- [x] The goldens are unchanged.
+- [x] `cargo fmt --check`, `cargo clippy --all-targets --locked -- -D warnings`, `cargo test --locked`, `cargo deny check`, `vtec/vtec.sh quality check` and `vtec/vtec.sh git lint-history origin/main HEAD` pass.
 
 ## Dev part
 

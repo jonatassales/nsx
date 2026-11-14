@@ -9,12 +9,14 @@
 //! - `Cents`: money, in whole cents
 //! - `Price`: the price list, three models at their list prices, each a
 //!   `Model`
+//! - `Candidates`: the models of the price list the team offers on the
+//!   console's Settings → AI Models, each a `Candidate` with its efforts
 //! - `Forecast`: the tokens a run is expected to use, per effort
 //! - `Budget`: the budget per run, set by the team in the design doc
 //! - `Estimate`: what a run is expected to spend
 //! - `Reservation`: the estimate plus its margin
 //! - `Gate`: opened or paused
-//! - `Spend`: the spend table, one row per model and effort
+//! - `Spend`: the spend table, one row per candidate model and effort
 //! - `Ledger`: the run's money record
 //! - `Settlement`: what was observed and what was released
 //! - `Error`: what reading the money files can refuse
@@ -34,6 +36,8 @@
 //!   tokens the stages use or choose the model and effort.
 
 pub mod budget;
+pub mod candidate;
+pub mod candidates;
 pub mod cents;
 pub mod error;
 pub mod estimate;
