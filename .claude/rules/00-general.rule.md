@@ -96,6 +96,6 @@ let session = Session { directory, sink };
 1. **External input.** Environment variables, request and response bodies, network calls, filesystem reads and third-party SDK results are external. The operation that uses the value is the defensive boundary, and the value is read at that operation.
 2. **No env module.** No module, registry, service, getter or schema object whose job is to read or check environment variables. A local check beside the use is fine when the API needs a string or the failure must name the variable; it is never extracted into a shared utility.
 3. **No invented values.** A missing or malformed external value fails inside the operation that needs it; no hardcoded fallback stands in for it. Tests, guardrails, build scripts and startup validators do not replace this boundary.
-4. **Document keys, never values.** The README documents every environment variable nsx reads by key, never by value.
+4. **Document keys, never values.** `docs/environment.guide.md` documents every environment variable nsx reads by key, never by value.
 5. **Errors are handled at the external boundary.** The handler translates the failure into the operation's result, reports it through the existing observability path, applies a product-approved fallback, or returns or rethrows it with context that leaks no secret. It never swallows the error: no error discarded with `_`.
 6. **Only at the boundary.** A pure internal function fails normally; an internal invariant is not an external failure.

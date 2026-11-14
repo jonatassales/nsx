@@ -68,32 +68,6 @@ nsx agent run
 
 nsx runs on macOS and Linux, on x64 and arm64. A run drives the tools already on your machine: your coding agent, `git` and `gh`, and Docker with `kind` and `kubectl` for the local runtime.
 
-## What a run leaves
-
-Three records, each written as the session goes: `plan.json`, `intent.json` and `run.json`. Their shapes are public JSON Schemas, shipped in this package, so the LangDrift console and your own tools read the same contract. [`schema/`](https://github.com/jonatassales/nsx/blob/main/schema/README.md) lists them.
-
-## Environment
-
-The variables nsx reads, by key.
-
-| Key | Used by |
-| --- | --- |
-| `LANGDRIFT_SECRET`, `MCP_CONSOLE_URL` | `nsx init`, to record the project's connection to the LangDrift console in a private file Git does not track |
-| `PATH`, `HOME`, `TMPDIR`, `LANG`, `LC_ALL`, `LC_CTYPE`, `LC_MESSAGES` | every program nsx starts |
-| `SSH_AUTH_SOCK`, `GH_TOKEN`, `GITHUB_TOKEN`, `GH_HOST`, `XDG_CONFIG_HOME` | `git` and `gh`, for the delivery |
-| `DOCKER_HOST`, `XDG_CONFIG_HOME`, `XDG_RUNTIME_DIR` | `kind`, `kubectl` and Docker, for the local runtime |
-| the names in `passEnv` of `driver.json` | your coding agent |
-
-nsx gives the coding agent its own: `LANGDRIFT_PROJECT_ROOT`, `LANGDRIFT_RUN`, `LANGDRIFT_TICKET`, `LANGDRIFT_STAGE`, `LANGDRIFT_SKILL`, `LANGDRIFT_MODEL`, `LANGDRIFT_EFFORT` and `LANGDRIFT_REPORT`. No other variable reaches a program nsx starts.
-
-## Built under a harness
-
-nsx is written in Rust and held to its own rules: every change passes `vtec`, this repository's guardrails for commits and code, before it merges, and each binary is built on `main` with a signed build provenance attestation.
-
-- [Contributing](https://github.com/jonatassales/nsx/blob/main/CONTRIBUTING.md)
-- [Architecture](https://github.com/jonatassales/nsx/blob/main/docs/architecture.guide.md): where each line of the session lives in `src/`
-- [Security](https://github.com/jonatassales/nsx/blob/main/SECURITY.md)
-
 ---
 
 **From vision to reality, and everything in between.**  
