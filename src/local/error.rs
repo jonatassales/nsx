@@ -63,6 +63,20 @@ pub enum Error {
 		tool: &'static str,
 		cause: std::io::Error,
 	},
+	#[error(
+		"nsx found no container runtime on this Mac: run nsx init in a terminal and answer yes, and nsx installs one."
+	)]
+	RuntimelessMac,
+	#[error(
+		"nsx found no Docker on this machine: install it with `curl -fsSL https://get.docker.com | sh`, then run again."
+	)]
+	RuntimelessLinux,
+	#[error(
+		"Docker is installed and not running: start it with `sudo systemctl start docker`, then run again."
+	)]
+	Stopped,
+	#[error("nsx started Docker and it did not answer within three minutes.")]
+	Asleep,
 	#[error(transparent)]
 	Program(#[from] crate::process::error::Error),
 	#[error(transparent)]

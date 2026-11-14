@@ -7,7 +7,9 @@
 //!
 //! Definition only: the `Kind` type: the runner that starts the tools, how
 //! nsx downloads its own, the folder they start in, the tools nsx pins,
-//! whether they were brought and whether the cluster was reached already,
+//! whether they were brought, the system, the pause between two asks of a
+//! starting Docker, whether Docker answered and whether the cluster was
+//! reached already,
 //! with the cluster's name, its kubectl context, the label a run's things
 //! carry, the bound on a Deployment's wait, in
 //! seconds, and the variables the tools may see beside them. Its functions
@@ -37,8 +39,11 @@
 //!   flag.
 //! - nsx's pinned kind and kubectl are brought before the cluster is first
 //!   reached, and every tool starts with their folder first on its `PATH`.
-//! - A tool that cannot be brought, or a missing Docker, is a stop under the
-//!   stop rule.
+//! - A tool that cannot be brought is a stop under the stop rule.
+//! - Docker is asked whether it answers before the cluster is first
+//!   reached. A stopped Docker is started and waited for, without a line;
+//!   on Linux, where that needs root, and with no Docker at all, it is a
+//!   stop with a sentence that says what to do (`wake.rs`).
 //! - The wait for a Deployment to be available has a bound of 20 minutes.
 //!   Reaching it is a stop with no line of its own.
 //!
@@ -53,6 +58,7 @@
 //!   simulation shows only the Deployments.
 
 pub mod absent;
+pub mod answers;
 pub mod apply;
 pub mod close;
 pub mod cluster;
@@ -63,12 +69,15 @@ pub mod kubectl;
 pub mod open;
 pub mod program;
 pub mod reach;
+pub mod rouse;
 pub mod tools;
+pub mod wake;
 
 use std::cell::Cell;
 use std::path::PathBuf;
+use std::time::Duration;
 
-use crate::local::{download::Download, tool::Tool};
+use crate::local::{download::Download, system::System, tool::Tool};
 use crate::process::runner::Runner;
 
 pub const CLUSTER: &str = "langdrift";
@@ -79,6 +88,10 @@ pub const LABEL: &str = "langdrift.md/space";
 
 pub const WAIT: u64 = 1200;
 
+pub const PAUSE: Duration = Duration::from_secs(2);
+
+pub const WAKING: u32 = 90;
+
 pub const PASSED: [&str; 3] =
 	["DOCKER_HOST", "XDG_CONFIG_HOME", "XDG_RUNTIME_DIR"];
 
@@ -88,5 +101,8 @@ pub struct Kind<'run> {
 	pub directory: PathBuf,
 	pub pinned: Vec<Tool>,
 	pub equipped: Cell<bool>,
+	pub system: System,
+	pub pause: Duration,
+	pub awake: Cell<bool>,
 	pub reached: Cell<bool>,
 }

@@ -4,6 +4,7 @@
 
 pub mod answering;
 pub mod answers;
+pub mod bare;
 pub mod calm;
 pub mod coder;
 pub mod console;

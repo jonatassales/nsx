@@ -28,6 +28,8 @@ impl Kind<'_> {
 
 		self.equip().await?;
 
+		self.wake().await?;
+
 		let listing = self.program("kind", &["get", "clusters"])?;
 		let output = self.programs.finish(&listing).await?;
 		let listed = String::from_utf8_lossy(&output.printed)

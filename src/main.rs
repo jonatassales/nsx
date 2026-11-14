@@ -61,7 +61,12 @@ use nsx::evidence::watch::Watch;
 use nsx::files::{layout::Layout, root::Root};
 use nsx::flow::keyboard::Keyboard;
 use nsx::judgment::{absent::Absent, client::Client as Asker, judge::Judge};
-use nsx::local::{kind::Kind, tool::Tool, web::Web};
+use nsx::local::{
+	kind::{Kind, PAUSE},
+	system::System,
+	tool::Tool,
+	web::Web,
+};
 use nsx::process::local::Local;
 use nsx::session::{
 	interrupt::Interrupt, signal::Signal, stop::Stop, terminal::Terminal,
@@ -135,6 +140,9 @@ async fn main() -> ExitCode {
 		directory: directory.clone(),
 		pinned: Tool::pinned(),
 		equipped: Cell::new(false),
+		system: System::here(),
+		pause: PAUSE,
+		awake: Cell::new(false),
 		reached: Cell::new(false),
 	};
 	let github = Github {

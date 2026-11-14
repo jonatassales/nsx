@@ -66,7 +66,7 @@ nsx agent plan <ticket>
 nsx agent run
 ```
 
-nsx runs on macOS and Linux, on x64 and arm64. A run drives the tools already on your machine: your coding agent, `git` and `gh`, and Docker for the local runtime. nsx brings its own `kind` and `kubectl`.
+nsx runs on macOS and Linux, on x64 and arm64. A run drives the tools already on your machine: your coding agent, `git` and `gh`, and Docker for the local runtime, which nsx starts when it is stopped. nsx brings its own `kind` and `kubectl`.
 
 ---
 

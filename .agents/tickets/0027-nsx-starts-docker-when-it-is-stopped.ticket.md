@@ -6,17 +6,17 @@
 
 **Blocked by:** 0026.
 
-**Status:** ready-for-agent
+**Status:** completed
 
 **Alignment:** build. Canonical rule (ADR 001): what is done beyond the simulation is removed; what the simulation shows and the code lacks becomes a new ticket that builds it. The simulation shows no line about Docker; the owner's exception of 2026-11-14 allows the silent start.
 
-- [ ] Before the cluster is first reached, nsx asks Docker whether it answers (`docker info`).
-- [ ] On macOS, a Docker that does not answer is started: Docker Desktop when it is installed, else nsx's own Colima when it is; nsx then asks again every two seconds, for at most three minutes.
-- [ ] A Docker that still does not answer stops the run under the stop rule with one sentence.
-- [ ] On Linux, a Docker that does not answer stops the run with a sentence that gives `sudo systemctl start docker`.
-- [ ] No Docker at all stops the run with a sentence that names `nsx init` on macOS and the official install command on Linux.
-- [ ] The run prints the simulation's lines and no other.
-- [ ] The repository's checks pass.
+- [x] Before the cluster is first reached, nsx asks Docker whether it answers (`docker info`).
+- [x] On macOS, a Docker that does not answer is started, Docker Desktop with `open -g -a Docker`; nsx then asks again every two seconds, for at most three minutes. Ticket 0028 adds nsx's own Colima.
+- [x] A Docker that still does not answer stops the run under the stop rule with one sentence.
+- [x] On Linux, a Docker that does not answer stops the run with a sentence that gives `sudo systemctl start docker`.
+- [x] No Docker at all stops the run with a sentence that names `nsx init` on macOS and the official install command on Linux.
+- [x] The run prints the simulation's lines and no other.
+- [x] The repository's checks pass.
 
 ## Dev part
 

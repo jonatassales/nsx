@@ -11,6 +11,10 @@ Every notable change to nsx, newest first, in the shape of
 - `nsx agent run` brings its own kind and kubectl: pinned versions,
   downloaded once into the project's private state, each verified against
   its publisher's SHA-256, and found first by every cluster tool.
+- `nsx agent run` starts Docker when it is installed and stopped, and
+  waits up to three minutes for it to answer, without a line. On Linux,
+  where that needs root, and on a machine with no Docker, it stops with
+  one sentence that says what to do.
 
 ## [0.2.1] - 2026-11-14
 
