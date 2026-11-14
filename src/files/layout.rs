@@ -58,4 +58,5 @@ pub struct Layout {
 	pub reported: PathBuf,
 	pub runs: PathBuf,
 	pub kubeconfig: PathBuf,
+	pub tools: PathBuf,
 }

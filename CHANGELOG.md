@@ -6,6 +6,12 @@ Every notable change to nsx, newest first, in the shape of
 
 ## [Unreleased]
 
+### Added
+
+- `nsx agent run` brings its own kind and kubectl: pinned versions,
+  downloaded once into the project's private state, each verified against
+  its publisher's SHA-256, and found first by every cluster tool.
+
 ## [0.2.1] - 2026-11-14
 
 ### Added

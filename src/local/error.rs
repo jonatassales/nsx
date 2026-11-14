@@ -50,6 +50,19 @@ pub enum Error {
 		path.display()
 	)]
 	Unspoken { path: PathBuf },
+	#[error("nsx could not download its {tool}: {cause}.")]
+	Unfetched { tool: &'static str, cause: String },
+	#[error(
+		"The {tool} nsx downloaded is not the one it pins: its SHA-256 differs, and nsx will not run it."
+	)]
+	Unpinned { tool: &'static str },
+	#[error(
+		"nsx could not keep its {tool} in the project's private state: {cause}."
+	)]
+	Unkept {
+		tool: &'static str,
+		cause: std::io::Error,
+	},
 	#[error(transparent)]
 	Program(#[from] crate::process::error::Error),
 	#[error(transparent)]

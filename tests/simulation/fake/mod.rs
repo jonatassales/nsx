@@ -22,6 +22,8 @@ pub mod recorder;
 pub mod refuser;
 pub mod served;
 pub mod session;
+pub mod shelf;
 pub mod silence;
 pub mod spender;
+pub mod unreached;
 pub mod witness;

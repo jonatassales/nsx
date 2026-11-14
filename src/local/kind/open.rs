@@ -19,15 +19,14 @@ use serde_json::json;
 
 use crate::local::{
 	error::Error,
-	kind::{CLUSTER, Kind, LABEL, PASSED},
+	kind::{CLUSTER, Kind, LABEL},
 };
-use crate::process::program::Program;
 
 impl Kind<'_> {
 	pub async fn open(&self, space: &str) -> Result<(), Error> {
 		if !self.reach().await? {
 			let kubeconfig = self.kubeconfig()?;
-			let creating = Program::tool(
+			let creating = self.program(
 				"kind",
 				&[
 					"create",
@@ -39,9 +38,7 @@ impl Kind<'_> {
 					"--wait",
 					"120s",
 				],
-				&PASSED,
-				&self.directory,
-			);
+			)?;
 
 			self.programs.finish(&creating).await?;
 			self.reached.set(true);
