@@ -1,7 +1,7 @@
 //! The connection to the console
 //!
 //! What a project needs to reach the console: the secret a team member
-//! generated on the console's Settings → Security → Secrets, the console's
+//! generated on the console's Settings → Secrets, the console's
 //! origin, `https://langdrift.md` unless the team names another.
 //! The judge and the reports use this one connection.
 //!

@@ -6,6 +6,12 @@ Every notable change to nsx, newest first, in the shape of
 
 ## [Unreleased]
 
+### Deprecated
+
+- The judge request's `model`. The console answers with the team's judge
+  model, set on its Settings → AI Models, and ignores the field; nsx
+  still sends it because the console still requires it.
+
 ## [0.2.0] - 2026-11-13
 
 ### Changed
