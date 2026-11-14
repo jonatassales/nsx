@@ -12,7 +12,8 @@ use nsx::contract::{
 };
 use nsx::harness::{criterion::Criterion, guardrail::Guardrail};
 use nsx::judgment::{
-	client::Client as Asker, judge::Judge, question::Question,
+	client::Client as Asker, error::Error as JudgeError, judge::Judge,
+	question::Question,
 };
 
 use crate::simulation::fake::served::served;
@@ -169,7 +170,7 @@ async fn a_question_is_posted_to_the_judge_and_its_text_comes_back() {
 	assert!(request.starts_with("POST /api/judge HTTP/1.1"));
 	assert!(request.contains(&format!("Bearer {SECRET}")));
 	assert_eq!(asked["kind"], "criteria");
-	assert_eq!(asked["model"], "claude-sonnet-5-5");
+	assert!(asked.get("model").is_none());
 	assert_eq!(asked["maxTokens"], 2000);
 	assert_eq!(asked["promptVersion"], "nsx-1");
 	assert!(
@@ -179,7 +180,35 @@ async fn a_question_is_posted_to_the_judge_and_its_text_comes_back() {
 			.contains("- FIN-02: Estimate before any paid call.")
 	);
 	assert!(asked["system"].as_str().unwrap().contains("\"statement\""));
-	assert_eq!(asked.as_object().unwrap().len(), 6);
+	assert_eq!(asked.as_object().unwrap().len(), 5);
+}
+
+#[tokio::test]
+async fn a_missing_key_reason_becomes_the_key_missing_error() {
+	let answer = r#"{"code":"UNAVAILABLE","reason":"model-key-missing"}"#;
+	let (origin, _received) = served("503 Service Unavailable", answer).await;
+	let asker = Asker::open(Connection {
+		origin,
+		secret: String::from(SECRET),
+	})
+	.unwrap();
+	let guardrail = Guardrail {
+		path: PathBuf::from("guardrail.gr.md"),
+		name: String::from("guardrail.gr.md"),
+		short: String::from("guardrail"),
+		criteria: Vec::new(),
+	};
+	let question = Question::Criteria {
+		guardrail: &guardrail,
+	};
+
+	let refusal = asker.ask(&question).await.unwrap_err();
+
+	assert!(matches!(refusal, JudgeError::KeyMissing));
+	assert_eq!(
+		refusal.to_string(),
+		"The console has no Anthropic key: add one on the console's Settings → AI Models."
+	);
 }
 
 #[tokio::test]

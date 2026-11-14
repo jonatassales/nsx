@@ -15,6 +15,7 @@ pub fn printed(recorder: &Recorder) -> Vec<Frozen> {
 				Kind::Output => "output",
 				Kind::Success => "success",
 				Kind::Warning => "warning",
+				Kind::Error => "error",
 			};
 
 			Frozen {

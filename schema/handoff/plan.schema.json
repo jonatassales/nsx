@@ -271,6 +271,20 @@
 							"const": "recommendation"
 						}
 					}
+				},
+				"judge": {
+					"type": "object",
+					"additionalProperties": false,
+					"required": [
+						"unavailable"
+					],
+					"properties": {
+						"unavailable": {
+							"enum": [
+								"model-key-missing"
+							]
+						}
+					}
 				}
 			}
 		},

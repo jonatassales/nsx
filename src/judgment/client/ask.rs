@@ -6,17 +6,21 @@
 //! ## Reads and writes
 //!
 //! - posts to `<origin>/api/judge`, with the secret as the bearer: the
-//!   question's kind, the deprecated model the console ignores, nsx's
-//!   instructions and facts, the most tokens the answer may take and the
-//!   version of nsx's words
+//!   question's kind, nsx's instructions and facts, the most tokens the answer
+//!   may take and the version of nsx's words
 //!
 //! ## Rules
 //!
 //! - The kind is the question's name: `criteria`, `episodes` or
 //!   `suggestion`.
-//! - An answer the console's judge declined, a status that is not 200 or a
-//!   body without the answer's text stops the plan with one sentence that
-//!   carries the console's reason and never the secret.
+//! - The question names no model: the console answers with the team's
+//!   judge model.
+//! - A failed status with the reason `model-key-missing` means the team has no
+//!   Anthropic key on the console: the plan stops as the simulation shows,
+//!   through `Error::KeyMissing`.
+//! - Any other answer the console's judge declined, a status that is not
+//!   200 or a body without the answer's text stops the plan with one
+//!   sentence that carries the console's reason and never the secret.
 //! - What the answer says is checked by whoever asked.
 
 use std::future::Future;
@@ -24,8 +28,10 @@ use std::pin::Pin;
 
 use serde_json::{Value, json};
 
+use crate::contract::availability::MODEL_KEY_MISSING;
+
 use crate::judgment::{
-	client::{ANSWER_TOKENS, Client, MODEL, PATIENCE, WORDS},
+	client::{ANSWER_TOKENS, Client, PATIENCE, WORDS},
 	error::Error,
 	judge::Judge,
 	question::Question,
@@ -45,7 +51,6 @@ impl Judge for Client {
 			let (system, prompt) = question.prompt();
 			let asked = json!({
 				"kind": question.name(),
-				"model": MODEL,
 				"system": system,
 				"prompt": prompt,
 				"maxTokens": ANSWER_TOKENS,
@@ -69,6 +74,12 @@ impl Judge for Client {
 			let stated = |field: &str| body.get(field).and_then(Value::as_str);
 			let declined = body.get("refused").and_then(Value::as_bool) == Some(true);
 			let reason = stated("reason").or(stated("code"));
+
+			let keyless = !status.is_success() && reason == Some(MODEL_KEY_MISSING);
+
+			if keyless {
+				return Err(Error::KeyMissing);
+			}
 
 			if !status.is_success() || declined {
 				let said = reason.map(|reason| format!(" {reason}"));

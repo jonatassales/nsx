@@ -14,7 +14,9 @@
 //! - request: read the PRD, the design doc and the spec (`readPrd`,
 //!   `readDesignDoc`, `readSpec`), then say what was read (`reads`)
 //! - harness: read the guardrail (`guardrail`)
-//! - judgment: state the guardrail's criteria (`judgeGuardrail`)
+//! - judgment: state the guardrail's criteria (`judgeGuardrail`); without
+//!   the team's Anthropic key, print `judgeStopped` and `planStopped`,
+//!   record the judge as unavailable, report `error` and stop (`keyless/`)
 //! - harness: state the bound (`bounds`)
 //! - money: state the budget per run (`budget`)
 //! - rag: embed the ticket's intent and search the episodes (`memory`,
@@ -34,9 +36,11 @@
 //!   nothing is reserved: the act keeps the promise of the plan's first line.
 
 use crate::command::{brief::Brief, desk::Desk, plan::Plan, session::Session};
+use crate::contract::status::Status;
 use crate::harness::{envelope::Envelope, guardrail::Guardrail};
 use crate::judgment::{
-	criteria::Criteria, relevance::Relevance, suggestion::Suggestion,
+	criteria::Criteria, error::Error as JudgeError, keyless::Keyless,
+	relevance::Relevance, suggestion::Suggestion,
 };
 use crate::money::budget::Budget;
 use crate::rag::retrieval::Retrieval;
@@ -93,7 +97,27 @@ impl Plan {
 			.record(root, session.console, |cards| guardrail.card(cards))
 			.await?;
 
-		let criteria = Criteria::ask(session.judge, &guardrail).await?;
+		let asked = Criteria::ask(session.judge, &guardrail).await;
+
+		if let Err(JudgeError::KeyMissing) = asked {
+			for line in Keyless.lines() {
+				session.sink.print(&line)?;
+			}
+
+			desk.writer.write(root, |cards| Keyless.card(cards))?;
+			desk
+				.report
+				.end(
+					Status::Error,
+					session.console,
+					(Some(&desk.writer.cards), None, None),
+				)
+				.await?;
+
+			return Err(Stop::from(JudgeError::KeyMissing));
+		}
+
+		let criteria = asked?;
 
 		session.sink.print(&criteria.line())?;
 		desk

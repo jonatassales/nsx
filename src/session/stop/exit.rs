@@ -14,7 +14,8 @@
 //! - Nothing more goes to standard output, which stays a prefix of the
 //!   simulation.
 //! - The over-budget pause never comes here: it is a shown ending and exits
-//!   0.
+//!   0. The plan without the team's key comes here after its two shown
+//!   lines: no draft exists, so it exits 1.
 
 use std::io::Write;
 use std::process::ExitCode;

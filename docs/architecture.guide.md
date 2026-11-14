@@ -5,7 +5,7 @@ nsx is the LangDrift CLI, written in Rust. Its structure answers the question AD
 ## The design
 
 1. **A folder under `src/` owns one part of the session.** `command` holds the three commands, `session` how a line prints and how a command stops, and `contract` every shape a file or the console sees. `files` and `process` are the machinery the others share. Every other folder is one element of the simulation: `request`, `harness`, `rag`, `judgment`, `components`, `runtime`, `handoff`, `money`, `flow`, `driver`, `skills`, `hook`, `seat`, `evidence`, `local`, `delivery`, `checks` and `console`.
-2. **A file is a type or a function, never just a word.** A word that is a variant or a field lives inside its type: the four kinds of line are `session/kind.rs`, and "paused" is an outcome of `money/gate.rs`.
+2. **A file is a type or a function, never just a word.** A word that is a variant or a field lives inside its type: the five kinds of line are `session/kind.rs`, and "paused" is an outcome of `money/gate.rs`.
 3. **One pattern everywhere.** `gate.rs` holds a definition. `gate/open.rs` holds one function of it. That keeps one function per file, definitions apart from implementations, one-word names and the two-folder limit, all at once. No type sits inside another type's folder.
 4. **`line.rs` is the line.** Under a type, `line.rs` holds its method `line`: the line of the simulation that type owns. A type with several lines has one method, and so one file, per line (`suggestion/effort.rs`).
 5. **The two flows are scripts.** `command/plan/execute.rs` and `command/run/execute.rs` read top to bottom as the simulation plays, each step calling the element that owns the line.
@@ -24,7 +24,7 @@ nsx is the LangDrift CLI, written in Rust. Its structure answers the question AD
 ## Left out on purpose
 
 - **Errors**: an element defines its own error when it has its first failure. `session/stop.rs` prints any of them as one sentence.
-- **The goldens and the fixture project**: `tests/simulation/golden/` holds the six goldens, the plan and five runs (`run`, `run-all-stages`, `run-over-budget`, `run-to-merge` and `run-haiku-low`), each line as its id, its kind and its text, a tab between them. `tests/simulation/project/` holds the project they play on: its ticket and linked documents under `.agents/`, its guardrail and episodes under `.langdrift/`, and its five components. The golden test plays them.
+- **The goldens and the fixture project**: `tests/simulation/golden/` holds the seven goldens, the plan, the plan without the team's key (`plan-keyless`) and five runs (`run`, `run-all-stages`, `run-over-budget`, `run-to-merge` and `run-haiku-low`), each line as its id, its kind and its text, a tab between them. `tests/simulation/project/` holds the project they play on: its ticket and linked documents under `.agents/`, its guardrail and episodes under `.langdrift/`, and its five components. The golden test plays them.
 - **Speed, size and memory**: they are not criteria for nsx. No choice is made or refused for how fast nsx runs, how large its binary is or how much memory it uses.
 - **The files `nsx init` lays down and the published schemas**: `langdrift/` and `schema/` each hold them beside a README that lists them.
 
@@ -83,8 +83,8 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | Files | Holds | Lines |
 | --- | --- | --- |
 | `line.rs`, `line/render.rs`, `line/comment.rs` | one line: its id, its kind and its shape | |
-| `kind.rs` | the four kinds: comment, output, success, warning | |
-| `shape.rs` | the six ways a line is laid out | |
+| `kind.rs` | the five kinds: comment, output, success, warning, error | |
+| `shape.rs` | the seven ways a line is laid out | |
 | `sink.rs` | the trait every line is printed through | |
 | `window.rs` | the trait the window's title is set through | |
 | `terminal.rs`, `terminal/print.rs`, `terminal/title.rs` | the sink and window over the terminal; a line or a title that carries a control character is a stop, never printed | |
@@ -111,6 +111,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `documents.rs`, `product.rs`, `design.rs`, `specified.rs`, `guardrail.rs`, `envelope.rs`, `rule.rs` | the Analysis card's DOCUMENTS: its counts and one row per linked document | |
 | `retrieval.rs`, `candidate.rs` | the Analysis card's EPISODES: its counts and one row per candidate | |
 | `recommendation.rs` | the Analysis card's suggested model and effort | |
+| `availability.rs` | the Analysis card's judge, when it could not be asked: the team has no Anthropic key | |
 | `components.rs`, `resolved.rs` | the Plan card's COMPONENTS: one row per component, and the cross-check's counts | |
 | `figures.rs`, `effort.rs`, `seat.rs` | `run.json`: a stage's figures, the effort record and the Safe Seat section | |
 | `sizing.rs`, `bound.rs`, `amount.rs`, `resource.rs`, `validation.rs`, `source.rs` | the Plan card's sizing (the bound, the proposed totals, the headroom, the resource, the limits requested and the validation) and its price source | |
@@ -209,11 +210,12 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `question.rs`, `question/name.rs`, `question/put.rs`, `question/prompt.rs` | one question for the judge, with everything the judge gets to answer it; putting it and reading the answer strictly; and the question in nsx's own words | |
 | `absent.rs`, `absent/ask.rs` | no judge: every question is refused, and the plan stops there | |
 | `error.rs`, `error/refused.rs` | what asking the judge can refuse | |
-| `client.rs`, `client/open.rs`, `client/ask.rs` | the console's judge, reached over HTTP with the recorded connection; it answers with the team's judge model, and ignores the deprecated `model` nsx still sends | |
+| `client.rs`, `client/open.rs`, `client/ask.rs` | the console's judge, reached over HTTP with the recorded connection; it answers with the team's judge model and key, and nsx names no model; the reason `model-key-missing` becomes its own error | |
 | `criteria.rs`, `criteria/ask.rs`, `criteria/line.rs`, `criteria/card.rs` | judging the guardrail's criteria | `judgeGuardrail` |
 | `relevance.rs`, `relevance/ask.rs`, `relevance/explain.rs`, `relevance/line.rs` | judging which episodes are relevant, and giving each candidate its reason | `judgeRelevance` |
 | `suggestion.rs`, `suggestion/ask.rs`, `suggestion/card.rs` | the suggested model and effort | |
 | `suggestion/resources.rs`, `suggestion/effort.rs`, `suggestion/model.rs`, `suggestion/line.rs` | its four lines | `reasonResources`, `weighEffort`, `weighModel`, `suggest` |
+| `keyless.rs`, `keyless/line.rs`, `keyless/card.rs` | the plan without the team's Anthropic key: its two lines in place of the judge's first, and the judge recorded as unavailable on the Analysis card | `judgeStopped`, `planStopped` |
 
 ### components
 
@@ -395,11 +397,11 @@ The owner allows `../` inside this crate and asks that it be avoided where there
 | `tests/main.rs` | the one test target: it declares the folders below |
 | `tests/simulation/` | the golden test, and what every other folder borrows: the fixture project, the goldens and the fakes |
 | `tests/simulation/plan.rs`, `run.rs`, `stages.rs`, `budget.rs`, `merge.rs`, `haiku.rs` | one case per golden |
-| `tests/simulation/pending.rs` | the pending lists, one per golden, all empty: nsx prints the six goldens whole |
+| `tests/simulation/pending.rs` | the pending lists, one per golden, all empty: nsx prints the seven goldens whole |
 | `tests/simulation/diff.rs`, `rules.rs`, `sketch.rs` | comparing what nsx printed with a golden, that comparison's own rules, and the short session they play on |
 | `tests/simulation/frozen.rs`, `golden.rs`, `printed.rs` | a line as a golden freezes it, a golden's lines, and what nsx printed |
 | `tests/simulation/fixture.rs`, `project.rs`, `indexed.rs`, `ran.rs` | the fixture project read in place, a copy of it, its episode index built for the simulation's six similarities, and a run played in a copy |
-| `tests/simulation/fake/` | the fakes, declared by `fake/mod.rs`: `recorder.rs` (the sink and window that keep what they are given), `refuser.rs` (a sink that refuses every line), `session.rs` (the session the tests play a command over), `witness.rs` (a sink that looks at `plan.json` each time a line prints), `recorded.rs` (the judge that answers with recorded texts), `judge.rs` (the golden test's judge, which answers with the samples of `tests/contract/samples/judgment/`), `console.rs` (the console that keeps every report, answers one runtime id and the requests a test scripts, can fall silent, rewrite a file as a report arrives, and pause before a stage, `console/pausing.rs`, and serves the team's offer, `console/client.rs`), `offer.rs` (what the simulation's team offers, the sample of `tests/contract/samples/offer/`), `answers.rs` (the person who answers each wait), `silence.rs` (the person who never does), `spender.rs` (the person whose answers come with a call paid behind their back), `host.rs` (the cluster that does as it is asked and keeps nothing), `machine.rs` (the cluster that keeps what is created in it), `forged.rs` (the forge that delivers as the simulation shows), `hub.rs` (the forge that keeps what it is asked and answers a script), `calm.rs` (the person who never interrupts), `hasty.rs` (the person who interrupts as soon as the command first waits), `coder.rs` (the coding agent that writes each stage's report and says what it used), `moment.rs` (the clock that always shows one moment) and `programs.rs` (the runner that starts nothing), `answering.rs` (the image resolver that gives one answer) and `served.rs` (a console that answers one request on this machine and keeps what it got). |
+| `tests/simulation/fake/` | the fakes, declared by `fake/mod.rs`: `recorder.rs` (the sink and window that keep what they are given), `refuser.rs` (a sink that refuses every line), `session.rs` (the session the tests play a command over), `witness.rs` (a sink that looks at `plan.json` each time a line prints), `recorded.rs` (the judge that answers with recorded texts), `keyless_judge.rs` (the judge behind a console without the team's key, which refuses every question with `model-key-missing`), `judge.rs` (the golden test's judge, which answers with the samples of `tests/contract/samples/judgment/`), `console.rs` (the console that keeps every report, answers one runtime id and the requests a test scripts, can fall silent, rewrite a file as a report arrives, and pause before a stage, `console/pausing.rs`, and serves the team's offer, `console/client.rs`), `offer.rs` (what the simulation's team offers, the sample of `tests/contract/samples/offer/`), `answers.rs` (the person who answers each wait), `silence.rs` (the person who never does), `spender.rs` (the person whose answers come with a call paid behind their back), `host.rs` (the cluster that does as it is asked and keeps nothing), `machine.rs` (the cluster that keeps what is created in it), `forged.rs` (the forge that delivers as the simulation shows), `hub.rs` (the forge that keeps what it is asked and answers a script), `calm.rs` (the person who never interrupts), `hasty.rs` (the person who interrupts as soon as the command first waits), `coder.rs` (the coding agent that writes each stage's report and says what it used), `moment.rs` (the clock that always shows one moment) and `programs.rs` (the runner that starts nothing), `answering.rs` (the image resolver that gives one answer) and `served.rs` (a console that answers one request on this machine and keeps what it got). |
 | `tests/contract/` | the fence, the hand-off records and the report read strictly; each generated schema against its published file; each sample of `tests/contract/samples/` read and written back |
 | `tests/command/` | the command line, `nsx init`, and what a run leaves past its gate, through its delivery, and where it stops |
 | `tests/local/` | a Deployment from its component, the execution ledger written first and found again, the cleanup of exactly what it lists, the runtime's two lines, and kind, kubectl and Docker as they are started |

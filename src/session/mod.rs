@@ -6,8 +6,8 @@
 //! that ends a command on a failure the simulation does not show.
 //!
 //! - `Line`: one line, with its id, its kind and its shape
-//! - `Shape`: the six ways a line is laid out
-//! - `Kind`: the four kinds: comment, output, success, warning
+//! - `Shape`: the seven ways a line is laid out
+//! - `Kind`: the five kinds: comment, output, success, warning, error
 //! - `Sink`: the trait every line is printed through
 //! - `Terminal`: the sink that writes to the terminal
 //! - `Title`: the window title

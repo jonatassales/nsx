@@ -3,6 +3,7 @@
 mod comment;
 mod component;
 mod control;
+mod failure;
 mod goldens;
 mod labeled;
 mod narrative;

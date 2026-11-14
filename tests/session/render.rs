@@ -1,12 +1,12 @@
-//! The six shapes, each rendered to a line the goldens hold
+//! The seven shapes, each rendered to a line the goldens hold
 
 use rstest::rstest;
 
 use nsx::session::{kind::Kind, line::Line, shape::Shape};
 
 use crate::session::{
-	comment::comment, component::component, goldens::goldens, labeled::labeled,
-	narrative::narrative, result::result, status::status,
+	comment::comment, component::component, failure::failure, goldens::goldens,
+	labeled::labeled, narrative::narrative, result::result, status::status,
 };
 
 #[rstest]
@@ -44,6 +44,13 @@ use crate::session::{
 #[case::status(
 	status("reads", "harness/guardrails/0001-finops.gr.md · FIN-02 · FIN-04"),
 	"reads      harness/guardrails/0001-finops.gr.md · FIN-02 · FIN-04"
+)]
+#[case::failure(
+	failure(
+		"judge",
+		"no Anthropic key · add one on the console's Settings → AI Models"
+	),
+	"✗ judge      no Anthropic key · add one on the console's Settings → AI Models"
 )]
 #[case::component_with_a_path_of_nineteen_columns(
 	component("services/signup-api", "Rust · api", "250m · 256 MiB"),

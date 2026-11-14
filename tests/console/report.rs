@@ -12,6 +12,7 @@ use crate::simulation::{
 	fake::{
 		console::{Console, RUNTIME},
 		judge::judge,
+		keyless_judge::KeylessJudge,
 		recorder::Recorder,
 		session::session,
 	},
@@ -223,4 +224,52 @@ async fn a_console_that_forgot_the_runtime_is_asked_again_with_no_id() {
 	assert_eq!(reports[2].runtime_id.as_deref(), Some(RUNTIME));
 	assert!(reports.len() > 20, "sent {}", reports.len());
 	assert_eq!(std::fs::read_to_string(&kept).unwrap(), RUNTIME);
+}
+
+#[tokio::test]
+async fn a_plan_without_the_teams_key_stops_reports_the_judge_and_writes_no_draft()
+ {
+	let project = project();
+	let recorder = Recorder::default();
+	let console = Console::default();
+	let mut session = session(PathBuf::from(project.path()), &recorder);
+	let plan = Plan {
+		ticket: String::from("0031-TICKET-book-a-demo-runtime"),
+	};
+
+	Init.execute(&mut session).await.unwrap();
+	indexed(project.path());
+
+	session.judge = &KeylessJudge;
+	session.console = &console;
+
+	let stopped = plan.execute(&mut session).await.unwrap_err();
+
+	let differences = diff(&golden("plan-keyless"), &printed(&recorder), &[]);
+	let runtime = project
+		.path()
+		.join(".langdrift/microruntimes/runtimes/book-a-demo-runtime");
+	let reports = console.reports.borrow();
+	let last = reports.last().unwrap();
+	let judge = last
+		.plan
+		.as_ref()
+		.and_then(|cards| cards.analysis.as_ref())
+		.and_then(|analysis| analysis.judge.as_ref())
+		.unwrap();
+
+	assert!(differences.is_empty(), "{}", differences.join("\n"));
+	assert_eq!(
+		stopped.sentence,
+		"The console has no Anthropic key: add one on the console's Settings → AI Models."
+	);
+	assert_eq!(last.status, Status::Error);
+	assert_eq!(judge.unavailable, "model-key-missing");
+	assert!(jsonschema::is_valid(
+		&schema::<Cards>(),
+		&serde_json::to_value(last.plan.as_ref().unwrap()).unwrap()
+	));
+	assert!(runtime.join("plan.json").exists());
+	assert!(!runtime.join("runtime.md").exists());
+	assert!(!runtime.join("intent.json").exists());
 }

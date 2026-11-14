@@ -48,6 +48,7 @@ pub mod amount;
 pub mod analysis;
 pub mod asked;
 pub mod authorization;
+pub mod availability;
 pub mod bound;
 pub mod candidate;
 pub mod cards;

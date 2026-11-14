@@ -12,6 +12,7 @@ pub mod hasty;
 pub mod host;
 pub mod hub;
 pub mod judge;
+pub mod keyless_judge;
 pub mod machine;
 pub mod moment;
 pub mod offer;

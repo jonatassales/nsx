@@ -43,6 +43,7 @@ impl Sink for Terminal {
 			Kind::Comment => "\x1b[2m",
 			Kind::Success => "\x1b[32m",
 			Kind::Warning => "\x1b[33m",
+			Kind::Error => "\x1b[31m",
 			Kind::Output => "",
 		};
 		let plain = !self.toned || tone.is_empty();

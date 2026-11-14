@@ -11,7 +11,7 @@
 //! A folder belongs to one element of the simulation:
 //!
 //! - `command`: the three commands, each as its steps in order
-//! - `session`: a printed line, its four kinds and the stop rule
+//! - `session`: a printed line, its five kinds and the stop rule
 //! - `contract`: every shape a file or the console sees
 //! - `handoff`: `plan.json` and the intent the team authorizes
 //! - `evidence`: the run's id, `run.json` and the usage record

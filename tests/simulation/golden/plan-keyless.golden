@@ -1,0 +1,11 @@
+scope	comment	# plan only · nothing is built, started or paid for in this step
+readTicket	output	console › tool call: read 0031-TICKET-book-a-demo-runtime
+links	output	console › ready-for-agent · links 0002-PRD · 0005-DD · 0011-SPEC · guardrail 0001-finops
+analysis	comment	# analysis · reading the linked documents, then the project's episodes
+readPrd	output	console › tool call: read 0002-PRD · use case: book-a-demo request
+readDesignDoc	output	console › tool call: read 0005-DD · envelope cpuMillis 2000 · memoryMiB 3072 · set by the team
+readSpec	output	console › tool call: read 0011-SPEC · 5 components named · 3 acceptance criteria
+reads	success	✓ read       4 documents · nothing outside the ticket's links
+guardrail	output	reads      harness/guardrails/0001-finops.gr.md · FIN-02 · FIN-04
+judgeStopped	error	✗ judge      no Anthropic key · add one on the console's Settings → AI Models
+planStopped	comment	# plan stopped · no draft written · nothing was paid for
