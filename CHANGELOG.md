@@ -6,6 +6,8 @@ Every notable change to nsx, newest first, in the shape of
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-11-14
+
 ### Added
 
 - A connected `nsx agent plan` reads the team's offer, the models and
@@ -16,12 +18,24 @@ Every notable change to nsx, newest first, in the shape of
   one the console cannot answer, stops the plan before its first line.
 - `schema/offer/offer.schema.json`, exported as `@langdrift/nsx/offer/*`,
   with its sample.
+- A plan whose team has no Anthropic key on the console stops as the
+  simulation shows: after `guardrail` it prints `✗ judge      no
+  Anthropic key · add one on the console's Settings → AI Models` and `#
+  plan stopped · no draft written · nothing was paid for`, records the
+  judge as unavailable in `plan.json`'s new `analysis.judge`, reports
+  `error` to the console, writes no draft and exits 1.
+- An `error` line kind, red in a terminal, and the `✗` failure shape.
 
-### Deprecated
+### Changed
 
-- The judge request's `model`. The console answers with the team's judge
-  model, set on its Settings → AI Models, and ignores the field; nsx
-  still sends it because the console still requires it.
+- The refusal for an offer without a model nsx holds a list price for no
+  longer names models for the team to offer.
+
+### Removed
+
+- The judge request's `model`, and the model nsx named in it: the
+  console answers with the team's judge model and key, set on its
+  Settings → AI Models.
 
 ## [0.2.0] - 2026-11-13
 
@@ -63,7 +77,8 @@ The first release of nsx, on npm as `@langdrift/nsx`.
 - The repository's tooling CLI is `vtec`, in `vtec/`, so it is not
   confused with the LangDrift monorepo's `drift`.
 
-[Unreleased]: https://github.com/jonatassales/nsx/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/jonatassales/nsx/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/jonatassales/nsx/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/jonatassales/nsx/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/jonatassales/nsx/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/jonatassales/nsx/releases/tag/v0.1.0
