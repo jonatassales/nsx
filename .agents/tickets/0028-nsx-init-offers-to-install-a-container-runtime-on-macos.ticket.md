@@ -6,7 +6,9 @@
 
 **Blocked by:** 0027.
 
-**Status:** ready-for-agent
+**Status:** wontfix
+
+**Decision, 2026-11-14:** the owner chose to keep what ticket 0027 built: on a machine with no container runtime, `nsx agent run` stops with one sentence that says what to install, and nsx installs nothing. Proving the install needed a virtual machine booted on a Mac with no Docker, and the sentence costs nothing to keep. Nothing below was built.
 
 **Alignment:** build. Canonical rule (ADR 001): what is done beyond the simulation is removed; what the simulation shows and the code lacks becomes a new ticket that builds it. The simulation does not show `nsx init`; the owner's exception of 2026-11-14 allows its one question.
 
