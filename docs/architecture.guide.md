@@ -120,6 +120,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `run.rs`, `step.rs`, `hosted.rs`, `delivery.rs`, `pull.rs`, `checks.rs`, `outcome.rs` | `run.json`: its stages, its runtime, its delivery with the pull request and its checks, and how a run ended | |
 | `judged.rs`, `used.rs`, `cost.rs` | the console judge's response to one question: the answer or a refusal, what it used and what it cost | |
 | `report.rs`, `status.rs`, `reply.rs`, `requested.rs`, `asked.rs`, `choice.rs`, `choice/of.rs` | the report to the console, its status, and the console's reply with the team's pending request and the choice a Play authorizes | |
+| `offer.rs`, `offered.rs`, `provider.rs` | the team's offer from the console's Settings → AI Models: per provider, the models and the efforts its account may use | |
 | `criteria.rs`, `criteria/check.rs`, `criterion.rs`, `episodes.rs`, `episodes/check.rs`, `episode.rs`, `suggestion.rs`, `suggestion/check.rs` | the judge's three answers, each read strictly and checked by its own rules | |
 | `stage.rs` | the stages, as the records spell them | |
 | `planning.rs`, `spec.rs`, `tickets.rs`, `implement.rs`, `review.rs` | the five stage reports | |

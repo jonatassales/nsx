@@ -34,6 +34,7 @@
 		"./handoff/*": "./schema/handoff/*",
 		"./judge/*": "./schema/judge/*",
 		"./judgment/*": "./schema/judgment/*",
+		"./offer/*": "./schema/offer/*",
 		"./report/*": "./schema/report/*",
 		"./stages/*": "./schema/stages/*",
 		"./samples/*": "./tests/contract/samples/*"

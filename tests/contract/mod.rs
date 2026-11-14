@@ -7,6 +7,7 @@
 mod fence;
 mod handoff;
 mod markdown;
+mod offer;
 mod published;
 mod report;
 pub mod sample;

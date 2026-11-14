@@ -5,9 +5,9 @@
 
 use nsx::contract::{
 	cards::Cards, criteria::Criteria, episodes::Episodes, fence::Fence,
-	implement::Implement, intent::Intent, judged::Judged, planning::Planning,
-	reply::Reply, report::Report, review::Review, run::Run, schema::schema,
-	spec::Spec, suggestion::Suggestion, tickets::Tickets,
+	implement::Implement, intent::Intent, judged::Judged, offer::Offer,
+	planning::Planning, reply::Reply, report::Report, review::Review, run::Run,
+	schema::schema, spec::Spec, suggestion::Suggestion, tickets::Tickets,
 };
 use pretty_assertions::assert_eq;
 use rstest::rstest;
@@ -37,6 +37,7 @@ use crate::contract::published::published;
 #[case::report(schema::<Report>(), "report/report.schema.json")]
 #[case::reply(schema::<Reply>(), "report/answer.schema.json")]
 #[case::judged(schema::<Judged>(), "judge/response.schema.json")]
+#[case::offer(schema::<Offer>(), "offer/offer.schema.json")]
 fn each_generated_schema_equals_the_published_one(
 	#[case] generated: Value,
 	#[case] name: &str,
