@@ -36,6 +36,7 @@ impl Layout {
 			reported: state.join("console"),
 			runs: state.join("runs"),
 			kubeconfig: state.join("cluster").join("kubeconfig"),
+			tools: state.join("tools"),
 			langdrift,
 		}
 	}

@@ -13,7 +13,7 @@
 
 use crate::local::{
 	error::Error,
-	kind::{CONTEXT, Kind, PASSED},
+	kind::{CONTEXT, Kind},
 };
 use crate::process::program::Program;
 
@@ -32,7 +32,7 @@ impl Kind<'_> {
 
 		Ok(Program {
 			input,
-			..Program::tool("kubectl", &aimed, &PASSED, &self.directory)
+			..self.program("kubectl", &aimed)?
 		})
 	}
 }

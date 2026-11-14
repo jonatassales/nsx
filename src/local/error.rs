@@ -50,6 +50,38 @@ pub enum Error {
 		path.display()
 	)]
 	Unspoken { path: PathBuf },
+	#[error("nsx could not download its {tool}: {cause}.")]
+	Unfetched { tool: &'static str, cause: String },
+	#[error(
+		"The {tool} nsx downloaded is not the one it pins: its SHA-256 differs, and nsx will not run it."
+	)]
+	Unpinned { tool: &'static str },
+	#[error(
+		"nsx could not keep its {tool} in the project's private state: {cause}."
+	)]
+	Unkept {
+		tool: &'static str,
+		cause: std::io::Error,
+	},
+	#[error(
+		"nsx found no container runtime on this Mac: install Docker Desktop or Colima, then run again."
+	)]
+	RuntimelessMac,
+	#[error(
+		"nsx found no Docker on this machine: install it with `curl -fsSL https://get.docker.com | sh`, then run again."
+	)]
+	RuntimelessLinux,
+	#[error(
+		"Docker is installed and not running: start it with `sudo systemctl start docker`, then run again."
+	)]
+	Stopped,
+	#[error("nsx started Docker and it did not answer within three minutes.")]
+	Asleep,
+	#[error("nsx cannot put its tools folder {} first on PATH: {cause}.", path.display())]
+	Unled {
+		path: PathBuf,
+		cause: std::env::JoinPathsError,
+	},
 	#[error(transparent)]
 	Program(#[from] crate::process::error::Error),
 	#[error(transparent)]

@@ -29,9 +29,8 @@
 use crate::local::{
 	deployment::Deployment,
 	error::Error,
-	kind::{CLUSTER, Kind, PASSED, WAIT},
+	kind::{CLUSTER, Kind, WAIT},
 };
-use crate::process::program::Program;
 
 impl Kind<'_> {
 	pub async fn apply(
@@ -40,23 +39,17 @@ impl Kind<'_> {
 		deployment: &Deployment,
 	) -> Result<(), Error> {
 		let image = deployment.image.as_str();
-		let inspecting = Program::tool(
-			"docker",
-			&["image", "inspect", "--", image],
-			&PASSED,
-			&self.directory,
-		);
+		let inspecting =
+			self.program("docker", &["image", "inspect", "--", image])?;
 		// Docker ends with another status for an image it does not hold:
 		// that is an answer, not a failure.
 		let local = self.programs.run(&inspecting).await?.status == Some(0);
 
 		if local {
-			let loading = Program::tool(
+			let loading = self.program(
 				"kind",
 				&["load", "docker-image", "--name", CLUSTER, "--", image],
-				&PASSED,
-				&self.directory,
-			);
+			)?;
 
 			self.programs.finish(&loading).await?;
 		}

@@ -17,9 +17,8 @@
 
 use crate::local::{
 	error::Error,
-	kind::{CLUSTER, Kind, PASSED},
+	kind::{CLUSTER, Kind},
 };
-use crate::process::program::Program;
 
 impl Kind<'_> {
 	pub async fn reach(&self) -> Result<bool, Error> {
@@ -27,8 +26,11 @@ impl Kind<'_> {
 			return Ok(true);
 		}
 
-		let listing =
-			Program::tool("kind", &["get", "clusters"], &PASSED, &self.directory);
+		self.equip().await?;
+
+		self.wake().await?;
+
+		let listing = self.program("kind", &["get", "clusters"])?;
 		let output = self.programs.finish(&listing).await?;
 		let listed = String::from_utf8_lossy(&output.printed)
 			.lines()
@@ -39,7 +41,7 @@ impl Kind<'_> {
 		}
 
 		let kubeconfig = self.kubeconfig()?;
-		let exporting = Program::tool(
+		let exporting = self.program(
 			"kind",
 			&[
 				"export",
@@ -49,9 +51,7 @@ impl Kind<'_> {
 				"--kubeconfig",
 				&kubeconfig,
 			],
-			&PASSED,
-			&self.directory,
-		);
+		)?;
 
 		self.programs.finish(&exporting).await?;
 		self.reached.set(true);

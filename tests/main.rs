@@ -12,6 +12,7 @@ mod console;
 mod contract;
 mod delivery;
 mod driver;
+mod e2e;
 mod evidence;
 mod files;
 mod flow;

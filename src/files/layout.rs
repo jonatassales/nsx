@@ -20,6 +20,8 @@
 //!   and `execution.json`.
 //! - The kubeconfig nsx reaches the local cluster with is private too:
 //!   `agent/state/cluster/kubeconfig`. The person's own is never touched.
+//! - The tools nsx brings for the local cluster are private too:
+//!   `agent/state/tools/`.
 //! - An episode is `microruntimes/episodes/ep-NNNN-<slug>.json`, and the
 //!   index of episodes is `agent/state/rag/index.json`.
 //! - There is no project identity file, no input record, no mirror and no
@@ -58,4 +60,5 @@ pub struct Layout {
 	pub reported: PathBuf,
 	pub runs: PathBuf,
 	pub kubeconfig: PathBuf,
+	pub tools: PathBuf,
 }
