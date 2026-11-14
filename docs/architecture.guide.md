@@ -410,6 +410,7 @@ The owner allows `../` inside this crate and asks that it be avoided where there
 | `tests/contract/` | the fence, the hand-off records and the report read strictly; each generated schema against its published file; each sample of `tests/contract/samples/` read and written back |
 | `tests/command/` | the command line, `nsx init`, and what a run leaves past its gate, through its delivery, and where it stops |
 | `tests/local/` | a Deployment from its component, the execution ledger written first and found again, the cleanup of exactly what it lists, the runtime's two lines, kind, kubectl and Docker as they are started, a pinned tool kept verified in the tools folder, and Docker asked whether it answers and started when it does not |
+| `tests/e2e/` | the end-to-end runs, ignored by default: the real binary plans a generated ticket against the console the environment names, with and without the team's key, and the console's record is read back; `README.md` says what they need |
 | `tests/delivery/` | the branch named, pushed and said, the pull request opened and said, ready only when checked and met, and git and gh as they are started |
 | `tests/checks/` | the first listing, the poll until every check passed or one did not, and the two lines |
 | `tests/driver/` | `driver.json` read back, the tokens a call used, a call started with the run's choice, and how a call ended |
