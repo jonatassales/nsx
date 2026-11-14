@@ -6,8 +6,9 @@
 //! ## Reads and writes
 //!
 //! - posts to `<origin>/api/judge`, with the secret as the bearer: the
-//!   question's kind, the model, nsx's instructions and facts, the most
-//!   tokens the answer may take and the version of nsx's words
+//!   question's kind, the deprecated model the console ignores, nsx's
+//!   instructions and facts, the most tokens the answer may take and the
+//!   version of nsx's words
 //!
 //! ## Rules
 //!

@@ -207,7 +207,7 @@ Each table lists a folder's files, what each holds and the lines of the goldens 
 | `question.rs`, `question/name.rs`, `question/put.rs`, `question/prompt.rs` | one question for the judge, with everything the judge gets to answer it; putting it and reading the answer strictly; and the question in nsx's own words | |
 | `absent.rs`, `absent/ask.rs` | no judge: every question is refused, and the plan stops there | |
 | `error.rs`, `error/refused.rs` | what asking the judge can refuse | |
-| `client.rs`, `client/open.rs`, `client/ask.rs` | the console's judge, reached over HTTP with the recorded connection | |
+| `client.rs`, `client/open.rs`, `client/ask.rs` | the console's judge, reached over HTTP with the recorded connection; it answers with the team's judge model, and ignores the deprecated `model` nsx still sends | |
 | `criteria.rs`, `criteria/ask.rs`, `criteria/line.rs`, `criteria/card.rs` | judging the guardrail's criteria | `judgeGuardrail` |
 | `relevance.rs`, `relevance/ask.rs`, `relevance/explain.rs`, `relevance/line.rs` | judging which episodes are relevant, and giving each candidate its reason | `judgeRelevance` |
 | `suggestion.rs`, `suggestion/ask.rs`, `suggestion/card.rs` | the suggested model and effort | |

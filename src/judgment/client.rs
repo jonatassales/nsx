@@ -4,9 +4,9 @@
 //! with the connection `nsx init` recorded.
 //!
 //! Definition only: the `Client` type, which carries the connection and the
-//! HTTP client. The model the judge answers with, the version of nsx's
-//! words and the limits of a call sit beside the type. Its functions are
-//! the files in `client/`.
+//! HTTP client. The model nsx still names, the version of nsx's words and
+//! the limits of a call sit beside the type. Its functions are the files in
+//! `client/`.
 //!
 //! ## Rules
 //!
@@ -14,12 +14,12 @@
 //! - No redirect is followed.
 //! - A question waits at most 130 seconds: the console gives its own model
 //!   110.
-//!
-//! ## Open
-//!
-//! - Which model judges. Until the owner decides, it is `claude-sonnet-5-5`,
-//!   and a console that does not offer it stops the plan with the console's
-//!   own answer.
+//! - The console chooses which model judges: the team's judge model, set on
+//!   the console's Settings → AI Models and called with the team's own key.
+//!   nsx holds no model key and no model option.
+//! - `MODEL` is deprecated. The console ignores the request's `model`, but
+//!   its request is read strictly and still requires the field, so nsx
+//!   sends it until the console accepts a request without it.
 
 pub mod ask;
 pub mod open;
