@@ -1,13 +1,17 @@
 //! Keeping a report, and answering the runtime's id and the next request,
-//! unless the console is down
+//! unless the console is down; and answering the team's offer, unless the
+//! offer is down
 
 use std::future::Future;
 use std::pin::Pin;
 
 use nsx::console::{client::Client, error::Error};
-use nsx::contract::{reply::Reply, report::Report};
+use nsx::contract::{offer::Offer, reply::Reply, report::Report};
 
-use crate::simulation::fake::console::{Console, RUNTIME};
+use crate::simulation::fake::{
+	console::{Console, RUNTIME},
+	offer::offer,
+};
 
 impl Client for Console {
 	fn report<'call>(
@@ -48,6 +52,20 @@ impl Client for Console {
 				runtime_id: String::from(RUNTIME),
 				requested,
 			})
+		})
+	}
+
+	fn offer<'call>(
+		&'call self,
+	) -> Pin<Box<dyn Future<Output = Result<Offer, Error>> + 'call>> {
+		Box::pin(async move {
+			if self.offer_down {
+				return Err(Error::Unavailable {
+					cause: String::from("the console is down"),
+				});
+			}
+
+			Ok(self.offer.clone().unwrap_or_else(offer))
 		})
 	}
 }

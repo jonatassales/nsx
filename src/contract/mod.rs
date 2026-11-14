@@ -30,6 +30,8 @@
 //!   one question
 //! - `Criteria`, `Episodes` and `Suggestion`: the judge's three answers, each
 //!   with its own `check`
+//! - `Offer`, with `Offered` and `Provider`: the team's offer, the models
+//!   and efforts per provider the console answers with
 //! - `Stage`: the stages, as the records spell them
 //! - `Planning`, `Spec`, `Tickets`, `Implement`, `Review`: the stage reports
 //!
@@ -79,6 +81,8 @@ pub mod judged;
 pub mod label;
 pub mod linked;
 pub mod nullable;
+pub mod offer;
+pub mod offered;
 pub mod outcome;
 pub mod pair;
 pub mod plain;
@@ -86,6 +90,7 @@ pub mod plan;
 pub mod planning;
 pub mod problem;
 pub mod product;
+pub mod provider;
 pub mod pull;
 pub mod recommendation;
 pub mod reference;

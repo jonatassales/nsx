@@ -13,7 +13,7 @@
 //!
 //! - Published: the fence, the judge's three answers, the five stage reports,
 //!   `plan.json`, `intent.json` and `run.json`, and the report to the console
-//!   with its answer.
+//!   with its answer, the judge's response and the team's offer.
 //! - A schema refuses every field its shape does not define. A section whose
 //!   fields are not defined yet allows no field.
 //! - A schema keeps the `$id` it is published under. The report refers to the

@@ -12,8 +12,11 @@
 //! - files and session: find the project root, set the window title
 //! - request: resolve the ticket, read its header and its links, and read
 //!   the design doc for the budget per run
-//! - money: read the price list and the forecast, and build the spend table
+//! - money: read the price list
 //! - flow: read the workflow, for the default choice the plan proposes
+//! - money: read the team's offer from the console, for the candidates, and
+//!   check that the default choice is one of them (`flow`)
+//! - money: read the forecast, and build the spend table of the candidates
 //! - handoff: write the ticket's header, the `workflow` section (`flow`,
 //!   `money`) and the EPISODES threshold (`rag`) to `plan.json`, before any
 //!   line prints
@@ -48,7 +51,8 @@ use crate::files::{
 use crate::flow::workflow::Workflow;
 use crate::handoff::writer::Writer;
 use crate::money::{
-	budget::Budget, forecast::Forecast, price::Price, spend::Spend,
+	budget::Budget, candidates::Candidates, forecast::Forecast, price::Price,
+	spend::Spend,
 };
 use crate::rag::threshold::THRESHOLD;
 use crate::request::{design::Design, links::Links, ticket::Ticket};
@@ -69,8 +73,12 @@ impl Plan {
 		let layout = Layout::under(&root);
 		let prices = Price::load(&root, &layout)?;
 		let workflow = Workflow::load(&root, &layout, &prices)?;
+		let candidates = Candidates::read(session.console, &prices).await?;
+
+		workflow.within(&layout, &candidates)?;
+
 		let forecast = Forecast::load(&root, &layout)?;
-		let spend = Spend::build(&prices, &forecast, &Budget::of(&design))?;
+		let spend = Spend::build(&candidates, &forecast, &Budget::of(&design))?;
 		let report = Report::open(&root, &layout, &ticket.slug, Status::Analysis)?;
 		let mut desk = Desk {
 			writer: Writer {
@@ -87,6 +95,7 @@ impl Plan {
 			links,
 			design,
 			prices,
+			candidates,
 			workflow,
 		};
 		let root = &brief.root;

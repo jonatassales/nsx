@@ -5,8 +5,9 @@
 //! `run.json` and the money ledger instead.
 //!
 //! Definition only: the `Workflow` type. It carries `budgetCents` with its
-//! `budgetSource`, `marginPercent` and `spend`, one `Pair` per model and
-//! effort.
+//! `budgetSource`, `marginPercent` and `spend`, one `Pair` per candidate model
+//! and effort: the models of the price list the team offers, each at its
+//! efforts.
 //!
 //! ## Rules
 //!

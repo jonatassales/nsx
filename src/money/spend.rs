@@ -1,14 +1,15 @@
 //! The spend table
 //!
-//! One row per model and effort pair: nine rows for three models and three
-//! efforts. The plan prices every pair before its first line prints, so the
-//! Workflow card only looks up the pair the team picks, and the run uses the
-//! same row. The console shows the data and never reasons about money.
+//! One row per candidate model and effort: nine rows when the team offers
+//! the three models at the three efforts. The plan prices every pair before
+//! its first line prints, so the Workflow card only looks up the pair the
+//! team picks, and the run uses the same row. The console shows the data
+//! and never reasons about money.
 //!
 //! Definition only: the `Spend` type: the budget with its source, the margin
-//! in percent, and one `Pair` per model and effort, in the order of the three
-//! models nsx reads and then low, medium, high. The fixed margin sits beside
-//! the type. Its functions are the files in `spend/`.
+//! in percent, and one `Pair` per candidate model and effort, in the order of
+//! the three models nsx reads and then low, medium, high. The fixed margin
+//! sits beside the type. Its functions are the files in `spend/`.
 //!
 //! ## Simulation
 //!
@@ -22,7 +23,7 @@
 //! - The run takes its estimate, reservation and budget from the row of the
 //!   applied pair, so the gate is the one the card described.
 //! - A model or an effort missing from the table stops the command (the stop
-//!   rule).
+//!   rule). A pair the team does not offer has no row.
 
 pub mod build;
 pub mod card;

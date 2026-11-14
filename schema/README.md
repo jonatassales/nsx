@@ -19,12 +19,13 @@ The JSON Schemas of nsx: the shapes of `src/contract/`, for whoever reads them w
 | `report/report.schema.json` | The arguments of the tool `langdrift.runtime.report`: the runtime's console id, the status (`held` among them), and the three hand-off records written so far. |
 | `report/answer.schema.json` | The tool's answer: the runtime's console id and, when one is pending, the team's request: a play with the choice it authorizes, or a pause. |
 | `judge/response.schema.json` | The console judge's answer to one question: the validated answer text, or a refusal with its reason, with the tokens used, the cost in cents and the judge's version. |
+| `offer/offer.schema.json` | The team's offer, as the console's tool `langdrift.account.offer` answers it: per provider (`anthropic`, `openai` or `gemini`) the models and the efforts the team offers on Settings → AI Models, each listed once. The console sends each provider once. The efforts are the team's words: nsx keeps those it knows. |
 
 ## What the console needs unchanged
 
-The LangDrift console, in the `jonatassales/lang-drift` repository, validates a report against these files, never against a copy of its own (`apps/console/src/app/api/mcp/invalid-report-field.compute.ts` and `report-tool.data.ts`), and the `runtimes` function's answer against `report/answer.schema.json` before it reaches nsx (`valid-report-answer.compute.ts`).
+The LangDrift console, in the `jonatassales/lang-drift` repository, validates a report against these files, never against a copy of its own (`apps/console/src/app/api/mcp/invalid-report-field.compute.ts` and `report-tool.data.ts`), and the `runtimes` function's answer against `report/answer.schema.json` before it reaches nsx (`valid-report-answer.compute.ts`), and the offer its tool `langdrift.account.offer` answers against `offer/offer.schema.json`.
 
-- **The paths it imports.** `handoff/plan.schema.json`, `handoff/intent.schema.json`, `handoff/run.schema.json`, `report/report.schema.json`, `report/answer.schema.json`, the three `judgment/` answer schemas, `judge/response.schema.json` and the five stage report schemas, under the package's name.
+- **The paths it imports.** `handoff/plan.schema.json`, `handoff/intent.schema.json`, `handoff/run.schema.json`, `report/report.schema.json`, `report/answer.schema.json`, the three `judgment/` answer schemas, `judge/response.schema.json`, `offer/offer.schema.json` and the five stage report schemas, under the package's name.
 - **The `$id` of the three hand-off schemas.** The console registers them first, then compiles the report's schema. The report refers to each record by a `$ref` to its `$id`: `https://langdrift.md/schemas/handoff/plan.schema.json`, `…/intent.schema.json` and `…/run.schema.json`. A changed `$id` or `$ref` leaves the reference unresolved.
 - **The dialect.** Every schema declares JSON Schema draft 2020-12, and the console compiles them with a 2020-12 validator.
 - **The report's schema as it is.** The console serves it as the tool's `inputSchema`.

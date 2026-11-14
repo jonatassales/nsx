@@ -10,9 +10,10 @@
 //!   answer against, so that a judge that follows them is never refused.
 //! - The facts are only what the plan has read: the guardrail's criteria,
 //!   the linked documents' facts, the candidates of the search and the
-//!   price list. No secret and no file's whole text is sent.
+//!   models the team offers, with their prices and efforts. No secret and no
+//!   file's whole text is sent.
 
-use crate::contract::{episode::REASONS, fence::EFFORTS};
+use crate::contract::episode::REASONS;
 use crate::judgment::question::Question;
 
 const SHAPE: &str =
@@ -91,25 +92,27 @@ impl Question<'_> {
 			Self::Suggestion {
 				retrieval,
 				documents,
-				prices,
+				candidates,
 			} => {
-				let mut models = prices.models.iter().collect::<Vec<_>>();
+				let mut models = candidates.models.iter().collect::<Vec<_>>();
 
-				models.sort_by_key(|model| (model.input_cents, model.output_cents));
+				models.sort_by_key(|candidate| {
+					(candidate.model.input_cents, candidate.model.output_cents)
+				});
 
 				let system = format!(
-					"You suggest the model and the effort a coding agent should use for a ticket. {SHAPE} Its shape is {{\"model\": string, \"effort\": string, \"effortReason\": string, \"modelReason\": string}}. The model is the id of one model listed. The effort is one of {}. The effort reason is one line of plain text that names each of the two efforts you did not choose, as whole words, the lower one first, and says why not, such as \"low skips the broker wiring · high is not warranted by 5 components\". The model reason is one line of plain text that names every model you did not choose by its short name exactly as listed, from the cheapest, and says why not.",
-					EFFORTS.join(", ")
+					"You suggest the model and the effort a coding agent should use for a ticket. {SHAPE} Its shape is {{\"model\": string, \"effort\": string, \"effortReason\": string, \"modelReason\": string}}. The model is the id of one model listed, the only models the team offers. The effort is one of the efforts listed for that model. The effort reason is one line of plain text that names each other effort listed for that model, as whole words, the lower one first, and says why not, such as \"low skips the broker wiring · high is not warranted by 5 components\"; when the model lists one effort, it says that the team offers only that effort. The model reason is one line of plain text that names every model you did not choose by its short name exactly as listed, from the cheapest, and says why not; when one model is listed, it says that the team offers only that model."
 				);
 				let listed = models
 					.iter()
-					.map(|model| {
+					.map(|candidate| {
 						format!(
-							"- id {}, short name {}: {} cents input and {} cents output per million tokens",
-							model.id,
-							model.short_name,
-							model.input_cents.0,
-							model.output_cents.0
+							"- id {}, short name {}: {} cents input and {} cents output per million tokens; efforts {}",
+							candidate.model.id,
+							candidate.model.short_name,
+							candidate.model.input_cents.0,
+							candidate.model.output_cents.0,
+							candidate.efforts.join(", ")
 						)
 					})
 					.collect::<Vec<_>>();

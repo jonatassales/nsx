@@ -4,7 +4,8 @@ use std::path::PathBuf;
 
 use nsx::contract::cards::Cards;
 use nsx::money::{
-	budget::Budget, cents::Cents, error::Error, spend::Spend, tokens::Tokens,
+	budget::Budget, candidates::Candidates, cents::Cents, error::Error,
+	spend::Spend, tokens::Tokens,
 };
 
 use crate::money::listed::listed;
@@ -19,7 +20,9 @@ fn the_nine_rows_are_the_figures_of_the_simulation() {
 		source: PathBuf::from(DESIGN),
 	};
 
-	let spend = Spend::build(&prices, &forecast, &budget).unwrap();
+	let spend =
+		Spend::build(&Candidates::of(&prices, None).unwrap(), &forecast, &budget)
+			.unwrap();
 	let rows = spend
 		.pairs
 		.iter()
@@ -60,7 +63,9 @@ fn each_row_carries_the_expected_tokens_of_its_effort() {
 		source: PathBuf::from(DESIGN),
 	};
 
-	let spend = Spend::build(&prices, &forecast, &budget).unwrap();
+	let spend =
+		Spend::build(&Candidates::of(&prices, None).unwrap(), &forecast, &budget)
+			.unwrap();
 	let tokens = spend
 		.pairs
 		.iter()
@@ -83,8 +88,12 @@ fn a_reservation_equal_to_the_budget_is_not_over_it() {
 		source: PathBuf::from(DESIGN),
 	};
 
-	let equal = Spend::build(&prices, &forecast, &at).unwrap();
-	let above = Spend::build(&prices, &forecast, &under).unwrap();
+	let equal =
+		Spend::build(&Candidates::of(&prices, None).unwrap(), &forecast, &at)
+			.unwrap();
+	let above =
+		Spend::build(&Candidates::of(&prices, None).unwrap(), &forecast, &under)
+			.unwrap();
 
 	assert!(!equal.pairs[1].over);
 	assert!(above.pairs[1].over);
@@ -105,32 +114,13 @@ fn half_a_cent_rounds_up_and_the_reservation_rounds_up() {
 	// Haiku: 50 thousand input tokens at 10 cents a million is half a cent.
 	forecast.by_effort.insert(String::from("low"), low);
 
-	let spend = Spend::build(&prices, &forecast, &budget).unwrap();
+	let spend =
+		Spend::build(&Candidates::of(&prices, None).unwrap(), &forecast, &budget)
+			.unwrap();
 	let haiku = &spend.pairs[6];
 
 	assert_eq!(haiku.estimate, Cents(1));
 	assert_eq!(haiku.reserved, Cents(2));
-}
-
-#[test]
-fn a_price_list_missing_a_model_is_a_stop() {
-	let (mut prices, forecast) = listed();
-	let budget = Budget {
-		amount: Cents(2500),
-		source: PathBuf::from(DESIGN),
-	};
-
-	prices
-		.models
-		.retain(|model| model.id != "claude-sonnet-5-5");
-
-	let refusal = Spend::build(&prices, &forecast, &budget).unwrap_err();
-
-	assert!(matches!(refusal, Error::Model { .. }), "was {refusal:?}");
-	assert_eq!(
-		refusal.to_string(),
-		"The price list has no model claude-sonnet-5-5: nsx cannot price a run with it."
-	);
 }
 
 #[test]
@@ -143,7 +133,9 @@ fn a_forecast_missing_an_effort_is_a_stop() {
 
 	forecast.by_effort.remove("high");
 
-	let refusal = Spend::build(&prices, &forecast, &budget).unwrap_err();
+	let refusal =
+		Spend::build(&Candidates::of(&prices, None).unwrap(), &forecast, &budget)
+			.unwrap_err();
 
 	assert!(matches!(refusal, Error::Effort { .. }), "was {refusal:?}");
 	assert!(
@@ -167,7 +159,9 @@ fn an_amount_too_large_for_cents_is_a_stop() {
 	prices.models[0].input_cents = Cents(i64::MAX);
 	forecast.by_effort.insert(String::from("high"), high);
 
-	let refusal = Spend::build(&prices, &forecast, &budget).unwrap_err();
+	let refusal =
+		Spend::build(&Candidates::of(&prices, None).unwrap(), &forecast, &budget)
+			.unwrap_err();
 
 	assert!(matches!(refusal, Error::Unpriced { .. }), "was {refusal:?}");
 	assert!(
@@ -183,7 +177,9 @@ fn the_workflow_section_carries_the_budget_the_margin_and_nine_rows() {
 		amount: Cents(2500),
 		source: PathBuf::from(DESIGN),
 	};
-	let spend = Spend::build(&prices, &forecast, &budget).unwrap();
+	let spend =
+		Spend::build(&Candidates::of(&prices, None).unwrap(), &forecast, &budget)
+			.unwrap();
 	let mut cards = Cards::default();
 
 	spend.card(&mut cards);

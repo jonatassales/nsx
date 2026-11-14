@@ -2,9 +2,9 @@
 
 use nsx::contract::{
 	cards::Cards, criteria::Criteria, episodes::Episodes, fence::Fence,
-	implement::Implement, intent::Intent, judged::Judged, planning::Planning,
-	reply::Reply, report::Report, review::Review, run::Run, spec::Spec,
-	suggestion::Suggestion, tickets::Tickets,
+	implement::Implement, intent::Intent, judged::Judged, offer::Offer,
+	planning::Planning, reply::Reply, report::Report, review::Review, run::Run,
+	spec::Spec, suggestion::Suggestion, tickets::Tickets,
 };
 use rstest::rstest;
 
@@ -31,6 +31,7 @@ use crate::contract::trip::trip;
 #[case::reply(trip::<Reply>, "report/answer.sample.json")]
 #[case::reply_with_a_play(trip::<Reply>, "report/answer.play.sample.json")]
 #[case::judged(trip::<Judged>, "judge/response.sample.json")]
+#[case::offer(trip::<Offer>, "offer/offer.sample.json")]
 fn each_sample_reads_and_writes_back_unchanged(
 	#[case] trip: fn(&str),
 	#[case] name: &str,

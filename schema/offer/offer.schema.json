@@ -1,0 +1,40 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://langdrift.md/schemas/offer/offer.schema.json",
+	"title": "Team offer",
+	"description": "What the team offers on the console's Settings → AI Models: per provider, the models and the efforts its account may use. The console sends each provider once.",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["providers"],
+	"properties": {
+		"providers": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["provider", "models", "efforts"],
+				"properties": {
+					"provider": {
+						"enum": ["anthropic", "openai", "gemini"]
+					},
+					"models": {
+						"type": "array",
+						"uniqueItems": true,
+						"items": {
+							"type": "string",
+							"minLength": 1
+						}
+					},
+					"efforts": {
+						"type": "array",
+						"uniqueItems": true,
+						"items": {
+							"type": "string",
+							"minLength": 1
+						}
+					}
+				}
+			}
+		}
+	}
+}

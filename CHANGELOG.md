@@ -6,6 +6,17 @@ Every notable change to nsx, newest first, in the shape of
 
 ## [Unreleased]
 
+### Added
+
+- A connected `nsx agent plan` reads the team's offer, the models and
+  efforts per provider set on the console's Settings → AI Models,
+  through the tool `langdrift.account.offer`. The judge suggests, and the
+  Workflow card prices, only the offered models of the price list at the
+  offered efforts nsx knows. An offer that leaves nothing to suggest, or
+  one the console cannot answer, stops the plan before its first line.
+- `schema/offer/offer.schema.json`, exported as `@langdrift/nsx/offer/*`,
+  with its sample.
+
 ### Deprecated
 
 - The judge request's `model`. The console answers with the team's judge

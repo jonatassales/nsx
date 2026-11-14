@@ -18,8 +18,11 @@
 //!
 //! ## Rules
 //!
-//! - The model is one of the three of the price list, the ones the Workflow
-//!   card offers. The effort is low, medium or high.
+//! - The model is a candidate: a model of the price list the team offers on
+//!   the console's Settings → AI Models. The effort is one of the efforts
+//!   the team offers for it, among low, medium and high.
+//! - The suggestion is the best deal among the candidates: each reason weighs
+//!   the candidates not chosen, however few the team offers.
 //! - It always comes from the judge: no recorded choice stands in for it.
 //! - It goes into the plan's card data and the `runtime.md` draft as a
 //!   recommendation, never as an authorization.

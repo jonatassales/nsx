@@ -1,11 +1,13 @@
-//! The suggestion names a model of the price list and weighs what it left out
+//! The suggestion names a model the team offers and weighs what it left out
 
 use nsx::judgment::{error::Error, suggestion::Suggestion};
+use nsx::money::candidates::Candidates;
 use nsx::request::documents::Documents;
 use nsx::session::kind::Kind;
 use rstest::rstest;
 
 use crate::judgment::{found::found, prices::prices, trio::trio};
+use crate::money::offered::offered;
 use crate::simulation::fake::recorded::Recorded;
 
 const ANSWER: &str = r#"{
@@ -28,9 +30,14 @@ async fn the_judge_suggests_a_model_and_an_effort_and_says_why() {
 		..Recorded::default()
 	};
 
-	let suggestion = Suggestion::ask(&judge, &found(), documents, &prices())
-		.await
-		.unwrap();
+	let suggestion = Suggestion::ask(
+		&judge,
+		&found(),
+		documents,
+		&Candidates::of(&prices(), None).unwrap(),
+	)
+	.await
+	.unwrap();
 	let lines = [
 		Suggestion::resources(),
 		suggestion.effort(),
@@ -64,10 +71,10 @@ async fn the_judge_suggests_a_model_and_an_effort_and_says_why() {
 }
 
 #[rstest]
-#[case::a_model_outside_the_price_list(
+#[case::a_model_the_team_does_not_offer(
 	"claude-sonnet-5-5",
 	"gpt-9",
-	"model must be a model of the price list"
+	"model must be a model the team offers"
 )]
 #[case::an_effort_outside_the_three(
 	"\"medium\"",
@@ -131,9 +138,14 @@ async fn a_suggestion_that_breaks_a_rule_is_refused(
 		..Recorded::default()
 	};
 
-	let refused = Suggestion::ask(&judge, &found(), documents, &prices())
-		.await
-		.unwrap_err();
+	let refused = Suggestion::ask(
+		&judge,
+		&found(),
+		documents,
+		&Candidates::of(&prices(), None).unwrap(),
+	)
+	.await
+	.unwrap_err();
 
 	assert!(matches!(refused, Error::Refused { .. }), "was {refused:?}");
 	assert_eq!(
@@ -157,12 +169,117 @@ async fn another_choice_weighs_the_two_it_left_out() {
 		..Recorded::default()
 	};
 
-	let suggestion = Suggestion::ask(&judge, &found(), documents, &prices())
+	let suggestion = Suggestion::ask(
+		&judge,
+		&found(),
+		documents,
+		&Candidates::of(&prices(), None).unwrap(),
+	)
+	.await
+	.unwrap();
+
+	assert_eq!(
+		suggestion.line().render(),
+		"✓ suggests   claude-haiku-5-5 · effort low"
+	);
+}
+
+#[rstest]
+#[case::a_model_the_offer_leaves_out(
+	"\"claude-sonnet-5-5\"",
+	"\"claude-opus-5-5\"",
+	"model must be a model the team offers"
+)]
+#[case::an_effort_the_offer_leaves_out(
+	"\"medium\"",
+	"\"high\"",
+	"effort must be an effort the team offers for the model"
+)]
+#[tokio::test]
+async fn a_narrowed_offer_refuses_what_it_leaves_out(
+	#[case] given: &str,
+	#[case] instead: &str,
+	#[case] refusal: &str,
+) {
+	let (prd, design, spec) = trio();
+	let documents = Documents {
+		prd: &prd,
+		design: &design,
+		spec: &spec,
+	};
+	let judge = Recorded {
+		suggestion: ANSWER.replace(given, instead),
+		..Recorded::default()
+	};
+	let offer = offered(
+		&["claude-sonnet-5-5", "claude-haiku-5-5"],
+		&["low", "medium"],
+	);
+	let candidates = Candidates::of(&prices(), Some(&offer)).unwrap();
+
+	let refused = Suggestion::ask(&judge, &found(), documents, &candidates)
+		.await
+		.unwrap_err();
+
+	assert_eq!(
+		refused.to_string(),
+		format!("nsx refuses the judge's suggestion answer: {refusal}.")
+	);
+}
+
+#[tokio::test]
+async fn the_reasons_weigh_only_the_candidates_left_out() {
+	let (prd, design, spec) = trio();
+	let documents = Documents {
+		prd: &prd,
+		design: &design,
+		spec: &spec,
+	};
+	let judge = Recorded {
+		suggestion: String::from(
+			r#"{"model": "claude-sonnet-5-5", "effort": "medium", "effortReason": "low skips the broker wiring", "modelReason": "Haiku 5.5 retries the broker wiring"}"#,
+		),
+		..Recorded::default()
+	};
+	let offer = offered(
+		&["claude-sonnet-5-5", "claude-haiku-5-5"],
+		&["low", "medium"],
+	);
+	let candidates = Candidates::of(&prices(), Some(&offer)).unwrap();
+
+	let suggestion = Suggestion::ask(&judge, &found(), documents, &candidates)
+		.await
+		.unwrap();
+
+	assert_eq!(
+		suggestion.model().render(),
+		"console › weighing model · Haiku 5.5 retries the broker wiring"
+	);
+}
+
+#[tokio::test]
+async fn one_model_at_one_effort_leaves_each_reason_nothing_to_name() {
+	let (prd, design, spec) = trio();
+	let documents = Documents {
+		prd: &prd,
+		design: &design,
+		spec: &spec,
+	};
+	let judge = Recorded {
+		suggestion: String::from(
+			r#"{"model": "claude-sonnet-5-5", "effort": "medium", "effortReason": "the team offers only medium", "modelReason": "the team offers only Sonnet 5.5"}"#,
+		),
+		..Recorded::default()
+	};
+	let offer = offered(&["claude-sonnet-5-5"], &["medium"]);
+	let candidates = Candidates::of(&prices(), Some(&offer)).unwrap();
+
+	let suggestion = Suggestion::ask(&judge, &found(), documents, &candidates)
 		.await
 		.unwrap();
 
 	assert_eq!(
 		suggestion.line().render(),
-		"✓ suggests   claude-haiku-5-5 · effort low"
+		"✓ suggests   claude-sonnet-5-5 · effort medium"
 	);
 }

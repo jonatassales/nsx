@@ -9,12 +9,14 @@
 //!
 //! ## Rules
 //!
+//! - Two tools answer here: the report and the team's offer.
 //! - The bearer is the secret. It is never printed or logged.
 //! - No redirect is followed: the secret goes to the recorded origin alone.
 //! - A call waits at most 4 seconds.
 
+pub mod call;
+pub mod client;
 pub mod open;
-pub mod report;
 
 use std::time::Duration;
 
