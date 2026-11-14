@@ -8,12 +8,12 @@
 //! Definition only: the `Kind` type: the runner that starts the tools, how
 //! nsx downloads its own, the folder they start in, the tools nsx pins,
 //! whether they were brought, the system, the pause between two asks of a
-//! starting Docker, whether Docker answered and whether the cluster was
-//! reached already,
-//! with the cluster's name, its kubectl context, the label a run's things
-//! carry, the bound on a Deployment's wait, in
-//! seconds, and the variables the tools may see beside them. Its functions
-//! are the files in `kind/`.
+//! starting Docker, whether Docker answered, once asked, and whether the
+//! cluster was reached already, with the cluster's name, its kubectl
+//! context, the label a run's things carry, the bound on a Deployment's
+//! wait, in seconds, the pause between two asks of a starting Docker and
+//! how many times it is asked, and the variables the tools may see beside
+//! them. Its functions are the files in `kind/`.
 //!
 //! ## Reads and writes
 //!
@@ -103,6 +103,6 @@ pub struct Kind<'run> {
 	pub equipped: Cell<bool>,
 	pub system: System,
 	pub pause: Duration,
-	pub awake: Cell<bool>,
+	pub awake: Cell<Option<bool>>,
 	pub reached: Cell<bool>,
 }

@@ -142,7 +142,7 @@ async fn main() -> ExitCode {
 		equipped: Cell::new(false),
 		system: System::here(),
 		pause: PAUSE,
-		awake: Cell::new(false),
+		awake: Cell::new(None),
 		reached: Cell::new(false),
 	};
 	let github = Github {

@@ -64,7 +64,7 @@ pub enum Error {
 		cause: std::io::Error,
 	},
 	#[error(
-		"nsx found no container runtime on this Mac: run nsx init in a terminal and answer yes, and nsx installs one."
+		"nsx found no container runtime on this Mac: install Docker Desktop or Colima, then run again."
 	)]
 	RuntimelessMac,
 	#[error(
@@ -77,6 +77,11 @@ pub enum Error {
 	Stopped,
 	#[error("nsx started Docker and it did not answer within three minutes.")]
 	Asleep,
+	#[error("nsx cannot put its tools folder {} first on PATH: {cause}.", path.display())]
+	Unled {
+		path: PathBuf,
+		cause: std::env::JoinPathsError,
+	},
 	#[error(transparent)]
 	Program(#[from] crate::process::error::Error),
 	#[error(transparent)]

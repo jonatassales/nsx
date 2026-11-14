@@ -18,5 +18,8 @@ pub async fn recorded(project: &Path, console: &str, slug: &str) -> Value {
 
 	let body = answered.json::<Value>().await.unwrap();
 
-	body["runtime"].clone()
+	body
+		.get("runtime")
+		.cloned()
+		.expect("the console answered no runtime")
 }

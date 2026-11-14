@@ -13,14 +13,17 @@
 //!
 //! ## Rules
 //!
-//! - A copy whose SHA-256 is the pinned one is kept: nothing is downloaded.
+//! - A copy whose SHA-256 is the pinned one is kept and made executable:
+//!   nothing is downloaded.
 //! - A copy that differs is replaced.
 //! - Downloaded bytes that differ from the pin are refused and nothing is
 //!   written.
-//! - The bytes are written beside the tool and moved onto it, so a tool is
-//!   never half written.
+//! - The bytes are written to a new file of this process's own beside the
+//!   tool, never through an existing file or link, and moved onto the tool,
+//!   so a tool is never half written, even when two runs fetch at once.
 
-use std::os::unix::fs::PermissionsExt;
+use std::io::Write;
+use std::os::unix::fs::{OpenOptionsExt, PermissionsExt};
 use std::path::Path;
 
 use sha2::{Digest, Sha256};
@@ -48,6 +51,10 @@ impl Tool {
 		let verified = std::fs::read(&kept).is_ok_and(|bytes| pinned(&bytes));
 
 		if verified {
+			let runnable = std::fs::Permissions::from_mode(0o755);
+
+			std::fs::set_permissions(&kept, runnable).map_err(unkept)?;
+
 			return Ok(());
 		}
 
@@ -66,12 +73,29 @@ impl Tool {
 			});
 		}
 
-		let arriving = folder.join(format!(".{}.arriving", self.name));
+		let arriving =
+			folder.join(format!(".{}.{}.arriving", self.name, std::process::id()));
 
 		std::fs::create_dir_all(folder).map_err(unkept)?;
-		std::fs::write(&arriving, &bytes).map_err(unkept)?;
-		std::fs::set_permissions(&arriving, std::fs::Permissions::from_mode(0o755))
+
+		// A file left by a process that had this id is not this one's: it is
+		// removed, and the new one is created, never opened through a link.
+		match std::fs::remove_file(&arriving) {
+			Err(cause) if cause.kind() != std::io::ErrorKind::NotFound => {
+				return Err(unkept(cause));
+			}
+			_removed => {}
+		}
+
+		let mut written = std::fs::OpenOptions::new()
+			.write(true)
+			.create_new(true)
+			.mode(0o755)
+			.open(&arriving)
 			.map_err(unkept)?;
+
+		written.write_all(&bytes).map_err(unkept)?;
+		written.sync_all().map_err(unkept)?;
 		std::fs::rename(&arriving, &kept).map_err(unkept)?;
 
 		Ok(())

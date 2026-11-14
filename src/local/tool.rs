@@ -28,5 +28,5 @@ pub const KUBECTL_VERSION: &str = "v1.37.2";
 pub struct Tool {
 	pub name: &'static str,
 	pub url: String,
-	pub sha256: &'static str,
+	pub sha256: String,
 }

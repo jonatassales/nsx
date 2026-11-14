@@ -5,9 +5,12 @@
 //!
 //! ## Rules
 //!
-//! - kind, kubectl and Docker all start this way, so that nsx's own pinned
-//!   copies are found before any the machine has, by nsx and by the tools
-//!   that start one another.
+//! - Every program the cluster starts, kind, kubectl, Docker and what
+//!   starts Docker, starts this way, so that nsx's own pinned copies are
+//!   found before any the machine has, by nsx and by the tools that start
+//!   one another.
+//! - A machine that gives nsx no `PATH` leaves the tools folder alone on
+//!   it.
 //! - The rest of the environment is the small set the cluster tools are
 //!   given.
 
@@ -33,8 +36,9 @@ impl Kind<'_> {
 		let leading = std::env::join_paths(
 			std::iter::once(folder.clone()).chain(std::env::split_paths(&machine)),
 		)
-		.map_err(|_unjoined| Error::Unspoken {
+		.map_err(|cause| Error::Unled {
 			path: folder.clone(),
+			cause,
 		})?;
 		let spoken = leading.to_str().map(String::from).ok_or(Error::Unspoken {
 			path: folder,

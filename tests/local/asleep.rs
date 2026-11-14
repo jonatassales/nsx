@@ -23,7 +23,7 @@ pub fn asleep<'run>(
 		equipped: Cell::new(false),
 		system,
 		pause: Duration::ZERO,
-		awake: Cell::new(false),
+		awake: Cell::new(None),
 		reached: Cell::new(false),
 	}
 }

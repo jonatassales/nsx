@@ -3,23 +3,10 @@
 //! The real binary plans a generated ticket against the console the
 //! environment names, and the console's record is read back.
 
-use crate::e2e::{generated::generated, played::played, recorded::recorded};
-
-const NEEDS: &str = "The end-to-end run needs MCP_CONSOLE_URL and LANGDRIFT_SECRET: no console is a default.";
-
-fn connection() -> (String, String) {
-	let console = std::env::var("MCP_CONSOLE_URL").expect(NEEDS);
-	let secret = std::env::var("LANGDRIFT_SECRET").expect(NEEDS);
-
-	(console, secret)
-}
-
-fn lines(printed: &[u8]) -> Vec<String> {
-	String::from_utf8_lossy(printed)
-		.lines()
-		.map(String::from)
-		.collect()
-}
+use crate::e2e::{
+	connection::connection, generated::make::generated, lines::lines,
+	played::play::played, recorded::recorded,
+};
 
 #[tokio::test]
 #[ignore = "needs a console whose team saved its Anthropic key and offer"]

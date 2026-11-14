@@ -19,7 +19,7 @@ pub fn reached<'run>(programs: &'run Programs, root: &Root) -> Kind<'run> {
 		equipped: Cell::new(false),
 		system: System::Mac,
 		pause: Duration::ZERO,
-		awake: Cell::new(true),
+		awake: Cell::new(Some(true)),
 		reached: Cell::new(false),
 	}
 }

@@ -11,7 +11,8 @@
 //! ## Rules
 //!
 //! - It runs once for each `Kind`, and prints nothing: the simulation shows
-//!   no line about Docker.
+//!   no line about Docker. A Docker that did not answer is not started or
+//!   waited for again: the same stop comes back at once.
 //! - After starting Docker it asks again after each pause, at most `WAKING`
 //!   times: three minutes at the real pause.
 //! - A Docker that still does not answer is a stop under the stop rule.
@@ -23,28 +24,34 @@ use crate::local::{
 
 impl Kind<'_> {
 	pub async fn wake(&self) -> Result<(), Error> {
-		if self.awake.get() {
-			return Ok(());
+		match self.awake.get() {
+			Some(true) => return Ok(()),
+			Some(false) => return Err(Error::Asleep),
+			None => {}
 		}
 
-		if self.answers().await? {
-			self.awake.set(true);
+		let mut answered = self.answers().await?;
 
-			return Ok(());
+		if !answered {
+			self.rouse().await?;
 		}
-
-		self.rouse().await?;
 
 		for _asking in 0..WAKING {
+			if answered {
+				break;
+			}
+
 			tokio::time::sleep(self.pause).await;
 
-			if self.answers().await? {
-				self.awake.set(true);
-
-				return Ok(());
-			}
+			answered = self.answers().await?;
 		}
 
-		Err(Error::Asleep)
+		self.awake.set(Some(answered));
+
+		if !answered {
+			return Err(Error::Asleep);
+		}
+
+		Ok(())
 	}
 }

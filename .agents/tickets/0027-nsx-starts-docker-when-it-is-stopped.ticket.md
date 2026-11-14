@@ -12,9 +12,9 @@
 
 - [x] Before the cluster is first reached, nsx asks Docker whether it answers (`docker info`).
 - [x] On macOS, a Docker that does not answer is started, Docker Desktop with `open -g -a Docker`; nsx then asks again every two seconds, for at most three minutes. Ticket 0028 adds nsx's own Colima.
-- [x] A Docker that still does not answer stops the run under the stop rule with one sentence.
+- [x] A Docker that still does not answer stops the run under the stop rule with one sentence, and is not started or waited for again by the run's cleanup.
 - [x] On Linux, a Docker that does not answer stops the run with a sentence that gives `sudo systemctl start docker`.
-- [x] No Docker at all stops the run with a sentence that names `nsx init` on macOS and the official install command on Linux.
+- [x] No Docker at all stops the run with a sentence that names Docker Desktop or Colima on macOS, until ticket 0028 lets `nsx init` install one, and the official install command on Linux.
 - [x] The run prints the simulation's lines and no other.
 - [x] The repository's checks pass.
 

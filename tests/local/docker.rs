@@ -5,17 +5,9 @@ use std::collections::VecDeque;
 use nsx::local::{error::Error, system::System};
 use nsx::process::output::Output;
 
-use crate::local::{asleep::asleep, rooted::rooted};
+use crate::local::{asleep::asleep, ended::ended, rooted::rooted};
 use crate::process::started::started;
 use crate::simulation::fake::{bare::Bare, programs::Programs};
-
-fn ended(status: i32) -> Output {
-	Output {
-		status: Some(status),
-		printed: Vec::new(),
-		complained: Vec::new(),
-	}
-}
 
 #[tokio::test]
 async fn a_docker_that_answers_is_asked_once_and_never_again() {
@@ -84,12 +76,14 @@ async fn a_docker_that_never_answers_is_a_stop_after_the_bound() {
 
 	programs.scripted.replace(never);
 
-	let refusal = asleep(&programs, &root, System::Mac)
-		.wake()
-		.await
-		.unwrap_err();
+	let kind = asleep(&programs, &root, System::Mac);
+
+	let refusal = kind.wake().await.unwrap_err();
+
+	let again = kind.wake().await.unwrap_err();
 
 	assert!(matches!(refusal, Error::Asleep));
+	assert!(matches!(again, Error::Asleep));
 	assert_eq!(started(&programs).len(), 92);
 }
 
@@ -122,7 +116,7 @@ async fn a_machine_with_no_docker_says_how_its_system_gets_one() {
 
 	assert_eq!(
 		mac.to_string(),
-		"nsx found no container runtime on this Mac: run nsx init in a terminal and answer yes, and nsx installs one."
+		"nsx found no container runtime on this Mac: install Docker Desktop or Colima, then run again."
 	);
 	assert_eq!(
 		linux.to_string(),

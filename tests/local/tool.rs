@@ -4,27 +4,13 @@ use std::cell::Cell;
 use std::os::unix::fs::PermissionsExt;
 
 use nsx::local::{error::Error, tool::Tool};
-use sha2::{Digest, Sha256};
 
-use crate::local::{reached::reached, rooted::rooted};
+use crate::local::{pinned::pinned, reached::reached, rooted::rooted};
 use crate::simulation::fake::{
 	programs::Programs, shelf::Shelf, unreached::Unreached,
 };
 
 const BYTES: &[u8] = b"#!/bin/sh\necho a pinned tool\n";
-
-fn pinned(bytes: &[u8]) -> Tool {
-	let spelled: String = Sha256::digest(bytes)
-		.iter()
-		.map(|byte| format!("{byte:02x}"))
-		.collect();
-
-	Tool {
-		name: "kind",
-		url: String::from("https://example.invalid/kind"),
-		sha256: Box::leak(spelled.into_boxed_str()),
-	}
-}
 
 #[tokio::test]
 async fn a_missing_tool_is_downloaded_verified_and_written_executable() {

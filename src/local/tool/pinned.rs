@@ -65,14 +65,14 @@ impl Tool {
 				url: format!(
 					"https://github.com/kubernetes-sigs/kind/releases/download/{KIND_VERSION}/kind-{os}-{arch}"
 				),
-				sha256: kind,
+				sha256: String::from(*kind),
 			},
 			Self {
 				name: "kubectl",
 				url: format!(
 					"https://dl.k8s.io/release/{KUBECTL_VERSION}/bin/{os}/{arch}/kubectl"
 				),
-				sha256: kubectl,
+				sha256: String::from(*kubectl),
 			},
 		]
 	}
